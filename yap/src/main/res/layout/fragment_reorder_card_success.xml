@@ -1,0 +1,96 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.cards.reordercard.viewmodels.ReorderCardSuccessViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/includeCard"
+            layout="@layout/layout_add_spare_card_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_extra_large"
+            app:cardType="@{`Physical card`}"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:paddingTop="@dimen/margin_medium"
+            android:paddingBottom="@dimen/margin_medium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/includeCard"
+            app:layout_constraintVertical_bias="0.318">
+
+            <TextView
+                android:id="@+id/tvTransactionComplete"
+                style="@style/ASmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:text="@{Strings.screen_reorder_card_completion_display_text_complete_transaction}"
+                tools:text="@string/screen_reorder_card_completion_display_text_complete_transaction" />
+
+            <TextView
+                android:id="@+id/tvPhysicalCardLocationSubTitle"
+                style="@style/ASmallGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_extra_small"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:gravity="center"
+                android:paddingTop="@dimen/margin_small"
+                android:text="@string/screen_add_spare_card_completion_display_text_delivery_info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTransactionComplete"
+                app:text="@{Strings.screen_add_spare_card_completion_display_text_delivery_info}" />
+
+
+            <co.yap.widgets.CoreButton
+                android:id="@+id/btnDoneSuccess"
+                style="@style/FragmentsBtnStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_btn_side_paddings_xl"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_marginRight="@dimen/margin_btn_side_paddings_xl"
+                android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                android:text="@string/screen_add_spare_card_completion_button_done"
+                app:btn_enable="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.525"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPhysicalCardLocationSubTitle"
+                app:layout_constraintVertical_bias="1.0"
+                app:text="@{Strings.screen_add_spare_card_completion_button_done}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/send_money_main_navigation"
+    app:startDestination="@id/selectCountryFragment">
+
+    <fragment
+        android:id="@+id/selectCountryFragment"
+        android:name="co.yap.sendmoney.addbeneficiary.fragments.SelectCountryFragment"
+        android:label="Add beneficiary"
+        tools:layout="@layout/fragment_select_country">
+
+        <action
+            android:id="@+id/action_selectCountryFragment_to_transferTypeFragment"
+            app:destination="@id/transferTypeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_selectCountryFragment_to_addBeneficiaryFragment"
+            app:destination="@id/addBeneficiaryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_selectCountryFragment_to_DomesticFragment"
+            app:destination="@id/addBeneficiaryForDomesticTransferFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/transferTypeFragment"
+        android:name="co.yap.sendmoney.addbeneficiary.fragments.TransferTypeFragment"
+        android:label="Add beneficiary"
+        tools:layout="@layout/fragment_transfer_type">
+
+        <action
+            android:id="@+id/action_transferTypeFragment_to_selectCountryFragment"
+            app:destination="@id/selectCountryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_transferTypeFragment_to_addBeneficiaryFragment"
+            app:destination="@id/addBeneficiaryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_transferTypeFragment_to_addBeneficiaryForDomesticTransferFragment"
+            app:destination="@id/addBeneficiaryForDomesticTransferFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_transferTypeFragment_to_addBeneficiaryForCashFlowFragment"
+            app:destination="@id/addBeneficiaryForCashFlowFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/addBeneficiaryFragment"
+        android:name="co.yap.sendmoney.addbeneficiary.fragments.AddBeneficiaryInternationlTransferFragment"
+        android:label="Add beneficiary"
+        tools:layout="@layout/fragment_add_beneficiary_international_bank_transfer">
+
+        <action
+            android:id="@+id/action_addBeneficiaryFragment_to_addBankDetailsFragment"
+            app:destination="@id/addBankDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addBeneficiaryForCashFlowFragment"
+        android:name="co.yap.sendmoney.addbeneficiary.fragments.AddBeneficiaryForCashFlowFragment"
+        android:label="Add beneficiary"
+        tools:layout="@layout/fragment_add_beneficiary_cash_flow">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/addBeneficiaryForDomesticTransferFragment"
+        android:name="co.yap.sendmoney.addbeneficiary.fragments.AddBeneficiaryForDomesticTransferFragment"
+        android:label="Add beneficiary"
+        tools:layout="@layout/fragment_add_beneficiary_domestic_transfer">
+        <argument
+            android:name="successOtp"
+            android:defaultValue="false"
+            app:argType="boolean" />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/addBankDetailsFragment"
+        android:name="co.yap.sendmoney.addbeneficiary.fragments.AddBankDetailsFragment"
+        android:label="Add beneficiary"
+        tools:layout="@layout/fragment_add_bank_detail">
+
+        <action
+            android:id="@+id/action_addBankDetailsFragment_to_beneficiaryAccountDetailsFragment"
+            app:destination="@id/beneficiaryAccountDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/beneficiaryAccountDetailsFragment"
+        android:name="co.yap.sendmoney.addbeneficiary.fragments.BeneficiaryAccountDetailsFragment"
+        android:label="Add beneficiary"
+        tools:layout="@layout/fragment_beneficiary_account_detail">
+
+        <action
+            android:id="@+id/action_beneficiaryAccountDetailsFragment_to_beneficiaryOverviewFragment"
+            app:destination="@id/beneficiaryAccountDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/transferSuccessFragment"
+        android:name="co.yap.sendmoney.fundtransfer.fragments.TransferSuccessFragment"
+        tools:layout="@layout/fragment_transfer_success">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/internationalFundsTransfer"
+        android:name="co.yap.sendmoney.fundtransfer.fragments.InternationalFundsTransferFragment"
+        tools:layout="@layout/fragment_international_funds_transfer">
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/beneficiaryOverviewFragment"
+        android:name="co.yap.sendmoney.addbeneficiary.fragments.BeneficiaryOverviewFragment"
+        android:label="Add beneficiary"
+        tools:layout="@layout/fragment_beneficiary_overview">
+        <argument
+            android:name="beneficiary"
+            app:argType="co.yap.networking.customers.responsedtos.sendmoney.Beneficiary" />
+
+        <action
+            android:id="@+id/action_beneficiaryOverviewFragment_to_beneficiaryAccountDetailsFragment"
+            app:destination="@id/beneficiaryAccountDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_beneficiaryOverviewFragment_to_transferSuccessFragment"
+            app:destination="@id/transferSuccessFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

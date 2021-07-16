@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.setcardpin.viewmodels.SetCardPinSuccessViewModel"/>
+
+        <import type="co.yap.translation.Strings"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ALarge"
+            android:lineSpacingExtra="9sp"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/margin_medium_large"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/screen_set_card_pin_success_display_text_title"
+            app:text="@{Strings.screen_set_card_pin_success_display_text_title}"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:layout_marginStart="@dimen/margin_large"/>
+
+
+        <ImageView
+            android:id="@+id/ivBubbles"
+            android:layout_width="@dimen/_220sdp"
+            android:layout_height="@dimen/_205sdp"
+            app:srcCompat="@drawable/ic_set_card_pin_success"
+            android:scaleType="fitXY"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="@dimen/margin_extra_large"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            />
+
+        <TextView
+            android:id="@+id/tvSubTitle"
+            style="@style/ASmallGrey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/ivBubbles"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:layout_marginStart="@dimen/margin_medium"
+            app:layout_constraintVertical_bias="0.0"
+            android:gravity="center"
+            tools:text="@string/screen_set_card_pin_success_display_text_description"
+            app:text="@{Strings.screen_set_card_pin_success_display_text_description}"
+            />
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnTopUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/RectangleBtnStyle"
+            android:layout_marginLeft="@dimen/margin_xxl"
+            android:layout_marginRight="@dimen/margin_xxl"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="@string/screen_set_card_pin_success_button_create_pin"
+            app:btn_enable="true"
+            android:onClick="@{(v) -> viewModel.handlePressOnTopUp(v.id)}"
+            android:layout_marginBottom="@dimen/margin_normal"
+            app:text="@{Strings.screen_set_card_pin_success_button_create_pin}"
+            app:layout_constraintVertical_bias="0.75"
+            app:layout_constraintBottom_toTopOf="@+id/tvTopUpLater"/>
+
+        <TextView
+            android:id="@+id/tvTopUpLater"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Regular"
+            android:textColor="?attr/colorPrimaryAttr"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginBottom="@dimen/margin_normal"
+            tools:text="@string/screen_set_card_pin_success_button_create_pin_later"
+            android:onClick="@{(v) -> viewModel.handlePressOnTopUpLater(v.id)}"
+            app:text="@{Strings.screen_set_card_pin_success_button_create_pin_later}"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

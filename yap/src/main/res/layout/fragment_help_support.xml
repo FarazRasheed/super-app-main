@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.more.help.viewmodels.HelpSupportViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.R" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+
+        <co.yap.widgets.CoreToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:leftIcon="@{R.drawable.ic_back_arrow_left}"
+            app:leftIconVisibility="@{true}"
+            app:onClick="@{viewModel::onToolBarClick}"
+            app:rightIcon="@{R.drawable.ic_settings}"
+            app:rightIconVisibility="@{false}"
+            app:titleString="@{viewModel.state.toolbarTitle}" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <LinearLayout
+                android:id="@+id/lLyFaqs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                android:orientation="horizontal"
+                android:padding="@dimen/margin_small"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imgFaqs"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:background="@drawable/bg_round_purple"
+                    android:backgroundTint="?attr/colorPrimaryAttr"
+                    android:contentDescription="@string/empty_string"
+                    android:padding="@dimen/_10sdp"
+                    app:tint="?attr/colorPrimaryAttr"
+                    app:srcCompat="@drawable/ic_support" />
+
+                <TextView
+                    android:id="@+id/tvFaqs"
+                    style="@style/Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_weight="1"
+                    android:gravity="center|start"
+                    android:lines="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgProfile"
+                    app:text="@{Strings.screen_help_support_display_text_faqs}"
+                    tools:text="@string/screen_help_support_display_text_faqs" />
+
+                <ImageView
+                    android:id="@+id/imgFaqsArrow"
+                    android:layout_width="@dimen/_26sdp"
+                    android:layout_height="@dimen/_26sdp"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin_small"
+                    android:contentDescription="@string/empty_string"
+                    android:rotation="180"
+                    app:srcCompat="@drawable/ic_back_arrow_left" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyChat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                android:orientation="horizontal"
+                android:padding="@dimen/margin_small"
+                app:layout_constraintTop_toBottomOf="@+id/lLyFaqs">
+
+                <ImageView
+                    android:id="@+id/imgChat"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:background="@drawable/bg_round_purple"
+                    android:backgroundTint="?attr/colorPrimaryAttr"
+                    android:contentDescription="@string/empty_string"
+                    android:padding="@dimen/_10sdp"
+                    app:tint="?attr/colorPrimaryAttr"
+                    app:srcCompat="@drawable/ic_chat" />
+
+                <TextView
+                    android:id="@+id/tvChat"
+                    style="@style/Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_weight="1"
+                    android:gravity="center|start"
+                    android:lines="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgProfile"
+                    app:text="@{Strings.screen_help_support_display_text_live_chat}"
+                    tools:text="@string/screen_help_support_display_text_live_chat" />
+
+                <ImageView
+                    android:id="@+id/imgChatArrow"
+                    android:layout_width="@dimen/_26sdp"
+                    android:layout_height="@dimen/_26sdp"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin_small"
+                    android:contentDescription="@string/empty_string"
+                    android:rotation="180"
+                    app:srcCompat="@drawable/ic_back_arrow_left" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lyLiveWhatsApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                android:orientation="horizontal"
+                android:padding="@dimen/margin_small"
+                app:layout_constraintTop_toBottomOf="@+id/lyChat">
+
+                <ImageView
+                    android:id="@+id/imgWhatsApp"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:background="@drawable/bg_round_purple"
+                    android:backgroundTint="?attr/colorPrimaryAttr"
+                    android:contentDescription="@string/empty_string"
+                    android:padding="@dimen/_10sdp"
+                    app:tint="?attr/colorPrimaryAttr"
+                    app:srcCompat="@drawable/ic_whatsapp" />
+
+                <TextView
+                    android:id="@+id/tvWhatsApp"
+                    style="@style/Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_weight="1"
+                    android:gravity="center|start"
+                    android:lines="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgProfile"
+                    app:text="@{Strings.screen_help_support_display_text_chat_via_whatsApp}"
+                    tools:text="@string/screen_help_support_display_text_chat_via_whatsApp" />
+
+                <ImageView
+                    android:id="@+id/imgWhatsAppArrow"
+                    android:layout_width="@dimen/_26sdp"
+                    android:layout_height="@dimen/_26sdp"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin_small"
+                    android:contentDescription="@string/empty_string"
+                    android:rotation="180"
+                    app:srcCompat="@drawable/ic_back_arrow_left" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyCall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                android:orientation="horizontal"
+                android:padding="@dimen/margin_small"
+                app:layout_constraintTop_toBottomOf="@+id/lyLiveWhatsApp">
+
+                <ImageView
+                    android:id="@+id/imgCall"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:background="@drawable/bg_round_purple"
+                    android:backgroundTint="?attr/colorPrimaryAttr"
+                    android:contentDescription="@string/empty_string"
+                    android:padding="@dimen/_10sdp"
+                    app:tint="?attr/colorPrimaryAttr"
+                    app:srcCompat="@drawable/ic_phone_vector" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tvCall"
+                        style="@style/Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:layout_weight="1"
+                        android:gravity="center|start"
+                        android:lines="1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:text="@{Strings.screen_help_support_display_text_call_us}"
+                        tools:text="@string/screen_help_support_display_text_call_us" />
+
+
+                    <TextView
+                        android:id="@+id/tvCallAvalabile"
+                        style="@style/MicroGrey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:layout_weight="1"
+                        android:gravity="center|start"
+                        android:lines="1"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvCall"
+                        app:text="@{Strings.screen_help_support_display_text_available_24_hours}"
+                        tools:text="@string/screen_help_support_display_text_available_24_hours" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tvCallPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center|end"
+                    android:lineSpacingExtra="8sp"
+                    android:lines="1"
+                    android:textColor="?attr/colorPrimaryDarkAttr"
+                    android:textSize="@dimen/text_size_h2"
+                    app:underline_text="@{viewModel.state.contactPhone}"
+                    tools:text="+971 600 55 1214" />
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

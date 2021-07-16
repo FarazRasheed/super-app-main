@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.cards.status.viewmodels.YapCardStatusViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:id="@+id/lyOrdered"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@+id/tbProgressBarBuilding"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/tbBtnOneOrdered"
+                android:layout_width="@dimen/_27sdp"
+                android:layout_height="@dimen/_27sdp"
+                android:clickable="false"
+                android:focusable="false"
+                android:src="@drawable/ic_tick_disabled" />
+
+            <TextView
+                android:id="@+id/tvOrdered"
+                style="@style/ASmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCardTitle"
+                app:text="@{Strings.screen_card_status_display_text_ordered}"
+                tools:text="@string/screen_card_status_display_text_ordered" />
+
+        </LinearLayout>
+
+        <co.yap.widgets.AnimatingProgressBar
+            android:id="@+id/tbProgressBarBuilding"
+            style="@style/YAPProgressBarStatus"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_5sdp"
+            android:layout_gravity="center_horizontal"
+            android:max="100"
+            android:progress="0"
+            app:layout_constraintBottom_toBottomOf="@+id/lyOrdered"
+            app:layout_constraintEnd_toStartOf="@+id/lyBuilding"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/lyOrdered"
+            app:layout_constraintTop_toTopOf="@+id/lyOrdered"
+            app:layout_constraintVertical_bias="0.25" />
+
+        <!--        android:max="@{viewModel.state.totalProgress}"-->
+        <!--        android:progress="@{viewModel.state.buildingProgress}"-->
+
+        <LinearLayout
+            android:id="@+id/lyBuilding"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@+id/tbProgressBarShipping"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tbProgressBarBuilding"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/tbBtnBuilding"
+                android:layout_width="@dimen/_27sdp"
+                android:layout_height="@dimen/_27sdp"
+                android:clickable="false"
+                android:focusable="false"
+                android:src="@drawable/ic_tick_disabled" />
+
+            <TextView
+                android:id="@+id/tvBuilding"
+                style="@style/ASmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCardTitle"
+                app:text="@{Strings.screen_card_status_display_text_building}"
+                tools:text="@string/screen_card_status_display_text_building" />
+
+        </LinearLayout>
+
+        <co.yap.widgets.AnimatingProgressBar
+            android:id="@+id/tbProgressBarShipping"
+            style="@style/YAPProgressBarStatus"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_5sdp"
+            android:layout_gravity="center_horizontal"
+            android:max="@{viewModel.state.totalProgress}"
+            android:progress="@{viewModel.state.shippingProgress}"
+            app:layout_constraintBottom_toBottomOf="@+id/lyBuilding"
+            app:layout_constraintEnd_toStartOf="@+id/lyShipping"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/lyBuilding"
+            app:layout_constraintTop_toTopOf="@+id/lyBuilding"
+            app:layout_constraintVertical_bias="0.25" />
+
+        <LinearLayout
+            android:id="@+id/lyShipping"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tbProgressBarShipping"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/tbBtnShipping"
+                android:layout_width="@dimen/_27sdp"
+                android:layout_height="@dimen/_27sdp"
+                android:clickable="false"
+                android:focusable="false"
+                android:src="@drawable/ic_tick_disabled" />
+
+            <TextView
+                android:id="@+id/tvShipping"
+                style="@style/ASmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCardTitle"
+                app:text="@{Strings.screen_card_status_display_text_shipping}"
+                tools:text="@string/screen_card_status_display_text_shipping" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

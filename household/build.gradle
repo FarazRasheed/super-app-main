@@ -1,0 +1,21 @@
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    project.testDependencies.each {
+        add(it.configuration, it.dependency)
+    }
+
+    //shared dependencies to all modules
+    project.commonDependencies.each {
+        add(it.configuration, it.dependency)
+    }
+
+    // app specific dependencies
+    project.yapDependencies.each {
+        add(it.configuration, it.dependency)
+    }
+
+    // app specific dependencies
+    project.householdDependencies.each {
+        add(it.configuration, it.dependency)
+    }
+}

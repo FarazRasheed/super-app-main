@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorLightPinkBackground">
+
+                <TextView
+                    android:id="@+id/tvTitleKYCSuccess"
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_xl"
+                    android:layout_marginEnd="@dimen/margin_large"
+                    android:gravity="center"
+                    android:lineSpacingExtra="9sp"
+                    android:text="@string/screen_success_on_its_way_display_text_title"
+                    android:textColor="@color/kyc_success_text_color"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:text="@{Strings.screen_success_on_its_way_display_text_title}"
+                    tools:text="@string/screen_success_on_its_way_display_text_title" />
+
+                <TextView
+                    android:id="@+id/tvSubTitleKYCSuccess"
+                    style="@style/ASmallGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:gravity="center"
+                    android:text="@string/screen_success_house_hold_we_will_call_you_to_text"
+                    android:textColor="@color/kyc_success_text_color_light_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitleKYCSuccess"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:text="@{Strings.screen_success_house_hold_we_will_call_you_to_text}"
+                    tools:text="@string/screen_success_house_hold_we_will_call_you_to_text" />
+
+
+                <TextView
+                    android:id="@+id/tvSubTitleSecondKYCSuccess"
+                    style="@style/ASmallGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_extra_small"
+                    android:gravity="center"
+                    android:text="@string/screen_success_house_hold_make_sure_to_text"
+                    android:textColor="@color/kyc_success_text_color_light_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSubTitleKYCSuccess"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:text="@{Strings.screen_success_house_hold_make_sure_to_text}"
+                    tools:text="@string/screen_success_house_hold_make_sure_to_text" />
+
+
+                <ImageView
+                    android:id="@+id/ivKYCSuccess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_extra_large"
+                    app:layout_constraintBottom_toTopOf="@+id/tvDeliverKYCSuccess"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSubTitleSecondKYCSuccess"
+                    app:layout_constraintVertical_bias="0.37"
+                    app:srcCompat="@drawable/ic_kyc_success" />
+
+                <TextView
+                    android:id="@+id/tvDeliverKYCSuccess"
+                    style="@style/ASmallGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:gravity="center"
+                    android:text="@string/screen_success_house_hold_card_deliver_text"
+                    android:textColor="@color/kyc_success_text_color_light_gray"
+                    android:textSize="@dimen/_14sdp"
+                    app:layout_constraintBottom_toTopOf="@+id/tvTitleKYCSuccessAddressOne"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:text="@{Strings.screen_success_house_hold_card_deliver_text}"
+                    tools:text="@string/screen_success_house_hold_card_deliver_text" />
+
+
+                <TextView
+                    android:id="@+id/tvTitleKYCSuccessAddressOne"
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_marginEnd="@dimen/margin_large"
+                    android:gravity="center"
+                    android:text="Burj Res Tower 1"
+                    android:textColor="@color/kyc_success_text_color"
+                    app:layout_constraintBottom_toTopOf="@+id/tvTitleKYCSuccessAddressTwo"
+                    tools:text="Burj Res Tower 1" />
+
+                <TextView
+                    android:id="@+id/tvTitleKYCSuccessAddressTwo"
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_xxl"
+                    android:gravity="center"
+                    android:text="Suite 1130"
+                    android:textColor="@color/kyc_success_text_color"
+                    app:layout_constraintBottom_toTopOf="@+id/btnTopUp"
+                    tools:layout_editor_absoluteX="31dp"
+                    tools:text="Suite 1130" />
+
+                <co.yap.widgets.CoreButton
+                    android:id="@+id/btnTopUp"
+                    style="@style/RectangleBtnStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_medium_large"
+                    android:layout_marginTop="@dimen/_80sdp"
+                    android:layout_marginRight="@dimen/margin_medium_large"
+                    android:layout_marginBottom="@dimen/margin_large"
+                    android:paddingTop="@dimen/margin_medium"
+                    android:text="@string/screen_meeting_confirmation_button_go_to_dashboard"
+                    app:btn_enable="true"
+                    app:btn_pressed_color="@color/white"
+                    app:btn_text_color="?attr/colorPrimaryDark"
+                    app:btn_unpressed_color="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:text="@{Strings.screen_meeting_confirmation_button_go_to_dashboard}"
+                    tools:text="@string/screen_meeting_confirmation_button_go_to_dashboard" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</layout>

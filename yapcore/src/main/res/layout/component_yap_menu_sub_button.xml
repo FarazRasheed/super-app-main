@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rlYapIt"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:elevation="0dp"
+    android:orientation="vertical">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/ivYapIt"
+        style="@style/Widget.Design.FloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="3dp"
+        android:backgroundTint="?attr/colorPrimaryAttr"
+        android:tint="@android:color/white"
+        app:elevation="0dp"
+        app:fabCustomSize="@dimen/_40sdp"
+        app:fabSize="mini"
+        app:maxImageSize="@dimen/_20sdp"
+        app:pressedTranslationZ="0dp"
+        app:srcCompat="@drawable/ic_yap_to_yap" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/Micro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="6sp"
+        android:textColor="?attr/colorPrimaryDarkAttr"
+        android:textSize="@dimen/_12sdp" />
+
+
+</LinearLayout>
+

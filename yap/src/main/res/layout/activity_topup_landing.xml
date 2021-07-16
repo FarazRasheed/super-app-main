@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.yapit.topup.landing.TopUpLandingViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.R" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <co.yap.widgets.CoreToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:leftIcon="@{R.drawable.ic_back_arrow_left}"
+            app:leftIconVisibility="@{true}"
+            app:onClick="@{viewModel::onToolBarClick}"
+            app:rightIcon="@{R.drawable.ic_settings}"
+            app:rightIconVisibility="@{false}"
+            app:titleTranslator="@{Strings.screen_topup_type_selection_display_text_title}" />
+
+        <TextView
+            android:id="@+id/mTitle"
+            style="@style/Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_large"
+            android:gravity="center"
+            android:text="@string/screen_topup_type_selection_display_text_heading"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:text="@{Strings.screen_topup_type_selection_display_text_heading}"
+            tools:text="@string/screen_topup_type_selection_display_text_heading" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_39sdp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mTitle">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/llBankTransferType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_18sdp"
+                android:layout_weight="1"
+                android:background="@drawable/cornor_edges_gery"
+                android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                android:padding="@dimen/margin_medium">
+
+                <ImageView
+                    android:id="@+id/imgIconBank"
+                    android:layout_width="@dimen/_43sdp"
+                    android:layout_height="@dimen/_43sdp"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_round_purple_enabled"
+                    android:contentDescription="@string/empty_string"
+                    android:padding="@dimen/margin_extra_small"
+                    android:tint="?attr/colorPrimaryAttr"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_icon_bank_transfer"
+                    tools:ignore="UseAppTint" />
+
+                <TextView
+                    android:id="@+id/tvBankTransferTitle"
+                    style="@style/Micro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:gravity="center"
+                    android:text="@string/screen_topup_type_selection_button_bank_transfer"
+                    app:layout_constraintTop_toBottomOf="@+id/imgIconBank"
+                    app:text="@{Strings.screen_topup_type_selection_button_bank_transfer}"
+                    tools:text="@string/screen_topup_type_selection_button_bank_transfer" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/llCardsTransferType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/_18sdp"
+                android:layout_weight="1"
+                android:background="@drawable/cornor_edges_gery"
+                android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                android:padding="@dimen/margin_medium">
+
+                <ImageView
+                    android:id="@+id/imgIconCard"
+                    android:layout_width="@dimen/_43sdp"
+                    android:layout_height="@dimen/_43sdp"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_round_purple_enabled"
+                    android:contentDescription="@string/empty_string"
+                    android:padding="@dimen/margin_extra_small"
+                    android:tint="?attr/colorPrimaryAttr"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_icon_card_transfer" />
+
+                <TextView
+                    android:id="@+id/tvCardsTitle"
+                    style="@style/Micro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:gravity="center"
+                    android:text="@string/screen_topup_type_selection_button_card"
+                    app:layout_constraintTop_toBottomOf="@+id/imgIconCard"
+                    app:text="@{Strings.screen_topup_type_selection_button_card}"
+                    tools:text="@string/screen_topup_type_selection_button_card" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

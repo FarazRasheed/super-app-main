@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="arg_username">username</string>
+    <string name="arg_account_type">account_type</string>
+    <string name="arg_name">name</string>
+</resources>

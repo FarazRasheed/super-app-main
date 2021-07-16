@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="conversation_background">#ffffff</color>
+
+    <!-- all bubbles -->
+    <color name="bubble_selected_background_color">#5597a7e3</color>
+
+    <!-- brand bubble-->
+    <dimen name="brand_bubble_stroke_width">0dp</dimen>
+    <color name="brand_bubble_stroke_color">@color/lp_blue</color>
+    <color name="brand_bubble_message_text_color">@color/colorPrimaryDark</color>
+    <color name="brand_bubble_message_link_text_color">@android:color/white</color>
+    <color name="brand_bubble_timestamp_text_color">@color/grey</color>
+    <color name="brand_bubble_background_color">#80C9C8D8</color>
+    <color name="brand_logo_background_color">@color/transparent</color>
+
+    <!-- agent bubble-->
+    <dimen name="agent_bubble_stroke_width">0dp</dimen>
+    <color name="agent_bubble_stroke_color">@color/lp_blue</color>
+    <color name="agent_bubble_message_text_color">@color/colorPrimaryDark</color>
+    <color name="agent_bubble_message_link_text_color">@color/colorPrimaryDark</color>
+    <color name="agent_bubble_timestamp_text_color">@color/grey</color>
+    <color name="agent_bubble_background_color">#80C9C8D8</color>
+    <color name="agent_avatar_background_color">@color/white</color>
+    <color name="agent_avatar_icon_color">@android:color/white</color>
+    <bool name="show_agent_typing_in_message_bubble">true</bool>
+
+    <!--consumer bubble-->
+    <dimen name="consumer_bubble_stroke_width">0dp</dimen>
+    <color name="consumer_bubble_stroke_color">@color/transparent</color>-->
+    <color name="consumer_bubble_message_text_color">@android:color/white</color>
+    <color name="consumer_bubble_message_link_text_color">@color/white</color>
+    <color name="consumer_bubble_timestamp_text_color">@color/grey</color>
+    <color name="consumer_bubble_background_color">@color/colorPrimary</color>
+    <color name="consumer_bubble_state_text_color">@color/grey</color>
+
+    <!-- system bubble-->
+    <color name="system_bubble_text_color">@color/grey</color>
+
+    <!-- consumer bubble link_preview -->
+    <color name="consumer_bubble_link_preview_background_color">@android:color/white</color>
+    <color name="consumer_bubble_link_preview_title_text_color">@android:color/black</color>
+    <color name="consumer_bubble_link_preview_description_text_color">@color/lp_dark_gray_2</color>
+
+    <!-- agent bubble link_preview -->
+    <color name="agent_bubble_link_preview_background_color">@android:color/white</color>
+    <color name="agent_bubble_link_preview_title_text_color">@android:color/black</color>
+    <color name="agent_bubble_link_preview_description_text_color">@color/lp_dark_gray_2</color>
+
+    <!-- unread messages bubble-->
+    <color name="unread_indicator_bubble_text_color">@color/colorPrimary</color>
+    <color name="unread_indicator_bubble_background_color">@color/grey</color>
+    <bool name="unread_indicator_bubble_enable">true</bool>
+
+    <!-- unread scroll down fab-->
+    <color name="scroll_down_indicator_unread_counter_text_color">@android:color/white</color>
+    <color name="scroll_down_indicator_unread_summary_text_color">@android:color/white</color>
+    <color name="scroll_down_indicator_unread_counter_stroke_color">#cc000000</color>
+    <dimen name="scroll_down_indicator_unread_counter_stroke_width">1dp</dimen>
+    <color name="scroll_down_indicator_unread_counter_solid_color">#FF0000</color>
+    <color name="scroll_down_indicator_background_color">@color/grey</color>
+    <color name="scroll_down_indicator_arrow_down_color">#FFFFFF</color>
+    <bool name="scroll_down_indicator_enabled">true</bool>
+    <bool name="scroll_down_indicator_unread_summary_enabled">true</bool>
+
+    <!-- icons visibility -->
+    <integer name="message_receive_icons">0</integer>
+
+    <!--Feedback Fragment-->
+    <color name="feedback_fragment_background_color">@android:color/white</color>
+    <color name="feedback_fragment_title_question">@android:color/black</color>
+    <color name="feedback_fragment_star">@color/lp_green</color>
+    <color name="feedback_fragment_rate_text">@color/lp_dark_gray_2</color>
+    <color name="feedback_fragment_agent_details_name">@android:color/black</color>
+
+    <color name="feedback_fragment_title_yesno">@color/lp_dark_gray_2</color>
+    <color name="feedback_fragment_yesno_btn_selected_background">#229A49</color>
+    <color name="feedback_fragment_yesno_btn_default_background">@android:color/white</color>
+    <color name="feedback_fragment_yesno_btn_text_selected">@android:color/white</color>
+    <color name="feedback_fragment_yesno_btn_text_default">#5B5C5E</color>
+    <color name="feedback_fragment_yesno_btn_stroke_default">#E2E2E3</color>
+    <color name="feedback_fragment_yesno_btn_stroke_selected">#229A49</color>
+    <dimen name="feedback_fragment_yesno_btn_stroke_width_default">1dp</dimen>
+    <dimen name="feedback_fragment_yesno_btn_stroke_width_selected">1dp</dimen>
+
+    <color name="feedback_fragment_submit_message">#565656</color>
+
+    <color name="feedback_fragment_submit_btn_enabled">#229A49</color>
+    <color name="feedback_fragment_submit_btn_text_enabled">@android:color/white</color>
+    <color name="feedback_fragment_submit_btn_disabled">@android:color/white</color>
+    <color name="feedback_fragment_submit_btn_text_disabled">#BDBDBD</color>
+
+    <color name="feedback_fragment_submit_btn_stroke_enabled">#229A49</color>
+    <color name="feedback_fragment_submit_btn_stroke_disabled">#E2E2E3</color>
+    <dimen name="feedback_fragment_submit_btn_stroke_width_enabled">1dp</dimen>
+    <dimen name="feedback_fragment_submit_btn_stroke_width_disabled">1dp</dimen>
+
+    <!--Feedback Fragment-->
+    <bool name="show_feedback">true</bool>
+    <bool name="show_yes_no_question">true</bool>
+    <bool name="show_agent_details_csat">true</bool>
+    <!-- if both show_yes_no_question & show_agent_details_csat are true, show_yes_no_question will be ignored-->
+    <bool name="show_csat_thank_you">true</bool>
+    <integer name="csatSurveyExpirationInMinutes">1440</integer>
+
+
+    <!--TTR-->
+    <bool name="disableTTRPopup">false</bool>
+    <integer name="ttrShowFrequencyInSeconds">8</integer>
+
+    <string name="custom_button_icon_name">t_mobile_call_icon</string>
+    <string name="custom_button_icon_description">call</string>
+
+    <bool name="contextual_menu_on_toolbar">true</bool>
+
+    <string name="notification_large_icon_name">ic_launcher</string>
+
+
+    <integer name="encryptionVersion">1</integer>
+
+    <string name="csds_url">adminlogin.liveperson.net</string>
+    <string name="lptag_domain">lptag.liveperson.net</string>
+
+    <integer name="idp_num_history_conversation">2</integer>
+
+    <!--Credit card masking-->
+    <bool name="enable_client_only_masking">false</bool>
+    <bool name="enable_real_time_masking">false</bool>
+    <string name="client_only_masking_regex" />
+    <string name="real_time_masking_regex" />
+
+    <bool name="show_timestamp_in_ttr_notification">true</bool>
+
+    <!--Edit Text-->
+    <color name="edit_text_underline_color">#90CAF9</color>
+    <color name="lp_enter_msg_text">@android:color/black</color>
+    <color name="lp_enter_msg_hint">@android:color/darker_gray</color>
+    <color name="lp_send_button_text_enable">#004dc9</color>
+    <color name="lp_send_button_text_disable">#b7b8b9</color>
+
+    <bool name="use_send_image_button">false</bool>
+
+    <!--Clear History-->
+    <bool name="clear_history_show_confirm_dialog">true</bool>
+
+    <!--Photo/File sharing-->
+    <bool name="enable_photo_sharing">true</bool>
+    <bool name="enable_file_sharing">true</bool>
+    <bool name="upload_photo_using_service">true</bool>
+    <integer name="max_number_stored_images">20</integer>
+    <integer name="max_number_stored_documents">20</integer>
+    <integer name="full_image_compression_rate">50</integer>
+    <integer name="thumbnail_longer_dimension_resize">100</integer>
+    <integer name="full_image_longer_dimension_resize">800</integer>
+    <integer name="max_image_size_kb">3000</integer>
+
+    <color name="attachment_menu_item_background_color">@color/lp_blue</color>
+    <color name="lp_attachment_menu_item_icon_color">@color/lp_light_gray_1</color>
+    <color name="lp_attachment_menu_item_text_color">@color/lp_dark_gray_1</color>
+    <color name="lp_attachment_menu_background_color">@color/lp_light_gray_2</color>
+
+    <!--Links-->
+    <string name="lp_bubble_phone_links_regex" />
+    <string name="lp_bubble_url_links_regex" />
+    <string name="lp_bubble_email_links_regex" />
+
+    <!--Conversation Separator-->
+    <bool name="enable_conversation_resolved_message">true</bool>
+    <bool name="enable_conversation_resolved_separator">true</bool>
+    <color name="conversation_separator_text_color">@color/colorPrimaryDark</color>
+
+    <!-- Link Preview-->
+    <bool name="link_preview_enable_real_time_preview">true</bool>
+    <bool name="link_preview_use_big_picture">true</bool>
+    <bool name="link_preview_enable_feature">true</bool>
+    <bool name="link_preview_to_use_more_than_og_tags">true</bool>
+
+
+    <!--Resend pending message-->
+    <integer name="sendingMessageTimeoutInMinutes">60</integer>
+
+    <!-- Vibrate -->
+    <bool name="vibrate_enabled">false</bool>
+
+    <integer name="ttr_duration">3000</integer>
+    <integer name="ttrFirstTimeDelaySeconds">10</integer>
+
+    <!-- Off hours notification -->
+    <bool name="ttr_message_off_hours_enabled">true</bool>
+
+    <!-- Off hours notification -->
+
+    <!--Enter message-->
+    <color name="lp_file_attach_icon_clip_color">#FF767678</color>
+    <color name="lp_file_close_icon_clip_color">#FF767678</color>
+
+    <!--Accessibility-->
+    <integer name="snackbar_duration_for_accessibility">60000</integer>
+    <bool name="announce_agent_typing">true</bool>
+
+    <!-- Connection status bar -->
+    <color name="connection_status_connecting_bg_color">#F2F5F5F5</color>
+    <color name="connection_status_not_connected_bg_color">#CC000000</color>
+    <color name="connection_status_connecting_text_color">#46474a</color>
+    <color name="connection_status_not_connected_text_color">#FFFFFF</color>
+
+
+    <bool name="send_agent_profile_updates_when_conversation_closed">true</bool>
+
+    <string name="client_only_mask_character">*</string>
+    <string name="real_time_mask_character">*</string>
+
+    <!-- agent PCI bubble-->
+    <color name="agent_bubble_pci_form_invitation_background_color">@android:color/white</color>
+    <color name="agent_bubble_pci_form_invitation_background_btn_color">@android:color/white</color>
+    <color name="agent_bubble_pci_form_invitation_stroke_color">@color/lp_gray</color>
+    <color name="agent_bubble_pci_form_invitation_button_text_color">@color/lp_blue</color>
+    <color name="agent_bubble_pci_form_invitation_description_text_color">@color/lp_gray</color>
+    <color name="agent_bubble_pci_form_invitation_title_text_color">@android:color/black</color>
+    <color name="agent_bubble_pci_form_invitation_icon_tint_color">@color/lp_blue</color>
+
+    <!--PCI-->
+    <bool name="pci_form_hide_logo">false</bool>
+    <string name="pci_form_font_name"></string>
+
+    <!-- Fonts -->
+    <string name="custom_font_name_conversation_feed"></string>
+    <string name="custom_font_name_non_conversation_feed"></string>
+
+    <!--Structured Content-->
+    <bool name="enable_structured_content">true</bool>
+    <integer name="structured_content_map_zoom">18</integer>
+    <color name="structured_content_border_color">@color/lp_light_gray_1</color>
+    <dimen name="structured_content_border_width">1dp</dimen>
+    <bool name="structured_content_link_as_callback">false</bool>
+    <string name="lp_google_maps_key">@string/google_maps_key</string>
+
+    <!--Controller messages-->
+    <color name="conversation_controller_message_text_color">@color/lp_dark_gray_2</color>
+
+    <!-- Message bubble timestamp -->
+    <bool name="message_status_numeric_timestamp_only">false</bool>
+
+    <!-- Brand/Agent name header properties-->
+    <color name="lp_brand_header_text_color">@android:color/black</color>
+
+    <!--Voice-->
+    <bool name="enable_voice_sharing">false</bool>
+    <integer name="max_number_stored_voice_files">20</integer>
+
+    <!-- Clear Chat History-->
+    <string name="lp_history_control_api_empty_state">@string/screen_live_chat_no_conversation_message</string>
+
+    <!-- Send Message.  -->
+    <bool name= "enable_markdown_hyperlink">true</bool>
+    <bool name= "lp_markdown_hyperlink_copy_text_only">true</bool>
+
+    <!--  Start of scroll behavior settings.  -->
+
+    <!--  LastPosition: Conversation will scroll to the previous position regardless if there are new messages or not.(Default) -->
+    <!--  Bottom: Conversation will scroll to the bottom regardless if there are unread messages or not.  -->
+    <!--  FirstUnreadMessage: Conversation will scroll to first unread message. If no unread messages exist, conversation will scroll to the bottom.  -->
+    <string name="lp_scroll_when_foreground" translatable="false">LastPosition</string>
+
+    <!--  Bottom: Conversation will scroll to the bottom regardless if there are unread messages or not.(Default)  -->
+    <!--  LastPosition: Conversation will scroll to the previous position regardless if there are new messages or not. -->
+    <!--  FirstUnreadMessage: Conversation will scroll to first unread message. If no unread messages exist, conversation will scroll to the bottom.  -->
+    <string name="lp_scroll_show_conversation" translatable="false">Bottom</string>
+
+    <!--  Bottom: Conversation will scroll to the bottom regardless if there are unread messages or not.(Default)  -->
+    <!--  LastPosition: Conversation will scroll to the previous position regardless if there are new messages or not. -->
+    <!--  FirstUnreadMessage: Conversation will scroll to first unread message. If no unread messages exist, conversation will scroll to the bottom.  -->
+    <string name="lp_scroll_when_push_notification" translatable="false">Bottom</string>
+
+    <!--  Bottom: Conversation will scroll to the bottom regardless if there are unread messages or not.(Default)  -->
+    <!--  FirstUnreadMessage: Conversation will scroll to first unread message. If no unread messages exist, conversation will scroll to the bottom.  -->
+    <string name="lp_scroll_when_scroll_down" translatable="false">Bottom</string>
+
+
+    <!--    <string name="brand_name" templateMergeStrategy="preserve" translatable="false">YAP Support</string>-->
+
+    <!--  End of scroll behavior settings.  -->
+
+</resources>

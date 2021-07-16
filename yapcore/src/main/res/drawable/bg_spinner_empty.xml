@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <layer-list>
+
+            <item android:drawable="@drawable/ic_chevron_down" android:gravity="right" android:top="@dimen/small">
+                <padding android:right="8dp" />
+                <padding android:left="8dp" />
+                <padding android:top="8dp" />
+                <padding android:bottom="8dp" />
+
+            </item>
+            <item>
+                <shape>
+                    <solid android:color="@android:color/white" />
+                    <padding android:left="8dp" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</selector>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.cards.paymentcarddetail.statments.viewmodels.CardStatementItemViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_small">
+
+        <ImageView
+            android:id="@+id/imgNote"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/margin_normal"
+            android:contentDescription="@string/empty_string"
+            app:srcCompat="@drawable/ic_note" />
+
+        <TextView
+            android:id="@+id/tvStoreName"
+            style="@style/Regular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:text="@{viewModel.cardStatement.month}"
+            tools:text="June" />
+
+        <TextView
+            android:id="@+id/tvStoreDesc"
+            style="@style/ASmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/_7sdp"
+            android:padding="@dimen/_10sdp"
+            android:textColor="?attr/colorPrimaryAttr"
+            app:text="@{Strings.screen_card_statement_display_text_view}"
+            tools:text="@string/screen_card_statement_display_text_view" />
+
+    </LinearLayout>
+</layout>

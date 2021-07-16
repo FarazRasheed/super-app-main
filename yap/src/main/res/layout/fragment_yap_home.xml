@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.home.viewmodels.YapHomeViewModel" />
+
+    </data>
+
+    <co.yap.widgets.OnlyVerticalSwipeRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:enabled="@{viewModel.state.isUserAccountActivated}"
+        app:srcCompat="?attr/colorPrimaryAttr">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/main_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:fillViewport="true">
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:id="@+id/clSnackbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <co.yap.widgets.skeletonlayout.SkeletonLayout
+                android:id="@+id/skeletonLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="66dp"
+                android:elevation="10dp"
+                app:behavior_animation="@anim/scale_yap_dashboard_home_title"
+                app:behavior_dependTarget="-60dp"
+                app:behavior_dependType="y"
+                app:behavior_dependsOn="@+id/appbar"
+                app:layout_behavior="@string/animation_view_behavior">
+
+                <TextView
+                    android:id="@+id/tvAvailableBalance"
+                    style="@style/ALarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@={viewModel.state.availableBalance}"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/text_size_h7"
+                    tools:text="50,174.78" />
+            </co.yap.widgets.skeletonlayout.SkeletonLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:alpha="1"
+                android:orientation="vertical"
+                app:behavior_dependTarget="-60dp"
+                app:behavior_dependType="y"
+                app:behavior_dependsOn="@+id/appbar"
+                app:behavior_targetAlpha="0"
+                app:layout_behavior="@string/simple_view_behavior">
+
+                <TextView
+                    style="@style/ASmall"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/tag_background"
+                    android:gravity="center"
+                    android:text="AED"
+                    android:textColor="?attr/colorPrimaryAttr"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:theme="@style/CoreAppTheme.AppBarOverlay"
+                app:elevation="0dp">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/collapsing_toolbar_height"
+                    android:fitsSystemWindows="true"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                    app:titleEnabled="false">
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        app:layout_collapseMode="pin">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/ivSearch"
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
+                                android:layout_marginStart="@dimen/margin_small"
+                                android:layout_marginEnd="@dimen/margin_small"
+                                android:onClick="@{v -> viewModel.handlePressOnView(v.getId())}"
+                                android:visibility="visible"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/ic_search" />
+
+                            <ImageView
+                                android:id="@+id/ivMenu"
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
+                                android:layout_marginStart="@dimen/margin_small"
+                                android:layout_marginEnd="@dimen/margin_small"
+                                android:onClick="@{v -> viewModel.handlePressOnView(v.getId())}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/ic_hamburger" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.appcompat.widget.Toolbar>
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <include
+                android:id="@+id/lyInclude"
+                layout="@layout/content_fragment_yap_home"
+                android:visibility="visible"
+                app:viewModel="@{viewModel}" />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </co.yap.widgets.OnlyVerticalSwipeRefreshLayout>
+</layout>

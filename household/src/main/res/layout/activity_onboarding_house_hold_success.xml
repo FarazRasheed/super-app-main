@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+    </data>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorLightPinkBackground"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitleOnBoardingExistingSuccess"
+            style="@style/Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:gravity="center"
+            android:lineSpacingExtra="9sp"
+            android:text="@string/screen_passcode_success_display_text_heading"
+            android:textColor="@color/kyc_success_text_color"
+            app:text="@{Strings.screen_passcode_success_display_text_heading}"
+            tools:text="@string/screen_passcode_success_display_text_heading" />
+
+        <TextView
+            android:id="@+id/tvOnBoardingExistingMessage"
+            style="@style/ASmallGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium_large"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_medium_large"
+            android:gravity="center"
+            android:lineSpacingExtra="2dp"
+            android:text="@string/screen_on_boarding_existing_message"
+            android:textColor="@color/kyc_success_text_color_light_gray"
+            app:text="@{Strings.screen_on_boarding_existing_message}"
+            tools:text="@string/screen_on_boarding_existing_message" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/ivTransactionCompleteOnBoardingExisting"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_gravity="center"
+                android:background="@drawable/transaction_complete_selector_transparent"
+                android:contentDescription="@string/success_icon"
+                android:src="@drawable/ic_check" />
+        </FrameLayout>
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnCompleteVerification"
+            style="@style/FragmentsBtnStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_medium_large"
+            android:layout_marginRight="@dimen/margin_medium_large"
+            android:layout_marginBottom="@dimen/margin_small"
+            app:btn_enable="true"
+            android:text="@string/screen_onboarding_congratulations_button_complete_verification"
+            app:btn_pressed_color="@color/colorPrimaryHouseHold"
+            app:btn_text_color="@color/white"
+            app:btn_unpressed_color="@color/colorPrimaryHouseHold"
+            app:text="@{Strings.screen_onboarding_congratulations_button_complete_verification}"
+            tools:text="@string/screen_onboarding_congratulations_button_complete_verification" />
+
+        <TextView
+            android:id="@+id/tvSkipAndLater"
+            style="@style/ASmallGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:gravity="center"
+            android:padding="@dimen/margin_extra_small"
+            android:text="@string/screen_b2c_kyc_home_button_skip_on_boarding_existing"
+            android:textColor="@color/colorPrimaryHouseHold"
+            android:textSize="@dimen/_13sdp"
+            app:text="@{Strings.screen_b2c_kyc_home_button_skip_on_boarding_existing}"
+            tools:text="@string/screen_b2c_kyc_home_button_skip_on_boarding_existing" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</layout>

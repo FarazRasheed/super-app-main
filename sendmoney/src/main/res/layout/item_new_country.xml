@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?><!--<layout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools">-->
+
+<!--    <dataList>-->
+
+<!--        <import type="android.view.View" />-->
+
+<!--        <variable-->
+<!--            name="dataList"-->
+<!--            type="co.yap.countryutils.country.Country" />-->
+
+<!--    </dataList>-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="@dimen/_5sdp">
+
+
+    <!--        <co.yap.widgets.CoreCircularImageView-->
+    <!--            android:id="@+id/flag_img"-->
+    <!--            android:layout_width="@dimen/_20sdp"-->
+    <!--            android:layout_height="@dimen/_20sdp"-->
+    <!--            android:layout_alignParentStart="true"-->
+    <!--            android:layout_alignParentTop="true"-->
+    <!--            android:layout_centerVertical="true"-->
+    <!--            android:visibility="@{dataList.flagAvailable ? View.VISIBLE : View.GONE}"-->
+    <!--            app:circular="true"-->
+    <!--            app:src="@{dataList.flagDrawableResId}" />-->
+
+    <ImageView
+        android:id="@+id/flag_img"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp" />
+    <!-- <ImageView-->
+    <!--            android:id="@+id/flag_img"-->
+    <!--            android:layout_width="@dimen/_20sdp"-->
+    <!--            android:layout_height="@dimen/_20sdp"-->
+    <!--            android:src="@drawable/bitmap"-->
+    <!--            app:src="@{dataList.flagDrawableResId}" -->
+    <!--        app:circular="@{true}"-->
+
+
+    <TextView
+        android:id="@+id/tvCountryName"
+        style="@style/Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/flag_img"
+        android:paddingStart="@dimen/_16sdp"
+        android:paddingEnd="@dimen/_16sdp"
+        tools:text="name" />
+</RelativeLayout><!--</layout>-->

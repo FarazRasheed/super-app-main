@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.cards.analytics.viewmodels.CardAnalyticsDetailsViewModel" />
+
+        <import type="co.yap.sendmoney.R" />
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.yapcore.helpers.Utils" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <co.yap.widgets.CoreCircularImageView
+            android:id="@+id/ivUserImage"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_normal_large"
+            app:fullName="@{viewModel.state.title==null?` `:viewModel.state.title}"
+            app:imageUrl="@{viewModel.state.ImageUrl == null ? ` ` : viewModel.state.ImageUrl}"
+            app:isBackground="@{true}"
+            app:position="@{viewModel.state.position}"
+            tools:src="@drawable/ic_access_alarm" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/AppFontRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_normal_large"
+            android:gravity="center_horizontal"
+            android:text="@{viewModel.state.countWithDate}"
+            android:textColor="@color/greyDark"
+            android:textSize="@dimen/text_size_h2"
+            tools:text="July 2019・5 transactions" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/AppFontRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2dp"
+            android:gravity="center_horizontal"
+            android:text="@{`AED ` +Utils.INSTANCE.getFormattedCurrency(viewModel.state.totalSpendings)}"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/text_size_h6" />
+
+        <co.yap.widgets.MultiStateView
+            android:id="@+id/multiStateView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_weight="1"
+            app:msv_animateViewChanges="true"
+            app:msv_emptyView="@layout/layout_empty_view_no_results"
+            app:msv_errorView="@layout/layout_error_view"
+            app:msv_loadingView="@layout/layout_loading_view">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal_large"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:layout_marginEnd="@dimen/margin_normal_large"
+                    app:cardBackgroundColor="@color/white"
+                    android:visibility="@{viewModel.state.percentCardVisibility ? View.VISIBLE : View.GONE}"
+                    app:cardCornerRadius="@dimen/margin_extra_small"
+                    app:cardElevation="@dimen/margin_extra_small">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/margin_btn_side_xxl"
+                        android:background="@drawable/bg_grey_border"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/margin_normal"
+                        android:paddingBottom="@dimen/margin_normal"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/AppFontRegular"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@{viewModel.state.monthlyTotalPercentage}"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="@dimen/text_size_h4"
+                                tools:text="50%" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/AppFontRegular"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:singleLine="true"
+                                android:text="monthly spend"
+                                android:textColor="@color/greyDark"
+                                android:textSize="@dimen/text_size_h1" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="0.1sp"
+                            android:layout_height="match_parent"
+                            android:background="@color/greyLight" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/AppFontRegular"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@{viewModel.state.currToLast}"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="@dimen/text_size_h4"
+                                tools:text="50%" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/AppFontRegular"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:singleLine="true"
+                                android:text="vs. last month"
+                                android:textColor="@color/greyDark"
+                                android:textSize="@dimen/text_size_h1" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="0.1sp"
+                            android:layout_height="match_parent"
+                            android:background="@color/greyLight" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/AppFontRegular"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@{viewModel.state.avgSpending}"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="@dimen/text_size_h4"
+                                tools:text="150" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/AppFontRegular"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:singleLine="true"
+                                android:text="average spend"
+                                android:textColor="@color/greyDark"
+                                android:textSize="@dimen/text_size_h1" />
+                        </LinearLayout>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal_large"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    android:lineSpacingExtra="6sp"
+                    android:text="Transactions"
+                    android:textColor="@color/colorMidnightExpress"
+                    android:textSize="@dimen/_12sdp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:background="@drawable/line_divider" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:orientation="vertical"
+                    app:adapter="@{viewModel.adapter}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:reverseLayout="false"
+                    tools:listitem="@layout/item_transaction_list" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </co.yap.widgets.MultiStateView>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_round"
+        android:padding="@dimen/margin_large">
+
+        <ImageView
+            android:id="@+id/tbBtnCheck"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:clickable="true"
+            android:focusable="true"
+            app:enabled="@{false}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_tick" />
+
+        <TextView
+            android:id="@+id/tvCardSuccessMsg"
+            style="@style/Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:gravity="center"
+            android:lineSpacingExtra="5sp"
+            android:text="@string/screen_add_topup_card_display_text_succes_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tbBtnCheck"
+            app:text="@{Strings.screen_add_topup_card_display_text_succes_title}" />
+
+
+        <TextView
+            android:id="@+id/tvTopUpDesc"
+            style="@style/SmallGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_large"
+            android:gravity="center"
+            android:text="@string/screen_add_topup_card_display_text_succes_details"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCardSuccessMsg"
+            app:text="@{Strings.screen_add_topup_card_display_text_succes_details}" />
+
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/done"
+            style="@style/RectangleBtnStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="Yes, top up now"
+            app:btn_enable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTopUpDesc" />
+
+        <TextView
+            android:id="@+id/btnLater"
+            style="@style/Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium_large"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/screen_add_topup_card_succes_button_later"
+            android:textColor="@color/dialogBtnColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/done"
+            app:text="@{Strings.screen_add_topup_card_succes_button_later}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

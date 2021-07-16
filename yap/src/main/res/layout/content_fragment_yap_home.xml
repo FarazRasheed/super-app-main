@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.home.viewmodels.YapHomeViewModel" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/homeParent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <!--     Notification Center       -->
+            <com.yarolegovich.discretescrollview.DiscreteScrollView
+                android:id="@+id/rvNotificationList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:dsv_orientation="horizontal"
+                tools:listitem="@layout/view_notifications" />
+
+            <!--     Content Graph Center       -->
+            <include
+                android:id="@+id/vGraph"
+                layout="@layout/view_graph"
+                android:visibility="@{viewModel.state.isTransEmpty?View.GONE:View.VISIBLE}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTransactionDate"
+                style="@style/Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="6sp"
+                android:textColor="@color/greyDark"
+                android:textSize="14sp"
+                android:visibility="visible"
+                tools:text="April 2019" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/lyHomeAction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:alpha="@{viewModel.state.isUserAccountActivated ? 1f : 0.5f}"
+                android:enabled="@{viewModel.state.isUserAccountActivated}"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/lyAdd"
+                    android:alpha="@{viewModel.state.isUserAccountActivated ? 1f : 0.5f}"
+                    android:enabled="@{viewModel.state.isUserAccountActivated}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_18sdp"
+                    android:layout_marginEnd="@dimen/_18sdp"
+                    android:onClick="@{(v)->viewModel.handlePressOnView(v.id)}"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/btnAdd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="@dimen/_5sdp"
+                        android:tint="@color/white"
+                        app:backgroundTint="?attr/colorPrimaryAttr"
+                        app:elevation="0dp"
+                        app:fabCustomSize="@dimen/_32sdp"
+                        app:fabSize="mini"
+                        app:maxImageSize="@dimen/_18sdp"
+                        app:srcCompat="@drawable/ic_add_sign" />
+
+                    <TextView
+                        style="@style/AppFontRegular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_horizontal"
+                        android:lineSpacingExtra="6sp"
+                        android:text="@string/screen_fragment_yap_home_add_money"
+                        android:textColor="#5e35b1"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lyAnalytics"
+                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_18sdp"
+                    android:layout_marginEnd="@dimen/_18sdp"
+                    android:alpha="@{viewModel.state.isUserAccountActivated ? 1f : 0.5f}"
+                    android:enabled="@{viewModel.state.isUserAccountActivated}"
+                    android:onClick="@{(v)->viewModel.handlePressOnView(v.id)}"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fbAnalytics"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="@dimen/_5sdp"
+                        android:tint="@color/white"
+                        app:backgroundTint="?attr/colorPrimaryAttr"
+                        app:elevation="0dp"
+                        app:fabCustomSize="@dimen/_32sdp"
+                        app:fabSize="mini"
+                        app:maxImageSize="@dimen/_18sdp"
+                        app:srcCompat="@drawable/ic_analytics" />
+
+                    <TextView
+                        style="@style/AppFontRegular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_horizontal"
+                        android:lineSpacingExtra="6sp"
+                        android:text="Analytics"
+                        android:textColor="#5e35b1"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <RelativeLayout
+                android:id="@+id/rlTransactionHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium_large"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/margin_medium_large"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:visibility="@{viewModel.state.isUserAccountActivated ? View.VISIBLE : View.INVISIBLE}">
+
+                <TextView
+                    android:id="@+id/tvTransactionTitle"
+                    style="@style/ASmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="Transactions" />
+
+                <RelativeLayout
+                    android:id="@+id/rlFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:backgroundTint="@color/grey"
+                    android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}">
+
+                    <TextView
+                        android:id="@+id/tvFilterCount"
+                        style="@style/ASmall"
+                        android:layout_width="@dimen/_22sdp"
+                        android:layout_height="@dimen/_22sdp"
+                        android:layout_marginEnd="5dp"
+                        android:background="@drawable/bg_round_purple"
+                        android:gravity="center"
+                        android:text="@{viewModel.state.filterCount.toString()}"
+                        android:textColor="?attr/colorPrimaryAttr"
+                        android:visibility="@{viewModel.state.filterCount > 0 ? View.VISIBLE:View.GONE}"
+                        tools:text="6" />
+
+                    <ImageView
+                        android:id="@+id/ivFilters"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="2dp"
+                        android:layout_toEndOf="@+id/tvFilterCount"
+                        android:src="@drawable/ic_filter"
+                        android:tint="@{viewModel.state.isTransEmpty() &amp;&amp; viewModel.state.filterCount==0? @color/grey: @color/colorPrimary}"
+                        android:visibility="@{viewModel.state.filterCount > 0 ? View.GONE:View.VISIBLE}" />
+
+                    <TextView
+                        android:id="@+id/tvFilters"
+                        style="@style/ASmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:layout_toEndOf="@+id/ivFilters"
+                        android:text="Filter"
+                        android:textColor="@{viewModel.state.isTransEmpty() &amp;&amp; viewModel.state.filterCount==0? @color/grey: @color/colorPrimary}" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"
+                android:paddingTop="@dimen/_8sdp" />
+
+            <co.yap.widgets.MultiStateView
+                android:id="@+id/multiStateView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:msv_emptyView="@layout/layout_welcome_to_yap_view"
+                app:msv_errorView="@layout/error_view_no_transaction_found">
+                <!--     Content List-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTransaction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.state.isUserAccountActivated ? View.VISIBLE : View.GONE}"
+                    tools:listitem="@layout/item_transaction_list" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvNotificationStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.state.isUserAccountActivated ? View.GONE : View.VISIBLE}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_dashboard_notification_status" />
+
+            </co.yap.widgets.MultiStateView>
+
+        </LinearLayout>
+
+        <co.yap.widgets.tooltipview.TooltipView
+            android:id="@+id/tooltip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/tooltip_elevation"
+            android:visibility="gone"
+            app:arrowAlignment="custom"
+            app:arrowHeight="@dimen/_16sdp"
+            app:arrowLocation="bottom"
+            app:arrowWidth="@dimen/_16sdp"
+            app:cardCornerRadius="@dimen/tooltip_radius"
+            app:cardElevation="@dimen/tooltip_elevation"
+            app:contentPaddingBottom="@dimen/_8sdp"
+            app:contentPaddingLeft="@dimen/_6sdp"
+            app:contentPaddingRight="@dimen/_6sdp"
+            app:contentPaddingTop="@dimen/_2sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:lineSpacingExtra="3sp"
+                android:minWidth="@dimen/_100sdp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/text_size_h1"
+                tools:text="Tooltip" />
+        </co.yap.widgets.tooltipview.TooltipView>
+
+        <co.yap.widgets.tooltipview.TriangleView
+            android:id="@+id/arrowView"
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="@dimen/_5sdp"
+            android:elevation="@dimen/tooltip_elevation"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white" />
+
+        </co.yap.widgets.tooltipview.TriangleView>
+    </RelativeLayout>
+</layout>

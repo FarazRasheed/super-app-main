@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <co.yap.widgets.CoreButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:btn_shape_type="circle"
+        app:btn_unpressed_color="?attr/colorPrimaryAttr"
+        app:btn_round_radius="50dp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_17sdp"
+        app:btn_drawable="@drawable/ic_back_arrow"/>
+  <!--  <co.yap.widgets.CoreButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:enabled="false"
+        app:btn_pressed_color="@color/success"
+        app:btn_round_radius="50dp"
+        android:layout_marginTop="20dp"
+        app:btn_drawable="@drawable/ic_back_arrow"
+        app:btn_shape_type="circle"
+        app:btn_unpressed_color="?attr/colorPrimaryAttr"/>
+-->
+</LinearLayout>

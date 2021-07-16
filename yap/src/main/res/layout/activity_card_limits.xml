@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.cards.paymentcarddetail.limits.viewmodel.CardLimitViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/layout_cards_limits_toolbar"
+            app:viewModel="@{viewModel}" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lyWithdrawal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_24sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <TextView
+                android:id="@+id/tvAtmWithdrawal"
+                style="@style/Regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                app:layout_constraintEnd_toEndOf="@+id/guideline1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:text="@{Strings.screen_set_limits_display_text_atm_withdrawal}"
+                tools:text="@string/screen_set_limits_display_text_atm_withdrawal" />
+
+            <TextView
+                android:id="@+id/tvAtmWithdrawalDesc"
+                style="@style/ASmallGrey"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:lineSpacingExtra="2sp"
+                android:gravity="start"
+                app:layout_constraintEnd_toEndOf="@+id/guideline1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAtmWithdrawal"
+                app:text="@{Strings.screen_set_limits_display_text_atm_withdrawal_desc}"
+                tools:text="@string/screen_set_limits_display_text_atm_withdrawal_desc" />
+
+            <Switch
+                android:id="@+id/swWithdrawal"
+                style="@style/ASmallGrey"
+                android:layout_width="wrap_content"
+                android:checked="@{viewModel.state.card.atmAllowed}"
+                android:layout_height="wrap_content"
+                android:onCheckedChanged="@{viewModel::onSwitchChanged}"
+                android:theme="@style/CustomSwitch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline1"
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_percent="0.75" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lyOnline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_24sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lyWithdrawal">
+
+            <TextView
+                android:id="@+id/tvOnlineTra"
+                style="@style/Regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineOnlineTra"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:text="@{Strings.screen_set_limits_display_text_online_transaction}"
+                tools:text="@string/screen_set_limits_display_text_online_transaction" />
+
+            <TextView
+                android:id="@+id/tvOnlineTraDesc"
+                style="@style/ASmallGrey"
+                android:lineSpacingExtra="2sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:gravity="start"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineOnlineTra"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvOnlineTra"
+                app:text="@{Strings.screen_set_limits_display_text_online_transaction_desc}"
+                tools:text="@string/screen_set_limits_display_text_online_transaction_desc" />
+
+            <Switch
+                android:id="@+id/swOnlineTra"
+                style="@style/ASmallGrey"
+                android:checked="@{viewModel.state.card.onlineBankingAllowed}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onCheckedChanged="@{viewModel::onSwitchChanged}"
+                android:theme="@style/CustomSwitch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineOnlineTra"
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_percent="0.75" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lyAbroad"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_24sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lyOnline">
+
+            <TextView
+                android:id="@+id/tvAbroad"
+                style="@style/Regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineAbroad"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:text="@{Strings.screen_set_limits_display_text_payment_abroad}"
+                tools:text="@string/screen_set_limits_display_text_payment_abroad" />
+
+            <TextView
+                android:id="@+id/tvAbroadDesc"
+                style="@style/ASmallGrey"
+                android:lineSpacingExtra="2sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:gravity="start"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineAbroad"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAbroad"
+                app:text="@{Strings.screen_set_limits_display_text_payment_abroad_desc}"
+                tools:text="@string/screen_set_limits_display_text_payment_abroad_desc" />
+
+            <Switch
+                android:id="@+id/swAbroad"
+                style="@style/ASmallGrey"
+                android:checked="@{viewModel.state.card.paymentAbroadAllowed}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onCheckedChanged="@{viewModel::onSwitchChanged}"
+                android:theme="@style/CustomSwitch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineAbroad"
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_percent="0.75" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lyRetail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_24sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lyAbroad">
+
+            <TextView
+                android:id="@+id/tvRetail"
+                style="@style/Regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineRetail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:text="@{Strings.screen_set_limits_display_text_retail_payments}"
+                tools:text="@string/screen_set_limits_display_text_retail_payments" />
+
+            <TextView
+                android:id="@+id/tvRetailDesc"
+                style="@style/ASmallGrey"
+                android:lineSpacingExtra="2sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:gravity="start"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineRetail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvRetail"
+                app:text="@{Strings.screen_set_limits_display_text_retail_payments_desc}"
+                tools:text="@string/screen_set_limits_display_text_retail_payments_desc" />
+
+            <Switch
+                android:id="@+id/swRetail"
+                style="@style/ASmallGrey"
+                android:checked="@{viewModel.state.card.retailPaymentAllowed}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onCheckedChanged="@{viewModel::onSwitchChanged}"
+                android:theme="@style/CustomSwitch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineRetail"
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_percent="0.75" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

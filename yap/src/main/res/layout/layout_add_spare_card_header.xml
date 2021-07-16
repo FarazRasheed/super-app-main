@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="cardType"
+            type="String" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+        android:background="@color/colorWhite">
+
+        <ImageView
+            android:id="@+id/cardView"
+            android:layout_width="@dimen/_121sdp"
+            android:layout_height="@dimen/_190sdp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/card_spare"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/labelCardType"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:textSize="@dimen/_9sdp"
+            android:background="@drawable/round_light_gery_background"
+            android:gravity="center"
+            android:text="@{cardType}"
+            android:textColor="?attr/colorPrimaryAttr"
+            app:btn_unpressed_color="@color/disabledLight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView"
+            tools:text="Primary Card" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

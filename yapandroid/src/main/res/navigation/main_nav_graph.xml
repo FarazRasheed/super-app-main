@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <action
+        android:id="@+id/action_goto_yapDashboardActivity"
+        app:destination="@id/yapDashboardActivity" />
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.yap.yapandroid.modules.startup.fragments.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_accountSelectionFragment"
+            app:destination="@id/accountSelectionFragment"
+            app:popUpTo="@id/main_nav_graph"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/main_nav_graph"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/accountSelectionFragment"
+        android:name="com.yap.yapandroid.modules.startup.fragments.AccountSelectionFragment"
+        android:label="AccountSelectionFragment"
+        tools:layout="@layout/fragment_account_selection">
+        <action
+            android:id="@+id/action_accountSelectionFragment_to_welcomeFragment"
+
+            app:destination="@id/welcomeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/fade_out_long" />
+        <action
+            android:id="@+id/action_accountSelectionFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/accountSelectionFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.yap.yapandroid.modules.startup.fragments.WelcomeFragment"
+        android:label="WelcomeFragment"
+        tools:layout="@layout/fragment_onboarding_welcome">
+        <argument
+            android:name="@string/arg_account_type"
+            app:argType="co.yap.modules.onboarding.enums.AccountType" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_onboardingActivity"
+            app:destination="@id/onboardingActivity"
+            app:popUpTo="@id/accountSelectionFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/onboardingActivity"
+        android:name="co.yap.modules.onboarding.activities.OnboardingActivity"
+        android:label="OnboardingActivity"
+        tools:layout="@layout/activity_onboarding_navigation">
+        <argument
+            android:name="@string/arg_account_type"
+            app:argType="co.yap.modules.onboarding.enums.AccountType" />
+    </activity>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.yap.yapandroid.modules.login.fragments.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_log_in">
+        <action
+            android:id="@+id/action_loginFragment_to_accountSelectionFragment"
+            app:destination="@id/accountSelectionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_verifyPasscodeFragment"
+            app:destination="@id/verifyPasscodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/verifyPasscodeFragment"
+        android:name="com.yap.yapandroid.modules.login.fragments.VerifyPasscodeFragment"
+        android:label="VerifyPasscodeFragment"
+        tools:layout="@layout/fragment_verify_passcode">
+        <argument
+            android:name="username"
+            app:argType="string" />
+
+        <argument
+            android:name="isAccountBlocked"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_verifyPasscodeFragment_to_forgot_passcode_navigation"
+            app:destination="@id/forgot_passcode_navigation"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left">
+            <argument
+                android:name="mobileNumber"
+                app:argType="string" />
+            <argument
+                android:name="token"
+                app:argType="string" />
+
+            <argument
+                android:name="navigationType"
+                app:argType="string"
+                android:defaultValue=" "/>
+        </action>
+        <action
+            android:id="@+id/action_verifyPasscodeFragment_to_systemPermissionFragment"
+            app:destination="@id/systemPermissionFragment"
+            app:popExitAnim="@anim/fade_out_long" />
+        <action
+            android:id="@+id/action_verifyPasscodeFragment_to_phoneVerificationSignInFragment"
+            app:destination="@id/phoneVerificationSignInFragment"
+            app:popExitAnim="@anim/fade_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/systemPermissionFragment"
+        android:name="com.yap.yapandroid.modules.login.fragments.SystemPermissionFragment"
+        android:label="SystemPermissionFragment"
+        tools:layout="@layout/fragment_biometric_permission">
+        <argument
+            android:name="screen_type"
+            android:defaultValue=" "
+            app:argType="string" />
+        <action
+            android:id="@+id/action_systemPermissionFragment_to_systemPermissionFragmentNotification"
+            app:destination="@id/systemPermissionFragment" />
+        <action
+            android:id="@+id/action_systemPermissionFragment_to_yapDashboardActivity"
+            app:destination="@id/yapDashboardActivity" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/phoneVerificationSignInFragment"
+        android:name="com.yap.yapandroid.modules.login.fragments.PhoneVerificationSignInFragment"
+        android:label="PhoneVerificationSignInFragment"
+        tools:layout="@layout/activity_phone_verification">
+
+        <argument
+            android:name="username"
+            android:defaultValue=" "
+            app:argType="string" />
+
+        <argument
+            android:name="passcode"
+            android:defaultValue=" "
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_phoneVerificationSignInFragment_to_systemPermissionFragment"
+            app:destination="@id/systemPermissionFragment"
+            app:popExitAnim="@anim/fade_out_long" />
+    </fragment>
+
+    <include app:graph="@navigation/forgot_passcode_navigation" />
+
+    <activity
+        android:id="@+id/yapDashboardActivity"
+        android:name="co.yap.modules.dashboard.main.activities.YapDashboardActivity"
+        android:label="YapDashboardActivity"
+        tools:layout="@layout/activity_yap_dashboard" />
+
+    <activity
+        android:id="@+id/householdOnboard"
+        android:name="co.yap.household.onboard.onboarding.main.OnBoardingHouseHoldActivity"
+        android:label="householdOnboard"
+        tools:layout="@layout/activity_main_house_hold" />
+
+    <activity
+        android:id="@+id/householdOnBoardingExistingYAP"
+        android:name="co.yap.household.onboard.otherscreens.ExistingHouseholdActivity"
+        android:label="OnBoardingExistingYAP"
+        tools:layout="@layout/activity_on_boarding_existing_yap" />
+
+</navigation>
+

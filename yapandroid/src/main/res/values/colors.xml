@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">@color/colorPrimary</color>
+
+<!--    <color name="brand_bubble_stroke_color">@color/colorPrimaryDark</color>-->
+<!--    <color name="brand_bubble_message_text_color">@color/black</color>-->
+<!--    <color name="brand_bubble_message_link_text_color">@color/colorPrimaryDark</color>-->
+<!--    <color name="brand_bubble_timestamp_text_color">@color/grey</color>-->
+<!--    <color name="brand_bubble_background_color">@color/white</color>-->
+<!--    <color name="brand_logo_background_color">@color/grey</color>-->
+<!--    <color name="lp_brand_header_text_color">@color/colorPrimary</color>-->
+
+<!--    <color name="consumer_bubble_link_preview_background_color">@color/colorPrimaryDark</color>-->
+<!--    <color name="agent_bubble_message_link_text_color">@color/colorPrimaryDark</color>-->
+<!--    <color name="agent_bubble_timestamp_text_color">@color/colorPrimaryDark</color>-->
+<!--    <color name="agent_bubble_background_color">#46474A</color>-->
+<!--    <color name="agent_avatar_background_color">#667C4DFF</color>-->
+
+<!--    <color name="system_bubble_text_color">@color/colorPrimaryDark</color>-->
+<!--    <color name="conversation_separator_text_color">@color/colorPrimary</color>-->
+
+<!--    <color name="unread_indicator_bubble_text_color">@color/colorPrimaryDark</color>-->
+<!--    <color name="unread_indicator_bubble_background_color">#667C4DFF</color>-->
+
+<!--    <color name="edit_text_underline_color">@color/colorPrimaryDark</color>-->
+<!--    <color name="lp_enter_msg_text">@color/colorPrimaryDark</color>-->
+<!--    <color name="lp_enter_msg_hint">@color/colorPrimaryDark</color>-->
+<!--    <bool name="use_send_image_button">true</bool>-->
+
+<!--    <color name="connection_status_connecting_bg_color">@color/light_grey</color>-->
+<!--    <color name="connection_status_not_connected_bg_color">@color/light_grey</color>-->
+<!--    <color name="connection_status_connecting_text_color">@color/colorPrimaryDark</color>-->
+<!--    <color name="connection_status_not_connected_text_color">@color/colorPrimaryDark</color>-->
+
+<!--    <color name="attachment_menu_item_background_color">#667C4DFF</color>-->
+<!--    <color name="lp_attachment_menu_background_color">#667C4DFF</color>-->
+<!--    <color name="lp_attachment_menu_item_text_color">@color/colorPrimaryDark</color>-->
+<!--    <color name="lp_attachment_menu_item_icon_color">@color/colorPrimaryDark</color>-->
+<!--    <color name="bubble_selected_background_color">@color/grey</color>-->
+
+
+</resources>

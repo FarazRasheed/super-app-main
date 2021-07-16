@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.yapit.topup.cardslisting.list.TopUpItemViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.yapcore.helpers.Utils" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.5">
+
+        <co.yap.widgets.CorePaymentCard
+            android:id="@+id/paymentCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v)}"
+            app:cardBackgroundColor="@{viewModel.cardInfo.color}"
+            app:cardExpiry="@{viewModel.cardInfo.expiry}"
+            app:cardNickname="@{viewModel.cardInfo.alias}"
+            app:cardNumber="@{viewModel.cardInfo.number}"
+            app:cardType="@{viewModel.cardInfo.logo}"
+            app:card_size_type="large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgStatus"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_margin="@dimen/_5sdp"
+            android:contentDescription="@string/empty_string"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v)}"
+            android:padding="@dimen/_5sdp"
+            app:cardStatus="@{viewModel.cardInfo}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

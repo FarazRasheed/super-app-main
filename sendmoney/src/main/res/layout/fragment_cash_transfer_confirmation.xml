@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.sendmoney.fundtransfer.viewmodels.CashTransferConfirmationViewModel" />
+
+        <import type="co.yap.yapcore.helpers.Utils" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+
+            android:orientation="vertical">
+
+            <co.yap.widgets.CoreCircularImageView
+                android:id="@+id/ivUserImage"
+                android:layout_width="@dimen/_62sdp"
+                android:layout_height="@dimen/_62sdp"
+                android:layout_marginTop="@dimen/margin_large"
+                android:src="@drawable/ic_store_b2b"
+                app:colorType="@{`Beneficiary`}"
+                app:fullName="@{viewModel.parentViewModel.beneficiary.fullName() ??` `}"
+                app:imageUrl="@{viewModel.parentViewModel.beneficiary.beneficiaryPictureUrl ?? ` `}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:position="@{viewModel.parentViewModel.transferData.position ?? 0}" />
+
+            <View
+                android:id="@+id/barrier"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="@+id/ivUserImage"
+                app:layout_constraintStart_toStartOf="@+id/ivUserImage"
+                app:layout_constraintTop_toTopOf="@+id/ivUserImage" />
+
+            <View
+                android:id="@+id/barrier2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivUserImage"
+                app:layout_constraintStart_toStartOf="@+id/ivUserImage"
+                app:layout_constraintTop_toTopOf="@+id/ivUserImage" />
+
+
+            <TextView
+                android:id="@+id/tvBeneficiaryName"
+                style="@style/Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:gravity="center"
+                android:text="@{viewModel.parentViewModel.beneficiary.fullName}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivUserImage"
+                tools:text="Bernard Erickson" />
+
+
+            <TextView
+                android:id="@+id/tvTransferCaption"
+                style="@style/SmallGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:text="@{viewModel.state.description}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvBeneficiaryName"
+                tools:text="Bernard will recieve AED 314.50" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTransferFee"
+                style="@style/MicroGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:gravity="center"
+                android:text="@{viewModel.state.transferFeeDescription}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTransferCaption"
+                tools:text="Fee: AED XX" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:visibility="@{viewModel.state.cutOffTimeMsg!=null? View.VISIBLE:View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/tvCutOffTime"
+                app:layout_constraintTop_toBottomOf="@+id/tvTransferFee"
+                android:layout_marginTop="@dimen/margin_large"
+                app:srcCompat="@drawable/ic_access_alarm" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCutOffTime"
+                style="@style/MicroGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:gravity="center"
+                android:text="@{viewModel.state.cutOffTimeMsg}"
+                android:visibility="@{viewModel.state.cutOffTimeMsg!=null? View.VISIBLE:View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/appCompatImageView"
+                app:layout_constraintVertical_bias="0.637"
+                tools:text="Transfers made before 2:00 PM UAE time will be processed on the same day. All transfers made after this time will be carried out on the next business day" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDisclaimer"
+                style="@style/MicroGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:gravity="center"
+                app:layout_constraintBottom_toTopOf="@+id/confirmButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCutOffTime"
+                app:layout_constraintVertical_bias="0.016"
+                tools:text="@string/scren_send_money_funds_transfer_confirmation_display_text_disclaimer" />
+
+            <co.yap.widgets.CoreButton
+                android:id="@+id/confirmButton"
+                style="@style/FragmentsBtnStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_btn_side_paddings_xl"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginRight="@dimen/margin_btn_side_paddings_xl"
+                android:layout_marginBottom="@dimen/margin_medium_large"
+                android:enabled="true"
+                android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                android:text="Confirm"
+                app:enableCoreButton="@{true}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="44dp"
+                tools:text="@string/screen_crash_transfer_success_button_text_back" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>

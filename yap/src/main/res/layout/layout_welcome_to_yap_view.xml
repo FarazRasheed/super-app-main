@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clWelcomeYap"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvYapIt"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="@dimen/_2sdp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toStartOf="@+id/clData"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    <ImageView
+        android:id="@+id/ivYapIt"
+        android:layout_width="@dimen/_18sdp"
+        android:layout_height="@dimen/_18sdp"
+        android:layout_gravity="center"
+        app:layout_constraintStart_toStartOf="@+id/cvYapIt"
+        app:layout_constraintEnd_toEndOf="@+id/cvYapIt"
+        app:layout_constraintTop_toTopOf="@+id/cvYapIt"
+        app:layout_constraintBottom_toBottomOf="@+id/cvYapIt"
+        android:background="@color/white"
+        app:backgroundTint="@color/white"
+        app:elevation="5dp"
+        app:srcCompat="@drawable/ic_yap_it" />
+<!--    <co.yap.widgets.CoreCircularImageView
+        android:id="@+id/cvYapIt"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_margin="@dimen/_8sdp"
+        android:background="@drawable/empty_circle"
+        android:contentDescription="@string/app_name"
+        android:padding="@dimen/_12sdp"
+        android:src="@drawable/ic_yap_it"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_yap_it" />-->
+    </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clData"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/cvYapIt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cvYapIt"
+        app:layout_constraintTop_toTopOf="@+id/cvYapIt">
+
+        <TextView
+            android:id="@+id/tvWelcomeToYap"
+            style="@style/ASmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to YAP"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            style="@style/SmallGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tap here to get started"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvWelcomeToYap" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

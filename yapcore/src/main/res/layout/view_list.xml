@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/LnrLt_SearchListContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_10sdp"
+    android:visibility="gone"
+    app:cardBackgroundColor="@color/colorWhite"
+    app:cardCornerRadius="@dimen/margin_normal"
+    app:cardElevation="@dimen/_10sdp"
+    card_view:cardUseCompatPadding="false"
+    card_view:contentPadding="@dimen/margin_zero_dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical">
+        <ListView
+            android:id="@+id/LstVw_SpinnerListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:choiceMode="singleChoice"
+            android:divider="@color/divider"
+            android:dividerHeight="1dp"
+            />
+        <TextView
+            android:id="@+id/TxtVw_EmptyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="No Items Found" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

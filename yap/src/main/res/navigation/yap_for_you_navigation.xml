@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/yap_for_you_navigation"
+    app:startDestination="@id/YAPForYouFragment">
+
+    <fragment
+        android:id="@+id/YAPForYouFragment"
+        android:name="co.yap.modules.dashboard.more.yapforyou.fragments.YAPForYouFragment"
+        android:label="yap for you"
+        tools:layout="@layout/fragment_yap_for_you">
+
+        <action
+            android:id="@+id/action_YAPForYouFragment_to_achievementDetailFragment"
+            app:destination="@id/achievementDetailFragment" />
+        <action
+            android:id="@+id/action_YAPForYouFragment_to_completedAchievementsFragment"
+            app:destination="@id/completedAchievementsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/achievementDetailFragment"
+        android:name="co.yap.modules.dashboard.more.yapforyou.fragments.AchievementDetailFragment"
+        android:label="AchievementDetailFragment"
+        tools:layout="@layout/fragment_achievement_detail" />
+    <fragment
+        android:id="@+id/completedAchievementsFragment"
+        android:name="co.yap.modules.dashboard.more.yapforyou.fragments.CompletedAchievementsFragment"
+        android:label="CompletedAchievementsFragment"
+        tools:layout="@layout/fragment_completed_achievements" />
+</navigation>

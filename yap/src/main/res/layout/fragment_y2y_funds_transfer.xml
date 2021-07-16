@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.yapit.y2y.transfer.viewmodels.Y2YFundsTransferViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clMain"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <LinearLayout
+                android:id="@+id/lnUserImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <include
+                    android:id="@+id/lyUserImage"
+                    layout="@layout/layout_y_to_y_transfer_initial_image"
+                    app:image="@{viewModel.state.imageUrl}"
+                    app:name="@{viewModel.state.fullName}" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tvFullName"
+                style="@style/Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:gravity="center"
+                android:text="@{viewModel.state.fullName}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lnUserImage"
+                tools:text="Sufyan Shabbir Sufyan Shabbir Sufyan Shabbir Sufyan Shabbir Sufyan Shabbir Sufyan Shabbir Sufyan Shabbir  Sufyan Shabbir" />
+
+            <co.yap.widgets.CoreCircularImageView
+                android:id="@+id/ivFlag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium_large"
+                android:src="@drawable/ic_uae_flag"
+                app:layout_constraintBottom_toBottomOf="@+id/etAmount"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/etAmount" />
+
+            <TextView
+                android:id="@+id/tvCurrencyType"
+                style="@style/ATitle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small"
+                app:layout_constraintBottom_toBottomOf="@+id/ivFlag"
+                app:layout_constraintLeft_toRightOf="@+id/ivFlag"
+                app:layout_constraintTop_toTopOf="@+id/ivFlag"
+                app:text="@{Strings.common_text_currency_type}"
+                tools:text="@string/common_text_currency_type" />
+
+            <!-- ALERT:  DO NOT APPLY DATA BINDING FOR THIS FIELD-->
+
+            <co.yap.widgets.EasyMoneyEditText
+                android:id="@+id/etAmount"
+                style="@style/ATitle2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginEnd="@dimen/margin_medium_large"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvFullName"
+                tools:text="1234567891" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clAvailableAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/margin_medium_large"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etAmount">
+
+                <TextView
+                    android:id="@+id/tvAvailableBalanceGuide"
+                    style="@style/MicroGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.state.availableBalanceGuide}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Your available balance is " />
+
+                <TextView
+                    android:id="@+id/tvAvailableBalance"
+                    style="@style/AMicro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.state.availableBalanceText}"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvAvailableBalanceGuide"
+                    app:layout_constraintLeft_toRightOf="@+id/tvAvailableBalanceGuide"
+                    app:layout_constraintTop_toTopOf="@+id/tvAvailableBalanceGuide"
+                    tools:text="AED 500" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tvFee"
+                style="@style/MicroGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="@{viewModel.state.transferFee}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/clAvailableAmount"
+                tools:text="Fee: AED 500" />
+
+            <co.yap.widgets.AlphaNumericEditText
+                android:id="@+id/etNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium_large"
+                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginEnd="@dimen/margin_medium_large"
+                android:background="@null"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 "
+                android:maxLength="@integer/notes_internal_transfer_length"
+                android:singleLine="true"
+                android:text="@={viewModel.state.noteValue}"
+                android:textColorHint="@color/colorPrimaryDarkFadedLight"
+                app:hint="@{Strings.screen_y2y_funds_transfer_display_text_note_placeholder}"
+                app:layout_constraintTop_toBottomOf="@+id/tvFee"
+                tools:hint="@string/screen_y2y_funds_transfer_display_text_note_placeholder" />
+
+            <View
+                android:layout_width="@dimen/margin_zero_dp"
+                android:layout_height="0.8dp"
+                android:layout_marginTop="@dimen/margin_extra_small"
+                android:background="@color/greyLight"
+                app:layout_constraintEnd_toEndOf="@+id/etNote"
+                app:layout_constraintStart_toStartOf="@+id/etNote"
+                app:layout_constraintTop_toBottomOf="@+id/etNote" />
+
+            <co.yap.widgets.CoreButton
+                android:id="@+id/btnConfirm"
+                style="@style/RectangleBtnStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_80sdp"
+                android:layout_marginTop="@dimen/_18sdp"
+                android:layout_marginRight="@dimen/_80sdp"
+                android:layout_marginBottom="@dimen/margin_medium_large"
+                android:onClick="@{(v)-> viewModel.handlePressOnView(v.id)}"
+                android:paddingVertical="@dimen/_16sdp"
+                app:enableCoreButton="@{viewModel.state.valid}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNote"
+                app:layout_constraintVertical_bias="0.987"
+                app:text="@{Strings.screen_yap_to_yap_transfer_display_text_button}" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

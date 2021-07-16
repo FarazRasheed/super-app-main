@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_currency_graph"
+    app:startDestination="@id/currency_graph">
+
+
+    <fragment
+        android:id="@+id/currency_graph"
+        android:name="co.yap.sendmoney.currencyPicker.fragment.CurrencyPickerFragment"
+        android:label="currency_graph"
+        tools:layout="@layout/fragment_currency_picker">
+
+
+    </fragment>
+
+
+
+</navigation>
+

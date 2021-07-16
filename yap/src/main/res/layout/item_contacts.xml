@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.yapit.y2y.home.phonecontacts.YapContactItemViewModel" />
+
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.yapcore.helpers.Utils" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lyContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_14sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:background="@color/colorWhite"
+        android:onClick="@{(v) -> viewModel.onViewClicked(v)}">
+
+        <co.yap.widgets.CoreCircularImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="@dimen/_42sdp"
+            android:layout_height="@dimen/_42sdp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/small"
+            android:contentDescription="@string/empty_string"
+            android:src="@drawable/ic_store_b2b"
+            app:colorType="@{`y2y`}"
+            app:fullName="@{viewModel.contact.title}"
+            app:imageUrl="@{viewModel.contact.beneficiaryPictureUrl}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:position="@{viewModel.position}" />
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/section"
+            app:layout_constraintStart_toEndOf="@+id/imgProfile"
+            app:layout_constraintTop_toTopOf="@+id/imgProfile">
+
+            <TextView
+                android:id="@+id/tvName"
+                style="@style/Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="bottom"
+                android:lineSpacingExtra="0dp"
+                android:lines="1"
+                android:text="@{viewModel.contact.title}"
+                tools:text="Bril Lizzie Hugsadsadflksjdflkjsalk,nmbmfdjlsajfdllsjdflksjdflkjlsdfjklksdjfkljsdfalkfjaskljflkasfjlkasdjlfjfjlkasdfjklhes" />
+
+            <TextView
+                android:id="@+id/tvNumber"
+                style="@style/SmallGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{Utils.INSTANCE.getFormattedPhoneNumber(context,viewModel.contact.countryCode+viewModel.contact.mobileNo)}"
+                tools:text="+971 12 345 6" />
+            <!--            android:text="@{Utils.INSTANCE.getFormattedPhone(viewModel.contact.countryCode+viewModel.contact.mobileNo)}"-->
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/section"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/content">
+
+            <TextView
+                android:id="@+id/tvInvite"
+                style="@style/Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:onClick="@{(v) -> viewModel.onViewClicked(v)}"
+                android:text="Invite"
+                android:textColor="?attr/colorPrimaryAttr"
+                android:visibility="@{viewModel.contact.yapUser ? View.GONE : View.VISIBLE }"
+                tools:text="Invite" />
+
+            <co.yap.widgets.CoreCircularImageView
+                android:id="@+id/userPackageType"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_gravity="center|end"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:contentDescription="@string/empty_string"
+                android:gravity="center"
+                android:onClick="@{(v) -> viewModel.onViewClicked(v)}"
+                android:src="@drawable/ic_package_standered"
+                android:visibility="@{viewModel.contact.yapUser ? View.VISIBLE : View.GONE }"
+                tools:visibility="visible" />
+
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

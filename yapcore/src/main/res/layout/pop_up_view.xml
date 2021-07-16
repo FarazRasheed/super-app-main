@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="@dimen/_10sdp"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="@dimen/_5sdp">
+
+    <TextView
+        android:id="@+id/tvContent"
+        style="@style/AMicro"
+        android:lineHeight="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp"
+        tools:text="You can find your International Bank Account Number (IBAN) and Bank Identifier Code (BIC or SWIFT) on your paper statement or by logging in to Online Banking." />
+</androidx.cardview.widget.CardView>

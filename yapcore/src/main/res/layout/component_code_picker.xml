@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/countryCodeHolder"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/rlContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="8dp">
+
+        <LinearLayout
+            android:id="@+id/llFlagHolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical">
+
+            <LinearLayout
+                android:id="@+id/llFlag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_small">
+
+                <co.yap.widgets.CoreCircularImageView
+                    android:id="@+id/ivFlag"
+                    tools:src="@drawable/flag_ae"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_margin="0.5dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/tvSelectedCountry"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_centerVertical="true"-->
+        <!--            android:layout_toRightOf="@+id/llFlagHolder"-->
+        <!--            android:singleLine="true"-->
+        <!--            android:text="971"-->
+        <!--            android:drawableEnd="@drawable/ic_chevron_down"-->
+        <!--            android:drawableTint="?attr/colorPrimaryAttr"-->
+        <!--              style="@style/RegularGrey"/>-->
+        <TextView
+            android:id="@+id/tvSelectedCountry"
+            style="@style/RegularGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/llFlagHolder"
+            tools:text="+971"
+            android:singleLine="true" />
+
+        <ImageView
+            android:id="@+id/ivDropDownIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tvSelectedCountry"
+            android:layout_toRightOf="@+id/tvSelectedCountry"
+            android:paddingBottom="@dimen/small"
+            android:src="@drawable/iv_drown_down"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+</RelativeLayout>

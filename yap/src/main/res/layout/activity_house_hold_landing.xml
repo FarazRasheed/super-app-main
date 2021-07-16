@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.store.household.viewmodels.HouseHoldLandingViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ScrollView
+            android:id="@+id/svContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/imgStoreCover"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_180sdp"
+                    android:contentDescription="@string/empty_string"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_store_household"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_grey_gradient"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imgClose"
+                        android:layout_width="@dimen/_28sdp"
+                        android:layout_height="@dimen/_28sdp"
+                        android:layout_marginStart="@dimen/margin_large"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:contentDescription="@string/empty_string"
+                        android:onClick="@{(v) -> viewModel.handlePressOnCloseIcon(v.id)}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_close_white" />
+
+                </FrameLayout>
+
+                <ImageView
+                    android:id="@+id/imgSmiley"
+                    android:layout_width="@dimen/_45sdp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:contentDescription="@string/empty_string"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgStoreCover"
+                    app:srcCompat="@drawable/ic_house_hold" />
+
+                <TextView
+                    android:id="@+id/tvStoreTitle"
+                    style="@style/ATitle2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:layout_marginTop="@dimen/margin_extra_small"
+                    android:layout_marginEnd="@dimen/margin_large"
+                    android:gravity="start"
+                    android:lineSpacingExtra="0dp"
+                    android:text="@string/screen_yap_house_hold_onboarding_landing_display_text_title"
+                    android:textAlignment="viewStart"
+                    android:textSize="@dimen/text_size_h4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgSmiley"
+                    app:layout_constraintTop_toTopOf="@+id/imgSmiley"
+                    app:text="@{Strings.screen_yap_house_hold_onboarding_landing_display_text_title}"
+                    tools:text="@string/screen_yap_house_hold_onboarding_landing_display_text_title" />
+
+                <TextView
+                    android:id="@+id/tvStoreDesc"
+                    style="@style/ASmallGrey"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:layout_marginEnd="@dimen/margin_large"
+                    android:gravity="start"
+                    android:lineSpacingExtra="0dp"
+                    android:text="@string/screen_yap_house_hold_onboarding_landing_display_text_description"
+                    android:textAlignment="viewStart"
+                    android:textSize="@dimen/text_size_c3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgSmiley"
+                    app:layout_constraintTop_toBottomOf="@+id/tvStoreTitle"
+                    app:text="@{Strings.screen_yap_house_hold_onboarding_landing_display_text_description}" />
+
+                <View
+                    android:id="@+id/viewLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:layout_marginRight="@dimen/margin_large"
+                    android:background="@color/greyLight"
+                    app:layout_constraintTop_toBottomOf="@+id/tvStoreDesc" />
+
+                <TextView
+                    android:id="@+id/tvContentTitle"
+                    style="@style/ALarge"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginRight="@dimen/margin_large"
+                    android:gravity="start"
+                    android:text="@string/screen_yap_house_hold_onboarding_landing_display_text_heading"
+                    android:textAlignment="viewStart"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewLine"
+                    app:text="@{Strings.screen_yap_house_hold_onboarding_landing_display_text_heading}" />
+
+                <TextView
+                    android:id="@+id/tvContentDesc"
+                    style="@style/ASmallGrey"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_large"
+                    android:gravity="start"
+                    android:lineSpacingExtra="3sp"
+                    android:text="@string/screen_yap_house_hold_onboarding_landing_display_text_sub_heading"
+                    android:textAlignment="viewStart"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvContentTitle"
+                    app:text="@{Strings.screen_yap_house_hold_onboarding_landing_display_text_sub_heading}" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@+id/tvContentDesc"
+                    tools:ignore="MissingConstraints">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvColorSelectionCaption"
+                            style="@style/Regular"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/margin_xxl"
+                            android:layout_marginTop="@dimen/margin_large"
+                            android:layout_marginEnd="@dimen/margin_xxl"
+                            android:layout_marginBottom="@dimen/margin_large"
+                            android:fontFamily="@font/roboto_medium"
+                            android:gravity="center"
+                            android:text="@string/screen_yap_house_hold_subscription_selection_display_text_color"
+                            android:textColor="?attr/colorPrimaryAttr"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:text="@{Strings.screen_yap_house_hold_subscription_selection_display_text_color}"
+                            tools:text="@string/screen_yap_house_hold_subscription_selection_display_text_color" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            app:layout_constraintTop_toBottomOf="@+id/tvColorSelectionCaption"
+                            tools:ignore="MissingConstraints">
+
+                            <ImageView
+                                android:id="@+id/purpleCardView"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_190sdp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginRight="@dimen/margin_medium"
+                                android:orientation="vertical"
+                                android:src="@drawable/household_card"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvSalaryManagementCaption"
+                            style="@style/Regular"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/margin_xxl"
+                            android:layout_marginTop="@dimen/margin_large"
+                            android:layout_marginEnd="@dimen/margin_xxl"
+                            android:layout_marginBottom="@dimen/margin_large"
+                            android:fontFamily="@font/roboto_medium"
+                            android:gravity="center"
+                            android:text="@string/screen_yap_house_hold_subscription_selection_display_text_salary"
+                            android:textColor="?attr/colorPrimaryAttr"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:text="@{Strings.screen_yap_house_hold_subscription_selection_display_text_salary}"
+                            tools:text="@string/screen_yap_house_hold_subscription_selection_display_text_salary" />
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:contentDescription="@string/empty_string"
+                            android:orientation="vertical"
+                            android:src="@drawable/spending"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvAutoPayoutCaption"
+                            style="@style/Regular"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/margin_xxl"
+                            android:layout_marginTop="@dimen/margin_large"
+                            android:layout_marginEnd="@dimen/margin_xxl"
+                            android:layout_marginBottom="@dimen/margin_large"
+                            android:fontFamily="@font/roboto_medium"
+                            android:gravity="center"
+                            android:text="@string/screen_yap_house_hold_subscription_selection_display_text_schedule"
+                            android:textColor="?attr/colorPrimaryAttr"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:text="@{Strings.screen_yap_house_hold_subscription_selection_display_text_schedule}"
+                            tools:text="@string/screen_yap_house_hold_subscription_selection_display_text_schedule" />
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/_100sdp"
+                            android:contentDescription="@string/empty_string"
+                            android:orientation="vertical"
+                            android:src="@drawable/spending"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnGetHouseHoldAccount"
+            style="@style/FragmentsBtnStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:onClick="@{(v) -> viewModel.handlePressOnGetHouseHoldCard(v.id)}"
+            android:paddingLeft="@dimen/margin_medium"
+            android:paddingRight="@dimen/margin_medium"
+            app:btn_enable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:text="@{Strings.screen_yap_house_hold_onboarding_landing_button_text}"
+            tools:ignore="MissingConstraints"
+            tools:text="@string/screen_yap_house_hold_onboarding_landing_button_text" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

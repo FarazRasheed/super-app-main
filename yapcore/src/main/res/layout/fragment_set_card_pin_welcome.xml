@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.setcardpin.viewmodels.SetCardPinWelcomeViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/ivBubbles"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_160sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bg_bubbles" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/ALarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_medium_large"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:gravity="center"
+            android:lineSpacingExtra="9sp"
+            app:layout_constraintTop_toBottomOf="@+id/ivBubbles"
+            app:text="@{Strings.screen_set_card_pin_welcome_display_text_title}"
+            tools:text="@string/screen_set_card_pin_welcome_display_text_title" />
+
+        <TextView
+            android:id="@+id/tvSubTitle"
+            style="@style/ASmallGrey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            app:layout_constraintVertical_bias="0.0"
+            app:text="@{Strings.screen_set_card_pin_welcome_display_text_sub_title}"
+            tools:text="@string/screen_set_card_pin_welcome_display_text_sub_title" />
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnCreatePin"
+            style="@style/RectangleBtnStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_xxl"
+            android:layout_marginRight="@dimen/margin_xxl"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:onClick="@{(v) -> viewModel.handlePressOnCreatePin(v.id)}"
+            app:btn_enable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tvCreatePinLater"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintVertical_bias="0.75"
+            app:text="@{Strings.screen_set_card_pin_welcome_button_create_pin}"
+            tools:text="@string/screen_set_card_pin_welcome_button_create_pin" />
+
+        <TextView
+            android:id="@+id/tvCreatePinLater"
+            style="@style/Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_normal_large"
+            android:onClick="@{(v) -> viewModel.handlePressOnCreatePinLater(v.id)}"
+            android:textColor="?attr/colorPrimaryAttr"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:text="@{Strings.screen_set_card_pin_welcome_button_create_pin_later}"
+            tools:text="@string/screen_set_card_pin_welcome_button_create_pin_later" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

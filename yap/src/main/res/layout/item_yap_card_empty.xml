@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.cards.home.viewmodels.YapCardEmptyItemViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/emptyCardLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/lycard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_24sdp"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v)}"
+            app:cardCornerRadius="@dimen/_7sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imgCard"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_300sdp"
+                android:contentDescription="@string/empty_string"
+                android:src="@drawable/bg_white_round" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <ImageView
+            android:id="@+id/imgAddCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/empty_string"
+            android:elevation="2dp"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v)}"
+            android:src="@drawable/ic_add_card"
+            app:layout_constraintBottom_toBottomOf="@+id/lycard"
+            app:layout_constraintEnd_toEndOf="@+id/lycard"
+            app:layout_constraintStart_toStartOf="@+id/lycard"
+            app:layout_constraintTop_toTopOf="@+id/lycard"
+            app:layout_constraintVertical_bias="0.43" />
+
+        <TextView
+            android:id="@+id/tvAddCard"
+            style="@style/ASmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v)}"
+            android:textColor="?attr/colorPrimaryDarkAttr"
+            app:layout_constraintEnd_toEndOf="@+id/lycard"
+            app:layout_constraintStart_toStartOf="@+id/lycard"
+            app:layout_constraintTop_toBottomOf="@+id/imgAddCard"
+            app:text="@{Strings.screen_cards_display_text_add_card}"
+            tools:text="@string/screen_cards_display_text_add_card" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

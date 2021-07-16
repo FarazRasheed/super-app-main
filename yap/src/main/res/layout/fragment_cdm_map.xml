@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="cdmMapViewModel"
+            type="co.yap.modules.dashboard.more.cdm.CdmMapViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:mapType="normal" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivBackBtn"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{(v)-> cdmMapViewModel.handleClickEvent(v.id)}"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_back" />
+
+
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvLocationCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginStart="@dimen/margin_normal_large"
+            android:layout_marginEnd="@dimen/margin_normal_large"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:animateLayoutChanges="true"
+            app:cardCornerRadius="10dp"
+            app:contentPadding="16dp">
+
+            <co.yap.widgets.MultiStateView
+                android:id="@+id/multiStateView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true"
+                app:msv_animateViewChanges="true"
+                app:msv_emptyView="@layout/layout_empty_view_no_results"
+                app:msv_errorView="@layout/layout_error_view"
+                app:msv_loadingView="@layout/layout_loading_view"
+                app:msv_viewState="loading">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivLocationPhoto"
+                        android:layout_width="@dimen/_82sdp"
+                        android:layout_height="@dimen/_82sdp"
+                        android:src="@drawable/location_place_holder" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/margin_small"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvAddressTitle"
+                            style="@style/Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:text="@{cdmMapViewModel.state.atmCdmData.name}"
+                            tools:text="TD Canada Trust Bank" />
+
+                        <TextView
+                            android:id="@+id/tvAddressSubTitle"
+                            style="@style/ASmallGrey"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:ellipsize="end"
+                            android:lineSpacingExtra="3sp"
+                            android:maxLines="2"
+                            android:text="@{cdmMapViewModel.state.atmCdmData.address1 + (cdmMapViewModel.state.atmCdmData.address2!=null?cdmMapViewModel.state.atmCdmData.address2:``) }"
+                            tools:text="31 J3 Opposite، # 4، Expo " />
+
+                        <co.yap.widgets.CoreButton
+                            android:id="@+id/btnDirection"
+                            style="@style/AddressBtnStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_24sdp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginEnd="8dp"
+                            android:onClick="@{(v)-> cdmMapViewModel.handleClickEvent(v.id)}"
+                            android:paddingLeft="0dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="0dp"
+                            android:paddingBottom="0dp"
+                            android:text="@string/screen_more_atm_cdm_custom_button_get_direction"
+                            android:textColor="@color/white"
+                            app:btn_text_size="@dimen/text_size_c2" />
+                    </LinearLayout>
+                </LinearLayout>
+            </co.yap.widgets.MultiStateView>
+        </androidx.cardview.widget.CardView>
+
+
+    </FrameLayout>
+</layout>

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.yapcore.R" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.cards.analytics.viewmodels.CardAnalyticsViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@color/white">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                    <RelativeLayout
+                        android:id="@+id/pieViewConstraintLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent">
+
+
+                        <co.yap.widgets.pieview.PieChart
+                            android:id="@+id/chart1"
+                            android:layout_width="@dimen/_200sdp"
+                            android:layout_height="@dimen/_200sdp"
+                            android:layout_centerHorizontal="true" />
+
+                        <RelativeLayout
+                            android:id="@+id/rlDetails"
+                            android:layout_width="@dimen/_100sdp"
+                            android:layout_height="@dimen/_100sdp"
+                            android:layout_centerInParent="true"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:soundEffectsEnabled="false">
+
+                            <co.yap.widgets.CoreCircularImageView
+                                android:id="@+id/ivPieView"
+                                android:layout_width="@dimen/_40sdp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center_horizontal"
+                                android:contentDescription="@string/empty_string"
+                                app:fullName="@{viewModel.state.selectedTxnAnalyticsItem.title}"
+                                app:imageUrl="@{viewModel.state.selectedTxnAnalyticsItem.logoUrl== null? ` ` : viewModel.state.selectedTxnAnalyticsItem.logoUrl}"
+                                app:isBackground="@{false}"
+                                app:position="@{viewModel.state.selectedItemPosition}" />
+
+                            <TextView
+                                android:id="@+id/tvPieViewTitle"
+                                style="@style/Regular"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/ivPieView"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginEnd="@dimen/_14sdp"
+                                android:layout_marginBottom="-25dp"
+                                android:maxLines="1"
+                                android:singleLine="true"
+                                android:text="@{viewModel.state.selectedItemName}"
+                                android:textColor="@color/colorSecondaryMagenta"
+                                android:textSize="@dimen/_10sdp"
+                                app:tvColor="@{viewModel.state.selectedItemPosition}" />
+
+                            <TextView
+                                android:id="@+id/tvPieViewPrice"
+                                style="@style/Regular"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/tvPieViewTitle"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginEnd="@dimen/_14sdp"
+                                android:layout_marginBottom="-15dp"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:singleLine="true"
+                                android:text="@{viewModel.state.selectedItemSpentValue}"
+                                android:textColor="#272262"
+                                android:textSize="@dimen/_10sdp" />
+
+                <TextView
+                    android:id="@+id/tvPieViewPercentage"
+                    style="@style/Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/tvPieViewPrice"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginEnd="@dimen/_14sdp"
+                    android:layout_marginBottom="-15dp"
+                    android:text="@{viewModel.state.selectedItemPercentage}"
+                    android:textColor="#9391b1"
+                    android:textSize="@dimen/_10sdp" />
+            </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/tvMonthlyAverage"
+                        style="@style/MicroGrey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/pieViewConstraintLayout"
+                        tools:text="Monthly average is AED 1,600.47" />
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tabLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvMonthlyAverage"
+                        app:tabGravity="fill"
+                        app:tabIndicatorHeight="@dimen/_2sdp"
+                        app:tabMaxWidth="0dp"
+                        app:tabMode="fixed"
+                        app:tabPaddingEnd="16dp"
+                        app:tabRippleColor="@null"
+                        app:tabTextAppearance="@style/TabTextCardAnalytics" />
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/viewPager"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fitsSystemWindows="true"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:elevation="0dp">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:elevation="0dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:titleEnabled="false">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/lyCurrencyType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:gravity="center"
+                        android:padding="@dimen/_2sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            style="@style/Micro"
+                            android:layout_width="@dimen/_45sdp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/tab_background_selected"
+                            android:gravity="center"
+                            android:padding="@dimen/_1sdp"
+                            android:text="@{viewModel.state.currencyType}"
+                            android:textColor="?attr/colorPrimaryAttr"
+                            tools:text="AED" />
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/headerContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lyCurrencyType">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivPrevious"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:enabled="@{viewModel.state.previousMonth}"
+                            android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                            android:padding="@dimen/_10sdp"
+                            android:tint="@{viewModel.state.previousMonth ? @color/greyDark : @color/greySoft}"
+                            app:layout_constraintBottom_toBottomOf="@id/tvTotalSpent"
+                            app:layout_constraintEnd_toEndOf="@id/tvTransactionMonth"
+                            app:layout_constraintEnd_toStartOf="@id/tvTransactionMonth"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvTransactionMonth"
+                            app:layout_constraintTop_toTopOf="@id/tvTransactionMonth"
+                            app:srcCompat="@drawable/ic_back_arrow_left_gery" />
+
+                        <TextView
+                            android:id="@+id/tvTransactionMonth"
+                            style="@style/AMicroGrey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="28dp"
+                            android:text="@{viewModel.state.selectedMonth}"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.498"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="Jun 1 - Jun 30" />
+
+                        <TextView
+                            android:id="@+id/tvTotalSpent"
+                            style="@style/ALarge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.state.totalSpent}"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvTransactionMonth"
+                            tools:text="AED 1,457.10" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivNext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:enabled="@{viewModel.state.nextMonth}"
+                            android:onClick="@{v -> viewModel.handlePressOnView(v.getId())}"
+                            android:padding="@dimen/_10sdp"
+                            android:tint="@{viewModel.state.nextMonth ? @color/greyDark : @color/greySoft}"
+                            app:layout_constraintBottom_toBottomOf="@id/tvTotalSpent"
+                            app:layout_constraintEnd_toEndOf="parent"
+
+                            app:layout_constraintStart_toEndOf="@id/tvTransactionMonth"
+                            app:layout_constraintTop_toTopOf="@id/tvTransactionMonth"
+                            app:srcCompat="@drawable/ic_chevron_right" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

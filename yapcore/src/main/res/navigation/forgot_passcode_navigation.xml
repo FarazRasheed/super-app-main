@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/forgot_passcode_navigation"
+            app:startDestination="@id/createNewPasscodeFragment">
+
+    <fragment
+        android:id="@+id/createNewPasscodeFragment"
+        android:name="co.yap.modules.forgotpasscode.fragments.CreateNewPasscodeFragment"
+        tools:layout="@layout/fragment_pass_code"
+        android:label="CreateNewPasscodeFragment">
+        <argument
+            android:name="mobileNumber"
+            app:argType="string"/>
+        <argument
+            android:name="token"
+            app:argType="string"/>
+        <argument
+            android:name="navigationType"
+            app:argType="string"
+            android:defaultValue=" "/>
+        <action
+            android:id="@+id/action_createNewPasscodeFragment_to_forgotPasscodeSuccessFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/forgotPasscodeSuccessFragment">
+            <argument
+                android:name="mobileNumber"
+                app:argType="string"
+                android:defaultValue=" "/>
+            <argument
+                android:name="navigationType"
+                app:argType="string"
+                android:defaultValue=" "/>
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasscodeSuccessFragment"
+        android:name="co.yap.modules.forgotpasscode.fragments.ForgotPasscodeSuccessFragment"
+        android:label="ForgotPasscodeSuccessFragment"
+        tools:layout="@layout/fragment_forgot_passcode_success">
+        <argument
+            android:name="navigationType"
+            app:argType="string"
+            android:defaultValue=" "/>
+    </fragment>
+</navigation>

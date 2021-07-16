@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="co.yap.yapcore.helpers.PhoneNumberUtilsKt" />
+
+        <import type="co.yap.yapcore.helpers.Utils" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.sendmoney.R" />
+
+        <variable
+            name="editBeneficiaryViewModel"
+            type="co.yap.sendmoney.editbeneficiary.viewmodel.EditBeneficiaryViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <co.yap.widgets.CoreToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:leftIcon="@{R.drawable.ic_back_arrow_left}"
+            app:leftIconVisibility="@{true}"
+            app:onClick="@{editBeneficiaryViewModel::onToolBarClick}"
+            app:rightIconVisibility="@{false}"
+            app:titleTranslator="@{editBeneficiaryViewModel.state.needOverView ? Strings.screen_add_beneficiary_display_text_title : Strings.screen_edit_beneficiary_display_text_title}"
+            app:rightTitleVisibility="@{editBeneficiaryViewModel.state.needOverView}"
+            app:rightTitle="@{editBeneficiaryViewModel.state.rightButtonText}"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/margin_normal"
+                android:paddingEnd="@dimen/margin_normal">
+
+                <TextView
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:gravity="center"
+                    android:text="@string/screen_beneficiary_overview_display_text_title"
+                    android:textSize="@dimen/text_size_h3"
+                    android:visibility="@{editBeneficiaryViewModel.state.needOverView ? View.VISIBLE : View.GONE}"
+                    app:text="@{Strings.screen_beneficiary_overview_display_text_title}"
+                    tools:text="@string/screen_beneficiary_overview_display_text_title" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:orientation="horizontal"
+                    android:visibility="@{editBeneficiaryViewModel.state.needOverView ? View.VISIBLE : View.GONE}">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/appCompatTextView"
+                            style="@style/SmallGrey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/screen_add_beneficiary_detail_display_text_country"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="@string/screen_add_beneficiary_detail_display_text_country" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgFlag"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:layout_marginTop="@dimen/margin_normal"
+                            app:layout_constraintStart_toStartOf="parent"
+
+                            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView"
+                            app:setFlagDrawable="@{editBeneficiaryViewModel.state.beneficiary.country}"
+
+                            tools:src="@drawable/flag_ae" />
+
+                        <TextView
+                            style="@style/Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_9sdp"
+                            android:layout_marginTop="@dimen/margin_normal"
+                            android:gravity="center_vertical"
+                            android:text="@{editBeneficiaryViewModel.state.country}"
+                            app:layout_constraintStart_toEndOf="@+id/imgFlag"
+                            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView"
+                            tools:text="united kingdom" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTransferType"
+                            style="@style/SmallGrey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/screen_add_beneficiary_detail_display_text_transfer_type"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="@string/screen_add_beneficiary_detail_display_text_transfer_type" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgBankTransfer"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:layout_marginTop="@dimen/margin_normal"
+                            android:src='@{editBeneficiaryViewModel.state.transferType.equals("CASHPAYOUT")? @drawable/ic_cash:@drawable/ic_bank}'
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvTransferType"
+                            app:srcCompat="@drawable/ic_bank" />
+
+                        <TextView
+                            style="@style/Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_9sdp"
+                            android:layout_marginTop="@dimen/margin_normal"
+                            android:gravity="center_vertical"
+                            android:text='@{editBeneficiaryViewModel.state.transferType.equals("CASHPAYOUT")? @string/screen_add_beneficiary_display_text_transfer_type_cash_pickup:@string/screen_add_beneficiary_display_text_transfer_type_bank}'
+                            app:layout_constraintStart_toEndOf="@+id/imgBankTransfer"
+                            app:layout_constraintTop_toBottomOf="@+id/tvTransferType"
+                            app:text='@{editBeneficiaryViewModel.state.transferType.equals("CASHPAYOUT")?Strings.screen_add_beneficiary_display_text_transfer_type_cash_pickup:Strings.screen_add_beneficiary_display_text_transfer_type_bank}'
+                            tools:text="@string/screen_add_beneficiary_display_text_transfer_type_bank" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:orientation="horizontal"
+                    android:visibility="@{editBeneficiaryViewModel.state.needOverView ? View.GONE : View.VISIBLE}">
+
+                    <co.yap.widgets.CoreCircularImageView
+                        android:id="@+id/imgProfile"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription="@string/empty_string"
+                        app:beneficiaryPicture="@{editBeneficiaryViewModel.state.beneficiary.beneficiaryPictureUrl}"
+                        app:fullName="@{editBeneficiaryViewModel.state.beneficiary.fullName()}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/Small"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:drawablePadding="@dimen/margin_small"
+                        android:gravity="center_vertical"
+                        android:paddingStart="@dimen/_16sdp"
+                        android:paddingEnd="@dimen/_16sdp"
+                        android:text="@{editBeneficiaryViewModel.state.beneficiary.fullName()}" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:src='@{editBeneficiaryViewModel.state.transferType.equals("CASHPAYOUT")? @drawable/ic_cash:@drawable/ic_bank}'
+                        android:tint="@color/greyDark"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTransferType"
+                        app:srcCompat="@drawable/ic_bank"
+                        app:tint="@color/greyDark" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_gravity="center_vertical"
+                        android:contentDescription="@string/empty_string"
+                        app:setFlagDrawable="@{editBeneficiaryViewModel.state.beneficiary.country}"
+                        tools:src="@drawable/flag_ae" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:background="@color/divider" />
+
+                <TextView
+                    style="@style/AppFontRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:textColor="@color/greyDark"
+                    android:visibility='@{(editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("RMT") || editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("SWIFT")) ? View.VISIBLE : View.GONE }'
+                    app:text="@{Strings.screen_add_beneficiary_detail_display_text_currency}"
+                    tools:text="@string/screen_add_beneficiary_detail_display_text_currency" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_marginBottom="@dimen/margin_normal"
+                    android:orientation="horizontal"
+                    android:visibility='@{(editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("RMT") || editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("SWIFT")) ? View.VISIBLE : View.GONE }'>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/labelCardType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/round_light_gery_background"
+                        android:gravity="center"
+                        android:text="@{editBeneficiaryViewModel.state.beneficiary.currency}"
+                        android:textColor="?attr/colorPrimaryAttr"
+                        android:textSize="@dimen/_9sdp"
+                        tools:text="$ AED" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvChangeCurrency"
+                        style="@style/Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:onClick="@{(v) -> editBeneficiaryViewModel.handlePressOnConfirm(v.id)}"
+                        android:text="@string/screen_add_beneficiary_detail_display_text_change_currency"
+                        android:textColor="?attr/colorPrimaryAttr"
+                        android:visibility="gone"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+
+                    android:background="@color/divider" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:text="@string/screen_add_beneficiary_detail_display_text_transfer_nick_name"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSuccessHeading"
+                    app:text="@{Strings.screen_add_beneficiary_detail_display_text_transfer_nick_name}"
+                    app:textColor="@{editBeneficiaryViewModel.state.nickName.empty ? true : false}"
+
+                    tools:text="@string/screen_add_beneficiary_detail_display_text_transfer_nick_name" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etnickName"
+                    style="@style/Yap.App.Widget.TextInputEditText"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:maxLength="50"
+                    android:text="@={editBeneficiaryViewModel.state.nickName}"
+                    app:hint="@{Strings.screen_add_beneficiary_detail_input_text_nick_name_hint}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:text="@string/screen_b2c_eid_info_review_display_text_name_heading"
+                    app:text="@{Strings.screen_add_beneficiary_detail_display_text_transfer_first_name}"
+                    app:textColor="@{editBeneficiaryViewModel.state.firstName.empty ? true : false}"
+                    tools:text="@string/screen_add_beneficiary_detail_display_text_transfer_first_name" />
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etFirstName"
+                    style="@style/Yap.App.Widget.TextInputEditText"
+                    android:imeOptions="actionNext"
+                    android:maxLength="50"
+                    android:text="@={editBeneficiaryViewModel.state.firstName}"
+                    app:editable="@{false}"
+                    app:hint="@{Strings.screen_add_beneficiary_detail_input_text_first_name_hint}" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:text="@string/screen_add_beneficiary_detail_display_text_transfer_nick_name"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSuccessHeading"
+                    app:text="@{Strings.screen_add_beneficiary_detail_display_text_transfer_last_name}"
+                    app:textColor="@{editBeneficiaryViewModel.state.lastName.empty ? true : false}"
+                    tools:text="@string/screen_add_beneficiary_detail_display_text_transfer_last_name" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLastName"
+                    style="@style/Yap.App.Widget.TextInputEditText"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:maxLength="50"
+                    android:text="@={editBeneficiaryViewModel.state.lastName}"
+                    app:editable="@{false}"
+                    app:hint="@{Strings.screen_add_beneficiary_detail_input_text_last_name_hint}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSelectCountry"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:gravity="center"
+                    android:text="Country of residence"
+                    android:visibility='@{(editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("RMT") || editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("SWIFT")) ? View.VISIBLE : View.GONE }'
+                    tools:text="Country of residence" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutReasonsSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility='@{(editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("RMT") || editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("SWIFT")) ? View.VISIBLE : View.GONE }'
+                    app:layout_constraintTop_toBottomOf="@+id/tvSelectCountry">
+
+                    <co.yap.widgets.country_spinner.CountrySpinner
+                        android:id="@+id/spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:text="@string/screen_add_beneficiary_detail_display_text_transfer_phone"
+                    android:visibility='@{(editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("UAEFTS") || editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("DOMESTIC")) ? View.GONE : View.VISIBLE }'
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSuccessHeading"
+                    app:text='@{editBeneficiaryViewModel.state.transferType.equals("CASHPAYOUT")?Strings.screen_edit_beneficiary_display_text_phone_number:Strings.screen_add_beneficiary_detail_display_text_transfer_phone}'
+                    app:textColor="@{editBeneficiaryViewModel.state.phoneNumber.empty ? true : false}"
+                    tools:text="@string/screen_add_beneficiary_detail_display_text_transfer_phone" />
+
+                <co.yap.widgets.PrefixSuffixEditText
+                    android:id="@+id/etPhoneNumber"
+                    style="@style/Yap.App.Widget.TextInputEditText"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:imeOptions="actionDone"
+                    android:inputType="phone"
+                    android:paddingBottom="16dp"
+                    android:singleLine="true"
+                    android:text="@={editBeneficiaryViewModel.state.phoneNumber}"
+                    android:visibility='@{(editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("UAEFTS") || editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("DOMESTIC")) ? View.GONE : View.VISIBLE }'
+                    app:countryCode="@{editBeneficiaryViewModel.state.countryCode!=null?PhoneNumberUtilsKt.getCountryCodeForRegion(editBeneficiaryViewModel.state.countryCode):` `}"
+                    app:countryName="@{editBeneficiaryViewModel.state.countryCode!=null?editBeneficiaryViewModel.state.countryCode:` `}"
+                    app:pse_compoundDrawableHeight="@dimen/_16sdp"
+                    app:pse_compoundDrawableWidth="@dimen/_16sdp"
+                    app:pse_setPrefix="+92"
+                    app:pse_setPrefixDrawable="@drawable/flag_in"
+                    app:pse_space="@dimen/_8sdp"
+                    tools:text="322335" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:text="@{editBeneficiaryViewModel.state.needIban == false ? @string/screen_edit_beneficiary_display_text_account_number:@string/screen_beneficiary_overview_display_text_account_number_iban}"
+                    android:visibility='@{(editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("UAEFTS") || editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("DOMESTIC")) ? View.VISIBLE : View.GONE }'
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSuccessHeading"
+                    app:text="@{editBeneficiaryViewModel.state.needIban == false ? Strings.screen_edit_beneficiary_display_text_account_number:Strings.screen_beneficiary_overview_display_text_account_number_iban}"
+                    app:textColor="@{editBeneficiaryViewModel.state.accountNumber.empty ? true : false}"
+                    tools:text="@string/screen_beneficiary_overview_display_text_account_number_iban" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etAccountNumberRMT"
+                    style="@style/Yap.App.Widget.TextInputEditText"
+                    android:digits="1234567890 "
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:text="@{editBeneficiaryViewModel.state.accountNumber}"
+                    android:visibility='@{(editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("UAEFTS") || editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("DOMESTIC")) ? View.VISIBLE : View.GONE }'
+                    app:editable="@{false}"
+                    app:ibanMask="@{`#### #### #### #### #### #### #### #### ###`}" />
+
+                <LinearLayout
+                    android:id="@+id/llBankDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:background="@drawable/card_border_selector"
+                    android:orientation="vertical"
+                    android:padding="@dimen/margin_medium"
+                    android:visibility='@{(editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("RMT") || editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("SWIFT")) ? View.VISIBLE : View.GONE }'>
+
+                    <co.yap.widgets.CoreCircularImageView
+                        android:layout_width="@dimen/_42sdp"
+                        android:layout_height="@dimen/_42sdp"
+                        android:layout_gravity="center"
+                        app:beneficiaryPicture="@{` `}"
+                        app:fullName="@{editBeneficiaryViewModel.state.beneficiary.bankName!=null ? editBeneficiaryViewModel.state.beneficiary.bankName: ` ` }" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvBankName"
+                        style="@style/Micro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:gravity="center"
+                        android:text="@{editBeneficiaryViewModel.state.beneficiary.bankName}"
+                        android:textSize="@dimen/text_size_c3" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvIdCode"
+                        style="@style/MicroGrey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:gravity="center"
+                        android:text="@{`ID Code: ` + editBeneficiaryViewModel.state.beneficiary.identifierCode1}"
+                        android:textSize="@dimen/text_size_c3"
+                        android:visibility="@{editBeneficiaryViewModel.state.beneficiary.identifierCode1.length()>0?View.VISIBLE:View.GONE}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvBankAddress"
+                        style="@style/MicroGrey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:gravity="center"
+                        android:text="@{editBeneficiaryViewModel.state.beneficiary.branchName}"
+                        android:textSize="@dimen/text_size_c3" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvBankPhoneNumber"
+                        style="@style/MicroGrey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:gravity="center"
+                        android:text="(403) 292-1100"
+                        android:textSize="@dimen/text_size_c3"
+                        android:visibility="gone" />
+
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/etAccountIban"
+                    style="@style/Small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:text="@{editBeneficiaryViewModel.state.needIban == false ? @string/screen_edit_beneficiary_display_text_account_number:@string/screen_beneficiary_overview_display_text_account_number_iban}"
+                    android:visibility='@{(editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("RMT") || editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("SWIFT")) ? View.VISIBLE : View.GONE }'
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSuccessHeading"
+                    app:text="@{editBeneficiaryViewModel.state.needIban == false ? Strings.screen_edit_beneficiary_display_text_account_number:Strings.screen_beneficiary_overview_display_text_account_number_iban}"
+                    app:textColor="@{editBeneficiaryViewModel.state.accountNumber.empty ? true : false}"
+                    tools:text="@string/screen_beneficiary_overview_display_text_account_number_iban" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etAccountNumber"
+                    style="@style/Yap.App.Widget.TextInputEditText"
+                    android:digits="1234567890 "
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:text="@{editBeneficiaryViewModel.state.accountNumber}"
+                    android:visibility='@{(editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("RMT") || editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("SWIFT")) ? View.VISIBLE : View.GONE }'
+                    app:editable="@{false}"
+                    app:ibanMask="@{`#### #### #### #### #### #### #### #### ###`}" />
+                <!---->
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:text="@string/screen_beneficiary_overview_display_text_swift_code"
+                    android:visibility='@{(editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("SWIFT")) ? View.VISIBLE : View.GONE }'
+                    app:layout_constraintLeft_toLeftOf="parent"
+
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSuccessHeading"
+                    app:text="@{Strings.screen_beneficiary_overview_display_text_swift_code}"
+                    app:textColor="@{editBeneficiaryViewModel.state.swiftCode.empty ? true : false}"
+                    tools:text="@string/screen_beneficiary_overview_display_text_swift_code" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etSwiftCode"
+                    style="@style/Yap.App.Widget.TextInputEditText"
+                    android:digits="1234567890 "
+                    android:imeOptions="actionDone"
+                    android:inputType="phone"
+                    android:singleLine="true"
+                    android:text="@={editBeneficiaryViewModel.state.swiftCode}"
+                    android:visibility='@{(editBeneficiaryViewModel.state.beneficiary.beneficiaryType.equals("SWIFT")) ? View.VISIBLE : View.GONE }'
+                    app:capitalise="@{true}"
+                    app:editable="@{false}" />
+                <!---->
+                <TextView
+                    style="@style/Small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:text="@string/screen_beneficiary_overview_display_text_field_code"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSuccessHeading"
+                    app:text="@{Strings.screen_beneficiary_overview_display_text_field_code}"
+                    app:textColor="@{editBeneficiaryViewModel.state.countryBankRequirementFieldCode.empty ? true : false}"
+                    tools:text="@string/screen_beneficiary_overview_display_text_field_code" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etBankREquiredFieldCode"
+                    style="@style/Yap.App.Widget.TextInputEditText"
+                    android:digits="1234567890 "
+                    android:imeOptions="actionDone"
+                    android:inputType="phone"
+                    android:singleLine="true"
+                    android:text="@={editBeneficiaryViewModel.state.countryBankRequirementFieldCode}"
+                    android:visibility="gone"
+                    app:editable="@{false}" />
+
+                <co.yap.widgets.CoreButton
+                    android:id="@+id/confirmButton"
+                    style="@style/FragmentsBtnStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_btn_side_paddings_xl"
+                    android:layout_marginTop="@dimen/_27sdp"
+                    android:layout_marginRight="@dimen/margin_btn_side_paddings_xl"
+                    android:layout_marginBottom="@dimen/margin_medium_large"
+                    android:onClick="@{(v) -> editBeneficiaryViewModel.handlePressOnConfirm(v.id)}"
+                    app:btn_enable="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:text="@{Strings.screen_beneficiary_overview_button_confirm}"
+                    tools:text="@string/screen_beneficiary_overview_button_confirm" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </ScrollView>
+    </LinearLayout>
+</layout>

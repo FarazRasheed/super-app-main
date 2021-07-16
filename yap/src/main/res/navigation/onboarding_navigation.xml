@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/onboarding_navigation"
+    app:startDestination="@id/mobileFragment">
+    <fragment
+        android:id="@+id/emailFragment"
+        android:name="co.yap.modules.onboarding.fragments.EmailFragment"
+        android:label="EmailFragment"
+        tools:layout="@layout/fragment_email">
+        <action
+            android:id="@+id/action_emailFragment_to_congratulationsFragment"
+            app:destination="@id/congratulationsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nameFragment"
+        android:name="co.yap.modules.onboarding.fragments.NameFragment"
+        android:label="NameFragment"
+        tools:layout="@layout/fragment_name">
+        <action
+            android:id="@+id/action_nameFragment_to_emailFragment"
+            app:destination="@id/emailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/mobileFragment"
+        android:name="co.yap.modules.onboarding.fragments.MobileFragment"
+        android:label="MobileFragment"
+        tools:layout="@layout/fragment_mobile">
+        <action
+            android:id="@+id/action_mobileFragment_to_phoneVerificationFragment"
+            app:destination="@id/phoneVerificationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/phoneVerificationFragment"
+        android:name="co.yap.modules.onboarding.fragments.PhoneVerificationFragment"
+        android:label="fragment_phone_verification"
+        tools:layout="@layout/fragment_phone_verification">
+        <action
+            android:id="@+id/action_phoneVerificationFragment_to_createPasscodeActivity2"
+            app:destination="@id/createPasscodeActivity2" />
+        <action
+            android:id="@+id/action_phoneVerificationFragment_to_nameFragment"
+            app:destination="@id/nameFragment"
+            app:popUpTo="@id/mobileFragment" />
+        <action
+            android:id="@+id/action_phoneVerificationFragment_to_waitingListFragment"
+            app:destination="@id/waitingListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/congratulationsFragment"
+        android:name="co.yap.modules.onboarding.fragments.CongratulationsFragment"
+        android:label="CongratulationsFragment"
+        tools:layout="@layout/fragment_onboarding_congratulations">
+        <action
+            android:id="@+id/action_congratulationsFragment_to_documentsDashboardActivity"
+            app:destination="@id/documentsDashboardActivity"
+            app:popUpTo="@+id/onboarding_navigation"
+            app:popUpToInclusive="true">
+            <argument
+                android:name="name"
+                android:defaultValue=" "
+                app:argType="string" />
+        </action>
+        <action
+            android:id="@+id/action_congratulationsFragment_to_yapDashboardActivity"
+            app:destination="@id/yapDashboardActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/createPasscodeActivity2"
+        android:name="co.yap.modules.onboarding.activities.CreatePasscodeActivity"
+        android:label="CreatePasscodeActivity"
+        tools:layout="@layout/fragment_pass_code" />
+    <activity
+        android:id="@+id/documentsDashboardActivity"
+        android:name="co.yap.modules.kyc.activities.DocumentsDashboardActivity"
+        android:label="DocumentsDashboardActivity"
+        tools:layout="@layout/activity_documents_dashboard">
+        <argument
+            android:name="name"
+            android:defaultValue=" "
+            app:argType="string" />
+    </activity>
+
+    <activity
+        android:id="@+id/yapDashboardActivity"
+        android:name="co.yap.modules.dashboard.main.activities.YapDashboardActivity"
+        android:label="YapDashboardActivity"
+        tools:layout="@layout/activity_yap_dashboard" />
+    <fragment
+        android:id="@+id/waitingListFragment"
+        android:name="co.yap.modules.onboarding.fragments.WaitingListFragment"
+        android:label="WaitingListFragment"
+        tools:layout="@layout/fragment_waiting_list"/>
+
+</navigation>

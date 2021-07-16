@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="co.yap.yapcore.helpers.Utils" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.yapit.addmoney.qrcode.QRCodeViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".1"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.85"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+            android:src="@drawable/ic_close_white"
+            app:layout_constraintStart_toStartOf="@id/layoutQRCode"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/guideline1"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutQRCode"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/margin_medium_large"
+            android:layout_marginRight="@dimen/margin_medium_large"
+            android:layout_marginBottom="@dimen/margin_medium_large"
+            android:background="@drawable/cornor_edges_gery"
+            android:paddingStart="@dimen/margin_extra_small"
+            android:paddingTop="@dimen/margin_extra_small"
+            android:paddingEnd="@dimen/margin_extra_small"
+            android:paddingBottom="@dimen/margin_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guideline1"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/qrContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/margin_small"
+                android:paddingBottom="@dimen/margin_small"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/tvShareMyCode">
+
+                <co.yap.widgets.CoreCircularImageView
+                    android:id="@+id/ivProfilePic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/circle_profile"
+                    android:padding="@dimen/_3sdp"
+                    tools:src="@drawable/ic_cash_out_trasaction"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvUserName"
+                    style="@style/Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_extra_small"
+                    android:text="@{viewModel.state.fullName}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivProfilePic"
+                    tools:text="Nada Hassan" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivQRCode"
+                    android:layout_width="@dimen/_140sdp"
+                    android:layout_height="@dimen/_120sdp"
+                    android:layout_marginTop="@dimen/margin_large"
+                    tools:src="@drawable/ic_card_chip"
+                    android:src="@{viewModel.state.qrBitmap}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvUserName"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivYap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:src="@drawable/logo"
+                    tools:src="@drawable/logo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivQRCode"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvShareMyCode"
+                style="@style/Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_share_code"
+                android:drawablePadding="@dimen/margin_normal"
+                android:layout_marginStart="@dimen/margin_xl"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:gravity="center"
+                android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                android:textColor="?attr/colorPrimaryAttr"
+                app:layout_constraintStart_toStartOf="@id/qrContainer"
+                app:layout_constraintTop_toBottomOf="@+id/qrContainer"
+                app:layout_constraintBottom_toTopOf="@+id/tvSaveToGallery"
+                app:text="@{Strings.screen_fragment_yap_it_qr_code_share_my_code}"
+                tools:text="@string/screen_fragment_yap_it_qr_code_share_my_code" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSaveToGallery"
+                style="@style/Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_gallery"
+                android:drawablePadding="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_xl"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:gravity="center"
+                android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                android:textColor="?attr/colorPrimaryAttr"
+                app:layout_constraintStart_toStartOf="@id/qrContainer"
+                app:layout_constraintTop_toBottomOf="@+id/tvShareMyCode"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:text="@{Strings.screen_fragment_yap_it_qr_code_save_to_gallery}"
+                tools:text="@string/screen_fragment_yap_it_qr_code_save_to_gallery" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvShareToProceed"
+            style="@style/Regular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cornor_edges_black"
+            android:gravity="center"
+            android:paddingBottom="@dimen/_5sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/guideline2"
+            app:layout_constraintEnd_toEndOf="@id/layoutQRCode"
+            app:layout_constraintStart_toStartOf="@id/layoutQRCode"
+            app:text="@{Strings.screen_fragment_yap_it_qr_code_text_share_to_proceed}"
+            tools:text="@string/screen_fragment_yap_it_qr_code_text_share_to_proceed" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

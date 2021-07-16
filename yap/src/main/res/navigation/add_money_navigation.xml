@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_money_navigation"
+    app:startDestination="@id/addMoneyLandingFragment">
+
+    <fragment
+        android:id="@+id/addMoneyLandingFragment"
+        android:name="co.yap.modules.dashboard.yapit.addmoney.landing.AddMoneyLandingFragment"
+        android:label="AddMoneyLandingFragment"
+        tools:layout="@layout/fragment_add_money_landing"/>
+</navigation>

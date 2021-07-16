@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Headings -->
+    <dimen name="text_size_h1">@dimen/_10sdp</dimen>
+    <dimen name="text_size_h2">@dimen/_12sdp</dimen>
+    <dimen name="text_size_h3">@dimen/_14sdp</dimen>
+    <dimen name="text_size_h4">@dimen/_16sdp</dimen>
+    <dimen name="text_size_h5">@dimen/_19sdp</dimen>
+    <dimen name="text_size_h6">@dimen/_22sdp</dimen>
+    <dimen name="text_size_h7">@dimen/_26sdp</dimen>
+    <dimen name="text_size_h8">@dimen/_18sdp</dimen>
+
+    <!-- Content -->
+    <dimen name="text_size_c1">@dimen/_9sdp</dimen>
+    <dimen name="text_size_c2">@dimen/_10sdp</dimen>
+    <dimen name="text_size_c3">@dimen/_11sdp</dimen>
+    <dimen name="text_size_c4">@dimen/_12sdp</dimen>
+    <dimen name="text_size_c5">@dimen/_13sdp</dimen>
+    <dimen name="text_size_c6">@dimen/_14sdp</dimen>
+
+
+    <dimen name="base_padding">16dp</dimen>
+    <dimen name="btn_radius">2dp</dimen>
+    <dimen name="round_radius">0dp</dimen>
+    <dimen name="label_text_size">12dp</dimen>
+
+    <!-- MARGIN -->
+    <dimen name="margin_zero_dp">0dp</dimen>
+    <dimen name="margin_one_dp">1dp</dimen>
+    <dimen name="margin_two_dp">2dp</dimen>
+    <dimen name="margin_three_dp">@dimen/_3sdp</dimen>
+    <dimen name="margin_extra_small">@dimen/_4sdp</dimen>
+    <dimen name="margin_small">@dimen/_8sdp</dimen>
+    <dimen name="margin_normal">@dimen/_12sdp</dimen>
+    <dimen name="margin_normal_large">@dimen/_14sdp</dimen>
+    <dimen name="margin_medium">@dimen/_16sdp</dimen>
+    <dimen name="margin_medium_large">@dimen/_20sdp</dimen>
+    <dimen name="margin_large">@dimen/_24sdp</dimen>
+    <dimen name="margin_extra_large">@dimen/_32sdp</dimen>
+    <dimen name="margin_xl">@dimen/_44sdp</dimen>
+    <dimen name="margin_xxl">@dimen/_56sdp</dimen>
+    <dimen name="margin_btn_side_paddings">@dimen/_50sdp</dimen>
+    <dimen name="margin_btn_side_paddings_xl">@dimen/_60sdp</dimen>
+    <dimen name="margin_btn_side_xxl">@dimen/_70sdp</dimen>
+    <dimen name="margin_xxxl">@dimen/_80sdp</dimen>
+    <dimen name="margin_heading_to_field">@dimen/_50sdp</dimen>
+
+    <dimen name="text_content_margin">@dimen/_30sdp</dimen>
+    <dimen name="btn_content_margin">@dimen/_15sdp</dimen>
+    <dimen name="nav_drawer_width">@dimen/_300sdp</dimen>
+    <dimen name="btn_distance">@dimen/_480sdp</dimen>
+
+    <!-- PADDING -->
+    <dimen name="padding_onboarding_image">-110dp</dimen>
+
+    <!-- BIOMETRIC -->
+    <dimen name="biometric_bg_size">20dp</dimen>
+    <dimen name="biometric_logo_size">48dp</dimen>
+    <dimen name="biometric_bottom_sheet_padding">7dp</dimen>
+    <dimen name="biometric_fingerprint_image_size">60dp</dimen>
+
+    <!-- Meeting Confirmation-->
+    <dimen name="eid_layout_size">@dimen/_50sdp</dimen>
+
+    <!-- Searching widget height-->
+    <dimen name="search_widget_height">@dimen/_30sdp</dimen>
+
+    <!--tooltipdimen-->
+
+    <dimen name="tooltip_default_arrow_height">8dp</dimen>
+    <dimen name="tooltip_default_arrow_width">16dp</dimen>
+    <dimen name="tooltip_default_corner_radius">3dp</dimen>
+    <dimen name="tooltip_default_offset">0dp</dimen>
+    <integer name="tooltip_default_arrow_location">1</integer>
+    <integer name="tooltip_default_arrow_alignment">3</integer>
+
+    <!-- CardView Settings-->
+    <dimen name="cardview_compat_inset_shadow">@dimen/_10sdp</dimen>
+    <dimen name="cardview_elevation">@dimen/_10sdp</dimen>
+    <dimen name="cardview_radius">@dimen/_10sdp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="tooltip_elevation">@dimen/_10sdp</dimen>
+    <dimen name="tooltip_radius">4dp</dimen>
+
+
+<!--    others-->
+    <integer name="note_max_length">150</integer>
+<!--Arc Menu-->
+    <dimen name="action_menu_radius">90dp</dimen>
+
+    <!--    Snack Bar Textview padding -->
+    <dimen name="design_snackbar_padding_vertical" tools:override="true">8dp</dimen>
+    <dimen name="design_snackbar_padding_vertical_2lines" tools:override="true">8dp</dimen>
+
+
+</resources>

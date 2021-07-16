@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="co.yap.yapcore.enums.NotificationStatus" />
+
+        <import type="co.yap.yapcore.managers.SessionManager" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.onboarding.viewmodels.LiteDashboardViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivLogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_yap" />
+
+            <TextView
+                android:id="@+id/tvName"
+                style="@style/ASmallGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_extra_large"
+                android:text="Lite Dashboard"
+                android:textSize="@dimen/_20sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
+
+
+            <co.yap.widgets.CoreButton
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_xxl"
+                android:layout_marginTop="@dimen/margin_extra_large"
+                android:layout_marginRight="@dimen/margin_xxl"
+                android:drawablePadding="@dimen/_20sdp"
+                android:gravity="center"
+                android:minHeight="@dimen/_52sdp"
+                android:onClick="@{(v)-> viewModel.handlePressOnLogout()}"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="Logout"
+                android:textColor="@color/colorWhite"
+                app:btn_enable="true"
+                app:btn_round_radius="50dp"
+                app:btn_shape_type="rectangle"
+                app:btn_text_size="@dimen/text_size_h4"
+                app:layout_constraintTop_toBottomOf="@+id/tvName"
+                tools:ignore="MissingConstraints" />
+
+            <Switch
+                android:id="@+id/swTouchId"
+                style="@style/ASmallGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large"
+                android:text="Sign In with fingerprint   "
+                android:theme="@style/CustomSwitch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnLogout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnCompleteVerification"
+            style="@style/FragmentsBtnStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_xl"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/margin_xl"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:onClick="@{(v) -> viewModel.handlePressOnCompleteVerification()}"
+            android:visibility="@{NotificationStatus.valueOf(SessionManager.INSTANCE.getUser().notificationStatuses)==NotificationStatus.ON_BOARDED?View.VISIBLE:View.GONE}"
+            app:btn_enable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:text="@{Strings.screen_onboarding_congratulations_button_complete_verification}"
+            tools:text="@string/screen_onboarding_congratulations_button_complete_verification" />
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnSetCardPin"
+            style="@style/FragmentsBtnStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_xl"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/margin_xl"
+            android:layout_marginBottom="8dp"
+            android:onClick="@{(v) -> viewModel.handlePressOnsetCardPin()}"
+            android:visibility="gone"
+            app:btn_enable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:text="@{Strings.screen_confirm_card_pin_button_create_pin}"
+            tools:text="@string/screen_confirm_card_pin_button_create_pin" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

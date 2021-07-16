@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/kyc_navigation"
+    app:startDestination="@id/setCardPinWelcomeFragment">
+
+    <fragment
+        android:id="@+id/setCardPinWelcomeFragment"
+        android:name="co.yap.modules.setcardpin.fragments.SetCardPinWelcomeFragment"
+        android:label="SetCardPinWelcomeFragment"
+        tools:layout="@layout/fragment_set_card_pin_welcome">
+        <action
+            android:id="@+id/action_setCardPinWelcomeFragment_to_setCardPinFragment"
+            app:destination="@id/setCardPinFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/setCardPinFragment"
+        android:name="co.yap.modules.setcardpin.fragments.SetCardPinFragment"
+        android:label="SetCardPinFragment"
+        tools:layout="@layout/fragment_pin">
+        <action
+            android:id="@+id/action_setCardPinFragment_to_confirmCardPinFragment"
+            app:destination="@id/confirmCardPinFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmCardPinFragment"
+        android:name="co.yap.modules.setcardpin.fragments.ConfirmCardPinFragment"
+        android:label="ConfirmCardPinFragment"
+        tools:layout="@layout/fragment_pin">
+        <argument
+            android:name="pincode"
+            android:defaultValue=" "
+            app:argType="string" />
+        <action
+            android:id="@+id/action_confirmCardPinFragment_to_setCardPinSuccessFragment"
+            app:destination="@id/setCardPinSuccessFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/setCardPinSuccessFragment"
+        android:name="co.yap.modules.setcardpin.fragments.SetCardPinSuccessFragment"
+        android:label="SetCardPinSuccessFragment"
+        tools:layout="@layout/fragment_set_card_pin_success" />
+
+</navigation>

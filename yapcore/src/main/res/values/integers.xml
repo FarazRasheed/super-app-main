@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="backgroundGroupCollapsed">0</integer>
+    <integer name="backgroundGroupExpanded">1</integer>
+    <integer name="backgroundFirstChild">2</integer>
+    <integer name="backgroundLastChild">3</integer>
+    <integer name="backgroundChild">4</integer>
+    <integer name="unitsCount">10</integer>
+    <integer name="decimalCount">2</integer>
+    <integer name="spareCardName">50</integer>
+    <integer name="beneficiary_length">31</integer>
+    <integer name="notes_external_transfer_length">30</integer>
+    <integer name="notes_internal_transfer_length">30</integer>
+    <integer name="swift_bank_name_length">35</integer>
+    <integer name="swift_branch_name_length">35</integer>
+    <integer name="swift_city_name_length">32</integer>
+</resources>

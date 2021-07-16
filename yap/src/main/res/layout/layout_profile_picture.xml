@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="co.yap.yapcore.helpers.StringUtils" />
+        <import type="co.yap.yapcore.helpers.Utils" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.more.profile.viewmodels.ProfileSettingsViewModel" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center|center_vertical">
+
+
+        <TextView
+            android:id="@+id/tvAccountHolderNameInitials"
+            android:layout_width="@dimen/_65sdp"
+            android:layout_height="@dimen/_65sdp"
+            android:background="@drawable/bg_round_red"
+            android:backgroundTint="#D8F6F3"
+            android:contentDescription="@string/app_name"
+            android:gravity="center"
+            android:maxLength="2"
+            android:text="@{Utils.INSTANCE.shortName(viewModel.state.fullName)}"
+            android:textColor="@color/colorSecondaryGreen"
+            android:textSize="@dimen/_24sdp" />
+
+        <co.yap.widgets.CoreCircularImageView
+            android:id="@+id/ivProfilePic"
+            android:layout_width="@dimen/_65sdp"
+            android:layout_height="@dimen/_65sdp"
+            android:contentDescription="@string/app_name"
+            android:onClick="@{(v) -> viewModel.handlePressOnViewClick(v.id)}"
+            android:visibility="@{viewModel.state.nameInitialsVisibility}"
+            app:imageSrc="@{viewModel.state.profilePictureUrl}"
+            app:imageUri="@{viewModel.state.imageUri}" />
+        <!--app:isRound="@{true}"-->
+
+        <RelativeLayout
+            android:id="@+id/rlAddNewProfilePic"
+            android:layout_width="@dimen/_36sdp"
+            android:layout_height="@dimen/_36sdp"
+            android:layout_alignTop="@+id/tvAccountHolderNameInitials"
+            android:layout_alignEnd="@+id/tvAccountHolderNameInitials"
+            android:layout_alignBottom="@+id/tvAccountHolderNameInitials"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="-25dp"
+            android:layout_marginBottom="-1dp"
+            android:background="@drawable/bg_round_red"
+            android:backgroundTint="@color/white"
+            android:gravity="right|bottom"
+            android:onClick="@{(v) -> viewModel.handlePressOnViewClick(v.id)}">
+
+            <FrameLayout
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_2sdp"
+                android:background="@drawable/bg_round_red"
+                android:backgroundTint="@color/white">
+
+                <ImageView
+                    android:id="@+id/ivAddProfilePic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_add" />
+
+            </FrameLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

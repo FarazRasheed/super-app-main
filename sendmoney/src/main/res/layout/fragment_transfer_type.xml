@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.sendmoney.addbeneficiary.viewmodels.TransferTypeViewModel" />
+
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/_12sdp"
+        android:paddingRight="@dimen/_12sdp">
+
+        <TextView
+            style="@style/Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_large"
+            android:gravity="center"
+            android:text="@string/screen_add_beneficiary_display_text_transfer_type"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSuccessHeading"
+            tools:text="@string/screen_add_beneficiary_display_text_transfer_type" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_39sdp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.513"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:id="@+id/llBankTransferType"
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="@dimen/_149sdp"
+                android:layout_marginRight="@dimen/margin_medium"
+                android:background="@drawable/card_border_selector"
+                android:clickable="true"
+                android:onClick="@{(v) -> viewModel.handlePressOnTypeBankTransfer(v.id)}"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/margin_medium">
+
+                <FrameLayout
+                    android:layout_width="@dimen/_42sdp"
+                    android:layout_height="@dimen/_42sdp"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_2sdp"
+                    android:background="@drawable/bg_round_purple_enabled">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_bank" />
+
+                </FrameLayout>
+
+
+                <TextView
+                    style="@style/Micro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:gravity="center"
+                    android:text="@string/screen_add_beneficiary_display_text_transfer_type_bank"
+                    android:textSize="@dimen/text_size_c3"
+                    app:text="@{Strings.screen_add_beneficiary_display_text_transfer_type_bank}" />
+
+                <TextView
+                    style="@style/MicroGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/margin_extra_small"
+                    android:paddingRight="@dimen/margin_extra_small"
+                    android:text="@string/screen_add_beneficiary_display_text_transfer_type_bank_description"
+                    android:textSize="@dimen/text_size_c3"
+                    app:text="@{Strings.screen_add_beneficiary_display_text_transfer_type_bank_description}" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llCashPickUpTransferType"
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="@dimen/_149sdp"
+                android:background="@drawable/card_border_selector"
+                android:clickable="true"
+                android:onClick="@{(v) -> viewModel.handlePressOnTypeCashPickUp(v.id)}"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/margin_medium">
+
+                <FrameLayout
+                    android:layout_width="@dimen/_42sdp"
+                    android:layout_height="@dimen/_42sdp"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_2sdp"
+                    android:background="@drawable/bg_round_purple_enabled">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_cash" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tvPhysicalCardTitle"
+                    style="@style/Micro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:gravity="center"
+                    android:text="@string/screen_add_beneficiary_display_text_transfer_type_cash_pickup"
+                    android:textSize="@dimen/text_size_c3"
+                    app:text="@{Strings.screen_add_beneficiary_display_text_transfer_type_cash_pickup}" />
+
+                <TextView
+                    style="@style/MicroGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/margin_small"
+                    android:paddingRight="@dimen/margin_small"
+                    android:text="@string/screen_add_beneficiary_display_text_transfer_type_cash_pickup_description"
+                    android:textSize="@dimen/text_size_c3"
+                    app:text="@{Strings.screen_add_beneficiary_display_text_transfer_type_cash_pickup_description}" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

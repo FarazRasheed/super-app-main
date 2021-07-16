@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.store.viewmodels.YapStoreDetailViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/imgStoreCover"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_180sdp"
+                android:contentDescription="@string/empty_string"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:src="@{viewModel.state.image}"
+                app:srcCompat="@color/grey" />
+
+            <ImageView
+                android:id="@+id/imgCross"
+                android:layout_width="@dimen/_32sdp"
+                android:layout_height="@dimen/_32sdp"
+                android:layout_marginStart="@dimen/margin_normal_large"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:contentDescription="@string/empty_string"
+                android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_close_white" />
+
+            <ImageView
+                android:id="@+id/imgCheckout"
+                android:layout_width="@dimen/_32sdp"
+                android:layout_height="@dimen/_32sdp"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_normal_large"
+                android:contentDescription="@string/empty_string"
+                android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_checkout_white" />
+
+            <ImageView
+                android:id="@+id/imgSmiley"
+                android:layout_width="@dimen/_55sdp"
+                android:layout_height="@dimen/_55sdp"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_large"
+                android:contentDescription="@string/empty_string"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgStoreCover"
+                app:src="@{viewModel.state.storeIcon}"
+                tools:srcCompat="@drawable/ic_checkout_white" />
+
+            <TextView
+                android:id="@+id/tvStoreTitle"
+                style="@style/ATitle3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_extra_large"
+                android:gravity="start"
+                android:lineSpacingExtra="0dp"
+                android:text="@={viewModel.state.title}"
+                android:textAlignment="viewStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgSmiley"
+                app:layout_constraintTop_toTopOf="@+id/imgSmiley"
+                tools:text="@string/screen_yap_store_display_text_title" />
+
+            <TextView
+                android:id="@+id/tvStoreDesc"
+                style="@style/ASmallGrey"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_extra_large"
+                android:gravity="start"
+                android:lineSpacingExtra="0dp"
+                android:text="@={viewModel.state.subTitle}"
+                android:textAlignment="viewStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgSmiley"
+                app:layout_constraintTop_toBottomOf="@+id/tvStoreTitle"
+                tools:text="Open a bank account for your children and help empower them financially." />
+
+            <co.yap.widgets.CoreButton
+                android:id="@+id/btnActivate"
+                style="@style/RectangleBtnSmallStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                android:paddingTop="@dimen/_10sdp"
+                app:btn_enable="true"
+                app:layout_constraintLeft_toLeftOf="@+id/tvStoreDesc"
+                app:layout_constraintTop_toBottomOf="@+id/tvStoreDesc"
+                app:text="@{Strings.common_button_activate}"
+                tools:text="@string/common_button_activate" />
+
+            <TextView
+                android:id="@+id/tvContentTitle"
+                style="@style/ATitle2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal_large"
+                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginEnd="@dimen/margin_normal_large"
+                android:gravity="start"
+                android:text="@={viewModel.state.storeHeading}"
+                android:textAlignment="viewStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnActivate"
+                tools:text="Allocate specific budget to your child, track and fully." />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_stores"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/text_content_margin"
+                android:dividerHeight="2dp"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvContentTitle" />
+
+            <TextView
+                android:id="@+id/tvContentDesc"
+                style="@style/ASmallGrey"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal_large"
+                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginEnd="@dimen/margin_normal_large"
+                android:gravity="start"
+                android:text="@={viewModel.state.storeDetail}"
+                android:textAlignment="viewStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_stores"
+                tools:text="Allocate specific budget to your child, track and fully control your child spending by setting limits to the card. Save time with an innovative real-time money request system. Allocate specific budget to your child, track and fully control your child spending by setting limits to the card. Save time with an innovative real-time money request." />
+
+            <co.yap.widgets.CoreButton
+                android:id="@+id/btnActivateMe"
+                style="@style/FragmentsBtnStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_xxl"
+                android:layout_marginTop="@dimen/margin_extra_large"
+                android:layout_marginEnd="@dimen/margin_xxl"
+                android:layout_marginBottom="@dimen/margin_medium_large"
+                android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                app:btn_enable="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvContentDesc"
+                app:text="@{Strings.common_button_activate}"
+                tools:ignore="MissingConstraints"
+                tools:text="@string/common_button_activate" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

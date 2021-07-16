@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.yap.yapandroid">
+    <uses-sdk
+        android:protectionLevel="signature"
+        tools:overrideLibrary="com.leanplum, com.google.android.gms" />
+
+    <permission
+        android:name="${applicationId}.permission"
+        android:protectionLevel="signature" />
+
+    <application
+        android:name=".AAPApplication"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:resizeableActivity="false"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:remove="android:debuggable"
+        >
+        <activity android:name=".MainYapActivity"/>
+        <activity
+            android:name=".main.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--            <intent-filter>-->
+<!--                <action android:name="co.yap.app.OPEN_LOGIN" />-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--            </intent-filter>-->
+        </activity>
+
+        <activity
+            android:name="co.yap.modules.forgotpasscode.activities.ForgotPasscodeActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
+            <nav-graph android:value="@navigation/forgot_passcode_navigation" />
+        </activity>
+
+        <activity
+            android:name="co.yap.modules.dashboard.yapit.y2y.home.activities.YapToYapDashboardActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
+            <nav-graph android:value="@navigation/yap_to_yap_navigation" />
+        </activity>
+        <activity
+            android:name=".modules.login.activities.VerifyPassCodePresenterActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key"
+            tools:replace="android:value" />
+
+        <meta-data
+            android:name="firebase_crashlytics_collection_enabled"
+            android:value="true" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <service
+            android:name="com.leanplum.LeanplumPushFirebaseMessagingService"
+            android:exported="false"
+            android:permission="${applicationId}.permission">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="com.leanplum.LeanplumPushReceiver"
+            android:exported="false"
+            android:permission="co.yap.app.permission" />
+
+        <receiver
+            android:name="com.adjust.sdk.AdjustReferrerReceiver"
+            android:exported="false"
+            android:permission="android.permission.INSTALL_PACKAGES">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".modules.refreal.AdjustReferrerReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="gqvg.adj.st"
+                    android:scheme="https" />
+                <data
+                    android:host="grwl.adj.st"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

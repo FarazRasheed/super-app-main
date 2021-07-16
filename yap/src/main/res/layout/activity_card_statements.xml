@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.cards.paymentcarddetail.statments.viewmodels.CardStatementsViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.R" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <co.yap.widgets.CoreToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:leftIcon="@{R.drawable.ic_back_arrow_left}"
+            app:leftIconVisibility="@{true}"
+            app:onClick="@{viewModel::onToolBarClick}"
+            app:rightIcon="@{R.drawable.ic_add_sign}"
+            app:rightIconVisibility="@{false}"
+            app:titleTranslator='@{Strings.screen_card_statement_display_text_title}' />
+
+        <ImageView
+            android:id="@+id/imgArrowleft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:contentDescription="@string/empty_string"
+            android:enabled="@{viewModel.state.previousMonth}"
+            android:onClick="@{()->viewModel.onPrevious()}"
+            android:padding="@dimen/_10sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_back_arrow_left_gery"
+            android:tint="@{viewModel.state.previousMonth ? @color/greyDark : @color/greySoft}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvYear"
+            app:layout_constraintEnd_toStartOf="@+id/tvYear"
+            app:layout_constraintTop_toTopOf="@+id/tvYear" />
+
+        <TextView
+            android:id="@+id/tvYear"
+            style="@style/Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:gravity="center"
+            android:lineSpacingExtra="0dp"
+            android:text="@{viewModel.state.year}"
+            android:textAlignment="center"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:text="2019" />
+
+        <ImageView
+            android:id="@+id/imgArrowRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:contentDescription="@string/empty_string"
+            android:enabled="@{viewModel.state.nextMonth}"
+            android:onClick="@{()->viewModel.onNext()}"
+            android:padding="@dimen/_10sdp"
+            android:rotation="180"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_back_arrow_right_gery"
+            android:tint="@{viewModel.state.nextMonth ? @color/greyDark : @color/greySoft}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvYear"
+            app:layout_constraintStart_toEndOf="@+id/tvYear"
+            app:layout_constraintTop_toTopOf="@+id/tvYear" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerStatements"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:dividerHeight="2dp"
+            android:visibility="@{viewModel.state.hasRecords? View.VISIBLE : View.GONE}"
+            app:adapter="@{viewModel.adapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvYear"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_card_statements" />
+
+        <TextView
+            android:id="@+id/tvNoStatement"
+            style="@style/ARegularGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:visibility="@{viewModel.state.hasRecords? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.20"
+            app:text="@{Strings.common_display_text_nothing_to_report}"
+            tools:text="@string/common_display_text_nothing_to_report" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

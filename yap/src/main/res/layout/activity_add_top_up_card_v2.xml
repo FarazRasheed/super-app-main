@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.yapit.topup.addtopupcard.viewmodels.AddTopUpCardViewModel" />
+
+        <import type="co.yap.R" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".modules.dashboard.yapit.topup.addtopupcard.activities.AddTopUpCardActivityV2">
+
+        <co.yap.widgets.CoreToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.state.toolbarVisibility? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:leftIcon="@{R.drawable.ic_back_arrow_left}"
+            app:leftIconVisibility="@{true}"
+            app:onClick="@{viewModel::onToolBarClick}"
+            app:rightIconVisibility="@{false}"
+            app:titleString='@{"Enter your card details"}' />
+
+        <co.yap.widgets.MultiStateView
+            android:id="@+id/multiStateView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:msv_animateViewChanges="true"
+            app:msv_emptyView="@layout/layout_empty_view_no_results"
+            app:msv_errorView="@layout/layout_error_view"
+            app:msv_loadingView="@layout/layout_loading_view"
+            app:msv_viewState="loading">
+
+            <co.yap.widgets.AdvancedWebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </co.yap.widgets.MultiStateView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,215 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="co.yap">
+
+    <uses-sdk
+        android:protectionLevel="signature"
+        tools:overrideLibrary="com.leanplum, com.google.android.gms" />
+
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:protectionLevel="signature" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:protectionLevel="signature" />
+    <uses-permission
+        android:name="android.permission.READ_CONTACTS"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="false"
+        tools:remove="android:debuggable"
+        tools:replace="android:allowBackup">
+        <activity
+            android:name=".modules.onboarding.activities.LiteDashboardActivity"
+            android:screenOrientation="portrait">
+            <nav-graph android:value="@navigation/kyc_navigation" />
+        </activity>
+        <activity
+            android:name=".modules.dashboard.main.activities.YapDashboardActivity"
+            android:screenOrientation="portrait">
+            <!--            <nav-graph android:value="@navigation/yap_navigation" />-->
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".modules.onboarding.activities.OnboardingActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/CoreAppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
+            <nav-graph android:value="@navigation/onboarding_navigation" />
+        </activity>
+
+        <activity
+            android:name=".modules.onboarding.activities.CreatePasscodeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".modules.dashboard.more.changepasscode.activities.ChangePasscodeActivity"
+            android:screenOrientation="portrait">
+            <nav-graph android:value="@navigation/forgot_passcode_navigation" />
+        </activity>
+
+        <activity
+            android:name=".modules.kyc.activities.DocumentsDashboardActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CoreAppTheme.NoActionBar">
+            <nav-graph android:value="@navigation/kyc_navigation" />
+        </activity>
+        <activity
+            android:name=".modules.dashboard.cards.addpaymentcard.activities.AddPaymentCardActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CoreAppTheme.NoActionBar">
+            <nav-graph android:value="@navigation/spare_cards_navigation" />
+        </activity>
+        <activity
+            android:name="co.yap.modules.dashboard.unverifiedemail.UnVerifiedEmailActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/CoreAppTheme.NoActionBar">
+            <nav-graph android:value="@navigation/unverified_change_email_navigation" />
+        </activity>
+
+        <activity
+            android:name=".modules.dashboard.more.main.activities.MoreActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            android:theme="@style/CoreAppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
+            <nav-graph android:value="@navigation/more_main_navigation" />
+        </activity>
+
+        <activity
+            android:name=".modules.dashboard.more.yapforyou.activities.YAPForYouActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CoreAppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
+            <nav-graph android:value="@navigation/more_main_navigation" />
+        </activity>
+
+        <activity
+            android:name=".modules.dashboard.cards.reportcard.activities.ReportLostOrStolenCardActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CoreAppTheme.NoActionBar">
+            <nav-graph android:value="@navigation/report_card_navigation" />
+        </activity>
+
+        <activity
+            android:name=".modules.dashboard.cards.paymentcarddetail.addfunds.activities.AddFundsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".modules.dashboard.cards.paymentcarddetail.addfunds.activities.RemoveFundsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".modules.dashboard.cards.paymentcarddetail.activities.PaymentCardDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".modules.dashboard.yapit.addmoney.main.AddMoneyActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.dashboard.cards.paymentcarddetail.activities.ChangeCardPinActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.dashboard.cards.paymentcarddetail.limits.activities.CardLimitsActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.dashboard.cards.paymentcarddetail.activities.UpdateCardNameActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".modules.dashboard.cards.paymentcarddetail.statments.activities.CardStatementsActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.dashboard.more.bankdetails.activities.BankDetailActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.others.fragmentpresenter.activities.FragmentPresenterActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
+
+        <activity
+            android:name="co.yap.modules.dashboard.home.filters.activities.TransactionFiltersActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".modules.dashboard.transaction.activities.TransactionDetailsActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="co.yap.modules.others.note.activities.TransactionNoteActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".modules.dashboard.yapit.topup.landing.TopUpLandingActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.dashboard.yapit.topup.cardslisting.TopUpBeneficiariesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".modules.dashboard.yapit.topup.topupamount.activities.TopUpCardActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+
+        <activity
+            android:name=".modules.dashboard.cards.paymentcarddetail.forgotcardpin.activities.ForgotCardPinActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="co.yap.modules.dashboard.yapit.topup.carddetail.TopupCardDetailActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="co.yap.modules.dashboard.yapit.topup.addtopupcard.activities.AddTopUpCardActivityV2"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.dashboard.cards.analytics.main.activities.CardAnalyticsActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.dashboard.store.household.activities.HouseHoldLandingActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".modules.dashboard.store.household.activities.SubscriptionSelectionActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.dashboard.store.household.onboarding.HouseHoldOnboardingActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize">
+            <nav-graph android:value="@navigation/house_hold_onboarding_navigation" />
+        </activity>
+
+        <activity
+            android:name=".modules.dashboard.cards.reordercard.activities.ReorderCardActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".modules.dashboard.more.notification.activities.NotificationsActivity"
+            android:screenOrientation="portrait" />
+
+    </application>
+</manifest>

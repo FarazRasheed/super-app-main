@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.sendmoney.addbeneficiary.viewmodels.BankParamsItemViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/swipeContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/txtTitle"
+            style="@style/Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@{viewModel.bankParams.isMandatory().equals(`Y`) ? viewModel.bankParams.name + ` *` : viewModel.bankParams.name}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/screen_bank_details_display_text_bank_name" />
+
+        <EditText
+            android:id="@+id/etBankName"
+            style="@style/Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/greyLight"
+            android:hint="@{viewModel.bankParams.name}"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:maxLength="@{Integer.valueOf(viewModel.bankParams.maxCharacters)}"
+            android:singleLine="true"
+            android:text="@={viewModel.bankParams.data}"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

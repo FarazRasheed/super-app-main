@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.forgotpasscode.viewmodels.ForgotPasscodeSuccessViewModel" />
+
+        <import type="co.yap.yapcore.managers.SessionManager" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivBubbles"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_165sdp"
+            android:layout_marginTop="-5dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bg_bubbles" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
+            style="@style/ALarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:gravity="center"
+            android:lineSpacingExtra="9sp"
+            android:text="@{viewModel.state.title}"
+            app:layout_constraintTop_toBottomOf="@+id/ivBubbles"
+            tools:text="@string/screen_passcode_success_display_text_heading_for_yap_core" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSubTitle"
+            style="@style/ASmallGrey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:gravity="center"
+            android:text="@{viewModel.state.subTitle}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="@string/screen_passcode_success_display_text_sub_heading" />
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnCreatePin"
+            style="@style/RectangleBtnStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_xxl"
+            android:layout_marginRight="@dimen/margin_xxl"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:onClick="@{(v)-> viewModel.handlePressOnGoToDashboardButton(v.id)}"
+            android:text="@{viewModel.state.buttonTitle}"
+            android:textColor="?attr/colorPrimaryAttr"
+            app:btn_enable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintVertical_bias="0.75"
+            tools:text="@string/screen_passcode_success_button_sign_in" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

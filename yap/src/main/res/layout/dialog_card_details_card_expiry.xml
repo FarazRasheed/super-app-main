@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.yapcore.helpers.extentions.StringExtensionsKt" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.cards.paymentcarddetail.activities.carddetaildialog.CardDetailsDialogItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivCard"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_150sdp"
+            android:background="@drawable/card_spare"
+            android:contentDescription="@string/empty_string"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCardType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivCard"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:text="@{viewModel.cardDetailsModel.cardType}"
+            android:textColor="@color/greyDark"
+            android:textSize="@dimen/text_size_h2"
+            app:fontFamily="@font/roboto_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivCard"
+            tools:text="Spare Card" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCardName"
+            style="@style/Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_three_dp"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:gravity="center"
+            android:text="@{StringExtensionsKt.toCamelCase(viewModel.cardDetailsModel.displayName)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCardType"
+            tools:text="Spare Card" />
+
+
+        <RelativeLayout
+            android:id="@+id/rlCardNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvCardType"
+            android:layout_marginTop="@dimen/margin_medium_large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCardName">
+
+            <LinearLayout
+                android:id="@+id/rlCardValidity"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvCardValidity"
+                    style="@style/Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Valid until"
+                    android:textColor="@color/greyDark"
+                    android:textSize="@dimen/text_size_h2"
+                    app:fontFamily="@font/roboto_regular" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvCardValidityValue"
+                    style="@style/Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.cardDetailsModel.cardExpiry}"
+                    tools:text="06/2020" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rlCvv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/_64sdp"
+                android:layout_toEndOf="@+id/rlCardValidity">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvCvv"
+                    style="@style/Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="CVV "
+                    android:textColor="@color/greyDark"
+                    android:textSize="@dimen/text_size_h2"
+                    app:fontFamily="@font/roboto_regular" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvCvvValue"
+                    style="@style/Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.cardDetailsModel.cardCvv}"
+                    tools:text="123" />
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

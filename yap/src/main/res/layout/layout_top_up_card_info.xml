@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="cardName"
+            type="String" />
+
+        <variable
+            name="cardNumber"
+            type="String" />
+
+        <variable
+            name="cardExpiry"
+            type="String" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.yapit.topup.topupamount.viewModels.TopUpCardFundsViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <co.yap.widgets.CorePaymentCard
+            android:id="@+id/ivCustomCard"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_70sdp"
+            app:cardBackgroundColor="@{viewModel.state.cardInfo.color}"
+            app:cardExpiry="@{viewModel.state.cardInfo.expiry}"
+            app:cardNickname="@{viewModel.state.cardInfo.alias}"
+            app:cardNumber="@{viewModel.state.cardInfo.number}"
+            app:cardType="@{viewModel.state.cardInfo.logo}"
+            app:card_size_type="small"
+            app:card_type="@drawable/ic_visa_card"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clRightData"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/margin_extra_large"
+            android:layout_marginTop="@dimen/margin_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/ivCustomCard"
+            app:layout_constraintTop_toTopOf="@+id/ivCustomCard">
+
+            <TextView
+                android:id="@+id/tvCardName"
+                style="@style/Micro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.state.cardInfo.alias}"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvCardNumber"
+                style="@style/AMicroGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_extra_small"
+                android:text="@{`*`+viewModel.state.cardInfo.number}"
+                app:layout_constraintStart_toStartOf="@+id/tvCardName"
+                app:layout_constraintTop_toBottomOf="@+id/tvCardName"
+                tools:text="4040 3318 **** 3456" />
+
+
+            <ImageView
+                android:id="@+id/ivSecure"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:contentDescription="@string/empty_string"
+                android:src="@drawable/ic_secured_by_yap"
+                app:layout_constraintBottom_toBottomOf="@+id/tvSecuredByYap"
+                app:layout_constraintStart_toStartOf="@+id/tvCardNumber"
+                app:layout_constraintTop_toTopOf="@+id/tvSecuredByYap" />
+
+            <TextView
+                android:id="@+id/tvSecuredByYap"
+                style="@style/AMicroGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginBottom="@dimen/margin_small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/ivSecure"
+                app:layout_constraintTop_toBottomOf="@+id/tvCardNumber"
+                app:text="@{Strings.screen_payment_card_detail_text_secure}"
+                tools:text="@string/screen_payment_card_detail_text_secure" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

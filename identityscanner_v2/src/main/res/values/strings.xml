@@ -1,0 +1,92 @@
+<resources>
+
+    <string name="cameraview_filter_none">com.digitify.identityscanner.camera.filter.NoFilter</string>
+    <string name="cameraview_filter_autofix">com.digitify.identityscanner.camera.filters.AutoFixFilter</string>
+    <string name="cameraview_filter_black_and_white">com.digitify.identityscanner.camera.filters.BlackAndWhiteFilter</string>
+    <string name="cameraview_filter_brightness">com.digitify.identityscanner.camera.filters.BrightnessFilter</string>
+    <string name="cameraview_filter_contrast">com.digitify.identityscanner.camera.filters.ContrastFilter</string>
+    <string name="cameraview_filter_cross_process">com.digitify.identityscanner.camera.filters.CrossProcessFilter</string>
+    <string name="cameraview_filter_documentary">com.digitify.identityscanner.camera.filters.DocumentaryFilter</string>
+    <string name="cameraview_filter_duotone">com.digitify.identityscanner.camera.filters.DuotoneFilter</string>
+    <string name="cameraview_filter_fill_light">com.digitify.identityscanner.camera.filters.FillLightFilter</string>
+    <string name="cameraview_filter_gamma">com.digitify.identityscanner.camera.filters.GammaFilter</string>
+    <string name="cameraview_filter_grain">com.digitify.identityscanner.camera.filters.GrainFilter</string>
+    <string name="cameraview_filter_grayscale">com.digitify.identityscanner.camera.filters.GrayscaleFilter</string>
+    <string name="cameraview_filter_hue">com.digitify.identityscanner.camera.filters.HueFilter</string>
+    <string name="cameraview_filter_invert_colors">com.digitify.identityscanner.camera.filters.InvertColorsFilter</string>
+    <string name="cameraview_filter_lomoish">com.digitify.identityscanner.camera.filters.LomoishFilter</string>
+    <string name="cameraview_filter_posterize">com.digitify.identityscanner.camera.filters.PosterizeFilter</string>
+    <string name="cameraview_filter_saturation">com.digitify.identityscanner.camera.filters.SaturationFilter</string>
+    <string name="cameraview_filter_sepia">com.digitify.identityscanner.camera.filters.SepiaFilter</string>
+    <string name="cameraview_filter_sharpness">com.digitify.identityscanner.camera.filters.SharpnessFilter</string>
+    <string name="cameraview_filter_temperature">com.digitify.identityscanner.camera.filters.TemperatureFilter</string>
+    <string name="cameraview_filter_tint">com.digitify.identityscanner.camera.filters.TintFilter</string>
+    <string name="cameraview_filter_vignette">com.digitify.identityscanner.camera.filters.VignetteFilter</string>
+
+    <string name="cameraview_default_autofocus_marker">com.digitify.identityscanner.camera.markers.DefaultAutoFocusMarker</string>
+
+
+    <string name="app_name">IdentityScanner</string>
+    <string name="activity_scan_title">Scan Identity</string>
+    <string name="activity_validate_title">Recognise</string>
+    <string name="scan_front">Scan Front Side</string>
+    <string name="scan_back">Scan Back Side</string>
+    <string name="scan">Scan</string>
+    <string name="error_detecting_document">Could not detect document. Please focus and try again.</string>
+    <string name="error_saving_file">There is an error saving the image. Please try again</string>
+    <string name="error_saving_cropped_file">There is an error in saving cropped image. Please try again</string>
+    <string name="capture_process_complete">Capturing Complete</string>
+    <string name="scan_info">Place your document within the frame and align its edges. It will be captured automatically. You can capture manually as well by pressing Camera button below.</string>
+    <string name="glare_detected">A glare is detected on your document. Please retry after placing card at another place.</string>
+    <string name="validation_clear_face">Clear Face</string>
+    <string name="validation_voice">Voice Check</string>
+    <string name="validation_checking">Checking</string>
+    <string name="validation_blink_eyes">Blink Eyes</string>
+    <string name="validation_flash_press_recording_btn">Press Recording Button to start</string>
+    <string name="validation_flash_clear_face">Clear your face. Remove eye glasses.</string>
+    <string name="validation_flash_speak_aloud">Speak Aloud</string>
+    <string name="validation_flash_recording_video">Recording 5 seconds video</string>
+    <string name="validation_flash_recording_complete">Recording complete</string>
+    <string name="ok">OK</string>
+    <string name="nok">NOK</string>
+    <string name="done">Next</string>
+    <string name="cancel">Cancel</string>
+    <string name="retake">Rescan</string>
+    <string name="scan_front_eid">Scan Front Side of Emirates ID</string>
+    <string name="scan_back_eid">Scan Back Side of Emirates ID</string>
+    <string name="scan_passport">Scan Passport</string>
+    <string name="review_doc_title">Review</string>
+    <string name="review_scan_results_title">Review Information</string>
+    <string name="invalid_file">Could not open file. File does not exist.</string>
+    <string name="review_ok">Review your scanned document. Please make sure document is in up right direction.</string>
+    <string name="review_face_nok">Face is not clearly visible in your scanned document. Please try retaking the picture.</string>
+    <string name="review_mrz_nok">MRZ is not clearly visible in your scanned document. Please try retaking the picture.</string>
+    <string name="first_name">First Name</string>
+    <string name="sir_name">Sir Name</string>
+    <string name="gender">Gender</string>
+    <string name="nationality">Nationality</string>
+    <string name="issuing_country">Issuing Country</string>
+    <string name="doc_number">Document Number</string>
+    <string name="citizen_number">Citizen Number</string>
+    <string name="document_type_title">Document Type</string>
+    <string name="exp_date">Expiry date</string>
+    <string name="dob">Date of birth</string>
+    <string name="result_personal_title">Personal Info</string>
+    <string name="result_document_title">Document Info</string>
+
+    <string name="title_selfie_video">Identity Validator</string>
+
+    <string name="action_retake">Rescan</string>
+    <string name="action_done">Next</string>
+    <string name="all_permission_msg">All permission needed to proceed.</string>
+
+
+    <string name="message_gallery_permission_denied">External Storage permissions is needed to select Image. Please turn on requested permissions from Settings > Permissions.</string>
+    <string name="message_camera_permission_denied">Camera and External Storage permissions are needed to capture image. Turning off any permission won\'t allow application run smoothly. Please turn on all requested permissions from Settings > Permissions.</string>
+    <string name="permission_gallery_denied">
+        <![CDATA[Storage permissions are needed to Pick Gallery Image. Please turn on requested permissions from Settings > Permissions.]]></string>
+    <string name="permission_camera_denied">
+        <![CDATA[Camera and Storage permissions are needed to capture image. Please all both requested permissions from Settings > Permissions.]]></string>
+
+
+</resources>

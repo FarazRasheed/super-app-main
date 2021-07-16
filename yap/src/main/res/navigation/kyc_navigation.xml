@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/kyc_navigation"
+    app:startDestination="@id/KYCHomeFragment">
+
+    <fragment
+        android:id="@+id/KYCHomeFragment"
+        android:name="co.yap.modules.kyc.fragments.KYCHomeFragment"
+        android:label="KYCHomeFragment"
+        tools:layout="@layout/fragment_kyc_home">
+        <action
+            android:id="@+id/action_KYCHomeFragment_to_eidInfoReviewFragment"
+            app:destination="@id/eidInfoReviewFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/informationErrorFragment"
+        android:name="co.yap.modules.kyc.fragments.InformationErrorFragment"
+        android:label="InformationErrorFragment"
+        tools:layout="@layout/fragment_information_error">
+
+        <argument
+            android:name="errorTitle"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="errorBody"
+            android:defaultValue=" "
+            app:argType="string" />
+    </fragment>
+
+
+    <argument
+        android:name="name"
+        android:defaultValue=" "
+        app:argType="string" />
+
+    <fragment
+        android:id="@+id/eidInfoReviewFragment"
+        android:name="co.yap.modules.kyc.fragments.EidInfoReviewFragment"
+        android:label="EidInfoReviewFragment"
+        tools:layout="@layout/activity_eid_info_review">
+        <action
+            android:id="@+id/action_eidInfoReviewFragment_to_informationErrorFragment"
+            app:destination="@id/informationErrorFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/MeetingConfirmationFragment"
+        android:name="co.yap.modules.onboarding.fragments.MeetingConfirmationFragment"
+        android:label="AddressSelectionFragment"
+        tools:layout="@layout/fragment_meeting_confirmation" />
+
+    <fragment
+        android:id="@+id/successFragment"
+        android:name="co.yap.modules.dashboard.more.profile.fragments.SuccessFragment"
+        android:label="SuccessFragment"
+        tools:layout="@layout/fragment_success">
+        <argument
+            android:name="staticString"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="destinationValue"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="successType"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="placesPhotoId"
+            android:defaultValue=" "
+            app:argType="string" />
+    </fragment>
+</navigation>

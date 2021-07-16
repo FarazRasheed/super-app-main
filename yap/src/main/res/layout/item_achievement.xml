@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.more.yapforyou.itemviewmodels.AchievementTaskItemViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/small">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/ASmall"
+            android:layout_marginStart="@dimen/small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@{viewModel.task.completion? @drawable/empty_circle : @drawable/empty_circle}"
+            android:text="@{viewModel.task.title}"
+            android:drawablePadding="@dimen/margin_medium"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:drawableStart="@drawable/ic_checked_icon"
+            android:textColor="?attr/colorPrimaryAttr"
+            tools:text="Send money to someone outside YAP" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.store.household.onboarding.viewmodels.HouseHoldConfirmPaymentViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_medium"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivHouse"
+            android:layout_width="@dimen/_55sdp"
+            android:layout_height="@dimen/_55sdp"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:contentDescription="@string/empty_string"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_house_hold" />
+
+        <TextView
+            android:id="@+id/tvHeading"
+            style="@style/ASmallGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivHouse"
+            app:text="@{Strings.screen_yap_house_hold_confirm_payment_display_text_title}"
+            tools:text="@string/screen_yap_house_hold_confirm_payment_display_text_title" />
+
+        <LinearLayout
+            android:id="@+id/llUserInfoContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHeading">
+
+            <TextView
+                style="@style/ALarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:maxLines="2"
+                android:padding="@dimen/small"
+                android:text="@{viewModel.parentViewModel.username}"
+                tools:text="Faheem Riaz" />
+
+            <TextView
+                style="@style/ALarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{viewModel.parentViewModel.countryCode+` `+viewModel.parentViewModel.userMobileNo}"
+                tools:text="971 55 5555 5555" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/vDivider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:background="@color/divider"
+            app:layout_constraintTop_toBottomOf="@id/llUserInfoContainer" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clPlanContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vDivider">
+
+            <TextView
+                android:id="@+id/tvHeadingPlan"
+                style="@style/ASmallGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:text="@{Strings.screen_yap_house_hold_confirm_payment_display_text_heading}"
+                tools:text="@string/screen_yap_house_hold_confirm_payment_display_text_heading" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCardPlan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small"
+                android:background="@drawable/round_light_gery_background"
+                android:gravity="center"
+                android:text="@{viewModel.state.selectedCardPlan}"
+                android:textColor="?attr/colorPrimaryAttr"
+                android:textSize="@dimen/_9sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvHeadingPlan"
+                tools:text="Yearly | AED 720" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvChangePlan"
+                style="@style/Micro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                android:padding="@dimen/small"
+                android:textColor="?attr/colorPrimaryAttr"
+                app:layout_constraintBottom_toBottomOf="@id/tvCardPlan"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvCardPlan"
+                app:text="@{Strings.screen_yap_house_hold_confirm_payment_display_text_change_plan}"
+                tools:text="@string/screen_yap_house_hold_confirm_payment_display_text_change_plan" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPlanSaving"
+                style="@style/MicroGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/small"
+                android:fontFamily="@font/roboto_medium_italic"
+                android:gravity="center"
+                android:text="@{viewModel.state.selectedPlanSaving}"
+                android:visibility="@{viewModel.state.selectedPlanSaving.equals(``)?View.INVISIBLE :View.VISIBLE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCardPlan"
+                tools:text="Your saving 25%!" />
+
+            <View
+                android:id="@+id/vDivider2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginTop="@dimen/small"
+                android:background="@color/divider"
+                app:layout_constraintTop_toBottomOf="@id/tvPlanSaving" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/confirmButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clPlanContainer"
+            app:layout_constraintVertical_bias="0.068">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAccDeduct"
+                style="@style/ASmallGrey"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small"
+                android:gravity="center"
+                app:layout_constraintBottom_toTopOf="@id/tvPlanAmount"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:text="@{Strings.screen_yap_house_hold_confirm_payment_display_text_account_deducted}"
+                tools:text="@string/screen_yap_house_hold_confirm_payment_display_text_account_deducted" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPlanAmount"
+                style="@style/ALarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="@{viewModel.state.selectedPlanFee}"
+                app:layout_constraintBottom_toTopOf="@id/tvAvailableBalance"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAccDeduct"
+                tools:text="AED 720.00" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAvailableBalance"
+                style="@style/ASmallGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="@{viewModel.state.availableBalance}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPlanAmount"
+                app:layout_constraintVertical_bias="0.181"
+                tools:text="Your available balance is AED XXX " />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/confirmButton"
+            style="@style/FragmentsBtnStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_btn_side_paddings_xl"
+            android:layout_marginRight="@dimen/margin_btn_side_paddings_xl"
+            android:layout_marginBottom="@dimen/margin_medium_large"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+            app:btn_enable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:text="@{Strings.screen_yap_house_hold_display_button_confirm}"
+            tools:text="@string/screen_yap_house_hold_display_button_confirm" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

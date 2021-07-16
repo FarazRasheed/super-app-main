@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.more.home.viewmodels.MoreHomeViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgSettings"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/margin_normal_large"
+            android:contentDescription="@string/empty_string"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+            android:tint="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_settings" />
+
+        <co.yap.widgets.CoreCircularImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="@dimen/_64sdp"
+            android:layout_height="@dimen/_64sdp"
+            android:layout_marginTop="@dimen/_24sdp"
+            android:contentDescription="@string/empty_string"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+            android:visibility="@{viewModel.state.image.empty ? View.INVISIBLE:View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:src="@{viewModel.state.image}" />
+
+        <TextView
+            android:id="@+id/tvNameInitials"
+            style="@style/ALarge"
+            android:layout_width="@dimen/_64sdp"
+            android:layout_height="@dimen/_64sdp"
+            android:background="@drawable/tag_background"
+            android:gravity="center"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+            android:text="@{viewModel.state.initials}"
+            android:textColor="?attr/colorPrimaryAttr"
+            android:textSize="@dimen/_24sdp"
+            android:visibility="@{viewModel.state.image.empty ? View.VISIBLE:View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/imgProfile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgProfile"
+            tools:text="NM" />
+
+
+        <TextView
+            android:id="@+id/tvName"
+            style="@style/Title3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:ellipsize="end"
+            android:lines="1"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+            android:paddingStart="@dimen/margin_medium"
+            android:paddingEnd="@dimen/margin_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgProfile"
+            tools:text="Logan Pearson Pearson PearsonPearsonPearsonPearsonPearsonPearson" />
+
+        <TextView
+            android:id="@+id/tvIban"
+            style="@style/MicroGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvName"
+            tools:text="IBAN AE357599475775847" />
+
+        <TextView
+            android:id="@+id/tvBic"
+            style="@style/MicroGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvIban"
+            tools:text="BIC NTSBDHF2373" />
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnBankDetails"
+            style="@style/RectangleBtnSmallStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_22sdp"
+            android:layout_marginStart="@dimen/_86sdp"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/_86sdp"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            app:btn_enable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvBic"
+            app:text="@{Strings.screen_more_display_text_bank_details}"
+            tools:text="@string/screen_more_display_text_bank_details" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/yapForYou"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal_large"
+            android:layout_marginTop="@dimen/_19sdp"
+            android:layout_marginEnd="@dimen/margin_normal_large"
+            android:elevation="@dimen/_5sdp"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+            android:outlineSpotShadowColor="@color/greyDark"
+            app:cardCornerRadius="@dimen/_8sdp"
+            app:cardElevation="@dimen/_5sdp"
+            app:cardUseCompatPadding="false"
+            app:layout_constraintTop_toBottomOf="@+id/btnBankDetails">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_90sdp"
+                android:background="@drawable/cornor_edges_grey_less_radius"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/_12sdp"
+                android:paddingTop="@dimen/_20sdp"
+                android:paddingEnd="@dimen/_8sdp"
+                android:paddingBottom="@dimen/_20sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:layout_marginRight="@dimen/margin_small"
+                    android:src="@drawable/ic_yap_for_you" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        style="@style/Title3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/screen_yap_for_you_display_text_title"
+                        android:textSize="@dimen/_15sdp"
+                        app:text="@{Strings.screen_yap_for_you_display_text_title}" />
+
+                    <TextView
+                        style="@style/MicroGrey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                        android:text="@string/screen_yap_for_you_display_text_sub_title"
+                        app:text="@{Strings.screen_yap_for_you_display_text_sub_title}" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerOptions"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:dividerHeight="2dp"
+            android:visibility="visible"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/yapForYou"
+            app:spanCount="2"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_yap_more" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

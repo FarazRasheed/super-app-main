@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="horizontal"
+    android:padding="@dimen/_6sdp">
+
+    <TextView
+        android:id="@+id/tvBenefit"
+        style="@style/ASmall"
+        android:textSize="@dimen/_12sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_checked_icon"
+        android:drawablePadding="@dimen/margin_medium"
+        android:gravity="center_vertical"
+        android:text="Choose a virtual or physical card"
+        android:textColor="?attr/colorPrimaryAttr" />
+
+</LinearLayout>

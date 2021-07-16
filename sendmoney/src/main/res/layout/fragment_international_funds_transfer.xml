@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.yapcore.helpers.StringUtils" />
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.sendmoney.fundtransfer.viewmodels.InternationalFundsTransferViewModel" />
+    </data>
+
+    <ScrollView
+        android:id="@+id/svContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:id="@+id/clFTSnackbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:layout_constraintTop_toTopOf="@+id/ly_internationalTransfer" />
+
+            <LinearLayout
+                android:id="@+id/ly_internationalTransfer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/_18sdp"
+                android:paddingRight="@dimen/_18sdp">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp"
+                    android:background="@color/white"
+                    android:gravity="center|center_vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/rlPicture"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center|center_vertical"
+                        android:background="@color/white"
+                        android:gravity="center|center_vertical">
+
+                        <co.yap.widgets.CoreCircularImageView
+                            android:id="@+id/ivProfilePic"
+                            android:layout_width="@dimen/_65sdp"
+                            android:layout_height="@dimen/_65sdp"
+                            android:contentDescription="@string/app_name"
+                            app:colorType="@{`Beneficiary`}"
+                            app:fullName="@{viewModel.parentViewModel.beneficiary.fullName()}"
+                            app:imageUrl="@{viewModel.parentViewModel.beneficiary.beneficiaryPictureUrl}"
+                            app:position="@{viewModel.parentViewModel.transferData.position}"
+                            tools:src="@drawable/flag_ae" />
+
+                        <!--
+                           toggle visibility on the basis of transfer type
+                             -->
+
+                        <RelativeLayout
+                            android:id="@+id/rlAddNewProfilePic"
+                            android:layout_width="47dp"
+                            android:layout_height="49dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginLeft="-11dp"
+                            android:layout_marginTop="-10dp"
+                            android:visibility="visible">
+
+                            <FrameLayout
+                                android:layout_width="@dimen/_29sdp"
+                                android:layout_height="@dimen/_29sdp"
+                                android:layout_gravity="center"
+                                android:layout_margin="@dimen/_2sdp"
+                                android:background="@drawable/bg_round_red"
+                                android:backgroundTint="@color/white">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/ivAddProfilePic"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="@dimen/_2sdp"
+                                    android:layout_marginTop="@dimen/_2sdp"
+                                    android:layout_marginEnd="@dimen/_2sdp"
+                                    android:layout_marginBottom="@dimen/_2sdp"
+                                    android:background="@drawable/bitmap"
+                                    app:setFlagDrawable="@{viewModel.parentViewModel.beneficiary.country}" />
+
+                            </FrameLayout>
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@{viewModel.parentViewModel.beneficiary.fullName()}"
+                    android:textSize="@dimen/_18sdp"
+                    tools:text="Jonathan Newport" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/etSenderCurrency"
+                    style="@style/SmallGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginBottom="@dimen/margin_extra_small"
+                    android:gravity="center"
+                    android:text="@{viewModel.state.destinationCurrency}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSuccessHeading"
+                    tools:text="CAD" />
+
+                <!-- ALERT:  DO NOT APPLY DATA BINDING FOR THIS FIELD-->
+
+                <co.yap.widgets.EasyMoneyEditText
+                    android:id="@+id/etSenderAmount"
+                    style="@style/ATitle2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:em_currency="@{viewModel.state.destinationCurrency}"
+                    android:layout_margin="0dp"
+                    tools:text="1234567891" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="="
+                    android:textSize="@dimen/_30sdp"
+                    android:visibility="@{viewModel.parentViewModel.sameCurrency ? View.GONE : View.VISIBLE}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/etBeneficiaryCurrency"
+                    style="@style/SmallGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@{viewModel.state.sourceCurrency}"
+                    android:visibility="@{viewModel.parentViewModel.sameCurrency ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSuccessHeading"
+                    tools:text="AED" />
+
+                <co.yap.widgets.EasyMoneyEditText
+                    android:id="@+id/etReceiver"
+                    style="@style/ATitle2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/margin_extra_small"
+                    android:focusable="false"
+                    app:em_currency="@{viewModel.state.sourceCurrency}"
+                    android:focusableInTouchMode="false"
+                    android:text="@{viewModel.state.etOutputAmount}"
+                    android:visibility="@{viewModel.parentViewModel.sameCurrency ? View.GONE : View.VISIBLE}"
+
+                    tools:text="1234567891" />
+
+                <LinearLayout
+                    android:id="@+id/ly_YapRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="@{viewModel.parentViewModel.sameCurrency ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_2sdp"
+                        android:layout_marginRight="@dimen/_2sdp"
+                        android:src="@drawable/ic_transaction_rate_arrow" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/MicroGrey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_2sdp"
+                        android:layout_marginRight="@dimen/_2sdp"
+                        android:text="YAP rate :"
+                        tools:text="Yap rate :" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDefaultCurrencyRate"
+                        style="@style/MicroGrey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_2sdp"
+                        android:layout_marginRight="@dimen/_2sdp"
+                        android:text="@{viewModel.state.toFxRate}"
+                        android:textColor="?attr/colorPrimaryDarkAttr"
+                        tools:text="X AED" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/MicroGrey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_2sdp"
+                        android:layout_marginRight="@dimen/_2sdp"
+                        android:text="to"
+                        tools:text="to" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDynamicCurrencyRete"
+                        style="@style/MicroGrey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_2sdp"
+                        android:layout_marginRight="@dimen/_2sdp"
+                        android:text="@{viewModel.state.fromFxRate}"
+                        android:textColor="?attr/colorPrimaryDarkAttr"
+                        tools:text="X CAD" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvAvailableBalance"
+                    style="@style/MicroGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium_large"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium_large"
+                    android:gravity="center"
+                    android:text="@{viewModel.state.availableBalanceString}"
+                    android:textAlignment="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvFee"
+                    tools:text="Your available balance is " />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/SmallGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:layout_marginEnd="@dimen/margin_extra_small"
+                    android:gravity="center"
+                    android:text="@{viewModel.state.transferFeeSpannable}"
+                    android:textSize="@dimen/text_size_c3"
+                    android:visibility="@{viewModel.parentViewModel.sameCurrency ? View.VISIBLE : View.GONE}"
+                    tools:text="@string/screen_international_funds_transfer_display_text_fee" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/SmallGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_c3"
+                    android:visibility="@{viewModel.parentViewModel.sameCurrency ? View.VISIBLE : View.GONE}"
+                    app:text="@{Strings.screen_international_funds_transfer_display_text_note}"
+                    tools:text="@string/screen_international_funds_transfer_display_text_note" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvReasonLbl"
+                    style="@style/Small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium_large"
+                    android:gravity="start"
+                    android:text="@string/screen_add_beneficiary_display_text_transfer_type"
+                    android:textSize="@dimen/_12sdp"
+                    app:text="@{Strings.screen_international_funds_transfer_display_text_reson}"
+                    tools:text="@string/screen_international_funds_transfer_display_text_reson" />
+
+                <RelativeLayout
+                    android:id="@+id/layoutReasonsSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    app:layout_constraintTop_toBottomOf="@+id/etNote"
+                    tools:ignore="NotSibling">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvSelectReason"
+                        style="@style/Regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_toStartOf="@+id/ivSelector"
+                        android:alpha=".5"
+                        android:onClick="@{(v)->viewModel.handlePressOnButton(v.id)}"
+                        app:text="@{Strings.screen_international_funds_transfer_dropdown_text_reason_hint}"
+                        tools:text="@string/screen_international_funds_transfer_dropdown_text_reason_hint" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivSelector"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:onClick="@{(v)->viewModel.handlePressOnButton(v.id)}"
+                        android:src="@drawable/ic_chevron_down"
+                        android:tint="@color/greyDark" />
+
+                    <View
+                        android:id="@+id/breakLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/ivSelector"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:background="@color/colorDisabledBtn"
+                        tools:ignore="MissingConstraints" />
+
+                </RelativeLayout>
+
+                <co.yap.widgets.AlphaNumericEditText
+                    android:id="@+id/etNote"
+                    style="@style/ALarge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:background="@drawable/bg_edit_text_disable_grey_under_line"
+                    android:gravity="top"
+                    android:inputType="text"
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 "
+                    android:maxLength="@integer/notes_external_transfer_length"
+                    android:minHeight="@dimen/_40sdp"
+                    android:singleLine="true"
+                    android:text="@={viewModel.state.transactionNote}"
+                    android:textColorHint="@color/greyDark"
+                    app:hint="@{Strings.screen_international_funds_transfer_input_text_note_hint}"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/SmallGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_c1"
+                    android:text="@{viewModel.state.transferFeeSpannable}"
+                    android:visibility="@{viewModel.parentViewModel.sameCurrency ? View.GONE : View.VISIBLE}"
+                    tools:text="@string/screen_international_funds_transfer_display_text_fee" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/SmallGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_c1"
+                    android:visibility="@{viewModel.parentViewModel.sameCurrency ? View.GONE : View.VISIBLE}"
+                    app:text="@{Strings.screen_international_funds_transfer_display_text_note}"
+                    tools:text="@string/screen_international_funds_transfer_display_text_note" />
+
+                <co.yap.widgets.CoreButton
+                    android:id="@+id/btnNext"
+                    style="@style/FragmentsBtnStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_xxl"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:layout_marginRight="@dimen/margin_xxl"
+                    android:layout_marginBottom="@dimen/margin_medium_large"
+                    android:onClick="@{(v)->viewModel.handlePressOnButton(v.id)}"
+                    app:enableCoreButton="@{viewModel.state.valid}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:text="@{Strings.screen_yap_to_yap_transfer_display_text_button}"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="44dp" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>

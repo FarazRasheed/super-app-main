@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/location_navigation"
+    app:startDestination="@id/locationSelectionFragment">
+    <fragment
+        android:id="@+id/locationSelectionFragment"
+        android:name="co.yap.modules.location.fragments.LocationSelectionFragment"
+        android:label="LocationSelectionFragment"
+        tools:layout="@layout/location_selection_fragment">
+        <action
+            android:id="@+id/action_locationSelectionFragment_to_POBSelectionFragment"
+            app:destination="@id/POBSelectionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/POBSelectionFragment"
+        android:name="co.yap.modules.location.fragments.POBSelectionFragment"
+        android:label="POBSelectionFragment"
+        tools:layout="@layout/fragment_place_of_birth_selection">
+        <action
+            android:id="@+id/action_POBSelectionFragment_to_taxInfoFragment"
+            app:destination="@id/taxInfoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/taxInfoFragment"
+        android:name="co.yap.modules.location.tax.TaxInfoFragment"
+        android:label="TaxInfoFragment"
+        tools:layout="@layout/fragment_tax_info" />
+</navigation>

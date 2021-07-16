@@ -1,0 +1,15 @@
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    project.testDependencies.each {
+        add(it.configuration, it.dependency)
+    }
+
+    project.commonDependencies.each {
+        add(it.configuration, it.dependency)
+    }
+
+    project.yapAndroidDependencies.each {
+        add(it.configuration, it.dependency)
+    }
+}

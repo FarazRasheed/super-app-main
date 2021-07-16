@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@android:id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="@string/error_view_text"
+        android:textColor="@color/textDarkColor"
+        android:textSize="@dimen/text_size_h2" />
+
+    <co.yap.widgets.CoreButton
+        android:id="@+id/btnRetry"
+        style="@style/RectangleBtnStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/common_display_text_retry"
+        android:textSize="@dimen/text_size_h4" />
+</LinearLayout>

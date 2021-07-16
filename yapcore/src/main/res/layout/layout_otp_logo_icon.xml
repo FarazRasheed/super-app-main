@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.otp.GenericOtpViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.yapcore.R" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/margin_medium"
+            android:paddingEnd="@dimen/margin_medium"
+            android:visibility="@{viewModel.state.otpDataModel.logoData!=null? View.VISIBLE:View.GONE}"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <co.yap.widgets.CoreCircularImageView
+                android:id="@+id/ivUserImage"
+                android:layout_width="@dimen/_62sdp"
+                android:layout_height="@dimen/_62sdp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:contentDescription="@string/empty_string"
+                android:src="@drawable/ic_education"
+                app:colorType="@{viewModel.state.otpDataModel.otpAction.equals(`Y2Y`)? `Y2Y`: `Beneficiary`}"
+                app:fullName="@{viewModel.state.otpDataModel.username}"
+                app:imageUrl="@{viewModel.state.otpDataModel.logoData.imageUrl}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:position="@{viewModel.state.otpDataModel.logoData.position}" />
+
+            <View
+                android:id="@+id/barrier"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="@+id/ivUserImage"
+                app:layout_constraintStart_toStartOf="@+id/ivUserImage"
+                app:layout_constraintTop_toTopOf="@+id/ivUserImage" />
+
+            <View
+                android:id="@+id/barrier2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivUserImage"
+                app:layout_constraintStart_toStartOf="@+id/ivUserImage"
+                app:layout_constraintTop_toTopOf="@+id/ivUserImage" />
+
+            <RelativeLayout
+                android:id="@+id/rlAddNewProfilePic"
+                android:layout_width="47dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="@dimen/margin_medium_large"
+                android:layout_marginEnd="@dimen/_35sdp"
+                android:visibility="@{viewModel.state.otpDataModel.logoData!=null &amp;&amp; viewModel.state.otpDataModel.logoData.flagVisibility? View.VISIBLE:View.GONE}"
+                app:layout_constraintBottom_toTopOf="@+id/barrier2"
+                app:layout_constraintEnd_toEndOf="@+id/barrier"
+                app:layout_constraintTop_toTopOf="@+id/ivUserImage"
+                tools:visibility="visible">
+
+                <FrameLayout
+                    android:layout_width="@dimen/_29sdp"
+                    android:layout_height="@dimen/_29sdp"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_2sdp"
+                    android:background="@drawable/bg_round_denominations"
+                    android:backgroundTint="@color/white"
+                    tools:ignore="UselessParent">
+
+                    <ImageView
+                        android:id="@+id/ivAddProfilePic"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:layout_marginEnd="@dimen/_2sdp"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:contentDescription="@string/empty_string"
+                        app:setFlagDrawable="@{viewModel.state.otpDataModel.logoData!=null ?viewModel.state.otpDataModel.logoData.beneficiaryCountry:`` }"
+                        tools:background="@drawable/bitmap" />
+
+                </FrameLayout>
+            </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

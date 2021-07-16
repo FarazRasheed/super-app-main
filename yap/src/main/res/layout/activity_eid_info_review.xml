@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.kyc.viewmodels.EidInfoReviewViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/eidInfoReviewtoolBarLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_8sdp"
+            android:visibility="@{viewModel.parentViewModel.skipFirstScreen? View.VISIBLE :View.GONE}">
+
+            <ImageView
+                android:id="@+id/tbBtnBack"
+                android:layout_width="@dimen/_28sdp"
+                android:layout_height="@dimen/_28sdp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_back" />
+
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivEditFirstName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:background="@drawable/edit_selector"
+                    android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvFirstName"
+                    app:layout_constraintLeft_toRightOf="@+id/tvFirstName"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvFirstName" />
+
+                <ImageView
+                    android:id="@+id/ivEditMiddleName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:background="@drawable/edit_selector"
+                    android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                    android:visibility="@{viewModel.state.middleName.trim().equals(``) ? View.VISIBLE : View.VISIBLE}"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvMiddleName"
+                    app:layout_constraintLeft_toRightOf="@+id/tvMiddleName"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvMiddleName" />
+
+                <ImageView
+                    android:id="@+id/ivEditLastName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:background="@drawable/edit_selector"
+                    android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                    android:visibility="@{viewModel.state.lastName.trim().equals(``) ? View.VISIBLE : View.VISIBLE}"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvLastName"
+                    app:layout_constraintLeft_toRightOf="@+id/tvLastName"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvLastName" />
+
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    style="@style/ATitle3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:text="@{Strings.screen_b2c_eid_info_review_display_text_title}"
+                    tools:text="@string/screen_b2c_eid_info_review_display_text_title" />
+
+                <TextView
+                    android:id="@+id/tvDetailsVerify"
+                    style="@style/ASmallGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_extra_small"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:gravity="center"
+                    android:text="@{viewModel.state.caption}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                    tools:text="@string/screen_b2c_eid_info_review_display_text_edit_sub_title" />
+
+                <TextView
+                    android:id="@+id/tvFirstNameHeading"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    app:layout_constraintStart_toStartOf="@+id/cvCard"
+                    app:layout_constraintTop_toBottomOf="@+id/cvCard"
+                    app:text="@{Strings.screen_b2c_eid_info_review_display_text_first_name_heading}"
+                    tools:text="@string/screen_b2c_eid_info_review_display_text_first_name_heading" />
+
+
+                <TextView
+                    android:id="@+id/tvMiddleNameHeading"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:visibility="@{viewModel.state.isShowMiddleName ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintStart_toStartOf="@+id/tvFirstName"
+                    app:layout_constraintTop_toBottomOf="@+id/tvFirstName"
+                    app:text="@{Strings.screen_b2c_eid_info_review_display_text_middle_name_heading}"
+                    tools:text="@string/screen_b2c_eid_info_review_display_text_middle_name_heading" />
+
+                <TextView
+                    android:id="@+id/tvLastNameHeading"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:visibility="@{viewModel.state.isShowLastName ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintStart_toStartOf="@+id/tvMiddleName"
+                    app:layout_constraintTop_toBottomOf="@+id/tvMiddleName"
+                    app:text="@{Strings.screen_b2c_eid_info_review_display_text_last_name_heading}"
+                    tools:text="@string/screen_b2c_eid_info_review_display_text_last_name_heading" />
+
+                <TextView
+                    android:id="@+id/tvNationalityHeading"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:layout_constraintStart_toStartOf="@+id/tvLastName"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLastName"
+                    app:text="@{Strings.screen_b2c_eid_info_review_display_text_nationality_heading}"
+                    tools:text="@string/screen_b2c_eid_info_review_display_text_nationality_heading" />
+
+
+                <TextView
+                    android:id="@+id/tvNationality"
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    android:drawableEnd="@{viewModel.state.nationalityValid ? @drawable/path : @drawable/ic_error}"
+                    android:text="@{viewModel.state.nationality}"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNationalityHeading"
+                    tools:text="Canadian" />
+
+
+                <TextView
+                    android:id="@+id/tvDOBHeading"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    app:layout_constraintStart_toStartOf="@+id/tvNationality"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNationality"
+                    app:text="@{Strings.screen_b2c_eid_info_review_display_text_dob_heading}"
+                    tools:text="@string/screen_b2c_eid_info_review_display_text_dob_heading" />
+
+                <TextView
+                    android:id="@+id/tvDOB"
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    android:drawableEnd="@{viewModel.state.dateOfBirthValid ? @drawable/path : @drawable/ic_error}"
+                    android:text="@{viewModel.state.dateOfBirth}"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDOBHeading"
+                    tools:text="01/01/1979" />
+
+                <TextView
+                    android:id="@+id/tvGenderHeading"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    app:layout_constraintStart_toStartOf="@+id/tvDOB"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDOB"
+                    app:text="@{Strings.screen_b2c_eid_info_review_display_text_gender_heading}"
+                    tools:text="@string/screen_b2c_eid_info_review_display_text_gender_heading"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/tvGender"
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    android:drawableEnd="@{viewModel.state.genderValid ? @drawable/path : @drawable/ic_error}"
+                    android:text="@{viewModel.state.gender}"
+                    app:layout_constraintTop_toBottomOf="@+id/tvGenderHeading"
+                    tools:text="Female" />
+
+                <TextView
+                    android:id="@+id/tvExpiryDateHeading"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    app:layout_constraintStart_toStartOf="@+id/tvGender"
+                    app:layout_constraintTop_toBottomOf="@+id/tvGender"
+                    app:text="@{Strings.screen_b2c_eid_info_review_display_text_expiry_date_heading}"
+                    tools:text="@string/screen_b2c_eid_info_review_display_text_expiry_date_heading" />
+
+                <TextView
+                    android:id="@+id/tvExpiryDate"
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    android:drawableEnd="@{viewModel.state.expiryDateValid ? @drawable/path : @drawable/ic_error}"
+                    android:text="@{viewModel.state.expiryDate}"
+                    app:layout_constraintTop_toBottomOf="@+id/tvExpiryDateHeading"
+                    tools:text="01/01/2019" />
+
+                <TextView
+                    android:id="@+id/tvError"
+                    style="@style/MicroGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/margin_medium_large"
+                    android:textColor="@color/error"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/tvExpiryDate"
+                    app:text="@{Strings.screen_b2c_eid_info_review_display_expired_eid_text}"
+                    tools:text="@string/screen_b2c_eid_info_review_display_expired_eid_text" />
+
+                <TextView
+                    android:id="@+id/tvNoThanks"
+                    style="@style/Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_large"
+                    android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                    android:textColor="@color/colorPrimary"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:text="@{Strings.screen_b2c_eid_info_review_button_title_rescan_eid}"
+                    tools:text="@string/screen_b2c_eid_info_review_button_title_rescan_eid" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/tvFirstName"
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/margin_medium_large"
+                    android:backgroundTint="@drawable/edit_text_bg_selector"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:lineSpacingExtra="-5dp"
+                    android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                    android:paddingTop="-5dp"
+                    android:singleLine="true"
+                    android:text="@={viewModel.state.firstName}"
+                    app:layout_constraintTop_toBottomOf="@+id/tvFirstNameHeading"
+                    tools:text="Nada Hassan" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/tvMiddleName"
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/margin_medium_large"
+                    android:backgroundTint="@drawable/edit_text_bg_selector"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:lineSpacingExtra="-5dp"
+                    android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                    android:paddingTop="-5dp"
+                    android:singleLine="true"
+                    android:text="@={viewModel.state.middleName}"
+                    android:visibility="@{viewModel.state.isShowMiddleName? View.VISIBLE : View.GONE}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvMiddleNameHeading"
+                    tools:text="Noor" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/tvLastName"
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/margin_medium_large"
+                    android:backgroundTint="@drawable/edit_text_bg_selector"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:lineSpacingExtra="-5dp"
+                    android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                    android:paddingTop="-5dp"
+                    android:singleLine="true"
+                    android:text="@={viewModel.state.lastName}"
+                    android:visibility="@{viewModel.state.isShowLastName ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLastNameHeading"
+                    tools:text="Hassan" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDetailsVerify">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/margin_medium"
+                        android:paddingTop="@dimen/margin_large"
+                        android:paddingEnd="@dimen/margin_medium"
+                        android:paddingBottom="@dimen/margin_large">
+
+                        <FrameLayout
+                            android:id="@+id/ivProfile"
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_42sdp"
+                            android:background="@drawable/bg_round_white"
+                            android:backgroundTint="@color/white"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                            <ImageView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical|center"
+                                android:src="@drawable/ic_profile"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvSpareCardTile" />
+                        </FrameLayout>
+
+                        <TextView
+                            android:id="@+id/tvEid"
+                            style="@style/ALarge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_medium_large"
+                            android:textColor="@color/white"
+                            app:layout_constraintLeft_toRightOf="@+id/ivProfile"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:text="@{Strings.screen_b2c_eid_info_review_display_text_emirates_id_heading}"
+                            tools:text="@string/screen_b2c_eid_info_review_display_text_emirates_id_heading" />
+
+                        <TextView
+                            android:id="@+id/tvHeading"
+                            style="@style/ASmallGrey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="@{viewModel.state.citizenNumber.trim().equals(``) ? View.VISIBLE : View.GONE}"
+                            app:layout_constraintStart_toStartOf="@+id/tvEid"
+                            app:layout_constraintTop_toBottomOf="@+id/tvEid"
+                            app:text="@{Strings.screen_b2c_eid_info_review_display_text_emirates_id_sub_heading}"
+                            tools:text="@string/screen_b2c_eid_info_review_display_text_emirates_id_sub_heading"
+                            tools:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/tvCitizenNumber"
+                            style="@style/Regular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/small"
+                            android:text="@{viewModel.state.citizenNumber}"
+                            android:textColor="@color/white"
+                            android:visibility="@{viewModel.state.citizenNumber.trim().equals(``) ? View.GONE : View.VISIBLE}"
+                            app:layout_constraintStart_toStartOf="@+id/tvEid"
+                            app:layout_constraintTop_toBottomOf="@+id/tvEid"
+                            tools:text="784 1969 3030703 6"
+
+                            />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <co.yap.widgets.CoreButton
+                    android:id="@+id/btnTouchId"
+                    style="@style/RectangleBtnStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_xxl"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:layout_marginRight="@dimen/margin_xxl"
+                    android:layout_marginBottom="@dimen/margin_normal"
+                    android:gravity="center"
+                    android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                    app:enableCoreButton="@{viewModel.state.valid}"
+                    app:layout_constraintBottom_toTopOf="@+id/tvNoThanks"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvError"
+                    app:layout_constraintVertical_bias="0.75"
+                    app:text="@{Strings.screen_b2c_eid_info_review_button_title_confirm}"
+                    tools:ignore="MissingConstraints"
+                    tools:text="@string/screen_b2c_eid_info_review_button_title_confirm" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

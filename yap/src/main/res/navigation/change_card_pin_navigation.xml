@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/change_card_pin_navigation"
+    app:startDestination="@id/changeCardPinFragment">
+
+    <fragment
+        android:id="@+id/changeCardPinFragment"
+        android:name="co.yap.modules.dashboard.ChangePinFragment"
+        android:label="ChangeCardPinFragment"
+        tools:layout="@layout/fragment_change_pin">
+        <action
+            android:id="@+id/action_changeCardPinFragment_to_changePinSuccessFragment"
+            app:destination="@id/changePinSuccessFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+  <fragment
+        android:id="@+id/changePinSuccessFragment"
+        android:name="co.yap.modules.dashboard.cards.paymentcarddetail.fragments.ChangePinSuccessFragment"
+        android:label="ChangePinSuccessFragment"
+        tools:layout="@layout/fragment_change_pin_success" />
+    
+    
+</navigation>

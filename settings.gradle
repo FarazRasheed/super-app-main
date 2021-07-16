@@ -1,0 +1,11 @@
+rootProject.name = "yap-main"
+include ':app'
+include ':household'
+include ':yapcore'
+include ':translation'
+include ':identityscanner_v2'
+include ':networking'
+include ':security'
+include ':sendmoney'
+include ':yap'
+include ':yapandroid'

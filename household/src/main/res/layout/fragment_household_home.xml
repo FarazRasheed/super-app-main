@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.household.dashboard.home.viewmodels.HouseholdHomeViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clHeaderContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?attr/colordisabledTick"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/layout_household_home_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:viewModel="@{viewModel}" />
+
+            <com.yarolegovich.discretescrollview.DiscreteScrollView
+                android:id="@+id/rvNotificationList"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:dsv_orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTransactionHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium_large"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/margin_medium_large"
+            android:layout_marginBottom="@dimen/margin_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clHeaderContainer">
+
+            <TextView
+                android:id="@+id/tvTransactionTitle"
+                style="@style/ASmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:text="@{Strings.screen_household_home_display_text_transactions_heading_title}"
+                tools:text="@string/screen_household_home_display_text_transactions_heading_title" />
+
+            <!--                <TextView-->
+            <!--                    android:id="@+id/tvFilterCount"-->
+            <!--                    style="@style/ASmall"-->
+            <!--                    android:layout_width="@dimen/_22sdp"-->
+            <!--                    android:layout_height="@dimen/_22sdp"-->
+            <!--                    android:layout_marginEnd="5dp"-->
+            <!--                    android:background="@drawable/bg_round_purple"-->
+            <!--                    android:gravity="center"-->
+            <!--                    android:text="@{viewModel.state.filterCount.toString()}"-->
+            <!--                    android:textColor="@color/colorPrimary"-->
+            <!--                    android:visibility="@{viewModel.state.filterCount > 0 ? View.VISIBLE:View.GONE}"-->
+            <!--                    tools:text="6" />-->
+
+            <ImageView
+                android:id="@+id/ivFilters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:contentDescription="@string/empty_string"
+                android:src="@drawable/ic_filter"
+                app:layout_constraintBottom_toBottomOf="@id/tvTransactionTitle"
+                app:layout_constraintEnd_toStartOf="@id/tvFilters"
+                app:layout_constraintTop_toTopOf="@id/tvTransactionTitle" />
+
+            <TextView
+                android:id="@+id/tvFilters"
+                style="@style/ASmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="@id/tvTransactionTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvTransactionTitle"
+                app:text="@{Strings.screen_household_home_display_text_transactions_filers_title}"
+                tools:text="@string/screen_household_home_display_text_transactions_filers_title" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@color/divider"
+            app:layout_constraintTop_toBottomOf="@id/clTransactionHeader" />
+        <co.yap.widgets.MultiStateView
+            android:layout_marginTop="@dimen/small"
+            android:id="@+id/multiStateView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider"
+            app:msv_animateViewChanges="true"
+            app:msv_emptyView="@layout/layout_home_no_transaction"
+            app:msv_loadingView="@layout/layout_loading_view">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </co.yap.widgets.MultiStateView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

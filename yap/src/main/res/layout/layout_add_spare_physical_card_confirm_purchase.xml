@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.cards.addpaymentcard.spare.viewmodels.AddSpareCardViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/margin_medium"
+        android:paddingBottom="@dimen/margin_medium">
+
+        <LinearLayout
+            android:id="@+id/llConfirmPhysicalCardPurchase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvPhysicalCardMonths"
+                style="@style/ASmallGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Card fee" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                style="@style/Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:gravity="center"
+                android:text="@{viewModel.state.physicalCardFee}"
+                android:textColor="?attr/colorPrimaryDarkAttr"
+                android:textSize="@dimen/text_size_h5" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvAvailableBalanceTitle"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/screen_add_spare_card_display_text_available_balance"
+                    app:text="@{Strings.screen_add_spare_card_display_text_available_balance}" />
+
+                <TextView
+                    android:id="@+id/tvAvailableBalance"
+                    style="@style/ASmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_4sdp"
+                    android:text="@{viewModel.state.avaialableCardBalance}"
+                    android:textColor="?attr/colorPrimaryAttr" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_normal_large"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="@{viewModel.state.physicalCardAddressButtonsVisibility}">
+
+                <TextView
+                    style="@style/MicroGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="Is this your address?" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/llAddPhysicalLocationCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_medium"
+                android:background="@drawable/card_border_container"
+                android:clickable="false"
+                android:gravity="top"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/margin_medium"
+                android:paddingTop="@dimen/margin_large"
+                android:paddingRight="@dimen/margin_small"
+                android:paddingBottom="@dimen/margin_large"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <FrameLayout
+                        android:id="@+id/flLocationPin"
+                        android:layout_width="@dimen/_42sdp"
+                        android:layout_height="@dimen/_42sdp"
+                        android:background="@drawable/bg_round_purple"
+                        android:backgroundTint="?attr/colorPrimaryAttr">
+
+
+                        <ImageView
+                            android:layout_width="@dimen/_26sdp"
+                            android:layout_height="@dimen/_26sdp"
+                            android:layout_gravity="center_vertical|center"
+                            android:src="@drawable/ic_pin_card_location"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvSpareCardTile" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llAddPhysicalCard"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_medium"
+                        android:layout_marginRight="@dimen/margin_small"
+                        android:layout_weight=".9"
+                        android:clickable="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvPhysicalCardLocationTitle"
+                            style="@style/Regular"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:singleLine="true"
+                            android:text="@{viewModel.state.physicalCardAddressTitle}"
+                            android:textSize="@dimen/text_size_h2" />
+
+                        <TextView
+                            android:id="@+id/tvPhysicalCardLocationSubTitle"
+                            style="@style/RegularGrey"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:singleLine="true"
+                            android:text="@{viewModel.state.physicalCardAddressSubTitle}"
+                            android:textSize="@dimen/text_size_h2" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/ivCheck"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_check"
+                        android:tint="?attr/colorPrimaryAttr"
+                        android:visibility="@{viewModel.state.physicalCardAddressCheckVisibility}" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llLocationButtton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/margin_medium"
+                    android:paddingEnd="@dimen/margin_small"
+                    android:visibility="@{viewModel.state.physicalCardAddressButtonsVisibility}">
+
+                    <TextView
+                        android:id="@+id/tvChangeLocation"
+                        style="@style/RegularGrey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_extra_small"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:gravity="start"
+                        android:textColor="?attr/colorPrimaryAttr"
+                        android:textSize="@dimen/text_size_c3"
+                        android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                        app:text="@{Strings.screen_add_spare_card_button_change_location}"
+                        tools:text="@string/screen_add_spare_card_button_change_location" />
+
+                    <co.yap.widgets.CoreButton
+                        android:id="@+id/btnConfirm"
+                        style="@style/confirmLocationBtnStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_22sdp"
+                        android:layout_marginTop="7dp"
+                        android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                        android:paddingLeft="0dp"
+                        android:paddingTop="0dp"
+                        android:paddingRight="0dp"
+                        android:paddingBottom="0dp"
+                        android:textColor="@color/white"
+                        app:btn_enable="false"
+                        app:btn_has_bold_text="false"
+                        app:enableCoreButton="@{viewModel.state.enableConfirmLocation}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.366"
+                        app:text="@{Strings.screen_add_spare_card_button_confirm_location}"
+                        tools:text="@string/screen_add_spare_card_button_confirm_location" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <co.yap.widgets.CoreButton
+                android:id="@+id/btnConfirmPhysicalCardPurchase"
+                style="@style/FragmentsBtnStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_btn_side_paddings"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_marginRight="@dimen/margin_btn_side_paddings"
+                android:layout_marginBottom="@dimen/margin_medium_large"
+                android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                android:text="@string/screen_add_spare_card_button_confirm_purchase"
+                android:textAllCaps="false"
+                android:visibility="@{viewModel.state.physicalCardAddressCheckVisibility}"
+                app:btn_enable="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/flTransactionComplete"
+                app:text="@{Strings.screen_add_spare_card_button_confirm_purchase}" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

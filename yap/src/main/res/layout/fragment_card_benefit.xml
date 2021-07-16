@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.cards.addpaymentcard.spare.viewmodels.CardBenfitsDetailViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/margin_medium_large">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_benefit_illustration" />
+
+        <TextView
+            android:id="@+id/tvBenefitTitle"
+            style="@style/Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:gravity="center"
+            android:paddingTop="@dimen/margin_medium"
+            android:text="@{viewModel.state.benefitsModel.benfitTitle}"
+            tools:text="A card for every need" />
+
+        <TextView
+            android:id="@+id/tvBenefitDetail"
+            style="@style/SmallGrey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:gravity="center"
+            android:paddingLeft="@dimen/margin_medium"
+            android:paddingRight="@dimen/margin_medium"
+            android:text="@{viewModel.state.benefitsModel.benfitDetail}"
+            tools:text="Use your spare card as backup or as a card for when you’re away for a few days and don’t want to travel with your primary card. Note that your spare card can only be used by you." />
+
+    </LinearLayout>
+</layout>

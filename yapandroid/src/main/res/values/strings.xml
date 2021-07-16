@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name_new" translatable="false">YAP</string>
+    <string name="action_settings" translatable="false">Settings</string>
+    <!--    <string name="brand_name" templateMergeStrategy="preserve" translatable="false">YAP Support</string>-->
+    <string name="brand_name">YAP Support</string>
+    <string name="screen_splash_display_text_force_update" translatable="false">Please update your app in order to continue.</string>
+    <string name="screen_splash_button_force_update" translatable="false">Update</string>
+</resources>

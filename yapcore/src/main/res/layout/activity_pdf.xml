@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.pdf.PDFViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.yapcore.R" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbarContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <co.yap.widgets.CoreToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.state.hideCross ? View.GONE : View.VISIBLE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:leftIcon="@{R.drawable.ic_back_arrow_left}"
+                app:leftIconVisibility="@{true}"
+                app:onClick="@{viewModel::onToolBarClick}"
+                app:rightIcon="@{R.drawable.ic_settings}"
+                app:rightIconVisibility="@{false}" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivCancelPdf"
+                android:layout_width="@dimen/_28sdp"
+                android:layout_height="@dimen/_28sdp"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:onClick="@{(v) -> viewModel.handlePressView(v.id)}"
+                android:src="@drawable/ic_close"
+                android:visibility="@{viewModel.state.hideCross ? View.VISIBLE : View.GONE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/colorPrimaryDark" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.pdfview.PDFView
+            android:id="@+id/pdfView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarContainer"
+
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

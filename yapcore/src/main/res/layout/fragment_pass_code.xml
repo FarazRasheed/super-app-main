@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.passcode.PassCodeViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.yapcore.R" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".modules.onboarding.activities.CreatePasscodeActivity">
+
+        <co.yap.widgets.CoreToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/warning"
+            android:visibility="@{viewModel.state.toolbarVisibility? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toTopOf="@+id/tvTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:leftIcon="@{R.drawable.ic_back_arrow_left}"
+            app:leftIconVisibility="@{true}"
+            app:onClick="@{viewModel::onToolBarClick}"
+            app:rightIcon="@{R.drawable.ic_settings}"
+            app:rightIconVisibility="@{false}"
+
+            />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:gravity="center"
+            android:lineSpacingExtra="0dp"
+            android:text="@{viewModel.state.title}"
+            android:textAlignment="center"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:text="@string/screen_set_card_pin_display_text_title" />
+
+        <co.yap.widgets.CoreDialerPad
+            android:id="@+id/dialer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:componentDialerError='@{viewModel.state.dialerError}'
+            app:dialer_max_length="4"
+            app:dialer_pass_code="passcode"
+            app:layout_constraintBottom_toTopOf="@+id/clTermsAndConditions"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:passcodeTextWatcher="@{viewModel.state.getTextWatcher()}" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTermsAndConditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:visibility="@{viewModel.state.needTermsConditions ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toTopOf="@+id/btnAction">
+
+            <TextView
+                android:id="@+id/tvTermsAndConditionsTitle"
+                style="@style/AMicroGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_size_h2"
+                app:layout_constraintBottom_toTopOf="@+id/tvTermsAndConditions"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:text="@{Strings.screen_confirm_card_pin_display_title_terms_and_conditions}"
+                tools:text="@string/screen_confirm_card_pin_display_title_terms_and_conditions" />
+
+            <TextView
+                android:id="@+id/tvTermsAndConditions"
+                style="@style/AMicroGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="@{(v)-> viewModel.handlePressView(v.id)}"
+                android:textAlignment="center"
+                android:textColor="?attr/colorPrimaryAttr"
+                android:textSize="@dimen/text_size_h2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTermsAndConditionsTitle"
+                app:text="@{Strings.screen_confirm_card_pin_display_text_terms_and_conditions}"
+                tools:text="@string/screen_confirm_card_pin_display_text_terms_and_conditions" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnAction"
+            style="@style/RectangleBtnStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_normal_large"
+            android:gravity="center"
+            android:onClick="@{(v)-> viewModel.handlePressView(v.id)}"
+            android:paddingStart="@dimen/_65sdp"
+            android:paddingTop="@dimen/_13sdp"
+            android:paddingEnd="@dimen/_65sdp"
+            android:paddingBottom="@dimen/_13sdp"
+            android:text="@{viewModel.state.buttonTitle}"
+            android:textColor="@color/colorWhite"
+            app:enableCoreButton="@{viewModel.state.valid}"
+            app:layout_constraintBottom_toTopOf="@+id/tvForgotPasscode"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:text="@string/screen_set_card_pin_button_create_pin" />
+
+        <TextView
+            android:id="@+id/tvForgotPasscode"
+            style="@style/Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_normal_large"
+            android:onClick="@{(v)->viewModel.handlePressView(v.id)}"
+            android:textColor="?attr/colorPrimaryAttr"
+            android:visibility="@{viewModel.state.forgotTextVisibility ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:text="@{Strings.screen_verify_passcode_text_forgot_password}"
+            tools:text="@string/screen_verify_passcode_text_forgot_password" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

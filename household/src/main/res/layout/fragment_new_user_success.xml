@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.household.onboard.onboarding.viewmodels.NewUserSuccessViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rootContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorLightPinkBackground">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/ALarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:gravity="center"
+            android:lineSpacingExtra="9sp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{viewModel.state.heading}"
+            tools:text="@string/screen_congratulations_display_text_title" />
+
+
+        <ImageView
+            android:id="@+id/ivMobileSuccess"
+            android:layout_width="@dimen/_220sdp"
+            android:layout_height="@dimen/_205sdp"
+            android:layout_marginTop="@dimen/margin_extra_large"
+            android:scaleType="fitXY"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSubTitle"
+            app:srcCompat="@drawable/ic_hh_new_user_success" />
+
+        <TextView
+            android:id="@+id/tvSubTitle"
+            style="@style/ASmallGrey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            app:layout_constraintVertical_bias="0.0"
+            app:text="@{Strings.screen_congratulations_display_text_success_message}"
+            tools:text="@string/screen_congratulations_display_text_success_message" />
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnCompleteVerifiocation"
+            style="@style/RectangleBtnStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_medium_large"
+            android:layout_marginRight="@dimen/margin_medium_large"
+            android:layout_marginBottom="40dp"
+            android:onClick="@{(v) -> viewModel.handlePressOnCompleteVerification(v.id)}"
+            android:paddingTop="@dimen/margin_medium"
+            android:paddingBottom="@dimen/margin_medium"
+            app:btn_enable="true"
+            app:btn_pressed_color="@color/white"
+            app:btn_text_color="?attr/colorPrimaryDarkAttr"
+            app:btn_unpressed_color="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:text="@{Strings.screen_congratulations_display_button_complete_setup}"
+            tools:text="@string/screen_congratulations_display_button_complete_setup" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

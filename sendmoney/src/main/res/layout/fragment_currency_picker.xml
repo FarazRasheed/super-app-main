@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.sendmoney.currencyPicker.viewmodel.CurrencyPickerViewModel" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingStart="@dimen/_21sdp"
+        android:paddingTop="@dimen/_24sdp"
+        android:paddingEnd="@dimen/_20sdp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivBtnBack"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/_7sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+            android:visibility="@{viewModel.state.currencyDialogChecker ? View.INVISIBLE :View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="@+id/svSelectCurrency"
+            app:layout_constraintEnd_toStartOf="@+id/svSelectCurrency"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_chevron_left" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/svSelectCurrency"
+            style="@style/Regular"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
+            android:paddingStart="@dimen/_30sdp"
+            android:theme="@style/AppSearchViewPlane"
+            app:closeIcon="@null"
+            android:visibility="@{viewModel.state.currencyDialogChecker ? View.INVISIBLE :View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivBtnBack"
+            app:layout_constraintTop_toTopOf="parent"
+            app:queryBackground="@color/transparent"
+            app:queryHint="Add a currency wallet"
+            app:searchIcon="@null" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/svBeneficiary"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/bg_search_widget"
+            android:theme="@style/AppSearchView"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:focusedByDefault="false"
+            android:focusable="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:queryBackground="@color/transparent"
+            app:queryHint="Search Currency"
+            android:visibility="@{viewModel.state.currencyDialogChecker ? View.VISIBLE :View.INVISIBLE}"
+            android:paddingStart="@dimen/_5sdp"
+            app:searchIcon="@drawable/ic_search_grey" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCurrencies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/svSelectCurrency"
+            app:recycleViewAdapter="@{viewModel.currencyAdapter}"
+            tools:listitem="@layout/item_currency_country" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

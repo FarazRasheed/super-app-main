@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.cards.analytics.viewmodels.AnalyticsItemViewModel" />
+
+        <import type="co.yap.yapcore.helpers.Utils" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lyAnalyticsItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{(v) -> viewModel.onViewClicked(v)}"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_10sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <co.yap.widgets.CoreCircularImageView
+                android:id="@+id/lyAnalyticsImage"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_gravity="center_horizontal"
+                android:contentDescription="@string/empty_string"
+                app:fullName="@{viewModel.analyticsItem.title==null?` `:viewModel.analyticsItem.title}"
+                app:imageUrl="@{viewModel.analyticsItem.logoUrl == null ? ` ` : viewModel.analyticsItem.logoUrl}"
+                app:isBackground="@{true}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:position="@{viewModel.position}" />
+
+            <LinearLayout
+                android:id="@+id/content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/lyAnalyticsImage"
+                app:layout_constraintEnd_toStartOf="@+id/tvAmount"
+                app:layout_constraintStart_toEndOf="@+id/lyAnalyticsImage"
+                app:layout_constraintTop_toTopOf="@+id/lyAnalyticsImage">
+
+                <TextView
+                    android:id="@+id/tvName"
+                    style="@style/Regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="bottom"
+                    android:lineSpacingExtra="0dp"
+                    android:lines="1"
+                    android:text="@{viewModel.analyticsItem.title}"
+                    tools:text="Shopping" />
+
+                <TextView
+                    android:id="@+id/tvTransactionCount"
+                    style="@style/SmallGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{viewModel.analyticsItem.txnCount==1?viewModel.analyticsItem.txnCount+` transaction`:viewModel.analyticsItem.txnCount+` transactions`}"
+                    tools:text="5 transactions" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvAmount"
+                style="@style/Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@{`AED` +Utils.INSTANCE.getFormattedCurrency(viewModel.analyticsItem.totalSpending)}"
+                android:textColor="?attr/colorPrimaryDarkAttr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/content"
+                tools:text="AED 600.30" />
+
+            <TextView
+                android:id="@+id/tvSpendingPercentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{Utils.INSTANCE.getTwoDecimalPlaces(viewModel.analyticsItem.totalSpendingInPercentage)+`%`}"
+                app:layout_constraintBottom_toBottomOf="@+id/content"
+                app:layout_constraintEnd_toEndOf="@+id/tvAmount"
+                tools:text="42%" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/divider"
+                app:layout_constraintEnd_toEndOf="@id/tvAmount"
+                app:layout_constraintStart_toStartOf="@+id/content"
+                app:layout_constraintTop_toBottomOf="@+id/lyAnalyticsImage" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

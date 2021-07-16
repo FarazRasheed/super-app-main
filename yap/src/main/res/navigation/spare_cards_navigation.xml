@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/spare_cards_navigation"
+    app:startDestination="@id/spareCardLandingFragment">
+
+
+    <fragment
+        android:id="@+id/spareCardLandingFragment"
+        android:name="co.yap.modules.dashboard.cards.addpaymentcard.spare.fragments.SpareCardLandingFragment"
+        android:label="@string/screen_spare_card_landing_display_text_title"
+        tools:layout="@layout/fragment_spare_card_landing">
+
+        <action
+            android:id="@+id/action_spareCardLandingFragment_to_benefitsFragment"
+            app:destination="@id/benefitsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+
+        <action
+            android:id="@+id/action_spareCardLandingFragment_to_addSpareCardFragment"
+            app:destination="@id/addSpareCardFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_to_bottom" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/addSpareCardFragment"
+        android:name="co.yap.modules.dashboard.cards.addpaymentcard.spare.fragments.AddSpareCardFragment"
+        tools:layout="@layout/fragment_add_spare_card">
+        <argument
+            android:name="cardType"
+            android:defaultValue=" "
+            app:argType="string" />
+
+        <argument
+            android:name="newDeliveryAddressTitle"
+            android:defaultValue=" "
+            app:argType="string" />
+
+        <argument
+            android:name="newDeliveryAddressSubTitle"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="latitude"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="longitude"
+            android:defaultValue=" "
+            app:argType="string" />
+
+        <argument
+            android:name="isFromBlockCard"
+            app:argType="boolean" />
+
+        <action
+            android:id="@+id/action_addSpareCardFragment_to_addSparePhysicalCardSuccessFragment"
+            app:destination="@id/addSparePhysicalCardSuccessFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_to_bottom"
+            app:popExitAnim="@anim/slide_out_to_bottom"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_addSpareCardFragment_to_addressSelectionFragment"
+            app:destination="@id/addressSelectionFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_to_bottom"
+            app:popEnterAnim="@anim/slide_in_from_bottom"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/addressSelectionFragment"
+        android:name="co.yap.modules.kyc.fragments.AddressSelectionFragment"
+        android:label="AddressSelectionActivity"
+        tools:layout="@layout/fragment_address_selection">
+
+        <argument
+            android:name="isFromPhysicalCardsScreen"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="isFromBlockCardsScreen"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="isFromPersonalDetail"
+            android:defaultValue="false"
+            app:argType="boolean" />
+
+        <action
+            android:id="@+id/action_addressSelectionFragment_to_addSpareCardFragment"
+            app:destination="@id/addSpareCardFragment"
+            app:popUpTo="@+id/addSpareCardFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_addressSelectionFragment_to_successFragment"
+            app:destination="@id/successFragment"
+            app:popUpTo="@+id/personalDetailsFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/successFragment"
+        android:name="co.yap.modules.dashboard.more.profile.fragments.SuccessFragment"
+        android:label="SuccessFragment"
+        tools:layout="@layout/fragment_success">
+        <argument
+            android:name="staticString"
+            android:defaultValue=" "
+            app:argType="string"
+            />
+        <argument
+            android:name="destinationValue"
+            android:defaultValue=" "
+            app:argType="string"
+            />
+        <argument
+            android:name="successType"
+            android:defaultValue=" "
+            app:argType="string"
+            />
+        <argument
+            android:name="placesPhotoId"
+            android:defaultValue=" "
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/benefitsFragment"
+        android:name="co.yap.modules.dashboard.cards.addpaymentcard.spare.fragments.CardsBenefitsFragment"
+        tools:layout="@layout/fragment_card_benefit">
+
+        <argument
+            android:name="benefitsModel"
+            app:argType="co.yap.modules.dashboard.cards.addpaymentcard.models.BenefitsModel" />
+
+        <action
+            android:id="@+id/action_spareCardLandingFragment_to_benefitsFragment"
+            app:destination="@id/spareCardLandingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/addSparePhysicalCardSuccessFragment"
+        android:name="co.yap.modules.dashboard.cards.addpaymentcard.spare.physical.AddSparePhysicalCardSuccessFragment"
+        tools:layout="@layout/fragment_add_physical_spare_card_success" />
+
+
+</navigation>

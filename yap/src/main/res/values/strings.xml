@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="todo">TODO</string>
+    <string name="yap_to_yap">YAP to YAP</string>
+    <string name="top_up">Top up</string>
+    <string name="send_money">Send money</string>
+</resources>

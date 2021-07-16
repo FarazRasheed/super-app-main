@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="PLATFORM" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/household" />
+            <option value="$PROJECT_DIR$/identityscanner_v2" />
+            <option value="$PROJECT_DIR$/networking" />
+            <option value="$PROJECT_DIR$/security" />
+            <option value="$PROJECT_DIR$/sendmoney" />
+            <option value="$PROJECT_DIR$/translation" />
+            <option value="$PROJECT_DIR$/yap" />
+            <option value="$PROJECT_DIR$/yapandroid" />
+            <option value="$PROJECT_DIR$/yapcore" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+    <option name="offlineMode" value="true" />
+  </component>
+</project>

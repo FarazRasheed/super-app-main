@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.yapit.topup.topupamount.viewModels.TopUpCardSuccessViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <co.yap.widgets.CoreToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:leftIconVisibility="@{false}"
+            app:onClick="@{viewModel::onToolBarClick}"
+            app:titleString="@{viewModel.state.toolbarTitle}" />
+
+        <co.yap.widgets.CorePaymentCard
+            android:id="@+id/ivCard"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_marginTop="@dimen/margin_small"
+            app:cardBackgroundColor="@{viewModel.state.cardInfo.color}"
+            app:cardExpiry="@{viewModel.state.cardInfo.expiry}"
+            app:cardNickname="@{viewModel.state.cardInfo.alias}"
+            app:cardNumber="@{viewModel.state.cardInfo.number}"
+            app:cardType="@{viewModel.state.cardInfo.logo}"
+            app:card_size_type="small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+
+        <TextView
+            android:id="@+id/tvCardNameSuccess"
+            style="@style/Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium_large"
+            android:text="@{viewModel.state.cardInfo.alias}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivCard" />
+
+        <TextView
+            android:id="@+id/tvCardNumberSuccess"
+            style="@style/MicroGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_extra_small"
+            android:text="@{viewModel.state.formattedCardNo}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCardNameSuccess"
+            tools:text="123456789012" />
+        <!--
+                <TextView
+                    android:id="@+id/tvTopUp"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:gravity="center"
+                    android:lineSpacingExtra="@dimen/_1sdp"
+                    android:text="@{viewModel.state.topUpSuccess}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCardNumberSuccess"
+                    tools:text="@string/screen_success_funds_transaction_display_text_top_up" />-->
+        <TextView
+            android:id="@+id/tvTopUp"
+            style="@style/ASmallGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_large"
+            android:gravity="center"
+            android:lineSpacingExtra="@dimen/_1sdp"
+            android:text="@{viewModel.state.topUpSuccess}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCardNumberSuccess"
+            tools:text="You have now added AED XXX to your account" />
+
+        <!--  <TextView
+              android:id="@+id/tvNewSpareCardBalance"
+              style="@style/ASmallGrey"
+              android:paddingBottom="@dimen/margin_small"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/margin_extra_large"
+              android:gravity="center"
+              android:lineSpacingExtra="@dimen/_1sdp"
+              android:text="@{viewModel.state.spareCardUpdatedBalance}"
+              app:layout_constraintLeft_toLeftOf="parent"
+              app:layout_constraintRight_toRightOf="parent"
+              app:layout_constraintTop_toBottomOf="@+id/tvTopUp"
+              tools:text="@string/screen_success_funds_transaction_display_text_success_updated_prepaid_card_balance" />
+      -->
+
+        <TextView
+            android:id="@+id/tvNewSpareCardBalance"
+            style="@style/ASmallGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_extra_large"
+            android:gravity="center"
+            android:lineSpacingExtra="@dimen/_1sdp"
+            android:paddingBottom="@dimen/margin_small"
+            android:text="@{viewModel.state.availableBalanceSpanable}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTopUp"
+            tools:text="Your new account balance is" />
+
+
+        <ImageView
+            android:id="@+id/ivSuccessCheckMark"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_marginTop="@dimen/margin_extra_large"
+            android:contentDescription="@string/empty_string"
+            android:src="@drawable/ic_checkmark"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNewSpareCardBalance" />
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnAction"
+            style="@style/FragmentsBtnStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_xxl"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="@dimen/margin_xxl"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:onClick="@{(v)-> viewModel.buttonClickEvent(v.id)}"
+            android:text="@{viewModel.state.buttonTitle}"
+            app:btn_enable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivSuccessCheckMark"
+            app:layout_constraintVertical_bias="0.958"
+            tools:text="Add" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

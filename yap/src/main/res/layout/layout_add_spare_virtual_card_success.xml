@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.cards.addpaymentcard.spare.viewmodels.AddSpareCardViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+
+
+        <TextView
+            android:id="@+id/tvTransactionComplete"
+            style="@style/ASmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:gravity="center"
+            android:text="@string/screen_add_spare_card_completion_display_text_complete_transaction_virtual"
+            app:layout_constraintBottom_toTopOf="@+id/flTransactionComplete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            app:text="@{Strings.screen_add_spare_card_completion_display_text_complete_transaction_virtual}" />
+
+        <FrameLayout
+            android:id="@+id/flTransactionComplete"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/transaction_complete_selector"
+            app:layout_constraintBottom_toTopOf="@+id/btnDoneAddingSpareVirtualCard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTransactionComplete">
+
+
+            <ImageView
+                android:layout_width="@dimen/_45sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_gravity="center_vertical|center"
+                android:src="@drawable/ic_check" />
+        </FrameLayout>
+
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnDoneAddingSpareVirtualCard"
+            style="@style/FragmentsBtnStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_btn_side_paddings_xl"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:layout_marginRight="@dimen/margin_btn_side_paddings_xl"
+            android:layout_marginBottom="@dimen/margin_extra_small"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+            android:text="@string/screen_add_spare_card_completion_button_done"
+            app:btn_enable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/flTransactionComplete"
+            app:text="@{Strings.screen_add_spare_card_completion_button_done}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

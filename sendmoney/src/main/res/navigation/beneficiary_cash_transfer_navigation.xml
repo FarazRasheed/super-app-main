@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/beneficiary_cash_transfer_navigation"
+    app:startDestination="@id/cashTransferFragment">
+
+    <fragment
+        android:id="@+id/cashTransferFragment"
+        android:name="co.yap.sendmoney.fundtransfer.fragments.CashTransferFragment"
+        tools:layout="@layout/fragment_cash_transfer">
+        <action
+            android:id="@+id/action_cashTransferFragment_to_transferSuccessFragment2"
+            app:destination="@id/transferSuccessFragment2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_cashTransferFragment_to_internationalFundsTransferFragment"
+            app:destination="@id/internationalFundsTransferFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_cashTransferFragment_to_cashTransferConfirmationFragment"
+            app:destination="@id/cashTransferConfirmationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/transferSuccessFragment2"
+        android:name="co.yap.sendmoney.fundtransfer.fragments.TransferSuccessFragment"
+        android:label="TransferSuccessFragment"
+        tools:layout="@layout/fragment_transfer_success"/>
+    <fragment
+        android:id="@+id/internationalFundsTransferFragment"
+        android:name="co.yap.sendmoney.fundtransfer.fragments.InternationalFundsTransferFragment"
+        android:label="InternationalFundsTransferFragment"
+        tools:layout="@layout/fragment_international_funds_transfer">
+        <action
+            android:id="@+id/action_internationalFundsTransferFragment_to_internationalTransactionConfirmationFragment"
+            app:destination="@id/internationalTransactionConfirmationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/internationalTransactionConfirmationFragment"
+        android:name="co.yap.sendmoney.fundtransfer.fragments.InternationalTransactionConfirmationFragment"
+        android:label="InternationalTransactionConfirmationFragment"
+        tools:layout="@layout/fragment_international_transaction_confirmation">
+        <action
+            android:id="@+id/action_internationalTransactionConfirmationFragment_to_transferSuccessFragment2"
+            app:destination="@id/transferSuccessFragment2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/cashTransferConfirmationFragment"
+        android:name="co.yap.sendmoney.fundtransfer.fragments.CashTransferConfirmationFragment"
+        android:label="CashTransferConfirmationFragment"
+        tools:layout="@layout/fragment_cash_transfer_confirmation">
+        <action
+            android:id="@+id/action_cashTransferConfirmationFragment_to_transferSuccessFragment2"
+            app:destination="@id/transferSuccessFragment2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+
+    </fragment>
+
+</navigation>

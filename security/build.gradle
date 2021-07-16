@@ -1,0 +1,29 @@
+android {
+    defaultConfig {
+        externalNativeBuild {
+            cmake {
+                cFlags "-fvisibility=hidden"
+                cppFlags "-fvisibility=hidden"
+            }
+        }
+        ndk {
+            moduleName "serial_port"
+            ldLibs "log", "z", "m"
+            abiFilters "arm64-v8a", "armeabi-v7a", "x86","x86_64"
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+            version "3.10.2"
+        }
+    }
+    sourceSets {
+        main.jni.srcDirs = []
+        main.jniLibs.srcDirs = ['libs']
+    }
+    ndkVersion '21.3.6528147'
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}

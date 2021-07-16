@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.yap.yapandroid.modules.startup.viewmodels.AccountSelectionViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:keepScreenOn="true"
+        android:orientation="vertical"
+        tools:context="co.yap.app.main.MainActivity">
+
+        <co.yap.widgets.video.AndExoPlayerView
+            android:id="@+id/andExoPlayerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:andexo_aspect_ratio="aspect_match"
+            app:andexo_play_when_ready="true"
+            app:andexo_resize_mode="Zoom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCaption"
+            style="@style/ATitle3Grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_h2"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/layoutButtons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="@string/screen_home_display_text_sign_in_title" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layoutButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints">
+
+
+            <co.yap.widgets.CoreButton
+                android:id="@+id/btnPersonal"
+                style="@style/RectangleBtnStyle"
+                android:layout_width="@dimen/_196sdp"
+                android:layout_height="@dimen/_38sdp"
+                android:layout_marginEnd="@dimen/_6sdp"
+                android:clickable="false"
+                android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                android:paddingTop="@dimen/margin_normal_large"
+                android:textStyle="bold"
+                app:btn_enable="true"
+                app:text="@{Strings.screen_welcome_button_get_started}" />
+
+
+            <RelativeLayout
+
+                android:id="@+id/relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                    android:id="@+id/tvDisplayTextSignIn"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_normal_large"
+                    android:gravity="center"
+                    android:textColor="@color/semi_white_80"
+                    app:text="@{Strings.screen_home_display_text_sign_in_title}"
+                    tools:ignore="MissingConstraints"
+                    tools:text="@string/screen_home_display_text_sign_in_title" />
+
+                <TextView
+                    android:id="@+id/tvSignIn"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_toRightOf="@+id/tvDisplayTextSignIn"
+                    android:gravity="center"
+                    android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+                    android:paddingTop="@dimen/margin_normal_large"
+                    android:paddingEnd="@dimen/margin_large"
+                    android:paddingBottom="@dimen/margin_large"
+                    android:textColor="@color/white"
+                    app:layout_constraintLeft_toRightOf="@+id/tvDisplayTextSignIn"
+                    app:text="@{Strings.screen_home_display_text_sign_in_action}"
+                    tools:ignore="MissingConstraints"
+                    tools:text="@string/screen_home_display_text_sign_in_action" />
+            </RelativeLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

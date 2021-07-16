@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvAddCardName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/margin_extra_small"
+        android:paddingBottom="@dimen/margin_extra_small"
+        style="@style/ASmall"
+        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_medium_large"
+        android:text="Change card's name"/>
+
+    <TextView
+        android:id="@+id/tvChangePin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/margin_extra_small"
+        android:paddingBottom="@dimen/margin_extra_small"
+        style="@style/ASmall"
+        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_normal_large"
+        android:text="Change PIN"/>
+
+    <TextView
+        android:id="@+id/tvViewStatements"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/margin_extra_small"
+        android:paddingBottom="@dimen/margin_extra_small"
+        style="@style/ASmall"
+        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_normal_large"
+        android:text="View statement"/>
+
+    <TextView
+        android:id="@+id/tvReportCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/margin_extra_small"
+        android:paddingBottom="@dimen/margin_extra_small"
+        style="@style/ASmall"
+        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_normal_large"
+        android:text="Report lost or stolen card"/>
+
+    <TextView
+        android:id="@+id/tvRemoveCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/margin_extra_small"
+        android:paddingBottom="@dimen/margin_extra_small"
+        style="@style/ASmall"
+        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_normal_large"
+        android:layout_marginBottom="@dimen/margin_medium_large"
+        android:text="Remove card"/>
+
+
+</LinearLayout>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.location.tax.TaxInfoViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/ivBackBtn"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:clickable="true"
+                android:onClick="@{(v) -> viewModel.handleOnPressView(v.id)}"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_back" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvHeadingTitle"
+                style="@style/ALarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:gravity="center"
+                android:text="@string/screen_place_of_birth_display_text_heading"
+                android:textSize="@dimen/_18sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:text="@{Strings.screen_tax_info_display_text_heading}"
+                tools:text="@string/screen_tax_info_display_text_heading" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDescription"
+                style="@style/ASmallGrey"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:layout_marginTop="@dimen/small"
+                android:layout_marginEnd="@dimen/margin_large"
+                android:gravity="center"
+                android:text="@string/screen_place_of_birth_display_text_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeadingTitle"
+                app:text="@{Strings.screen_tax_info_display_text_desc}"
+                tools:text="@string/screen_tax_info_display_text_desc" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toTopOf="@+id/bottom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+                app:layout_constraintVertical_bias="0.0"
+                app:recycleViewAdapter="@{viewModel.taxInfoAdaptor}"
+                tools:itemCount="1"
+                tools:listitem="@layout/item_tax_info" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.state.onSuccess ? View.VISIBLE : View.INVISIBLE}"
+                app:layout_constraintTop_toBottomOf="@+id/recycler"
+                android:layout_marginTop="@dimen/margin_medium_large"
+                app:layout_constraintVertical_bias="1.0">
+
+                <LinearLayout
+                    android:id="@+id/llTermsCondition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:layout_marginEnd="@dimen/margin_medium_large"
+                    android:layout_marginBottom="@dimen/margin_xxxl"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    app:layout_constraintBottom_toTopOf="@+id/tvTermsConditions"
+                    app:layout_constraintVertical_bias="1.0">
+
+                    <CheckBox
+                        android:id="@+id/cbTermsAndConditions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="?attr/colorPrimaryAttr"
+                        android:checked="@{viewModel.state.isAgreed}"
+                        android:gravity="center"
+                        android:scaleX="1.3"
+                        android:scaleY="1.3"
+                        android:onClick="@{(v)->viewModel.handleOnPressView(v.id)}" />
+
+                    <TextView
+                        android:id="@+id/tvTermsAndConditions"
+                        style="@style/AMicroGrey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_extra_small"
+                        android:layout_marginEnd="@dimen/margin_normal"
+                        android:gravity="center|start"
+                        android:onClick="@{(v)->viewModel.handleOnPressView(v.id)}"
+                        android:textColor="@color/colorPrimary"
+                        app:text="@{Strings.screen_tax_info_display_text_not_us_national}"
+                        tools:text="@string/screen_tax_info_display_text_not_us_national" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTermsConditions"
+                    style="@style/ASmallGrey"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_xxxl"
+                    android:layout_marginEnd="@dimen/margin_large"
+                    android:layout_marginBottom="@dimen/_21sdp"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/margin_normal"
+                    android:paddingEnd="@dimen/margin_normal"
+                    android:text="@string/screen_tax_info_display_text_trs_conditions_disclaimer"
+                    android:textColorLink="?attr/colorPrimaryAttr"
+                    app:layout_constraintBottom_toTopOf="@+id/nextButton"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:text="@{Strings.screen_tax_info_display_text_trs_conditions_disclaimer}"
+                    tools:text="@string/screen_tax_info_display_text_trs_conditions_disclaimer" />
+
+                <co.yap.widgets.CoreButton
+                    android:id="@+id/nextButton"
+                    style="@style/FragmentsBtnStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="@dimen/margin_btn_side_xxl"
+                    android:layout_marginTop="@dimen/margin_medium_large"
+                    android:layout_marginRight="@dimen/margin_btn_side_xxl"
+                    android:layout_marginBottom="@dimen/margin_normal"
+                    android:background="@color/white"
+                    android:gravity="bottom"
+                    android:onClick="@{(v) -> viewModel.handleOnPressView(v.id)}"
+                    app:enableCoreButton="@{viewModel.state.valid}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:text="@{Strings.common_button_submit}"
+                    tools:text="@string/common_button_submit" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

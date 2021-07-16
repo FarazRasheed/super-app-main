@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/_2sdp"
+    android:paddingLeft="@dimen/_2sdp"
+    android:paddingEnd="@dimen/_2sdp"
+    android:paddingRight="@dimen/_2sdp">
+
+    <co.yap.widgets.HorizontalNonScrollRecyclerView
+        android:id="@+id/rvTransactionsBarChart"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_gravity="bottom"
+        android:gravity="bottom|start"
+        tools:listitem="@layout/item_bar_chart_v2" />
+
+</FrameLayout>

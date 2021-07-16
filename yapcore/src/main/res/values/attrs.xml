@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Theme color-->
+    <attr name="colorPrimaryAttr" format="color|reference" />
+    <attr name="colorPrimaryDarkAttr" format="color|reference" />
+    <attr name="colorPrimaryAccentAttr" format="color|reference" />
+
+    <attr name="colorPrimaryAccentWarmAttr" format="color|reference" />
+    <attr name="colorPrimaryWarmAttr" format="color|reference" />
+    <attr name="colorPrimaryLightAttr" format="color|reference" />
+    <attr name="colorPrimaryAltAttr" format="color|reference" />
+    <attr name="colorPrimarySoftAttr" format="color|reference" />
+    <attr name="colorPrimaryDisabledBtnAttr" format="color|reference" />
+    <attr name="colorPrimaryDarkIconsAttr" format="color|reference" />
+    <attr name="colorPressedBtnStateAttr" format="color|reference" />
+    <attr name="colordisabledTick" format="color|reference" />
+    <attr name="colorSeekBar" format="color|reference" />
+
+    <!--components theme-->
+    <attr name="primaryButtonTheme" format="reference" />
+    <attr name="cardTheme" format="reference" />
+
+
+    <declare-styleable name="CoreButton">
+        <attr name="btn_text_color" format="color" />
+        <attr name="btn_drawable" format="reference" />
+        <attr name="btn_text_size" format="dimension" />
+        <attr name="btn_pressed_color" format="reference" />
+        <attr name="btn_unpressed_color" format="reference" />
+        <attr name="btn_round_radius" format="dimension" />
+        <attr name="btn_drawable_padding_top" format="float" />
+        <attr name="btn_drawable_padding_right" format="float" />
+        <attr name="btn_drawable_padding_left" format="float" />
+        <attr name="btn_text_alignment_from_left" format="float" />
+        <attr name="btn_has_bold_text" format="boolean" />
+        <attr name="btn_enable" format="boolean" />
+
+        <attr name="btn_shape_type" format="enum">
+            <enum name="circle" value="0" />
+            <enum name="rectangle" value="1" />
+        </attr>
+
+        <attr name="btn_drawable_position" format="enum">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+            <enum name="center" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="CustomImageButton">
+        <attr name="pressed_src" format="reference" />
+        <attr name="unpressed_src" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="CoreInputField">
+        <attr name="view_hint_input_field" format="reference" />
+        <attr name="view_error_input_field" format="reference" />
+        <attr name="view_drawable_right" format="reference" />
+        <attr name="view_drawable_left" format="reference" />
+        <attr name="view_focusable" format="boolean" />
+        <attr name="view_input_text" format="string" />
+        <attr name="view_max_length" format="integer" />
+        <attr name="view_id" format="integer" />
+        <attr name="view_plain_background" format="boolean" />
+        <attr name="showKeyboard" format="boolean" />
+        <attr name="view_input_text_imei_actions" format="enum">
+            <enum name="IME_ACTION_DONE" value="1" />
+            <enum name="IME_ACTION_NEXT" value="2" />
+        </attr>
+
+        <attr name="view_input_type" format="enum">
+            <enum name="phone" value="1" />
+            <enum name="email" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="CoreDialerPad">
+        <attr name="dialer_max_length" format="integer" />
+        <attr name="dialer_error" format="reference" />
+        <attr name="show_dialer_pass_code" format="boolean" />
+        <attr name="dialer_pass_code" format="enum">
+            <enum name="defaultType" value="1" />
+            <enum name="passcode" value="1" />
+        </attr>
+
+    </declare-styleable>
+
+
+    <!-- Font Awesome attr-->
+    <declare-styleable name="FontTextView">
+        <attr name="brand_icon" format="boolean" />
+        <attr name="solid_icon" format="boolean" />
+    </declare-styleable>
+
+
+    <declare-styleable name="CountryCodePicker">
+        <!--{@deprecated Use defaultNameCode instead.}-->
+        <attr name="ccp_defaultPhoneCode" format="integer" />
+        <attr name="ccp_contentColor" format="color" />
+        <attr name="ccp_arrowColor" format="color" />
+        <attr name="ccp_textSize" format="dimension" />
+        <attr name="ccp_arrowSize" format="dimension" />
+        <attr name="ccp_customMasterCountries" format="string" />
+        <attr name="ccp_excludedCountries" format="string" />
+        <attr name="ccp_flagBorderColor" format="color" />
+        <attr name="ccp_countryPreference" format="string" />
+        <attr name="ccp_defaultNameCode" format="string" />
+        <attr name="ccp_selectionMemoryTag" format="string" />
+        <attr name="ccp_useFlagEmoji" format="boolean" /> <!-- beta -->
+        <attr name="ccp_useDummyEmojiForPreview" format="boolean" /> <!-- beta -->
+        <attr name="ccp_onFlagClick" format="boolean" /> <!-- beta -->
+        <attr name="ccp_hideFlag" format="boolean" /> <!-- beta -->
+        <attr name="ccp_pickerTextColor" format="color" />
+
+        <attr name="ccp_textGravity" format="enum">
+            <enum name="LEFT" value="-1" />
+            <enum name="RIGHT" value="1" />
+            <enum name="CENTER" value="0" />
+        </attr>
+        <attr name="ccp_hintExampleNumberType" format="enum">
+            <enum name="MOBILE" value="0" />
+            <enum name="FIXED_LINE" value="1" />
+            <enum name="FIXED_LINE_OR_MOBILE" value="2" />
+            <enum name="TOLL_FREE" value="3" />
+            <enum name="PREMIUM_RATE" value="4" />
+            <enum name="SHARED_COST" value="5" />
+            <enum name="VOIP" value="6" />
+            <enum name="PERSONAL_NUMBER" value="7" />
+            <enum name="PAGER" value="8" />
+            <enum name="UAN" value="9" />
+            <enum name="VOICEMAIL" value="10" />
+            <enum name="UNKNOWN" value="11" />
+
+        </attr>
+
+        <!--CCP bool properties-->
+        <attr name="ccp_showNameCode" format="boolean" />
+        <attr name="ccp_showFlag" format="boolean" />
+        <attr name="ccp_showFullName" format="boolean" />
+        <attr name="ccp_internationalFormattingOnly" format="boolean" />
+        <attr name="ccp_clickable" format="boolean" />
+        <attr name="ccp_showPhoneCode" format="boolean" />
+        <attr name="ccp_autoDetectLanguage" format="boolean" />
+        <attr name="ccp_autoDetectCountry" format="boolean" />
+        <attr name="ccp_areaCodeDetectedCountry" format="boolean" />
+        <attr name="ccp_autoFormatNumber" format="boolean" />
+        <attr name="ccp_hintExampleNumber" format="boolean" />
+        <attr name="ccp_rememberLastSelection" format="boolean" />
+        <attr name="ccp_showArrow" format="boolean" />
+        <attr name="ccp_showDropDown" format="boolean" />
+
+        <!--CCP Dialog properties-->
+        <attr name="ccpDialog_keyboardAutoPopup" format="boolean" />
+        <attr name="ccpDialog_allowSearch" format="boolean" />
+        <attr name="ccpDialog_showPhoneCode" format="boolean" />
+        <attr name="ccpDialog_showNameCode" format="boolean" />
+        <attr name="ccpDialog_showFlag" format="boolean" />
+        <attr name="ccpDialog_showFastScroller" format="boolean" />
+        <attr name="ccpDialog_fastScroller_bubbleColor" format="color" />
+        <attr name="ccpDialog_fastScroller_handleColor" format="color" />
+        <attr name="ccpDialog_fastScroller_bubbleTextAppearance" format="reference" />
+        <attr name="ccpDialog_backgroundColor" format="color" />
+        <attr name="ccpDialog_textColor" format="color" />
+        <attr name="ccpDialog_searchEditTextTint" format="color" />
+        <attr name="ccpDialog_showCloseIcon" format="boolean" />
+        <attr name="ccpDialog_showTitle" format="boolean" />
+        <attr name="ccpDialog_initialScrollToSelection" format="boolean" />
+        <!--list of languages-->
+        <!--Make sure: order in this list must match order of Language Enum in CountryCodePicker.java. Values must be ascending starting from 0.-->
+        <attr name="ccp_defaultLanguage" format="enum">
+            <enum name="AFRIKAANS" value="0" />
+            <enum name="ARABIC" value="1" />
+            <enum name="BENGALI" value="2" />
+            <enum name="CHINESE_SIMPLIFIED" value="3" />
+            <enum name="CHINESE_TRADITIONAL" value="4" />
+            <enum name="CZECH" value="5" />
+            <enum name="DANISH" value="6" />
+            <enum name="DUTCH" value="7" />
+            <enum name="ENGLISH" value="8" />
+            <enum name="FARSI" value="9" />
+            <enum name="FRENCH" value="10" />
+            <enum name="GERMAN" value="11" />
+            <enum name="GREEK" value="12" />
+            <enum name="GUJARATI" value="13" />
+            <enum name="HEBREW" value="14" />
+            <enum name="HINDI" value="15" />
+            <enum name="INDONESIA" value="16" />
+            <enum name="ITALIAN" value="17" />
+            <enum name="JAPANESE" value="18" />
+            <enum name="KOREAN" value="19" />
+            <enum name="POLISH" value="20" />
+            <enum name="PORTUGUESE" value="21" />
+            <enum name="PUNJABI" value="22" />
+            <enum name="RUSSIAN" value="23" />
+            <enum name="SLOVAK" value="24" />
+            <enum name="SPANISH" value="25" />
+            <enum name="SWEDISH" value="26" />
+            <enum name="TURKISH" value="27" />
+            <enum name="UKRAINIAN" value="28" />
+            <enum name="UZBEK" value="29" />
+            <enum name="VIETNAMESE" value="30" />
+        </attr>
+
+        <attr name="ccp_countryAutoDetectionPref" format="enum">
+            <enum name="SIM_ONLY" value="1" />
+            <enum name="NETWORK_ONLY" value="2" />
+            <enum name="LOCALE_ONLY" value="3" />
+            <enum name="SIM_NETWORK" value="12" />
+            <enum name="NETWORK_SIM" value="21" />
+            <enum name="SIM_LOCALE" value="13" />
+            <enum name="LOCALE_SIM" value="31" />
+            <enum name="NETWORK_LOCALE" value="23" />
+            <enum name="LOCALE_NETWORK" value="32" />
+            <enum name="SIM_NETWORK_LOCALE" value="123" />
+            <enum name="SIM_LOCALE_NETWORK" value="132" />
+            <enum name="NETWORK_SIM_LOCALE" value="213" />
+            <enum name="NETWORK_LOCALE_SIM" value="231" />
+            <enum name="LOCALE_SIM_NETWORK" value="312" />
+            <enum name="LOCALE_NETWORK_SIM" value="321" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="CoreCircularImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_circle_background_color" format="color" />
+    </declare-styleable>
+
+
+    <declare-styleable name="MyyMap">
+        <attr name="latitude" format="float" />
+        <attr name="longitude" format="float" />
+        <attr name="map_marker" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundedImageView">
+        <attr name="riv_corner_radius" format="dimension" />
+        <attr name="riv_corner_radius_top_left" format="dimension" />
+        <attr name="riv_corner_radius_top_right" format="dimension" />
+        <attr name="riv_corner_radius_bottom_left" format="dimension" />
+        <attr name="riv_corner_radius_bottom_right" format="dimension" />
+        <attr name="riv_border_width" format="dimension" />
+        <attr name="riv_border_color" format="color" />
+        <attr name="riv_mutate_background" format="boolean" />
+        <attr name="riv_oval" format="boolean" />
+        <attr name="android:scaleType" />
+        <attr name="riv_tile_mode">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+        <attr name="riv_tile_mode_x">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+        <attr name="riv_tile_mode_y">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="ChartAttrs">
+
+        <attr name="chart_axis">
+            <enum name="none" value="0" />
+            <enum name="x" value="1" />
+            <enum name="y" value="2" />
+            <enum name="xy" value="3" />
+        </attr>
+        <attr name="chart_labelsColor" format="reference|color" />
+        <attr name="chart_labelsSize" format="dimension" />
+        <attr name="chart_labelsFont" format="reference" />
+
+    </declare-styleable>
+
+    <declare-styleable name="BarChartAttrs">
+        <attr name="chart_spacing" format="dimension" />
+        <attr name="chart_barsColor" format="reference|color" />
+        <attr name="chart_barsRadius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="ViewBehavior">
+        <attr name="behavior_dependsOn" format="reference" />
+        <attr name="behavior_dependType">
+            <enum name="height" value="0" />
+            <enum name="width" value="1" />
+            <enum name="x" value="2" />
+            <enum name="y" value="3" />
+        </attr>
+
+        <attr name="behavior_dependTarget" format="dimension" />
+
+        <attr name="behavior_targetX" format="dimension" />
+        <attr name="behavior_targetY" format="dimension" />
+        <attr name="behavior_targetWidth" format="dimension" />
+        <attr name="behavior_targetHeight" format="dimension" />
+        <attr name="behavior_targetBackgroundColor" format="color" />
+        <attr name="behavior_targetAlpha" format="float" />
+        <attr name="behavior_targetRotateX" format="float" />
+        <attr name="behavior_targetRotateY" format="float" />
+
+        <attr name="behavior_animation" format="reference" />
+    </declare-styleable>
+
+
+    <!--tooltipview-->
+
+    <declare-styleable name="TooltipView">
+        <attr name="anchoredView" format="reference" />
+        <attr name="cornerRadius" format="dimension" />
+        <attr name="tooltipColor" format="color" />
+        <attr name="arrowHeight" format="dimension" />
+        <attr name="arrowWidth" format="dimension" />
+        <attr name="arrowAlignmentOffset" format="dimension" />
+        <attr name="arrowLocation" format="integer">
+            <enum name="top" value="0" />
+            <enum name="bottom" value="1" />
+        </attr>
+
+        <attr name="arrowAlignment" format="enum">
+            <enum name="start" value="0" />
+            <enum name="center" value="1" />
+            <enum name="end" value="2" />
+            <enum name="anchored_view" value="3" />
+            <enum name="custom" value="4" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="BadgeTextView">
+        <attr name="android:background" />
+        <attr name="mbtv_border_width" format="dimension" />
+        <attr name="mbtv_border_color" format="color" />
+        <attr name="mbtv_border_alpha" format="float" />
+        <attr name="mbtv_type" format="enum">
+            <enum name="shadow_gradual" value="1" />
+            <enum name="shadow_alpha" value="2" />
+        </attr>
+    </declare-styleable>
+
+
+    <declare-styleable name="CorePaymentCard">
+        <attr name="bank_nickname" format="string" />
+        <attr name="card_number" format="string" />
+        <attr name="card_expiry" format="string" />
+        <attr name="card_type" format="reference" />
+        <attr name="card_background" format="reference" />
+        //
+        <attr name="card_chip_image_size" format="reference" />
+        <attr name="card_bank_name_size" format="reference" />
+        <attr name="card_type_image_size" format="reference" />
+        <attr name="card_number_text_size" format="reference" />
+        <attr name="card_Expiry" format="reference" />
+        //
+
+        <attr name="card_size_type" format="enum">
+            <enum name="small" value="0" />
+            <enum name="medium" value="1" />
+            <enum name="large" value="2" />
+        </attr>
+    </declare-styleable>
+
+
+    <declare-styleable name="HorizontalNonScrollRecyclerView">
+        <attr name="canScroll" format="boolean" />
+        <attr name="scroll_enable" format="boolean" />
+    </declare-styleable>
+
+    <!--SwipeLayout-->
+
+    <declare-styleable name="SwipeLayout">
+        <attr name="menuSide" format="enum">
+            <enum name="Left" value="1" />
+            <enum name="Right" value="0" />
+        </attr>
+        <attr name="dynamicMenuWidth" format="boolean" />
+    </declare-styleable>
+
+
+    <declare-styleable name="CorePopUpWindow">
+        <attr name="textValue" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="DrawableClickEditText">
+        <attr name="isDrawableShownWhenTextIsEmpty" format="boolean" />
+        <attr name="popupContentValue" format="string" />
+        <attr name="popupConntentValue" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="PrefixSuffixEditText">
+        <attr name="android:inputType" />
+        <attr name="android:padding" />
+        <attr name="android:paddingLeft" />
+        <attr name="android:paddingRight" />
+        <attr name="android:paddingTop" />
+        <attr name="android:paddingBottom" />
+        <attr name="pse_setBackgroundColor" format="color" />
+        <attr name="pse_setBorderColor" format="color" />
+        <attr name="pse_setBorderView" format="boolean" />
+        <attr name="pse_setStrokeWidth" format="dimension" />
+        <attr name="pse_setCornerRadius" format="dimension" />
+        <attr name="pse_setClearIconVisible" format="boolean" />
+        <attr name="pse_showHint" format="boolean" />
+        <attr name="pse_clearIconTint" format="color" />
+        <attr name="pse_setCursorColor" format="color" />
+        <attr name="pse_hideShowPasswordIconTint" format="color" />
+        <attr name="pse_setPrefix" format="string" />
+        <attr name="pse_setPrefixTextColor" format="color" />
+        <attr name="pse_setPrefixDrawable" format="reference" />
+        <attr name="pse_showPrefixDrawable" format="boolean" />
+        <attr name="pse_compoundDrawableWidth" format="dimension" />
+        <attr name="pse_space" format="dimension" />
+        <attr name="pse_compoundDrawableHeight" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="DecimalEditText">
+        <attr name="plural" format="reference" />
+        <attr name="rounding" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="EasyMoneyWidgets">
+        <attr name="currency_symbol" format="string" />
+        <attr name="show_currency" format="boolean" />
+        <attr name="show_commas" format="boolean" />
+        <attr name="decimalDigits" format="integer" />
+        <attr name="em_setBackgroundColor" format="color" />
+        <attr name="em_custom_width" format="dimension" />
+        <attr name="em_custom_height" format="dimension" />
+        <attr name="em_currency" format="string" />
+        <attr name="android:maxLength" format="integer" min="10" />
+    </declare-styleable>
+
+    <declare-styleable name="MultiStateView">
+        <attr name="msv_loadingView" format="reference" />
+        <attr name="msv_emptyView" format="reference" />
+        <attr name="msv_errorView" format="reference" />
+        <attr name="msv_viewState" format="enum">
+            <enum name="content" value="0" />
+            <enum name="error" value="1" />
+            <enum name="empty" value="2" />
+            <enum name="loading" value="3" />
+        </attr>
+        <attr name="msv_animateViewChanges" format="boolean" />
+        <attr name="msv_animateViewChangesDuration" format="integer|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="AspectRatioImageView">
+        <attr name="aspectRatio" format="float" />
+        <attr name="aspectRatioEnabled" format="boolean" />
+        <attr name="dominantMeasurement">
+            <enum name="width" value="0" />
+            <enum name="height" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="OtpTextView">
+        <attr name="android:textColor" />
+        <attr name="otp" format="string" />
+        <attr name="hide_otp" format="boolean" />
+        <attr name="hide_otp_drawable" format="reference" />
+        <attr name="length" format="integer" />
+        <attr name="custom_width" format="dimension" />
+        <attr name="custom_height" format="dimension" />
+        <attr name="box_margin" format="dimension" />
+        <attr name="box_margin_left" format="dimension" />
+        <attr name="box_margin_right" format="dimension" />
+        <attr name="box_margin_top" format="dimension" />
+        <attr name="box_margin_bottom" format="dimension" />
+        <attr name="bar_height" format="dimension" />
+        <attr name="bar_enabled" format="boolean" />
+        <attr name="otp_box_background" format="reference" />
+        <attr name="otp_box_background_active" format="reference" />
+        <attr name="otp_box_background_inactive" format="reference" />
+        <attr name="otp_box_background_success" format="reference" />
+        <attr name="otp_box_background_error" format="reference" />
+        <attr name="bar_margin" format="dimension" />
+        <attr name="bar_margin_bottom" format="dimension" />
+        <attr name="bar_margin_right" format="dimension" />
+        <attr name="bar_margin_left" format="dimension" />
+        <attr name="bar_margin_top" format="dimension" />
+        <attr name="otp_text_size" format="dimension" />
+        <attr name="bar_active_color" format="color" />
+        <attr name="bar_inactive_color" format="color" />
+        <attr name="bar_error_color" format="color" />
+        <attr name="bar_success_color" format="color" />
+        <attr name="text_typeface" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="AndExoPlayerView">
+        <attr name="andexo_resize_mode" />
+        <attr name="andexo_aspect_ratio" />
+        <attr name="andexo_play_when_ready" format="boolean" />/>
+    </declare-styleable>
+
+    <attr name="andexo_resize_mode" format="enum">
+        <enum name="Fit" value="1" />
+        <enum name="Fill" value="2" />
+        <enum name="Zoom" value="3" />
+    </attr>
+
+    <attr name="andexo_aspect_ratio" format="enum">
+        <enum name="aspect_1_1" value="1" />
+        <enum name="aspect_16_9" value="2" />
+        <enum name="aspect_4_3" value="3" />
+        <enum name="aspect_match" value="4" />
+        <enum name="aspect_mp3" value="5" />
+    </attr>
+
+    <declare-styleable name="CircularProgressBar">
+        <attr name="cpb_progress" format="integer" />
+        <attr name="cpb_progress_max" format="integer" />
+        <attr name="cpb_indeterminate_mode" format="boolean" />
+        <attr name="cpb_progressbar_color" format="color" />
+        <attr name="cpb_progressbar_color_start" format="color" />
+        <attr name="cpb_progressbar_color_end" format="color" />
+        <attr name="cpb_progressbar_color_direction">
+            <flag name="left_to_right" value="1" />
+            <flag name="right_to_left" value="2" />
+            <flag name="top_to_bottom" value="3" />
+            <flag name="bottom_to_top" value="4" />
+        </attr>
+        <attr name="cpb_background_progressbar_color" format="color" />
+        <attr name="cpb_background_progressbar_color_start" format="color" />
+        <attr name="cpb_background_progressbar_color_end" format="color" />
+        <attr name="cpb_background_progressbar_color_direction">
+            <flag name="left_to_right" value="1" />
+            <flag name="right_to_left" value="2" />
+            <flag name="top_to_bottom" value="3" />
+            <flag name="bottom_to_top" value="4" />
+        </attr>
+        <attr name="cpb_progressbar_width" format="dimension" />
+        <attr name="cpb_background_progressbar_width" format="dimension" />
+        <attr name="cpb_round_border" format="boolean" />
+        <attr name="cpb_start_angle" format="float" />
+        <attr name="cpb_progress_direction">
+            <flag name="to_right" value="1" />
+            <flag name="to_left" value="2" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="ShapeOfView">
+        <attr name="shape_clip_drawable" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="TriangleView">
+        <attr name="shape_triangle_percentLeft" format="float" />
+        <attr name="shape_triangle_percentBottom" format="float" />
+        <attr name="shape_triangle_percentRight" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="CollapsedColoredHintTextInputLayout">
+        <attr name="hintTextColorNormal" format="color" />
+        <attr name="hintTextColorSelected" format="color" />
+        <attr name="android:drawablePadding" format="dimension|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="CoreToolbar"></declare-styleable>
+
+    <declare-styleable name="RoundedImageViewV2">
+        <attr name="rounded_radius" format="float" />
+    </declare-styleable>
+    <declare-styleable name="SearchableSpinner">
+        <!-- View attributes -->
+        <attr name="RevealViewBackgroundColor" format="color" />
+        <attr name="StartSearchTintColor" format="color" />
+        <attr name="SearchViewBackgroundColor" format="color" />
+        <attr name="SearchViewTextColor" format="color" />
+        <attr name="DoneSearchTintColor" format="color" />
+        <attr name="AnimDuration" format="integer" />
+        <attr name="ShowBorders" format="boolean" />
+        <attr name="BordersSize" format="dimension" />
+        <attr name="BoarderColor" format="color" />
+        <attr name="SpinnerExpandHeight" format="dimension" />
+        <attr name="KeepLastSearch" format="boolean" />
+        <attr name="RevealEmptyText" format="string" />
+        <attr name="SearchHintText" format="string" />
+        <attr name="NoItemsFoundText" format="string" />
+        <attr name="ItemsDivider" format="reference" />
+        <attr name="DividerHeight" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="CounterFloatingActionButton">
+        <attr name="badgeTextColor" format="color" />
+        <attr name="badgeBackgroundColor" format="color" />
+        <attr name="badgePosition" format="enum">
+            <enum name="RightTop" value="0" />
+            <enum name="LeftBottom" value="1" />
+            <enum name="LeftTop" value="2" />
+            <enum name="RightBottom" value="3" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="CoreEditText">
+        <attr name="ce_setBackgroundColor" format="color" />
+        <attr name="ce_custom_width" format="dimension" />
+        <attr name="ce_custom_height" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="TimelineView">
+        <attr name="marker" format="color|reference" />
+        <attr name="markerSize" format="dimension" />
+        <attr name="markerPaddingLeft" format="dimension" />
+        <attr name="markerPaddingTop" format="dimension" />
+        <attr name="markerPaddingRight" format="dimension" />
+        <attr name="markerPaddingBottom" format="dimension" />
+        <attr name="markerInCenter" format="boolean" />
+        <attr name="startLineColor" format="color" />
+        <attr name="endLineColor" format="color|reference" />
+        <attr name="lineWidth" format="dimension" />
+        <attr name="lineStyle" format="enum">
+            <enum name="normal" value="0" />
+            <enum name="dash" value="1" />
+        </attr>
+        <attr name="lineStyleDashGap" format="dimension" />
+        <attr name="lineStyleDashLength" format="dimension" />
+        <attr name="lineOrientation" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+        <attr name="linePadding" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="SkeletonLayout">
+        <attr name="maskColor" format="color" />
+        <attr name="maskCornerRadius" format="dimension" />
+        <attr name="showShimmer" format="boolean" />
+        <attr name="shimmerColor" format="color" />
+        <attr name="shimmerDurationInMillis" format="integer" />
+        <attr name="shimmerDirection" format="enum">
+            <enum name="left_to_right" value="0" />
+            <enum name="right_to_left" value="1" />
+        </attr>
+        <attr name="shimmerAngle" format="integer" />
+    </declare-styleable>
+
+</resources>

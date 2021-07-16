@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.transaction.viewmodels.TransactionDetailsViewModel" />
+
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="co.yap.yapcore.helpers.extentions.TransactionExtentionsKt" />
+
+        <import type="co.yap.yapcore.helpers.extentions.CurrencyExtensionsKt" />
+
+        <import type="co.yap.yapcore.enums.TxnType" />
+
+        <import type="co.yap.yapcore.enums.TransactionStatus" />
+
+        <import type="co.yap.yapcore.enums.TransactionProductCode" />
+
+        <import type="co.yap.yapcore.helpers.Utils" />
+
+        <import type="co.yap.R" />
+
+
+        <import type="android.view.View" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <co.yap.widgets.CoreToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:leftIcon="@{R.drawable.ic_back_arrow_left}"
+                app:leftIconVisibility="@{true}"
+                app:onClick="@{viewModel::onToolBarClick}"
+                app:rightIcon="@{R.drawable.ic_share}"
+                app:rightIconVisibility="@{false}"
+                app:titleString="@{viewModel.state.toolbarTitle}" />
+
+            <ImageView
+                android:id="@+id/ivMap"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                android:contentDescription="@string/empty_string"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_image_brown_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+            <co.yap.widgets.CoreCircularImageView
+                android:id="@+id/ivPicture"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:alpha="@{viewModel.transaction.status.equals(TransactionStatus.CANCELLED.name) || viewModel.transaction.status.equals(TransactionStatus.FAILED.name)? 0.5f : 1.0f}"
+                android:background="@drawable/bg_round_purple_enabled"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivMap" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_normal_large"
+                app:layout_constraintBottom_toBottomOf="@+id/vLine"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivPicture"
+                app:layout_constraintTop_toTopOf="@+id/ivPicture"
+                app:layout_constraintVertical_bias="0.0">
+
+                <TextView
+                    android:id="@+id/tvTransactionHeading"
+                    style="@style/Regular"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:ellipsize="end"
+                    android:lineSpacingExtra="@dimen/_1sdp"
+                    android:maxLines="2"
+                    android:text="@{viewModel.state.transactionTitle}"
+                    app:layout_constraintEnd_toStartOf="@+id/tvTotalAmountValue"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Transaction " />
+
+                <TextView
+                    android:id="@+id/tvLocation"
+                    style="@style/AMicroGrey"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lineSpacingExtra="2dp"
+                    android:maxLines="1"
+                    android:textColor="@{TransactionExtentionsKt.isTransactionRejected(viewModel.transaction)==true || TransactionExtentionsKt.isTransactionInProgress(viewModel.transaction)==true ? @color/colorPrimaryDark : @color/greyDark}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvTotalAmountValue"
+                    app:layout_constraintStart_toStartOf="@+id/tvTransactionHeading"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTransactionHeading"
+                    tools:text="transaction rejected"
+                    tools:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvTxnSubTitle"
+                    style="@style/AMicroGrey"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lineSpacingExtra="2dp"
+                    android:maxLines="1"
+                    android:textColor="@{TransactionExtentionsKt.isTransactionRejected(viewModel.transaction)==true || TransactionExtentionsKt.isTransactionInProgress(viewModel.transaction)==true ? @color/colorPrimaryDark : @color/greyDark}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvTotalAmountValue"
+                    app:layout_constraintStart_toStartOf="@+id/tvTransactionHeading"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLocation"
+                    tools:text="transaction rejected"
+                    tools:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/ivCategoryIcon"
+                    android:layout_width="@dimen/_13sdp"
+                    android:layout_height="@dimen/_13sdp"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:contentDescription="@string/empty_string"
+                    android:tint="@color/colorSecondaryOrange"
+                    app:layout_constraintStart_toStartOf="@+id/tvTransactionHeading"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTxnSubTitle"
+                    app:src="@{viewModel.state.categoryIcon}"
+                    tools:ignore="UseAppTint"
+                    tools:src="@drawable/ic_send_money" />
+
+                <TextView
+                    android:id="@+id/tvTransactionSubheading"
+                    style="@style/AMicroGrey"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_3sdp"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:ellipsize="end"
+                    android:lineSpacingExtra="2dp"
+                    android:maxLines="1"
+                    android:text="@{viewModel.state.categoryTitle}"
+                    android:textColor="@color/colorSecondaryOrange"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivCategoryIcon"
+                    app:layout_constraintEnd_toStartOf="@+id/tvCurrency"
+                    app:layout_constraintStart_toEndOf="@+id/ivCategoryIcon"
+                    app:layout_constraintTop_toTopOf="@+id/ivCategoryIcon"
+                    tools:text="Outgoing Transfer" />
+
+                <TextView
+                    android:id="@+id/tvTotalAmountValue"
+                    style="@style/Large"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="2500" />
+
+                <TextView
+                    android:id="@+id/tvCurrency"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AED"
+                    app:layout_constraintEnd_toEndOf="@+id/tvTotalAmountValue"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTotalAmountValue"
+                    tools:text="AED" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <View
+                android:id="@+id/vLine"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_normal_large"
+                android:background="@color/divider"
+                app:layout_constraintEnd_toEndOf="@id/clAmount"
+                app:layout_constraintStart_toStartOf="@+id/clAmount"
+                app:layout_constraintTop_toBottomOf="@id/clAmount" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clNoteParent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vLine">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clEditIcon"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_normal_large"
+                    android:background="@drawable/bg_round_purple_enabled"
+                    android:onClick="@{(v)-> viewModel.handlePressOnEditNoteClickEvent(v.id)}"
+                    android:visibility="visible"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/empty_string"
+                        android:src="@drawable/ic_edit"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clNote"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:onClick="@{(v)-> viewModel.handlePressOnEditNoteClickEvent(v.id)}"
+                    android:visibility="visible"
+                    app:layout_constraintLeft_toRightOf="@+id/clEditIcon"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/clEditIcon">
+
+                    <TextView
+                        android:id="@+id/tvNoteHeading"
+                        style="@style/Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.state.txnNoteValue==null || viewModel.state.txnNoteValue.isEmpty()? @string/screen_transaction_details_display_text_add_note : viewModel.state.transactionNoteDate}"
+                        android:textColor="?attr/colorPrimaryAttr"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Add a note" />
+
+                    <TextView
+                        android:id="@+id/tvNoteDetails"
+                        style="@style/AMicroGrey"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lineSpacingExtra="2dp"
+                        android:maxLines="1"
+                        android:text="@{viewModel.state.txnNoteValue==null || viewModel.state.txnNoteValue.isEmpty()? @string/screen_transaction_details_display_text_note_description : viewModel.state.txnNoteValue}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvNoteHeading"
+                        app:layout_constraintTop_toBottomOf="@+id/tvNoteHeading"
+                        tools:text="transaction notes" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tvPaymentDetail"
+                style="@style/ASmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_normal_large"
+                android:text="Payment details"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/clNoteParent"
+                tools:text="Payment detail" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clTransactionDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@color/greySoftSelected"
+                android:paddingStart="@dimen/margin_medium"
+                android:paddingEnd="@dimen/margin_medium"
+                android:paddingBottom="@dimen/margin_medium"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPaymentDetail">
+
+                <LinearLayout
+                    android:id="@+id/cancelReasonLy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tvCanceReason"
+                        style="@style/AMicro"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small"
+                        android:layout_weight="1"
+                        android:lineSpacingExtra="3sp"
+                        app:layout_constraintBottom_toTopOf="@+id/tvReceiverName"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="HardcodedText"
+                        tools:text="cancel reasodja dhsajd h,asgdjsdas asdsa asdas asdas asdas asdsad asdsa sadsad adas asdsad a ghasd gjs aahsgd"
+                        tools:visibility="visible" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvCardLabel"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Card"
+                    android:visibility="@{viewModel.transaction.status.equals(TransactionStatus.CANCELLED.name)||viewModel.transaction.productCode.equals(TransactionProductCode.SWIFT.pCode) || viewModel.transaction.productCode.equals(TransactionProductCode.RMT.pCode)? View.VISIBLE : View.GONE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvCardMask"
+                    tools:ignore="HardcodedText"
+                    tools:text="Card" />
+
+                <TextView
+                    android:id="@+id/tvCardMask"
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:gravity="end"
+                    android:visibility="@{viewModel.transaction.status.equals(TransactionStatus.CANCELLED.name)||viewModel.transaction.productCode.equals(TransactionProductCode.SWIFT.pCode) || viewModel.transaction.productCode.equals(TransactionProductCode.RMT.pCode)? View.VISIBLE : View.GONE}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvCardLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/cancelReasonLy"
+                    tools:text="*99999" />
+
+                <TextView
+                    android:id="@+id/tvDestinationLabel"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Transfer amount"
+                    android:visibility="@{(viewModel.transaction.productCode.equals(TransactionProductCode.SWIFT.pCode) || viewModel.transaction.productCode.equals(TransactionProductCode.RMT.pCode))  ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvDestinationAmount"
+                    tools:ignore="HardcodedText"
+                    tools:text="Transfer amount" />
+
+                <TextView
+                    android:id="@+id/tvDestinationAmount"
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:gravity="end"
+                    android:text="@{CurrencyExtensionsKt.toFormattedCurrency(viewModel.transaction.amount.toString(),true,viewModel.transaction.currency,true)}"
+                    android:visibility="@{ (viewModel.transaction.productCode.equals(TransactionProductCode.SWIFT.pCode) || viewModel.transaction.productCode.equals(TransactionProductCode.RMT.pCode))  ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCardMask"
+                    tools:text="CAD 50.00 " />
+
+                <TextView
+                    android:id="@+id/tvFxRateLabel"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Exchange rate"
+                    android:visibility="@{ (viewModel.transaction.productCode.equals(TransactionProductCode.SWIFT.pCode) || viewModel.transaction.productCode.equals(TransactionProductCode.RMT.pCode))   ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvFxRateValue"
+                    tools:ignore="HardcodedText"
+                    tools:text="Exchange rate" />
+
+                <TextView
+                    android:id="@+id/tvFxRateValue"
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:gravity="end"
+                    android:text="@{viewModel.transaction.currency+` 1.00 = AED `+viewModel.transaction.fxRate}"
+                    android:visibility="@{ (viewModel.transaction.productCode.equals(TransactionProductCode.SWIFT.pCode) || viewModel.transaction.productCode.equals(TransactionProductCode.RMT.pCode)) ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDestinationAmount"
+                    tools:text="1 CAD =  2.3 AED " />
+
+                <TextView
+                    android:id="@+id/tvSenderLable"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sender"
+                    android:visibility="@{viewModel.state.isTransferTxn &amp;&amp; viewModel.transaction.txnType.equals(TxnType.CREDIT.type)? View.VISIBLE : View.GONE }"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvSenderName"
+                    tools:ignore="HardcodedText"
+                    tools:text="Sender" />
+
+                <TextView
+                    android:id="@+id/tvSenderName"
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:layout_marginTop="@dimen/small"
+                    android:ellipsize="end"
+                    android:gravity="end"
+                    android:lines="1"
+                    android:text="@{viewModel.transaction.senderName.toString()}"
+                    android:visibility="@{viewModel.state.isTransferTxn &amp;&amp; viewModel.transaction.txnType.equals(TxnType.CREDIT.type)? View.VISIBLE : View.GONE }"
+                    app:layout_constraintBottom_toTopOf="@+id/tvReceiverName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvSenderLable"
+                    app:layout_constraintTop_toBottomOf="@+id/tvFxRateValue"
+                    tools:text="Hassnain AliHassnain AliHassnain AliHassnain AliHassnain Ali" />
+
+                <TextView
+                    android:id="@+id/tvReceiverLable"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Receiver"
+                    android:visibility="@{viewModel.state.isTransferTxn &amp;&amp; viewModel.transaction.txnType.equals(TxnType.DEBIT.type)? View.VISIBLE : View.GONE }"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvReceiverName"
+                    tools:ignore="HardcodedText"
+                    tools:text="Receiver" />
+
+                <TextView
+                    android:id="@+id/tvReceiverName"
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:layout_marginBottom="@dimen/small"
+                    android:ellipsize="end"
+                    android:gravity="end"
+                    android:lines="1"
+                    android:text="@{viewModel.transaction.receiverName.toString()}"
+                    android:visibility="@{viewModel.state.isTransferTxn &amp;&amp; viewModel.transaction.txnType.equals(TxnType.DEBIT.type)? View.VISIBLE : View.GONE }"
+                    app:layout_constraintBottom_toTopOf="@+id/tvCardSpendAmount"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/guideline1"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvReceiverLable"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSenderName"
+                    tools:text="Faheem RiaFaheem RiaFaheem RiaFaheem RiaFaheem Riaz" />
+
+                <TextView
+                    android:id="@+id/tvCardSpent"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvCardSpendAmount"
+                    tools:text="Sent" />
+
+                <TextView
+                    android:id="@+id/tvCardSpendAmount"
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:gravity="end"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvReceiverName"
+                    tools:text="1500" />
+
+                <TextView
+                    android:id="@+id/tvFee"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/screen_transaction_details_display_text_fee"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvFeeAmount"
+                    app:text="@{Strings.screen_transaction_details_display_text_fee}"
+                    tools:text="Fee" />
+
+                <TextView
+                    android:id="@+id/tvFeeAmount"
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:gravity="end"
+                    android:text="@{viewModel.transaction.postedFees!=null ?  CurrencyExtensionsKt.toFormattedCurrency(viewModel.transaction.postedFees.toString(),true,`AED`,true) :  `AED 0.00`}"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCardSpendAmount"
+                    tools:text="1000" />
+
+                <TextView
+                    android:id="@+id/tvVat"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VAT"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvVatAmount"
+                    tools:ignore="HardcodedText"
+                    tools:text="VAT" />
+
+                <TextView
+                    android:id="@+id/tvVatAmount"
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:gravity="end"
+                    android:text="@{viewModel.transaction.vatAmount==null ? `AED 0.00` :CurrencyExtensionsKt.toFormattedCurrency(viewModel.transaction.vatAmount.toString(),true,`AED`,true)}"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvFeeAmount"
+                    tools:text="AED 1500" />
+
+                <TextView
+                    android:id="@+id/tvTotalAmount"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/screen_transaction_details_display_text_total_amount"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvTotalAmountValueCalculated"
+                    app:text="@{Strings.screen_transaction_details_display_text_total_amount}"
+                    tools:text="Total" />
+
+                <TextView
+                    android:id="@+id/tvTotalAmountValueCalculated"
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:gravity="end"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvVatAmount"
+                    tools:text="2500" />
+
+                <TextView
+                    android:id="@+id/tvReferenceNumber"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reference number"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvReferenceNumberValue"
+                    tools:ignore="HardcodedText"
+                    tools:text="Reference number" />
+
+                <TextView
+                    android:id="@+id/tvReferenceNumberValue"
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:gravity="end"
+                    android:text="@{viewModel.transaction.transactionId}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvReferenceNumber"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTotalAmountValueCalculated"
+                    tools:text="1684495635191684419563519" />
+
+                <TextView
+                    android:id="@+id/tvRemarks"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Note"
+                    android:visibility="@{viewModel.state.txnNoteValue==null || viewModel.state.txnNoteValue.isEmpty()? View.GONE :View.VISIBLE }"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvRemarksValue"
+                    tools:ignore="HardcodedText"
+                    tools:text="Note" />
+
+                <TextView
+                    android:id="@+id/tvRemarksValue"
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:gravity="end"
+                    android:text="@{viewModel.state.txnNoteValue==null || viewModel.state.txnNoteValue.isEmpty()? @string/screen_transaction_details_display_text_note_description : viewModel.state.txnNoteValue}"
+                    android:visibility="@{viewModel.state.txnNoteValue==null || viewModel.state.txnNoteValue.isEmpty()? View.GONE :View.VISIBLE }"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvRemarks"
+                    app:layout_constraintTop_toBottomOf="@+id/tvReferenceNumberValue"
+                    tools:text="sample note" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

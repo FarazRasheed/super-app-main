@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="errorMessage"
+            type="String" />
+
+        <variable
+            name="isActive"
+            type="Boolean" />
+
+        <variable
+            name="isEmpty"
+            type="Boolean" />
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="pinCode"
+            type="String" />
+
+        <variable
+            name="buttonText"
+            type="String" />
+
+        <variable
+            name="checkCode"
+            type="Boolean" />
+
+        <variable
+            name="errorBackground"
+            type="android.graphics.drawable.Drawable" />
+
+        <variable
+            name="errorIconDrawable"
+            type="android.graphics.drawable.Drawable" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <co.yap.widgets.CollapsedColoredHintTextInputLayout
+            android:id="@+id/tvRepeatNewPinHeading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium_large"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium_large"
+            android:dividerPadding="@dimen/margin_medium_large"
+            android:hint="@{title}"
+            app:hintTextAppearance="@style/LabelTextStyl"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textColorChangePin="@{pinCode}">
+
+            <EditText
+                android:id="@+id/etNewConfirmPin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@{errorBackground}"
+                android:drawableEnd="@{errorIconDrawable}"
+                android:imeOptions="actionDone"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:letterSpacing="0.5"
+                android:maxLength="4"
+                android:paddingTop="@dimen/margin_medium"
+                android:singleLine="true"
+                android:text="@={pinCode}"
+                android:theme="@style/Theme.EditText.Primary"
+                app:layout_constraintTop_toBottomOf="@+id/tvRepeatNewPinHeading" />
+
+        </co.yap.widgets.CollapsedColoredHintTextInputLayout>
+
+        <TextView
+            android:id="@+id/tvError"
+            style="@style/MicroGrey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium_large"
+            android:layout_marginTop="@dimen/margin_three_dp"
+            android:layout_marginEnd="@dimen/margin_medium_large"
+            android:gravity="center"
+            android:text="@={errorMessage}"
+            android:textColor="@color/greyDark"
+            app:layout_constraintTop_toBottomOf="@+id/tvRepeatNewPinHeading" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

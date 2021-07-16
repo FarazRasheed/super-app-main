@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="recentTransferItemVM"
+            type="co.yap.sendmoney.home.adapters.RecentTransferItemVM" />
+
+        <import type="co.yap.yapcore.helpers.StringUtils" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rlPicture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical|center_horizontal"
+            android:background="@color/white"
+            android:gravity="center|center_vertical|center_horizontal">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/tvAccountHolderNameInitials"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:background="@drawable/bg_round_red"
+                    android:backgroundTint="#D8F6F3"
+                    android:contentDescription="@string/app_name"
+                    android:gravity="center"
+                    android:maxLength="2"
+                    android:textColor="@color/colorSecondaryGreen"
+                    android:textSize="@dimen/_24sdp"
+                    app:text="@{StringUtils.INSTANCE.getInitials(recentTransferItemVM.item.title)}" />
+
+                <!--  android:text="@{StringUtils.INSTANCE.getInitials(viewModel.state.title)}" -->
+
+
+            </FrameLayout>
+
+            <co.yap.widgets.CoreCircularImageView
+                android:id="@+id/ivProfilePic"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:contentDescription="@string/app_name"
+                android:visibility="invisible"
+                />
+
+            <RelativeLayout
+                android:id="@+id/rlAddNewProfilePic"
+                android:layout_width="47dp"
+                android:layout_height="49dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="-3dp"
+                android:visibility="visible">
+
+                <FrameLayout
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_2sdp"
+                    android:background="@drawable/bg_round_red"
+                    android:backgroundTint="@color/white">
+
+                    <ImageView
+                        android:id="@+id/ivAddProfilePic"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:layout_marginEnd="@dimen/_2sdp"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:background="@drawable/bitmap" />
+
+                </FrameLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/AppFontRegular"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:ellipsize="end"
+            android:lineSpacingExtra="2sp"
+            android:lines="2"
+            android:paddingLeft="@dimen/_10sdp"
+            android:text="@{recentTransferItemVM.item.title}"
+            android:textColor="@color/greyDark"
+            android:textSize="@dimen/_10sdp"
+            android:textStyle="normal"
+            tools:text="Arshad Ali hussain mirza " />
+
+    </LinearLayout>
+</layout>

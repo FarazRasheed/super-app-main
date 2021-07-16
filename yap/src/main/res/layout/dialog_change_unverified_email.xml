@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_round"
+        android:padding="@dimen/margin_medium">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:src="@drawable/ic_close"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivUnverifiedIcon"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/margin_small"
+            android:contentDescription="@string/empty_string"
+            android:src="@drawable/ic_round_bulb"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvUnverifiedDescription"
+            style="@style/SmallGrey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium_large"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium_large"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/ivUnverifiedIcon"
+            tools:text="@string/screen_email_verified_popup_display_text_title" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvEmail"
+            style="@style/Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal_large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvUnverifiedDescription"
+            tools:text="umer@gmail.com" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvUserGuide"
+            style="@style/SmallGrey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:lineSpacingExtra="3sp"
+            android:text="@string/screen_email_verified_popup_display_text_sub_title"
+            app:layout_constraintTop_toBottomOf="@+id/tvEmail"
+            tools:layout_editor_absoluteX="25dp"
+            tools:text="@string/screen_email_verified_popup_display_text_sub_title" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTroubleDescription"
+            style="@style/MicroGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:gravity="center"
+            android:lineSpacingExtra="3sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvUserGuide"
+            tools:text="@string/screen_email_verified_popup_display_text_click_here" />
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnOpenMailApp"
+            style="@style/RectangleBtnSmallStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/screen_email_verified_popup_button_Take_me"
+            app:btn_enable="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTroubleDescription"
+            tools:text="Add" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnLater"
+            style="@style/Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/screen_email_verified_popup_button_do_it"
+            android:textColor="?attr/colorPrimaryAttr"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnOpenMailApp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

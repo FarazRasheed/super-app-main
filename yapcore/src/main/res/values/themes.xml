@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CoreAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#5E35B1</item>
+        <item name="colorPrimaryDark">#272262</item>
+        <item name="colorAccent">#4d4d4d</item>
+
+        <item name="colorPrimaryAttr">@color/colorPrimary</item>
+        <item name="colorPrimaryDarkAttr">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryAccentAttr">@color/colorAccent</item>
+
+        <item name="colorPrimaryAccentWarmAttr">@color/colorAccent</item>
+        <item name="colorPrimaryWarmAttr">@color/colorPrimaryWarm</item>
+        <item name="colorPrimaryLightAttr">@color/colorPrimaryLight</item>
+        <item name="colorPrimaryAltAttr">@color/colorPrimaryAlt</item>
+        <item name="colorPrimarySoftAttr">@color/colorPrimarySoft</item>
+        <item name="colorPrimaryDarkIconsAttr">@color/colorPrimaryDarkIcons</item>
+        <item name="colorPrimaryDisabledBtnAttr">@color/colorDisabledBtn</item>
+        <item name="colorPressedBtnStateAttr">@color/colorPressedBtnState</item>
+        <item name="colordisabledTick">@color/disabledTickColor</item>
+        <item name="colorSeekBar">@color/seekbarProgress</item>
+
+        <item name="primaryButtonTheme">@style/Widget.Button.Primary</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="alertDialogTheme">@style/AlertDialogueCustom</item>
+        <item name="actionBarSize">@dimen/toolbar_height</item>
+
+    </style>
+
+    <style name="AppThemeHouseHold" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#fc6253</item>
+        <item name="colorPrimaryDark">@color/textDarkColor</item>
+        <item name="colorAccent">#fc6253</item>
+
+        <item name="colorPrimaryAttr">@color/colorPrimaryHouseHold</item>
+        <item name="colorPrimaryDarkAttr">@color/textDarkColor</item>
+        <item name="colorPrimaryAccentAttr">@color/colorAccentHouseHold</item>
+
+
+        <item name="colorPrimaryAccentWarmAttr">@color/colorAccentHouseHold</item>
+        <item name="colorPrimaryWarmAttr">@color/colorPrimaryHouseHold</item>
+        <item name="colorPrimaryLightAttr">@color/colorDisabledBtnHouseHold</item>
+        <item name="colorPrimaryAltAttr">@color/colorDisabledBtnHouseHold</item>
+        <item name="colorPrimarySoftAttr">@color/colorPrimarySoftHouseHold</item>
+        <item name="colorPrimaryDisabledBtnAttr">@color/colorDisabledBtnHouseHold</item>
+        <item name="colorPrimaryDarkIconsAttr">@color/colorPrimaryDarkIconsHouseHold</item>
+        <item name="colorPressedBtnStateAttr">@color/colorPressedBtnStateHouseHold</item>
+        <item name="colordisabledTick">@color/colordisabledTickHouseHold</item>
+        <item name="colorSeekBar">@color/seekbarProgresskHouseHold</item>
+        <item name="actionBarSize">@dimen/toolbar_height</item>
+        <item name="primaryButtonTheme">@style/Widget.Button.Primary</item>
+        <item name="alertDialogTheme">@style/AlertDialogueCustom</item>
+
+
+    </style>
+
+    <style name="CoreAppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="CoreAppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="CoreAppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppThemeHouseHold.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="Widget.Button.Primary" parent="Widget.AppCompat.Button">
+        <item name="colorButtonNormal">?attr/colorPrimaryAttr</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="CardViewStyle" parent="CardView">
+        <item name="android:background">?attr/colorPrimaryWarmAttr</item>
+    </style>
+
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">?attr/colorPrimary</item>
+        <item name="colorPrimaryDark">?attr/colorPrimaryDark</item>
+        <item name="colorAccent">?attr/colorAccent</item>
+        <item name="alertDialogTheme">@style/AlertDialogueCustom</item>
+
+
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AlertDialogueCustom" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="android:textAppearanceLarge">?attr/colorPrimaryDarkAttr</item>
+        <item name="android:textAppearance">?attr/colorPrimaryDarkAttr</item>
+        <item name="android:textAppearanceSmall">?attr/colorPrimaryDarkAttr</item>
+        <item name="android:dialogMessage">?attr/colorPrimaryDarkAttr</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+        <item name="android:drawableTint">?attr/colorPrimary</item>
+
+    </style>
+
+    <style name="myDialog" parent="Theme.AppCompat.Light.Dialog.MinWidth">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+    </style>
+
+    <style name="QRCodeTheme" parent="Theme.AppCompat.Light.Dialog.MinWidth">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+    </style>
+</resources>

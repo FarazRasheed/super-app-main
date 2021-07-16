@@ -1,0 +1,397 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
+project.ext {
+    compileSdkVersion = 29
+    minSdkVersion = 23
+    targetSdkVersion = 29
+    versionCode = 1
+    versionName = "1.0"
+    playServicesVersion = '16.0.0'
+    supportLibraryVersion = "28.0.3"
+    retrofitVersion = "2.6.0"
+    daggerVersion = "2.16"
+    okhttpVersion = "3.12.1"
+    okhttpLoggerVersion = "3.10.0"
+    okhttpGsonVersion = "2.5.0"
+    arch = "2.1.0"
+    paging_version = "2.1.0"
+    modules = [
+            app        : ':app',
+            yapandroid : ':yapandroid',
+            networking : ':networking',
+            translation: ':translation',
+            yap        : ':yap',
+            household  : ':household',
+            yapcore    : ':yapcore',
+            kyc        : ':identityscanner_v2',
+            sendmoney  : ':sendmoney',
+            security   : ':security'
+    ]
+
+    // All libraries that any module can contain
+    libraries = [
+            // Android
+            sdp                      : 'com.intuit.sdp:sdp-android:1.0.5',
+            kotlinStdlib             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            kotlinreflect            : "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
+            databindingCompiler      : 'com.android.databinding:compiler:3.4.1',
+            material                 : 'com.google.android.material:material:1.2.0-alpha01',
+            viewpagerDots            : 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2',
+            otpView                  : 'com.github.aabhasr1:OtpView:v1.1.2',
+            numberFomater            : 'io.michaelrocks:libphonenumber-android:8.12.10',
+            recyclerfastscroll       : 'com.futuremind.recyclerfastscroll:fastscroll:0.2.5',
+            gson                     : 'com.google.code.gson:gson:2.8.5',
+            discretescrollview       : "com.yarolegovich:discrete-scrollview:1.4.9",
+            baloon                   : "com.github.skydoves:balloon:1.1.4",
+            quickAction              : "me.piruin:quickaction:2.4.3",
+            rangeSeekbar             : "com.github.Jay-Goo:RangeSeekBar:v3.0.0",
+
+            // Dagger
+            dagger                   : "com.google.dagger:dagger:$daggerVersion",
+            daggerAndroid            : "com.google.dagger:dagger-android:$daggerVersion",
+            daggerAndroidSupport     : "com.google.dagger:dagger-android-support:$daggerVersion",
+            daggerCompiler           : "com.google.dagger:dagger-compiler:$daggerVersion",
+            daggerAndroidProcessor   : "com.google.dagger:dagger-android-processor:$daggerVersion",
+
+            // Retrofit2
+            retrofit                 : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            okhttp                   : "com.squareup.okhttp3:okhttp:$okhttpVersion",
+            okhttp3LoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$okhttpLoggerVersion",
+            retrofitConverterGson    : "com.squareup.retrofit2:converter-gson:$okhttpGsonVersion",
+
+            // Androidx
+            appcompat                : 'androidx.appcompat:appcompat:1.1.0-beta01',
+            coreKtx                  : 'androidx.core:core-ktx:1.0.2',
+            constraintLayout         : 'androidx.constraintlayout:constraintlayout:1.1.3',
+            constraintlayoutSolver   : 'androidx.constraintlayout:constraintlayout-solver:1.1.3',
+            legacySupportV13         : 'androidx.legacy:legacy-support-v13:1.0.0',
+            legacySupportV4          : 'androidx.legacy:legacy-support-v4:1.0.0',
+            cardview                 : 'androidx.cardview:cardview:1.0.0',
+            recyclerview             : 'androidx.recyclerview:recyclerview:1.1.0-alpha06',
+            vectordrawable           : 'androidx.vectordrawable:vectordrawable:1.1.0-beta02',
+            biometric                : 'androidx.biometric:biometric:1.0.1',
+            viewpager2               : 'androidx.viewpager2:viewpager2:1.0.0-beta03',
+            security                 : 'androidx.security:security-crypto:1.0.0-rc03',
+
+            // Navigation
+            navigationFragmentKtx    : "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
+            navigationUItKtx         : "androidx.navigation:navigation-ui-ktx:$navigationVersion",
+
+            // paging
+            paging                   : "androidx.paging:paging-runtime:$paging_version",
+
+            // Androidx Architecture
+            lifecycleRuntime         : "androidx.lifecycle:lifecycle-runtime:$arch",
+            lifecycleCommonJava      : "androidx.lifecycle:lifecycle-common-java8:$arch",
+            lifecycleExtensions      : "androidx.lifecycle:lifecycle-extensions:$arch",
+            livedataBuilder          : 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0',
+
+            // kotlin coroutine
+            coroutineCore            : 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0-M1',
+            coroutineAndroid         : 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0-M1',
+
+
+            // maps
+            playServicesPlaces       : "com.google.android.gms:play-services-places:$playServicesVersion",
+            playLibPlaces            : 'com.google.android.libraries.places:places:1.1.0',
+
+            glideTransformation      : 'com.github.bumptech.glide:glide:4.11.0',
+
+            // Animations
+            androidanimations        : 'com.daimajia.androidanimations:library:2.3@aar',
+            androidanimationseasing  : 'com.daimajia.easing:library:2.0@aar',
+            expandableLayout         : 'net.cachapa.expandablelayout:expandablelayout:2.9.2',
+
+            // Live chat
+            livechat                 : 'com.liveperson.android:lp_messaging_sdk:4.2.1',
+
+            //phone lib
+            phoneLib                 : 'com.googlecode.libphonenumber:libphonenumber:8.12.10',
+            easyImage                : 'com.github.jkwiecien:EasyImage:1.3.1',
+
+            //Firebase Crashlytics
+            FirebaseCrashlyticsSdk   :'com.google.firebase:firebase-crashlytics:17.2.2',
+            FirebaseCreshlytics      : 'com.google.firebase:firebase-crash:16.2.1',
+            analytics                : 'com.google.firebase:firebase-analytics:18.0.0',
+            messagingFcm             : 'com.google.firebase:firebase-messaging:20.3.0',
+            playServicesLocation     : 'com.google.android.gms:play-services-location:17.1.0',
+
+            //Leanplum
+            leanplumFcm              : 'com.leanplum:leanplum-fcm:5.2.3',
+            leanplumLocation         : 'com.leanplum:leanplum-location:5.2.3',
+            //leanplumCore             : 'com.leanplum:leanplum-core:5.2.3',
+
+            //Logger
+            timber                   : 'com.jakewharton.timber:timber:4.7.1',
+
+            //Swipeview actions on list
+            swipeViewActions         : 'com.nikhilpanju.recyclerviewenhanced:recyclerviewenhanced:1.1.0',
+            // RX Java
+            rxAndroid                : 'io.reactivex.rxjava2:rxandroid:2.1.1',
+            rxJava                   : 'io.reactivex.rxjava2:rxjava:2.1.5',
+            inline_activity_result   : 'com.github.florent37:inline-activity-result-kotlin:1.0.3',
+
+            //compression
+            compression              : 'id.zelory:compressor:3.0.1',
+            exoplayer                : 'com.google.android.exoplayer:exoplayer:2.10.3',
+
+            //adjust
+            adjust                   : 'com.adjust.sdk:adjust-android:4.21.0',
+            adjustReferrer           : 'com.android.installreferrer:installreferrer:1.1',
+            expand                   : 'net.cachapa.expandablelayout:expandablelayout:2.9.2',
+
+            //pdfViewer
+            pdfViewer                : 'com.pdfview:pdfview-android:1.0.0',
+
+            // Facebook
+            facebook                 : 'com.facebook.android:facebook-android-sdk:[5,6)',
+
+            //sms consent
+            playservicesAuth         : 'com.google.android.gms:play-services-auth:17.0.0',
+            playservicesAuthPhone    : 'com.google.android.gms:play-services-auth-api-phone:17.4.0',
+
+            tagmanager               : 'com.google.android.gms:play-services-tagmanager:17.0.0'
+
+    ]
+
+    // Test dependencies which need to be added in all modules
+    testDependencies = [
+            [configuration: "testImplementation", dependency: 'junit:junit:4.12'],
+            [configuration: "androidTestImplementation", dependency: 'androidx.test:runner:1.2.0'],
+            [configuration: "androidTestImplementation", dependency: 'androidx.test.espresso:espresso-core:3.2.0'],
+    ]
+
+    // Common dependencies which need to be added in all modules
+    commonDependencies = [
+            [configuration: "implementation", dependency: libraries.sdp],
+            [configuration: "implementation", dependency: libraries.kotlinStdlib],
+            [configuration: "implementation", dependency: libraries.kotlinreflect],
+            // [configuration: "kapt", dependency: libraries.databindingCompiler],
+            [configuration: "implementation", dependency: libraries.material],
+            [configuration: "implementation", dependency: libraries.dagger],
+            [configuration: "implementation", dependency: libraries.daggerAndroid],
+            [configuration: "implementation", dependency: libraries.daggerAndroidSupport],
+            [configuration: "kapt", dependency: libraries.daggerCompiler],
+            [configuration: "kapt", dependency: libraries.daggerAndroidProcessor],
+            [configuration: "implementation", dependency: libraries.appcompat],
+            [configuration: "implementation", dependency: libraries.coreKtx],
+            [configuration: "implementation", dependency: libraries.paging],
+            [configuration: "implementation", dependency: libraries.viewpager2],
+            [configuration: "implementation", dependency: libraries.livechat],
+            [configuration: "implementation", dependency: libraries.phoneLib],
+            [configuration: "implementation", dependency: libraries.easyImage],
+            [configuration: "implementation", dependency: libraries.timber],
+            [configuration: "implementation", dependency: libraries.inline_activity_result],
+            [configuration: "implementation", dependency: libraries.rxAndroid],
+            [configuration: "implementation", dependency: libraries.rxJava],
+            [configuration: "implementation", dependency: libraries.compression],
+            [configuration: "implementation", dependency: libraries.exoplayer],
+            [configuration: "implementation", dependency: libraries.adjust],
+            [configuration: "implementation", dependency: libraries.adjustReferrer],
+            [configuration: "implementation", dependency: libraries.expand],
+            [configuration: "implementation", dependency: libraries.pdfViewer],
+            [configuration: "implementation", dependency: libraries.baloon],
+            [configuration: "implementation", dependency: libraries.security],
+            [configuration: "implementation", dependency: libraries.facebook],
+            [configuration: "implementation", dependency: libraries.playservicesAuth],
+            [configuration: "implementation", dependency: libraries.playservicesAuthPhone]
+    ]
+
+    // dependencies which need to be added in app module only in conjunction with commonDependencies
+    appDependencies = [
+            [configuration: "implementation", dependency: project(modules.yapandroid)],
+            [configuration: "implementation", dependency: project(modules.translation)],
+            [configuration: "implementation", dependency: project(modules.security)],
+            [configuration: "implementation", dependency: project(modules.yapcore)],
+            [configuration: "implementation", dependency: project(modules.yap)],
+            [configuration: "implementation", dependency: project(modules.household)],
+            [configuration: "implementation", dependency: project(modules.networking)],
+            [configuration: "implementation", dependency: libraries.biometric],
+            [configuration: "implementation", dependency: libraries.viewpagerDots],
+            [configuration: "implementation", dependency: libraries.FirebaseCrashlyticsSdk],
+            [configuration: "implementation", dependency: libraries.FirebaseCreshlytics],
+            [configuration: "implementation", dependency: libraries.analytics],
+            [configuration: "implementation", dependency: libraries.androidanimations],
+            [configuration: "implementation", dependency: libraries.androidanimationseasing]
+    ]
+
+    // dependencies which need to be added in app module only in conjunction with commonDependencies
+    yapAndroidDependencies = [
+            [configuration: "implementation", dependency: project(modules.translation)],
+            [configuration: "implementation", dependency: project(modules.security)],
+            [configuration: "implementation", dependency: project(modules.yapcore)],
+            [configuration: "implementation", dependency: project(modules.yap)],
+            [configuration: "implementation", dependency: project(modules.household)],
+            [configuration: "implementation", dependency: project(modules.networking)],
+            [configuration: "implementation", dependency: libraries.biometric],
+            [configuration: "implementation", dependency: libraries.viewpagerDots],
+            [configuration: "implementation", dependency: libraries.FirebaseCrashlyticsSdk],
+            [configuration: "implementation", dependency: libraries.FirebaseCreshlytics],
+            [configuration: "implementation", dependency: libraries.analytics],
+            [configuration: "implementation", dependency: libraries.androidanimations],
+            [configuration: "implementation", dependency: libraries.androidanimationseasing]
+    ]
+
+    // dependencies which need to be added in app module only in conjunction with commonDependencies
+    yapDependencies = [
+            [configuration: "implementation", dependency: project(modules.yapcore)],
+            [configuration: "implementation", dependency: project(modules.translation)],
+            [configuration: "implementation", dependency: project(modules.networking)],
+            [configuration: "implementation", dependency: project(modules.kyc)],
+            [configuration: "implementation", dependency: project(modules.sendmoney)],
+            [configuration: "implementation", dependency: libraries.playServicesPlaces],
+            [configuration: "implementation", dependency: libraries.playLibPlaces],
+            [configuration: "implementation", dependency: libraries.glideTransformation],
+            [configuration: "implementation", dependency: libraries.viewpagerDots],
+            [configuration: "implementation", dependency: libraries.androidanimations],
+            [configuration: "implementation", dependency: libraries.androidanimationseasing],
+            [configuration: "implementation", dependency: libraries.expandableLayout],
+            [configuration: "implementation", dependency: libraries.rangeSeekbar],
+            [configuration: "implementation", dependency: libraries.swipeViewActions]
+    ]
+
+    // dependencies which need to be added in app module only in conjunction with commonDependencies
+    householdDependencies = [
+            [configuration: "implementation", dependency: project(modules.yapcore)],
+            [configuration: "implementation", dependency: project(modules.translation)],
+            [configuration: "implementation", dependency: project(modules.networking)],
+            [configuration: "implementation", dependency: project(modules.kyc)],
+            [configuration: "implementation", dependency: project(modules.yap)],
+            [configuration: "implementation", dependency: libraries.playServicesPlaces],
+            [configuration: "implementation", dependency: libraries.playLibPlaces],
+            [configuration: "implementation", dependency: libraries.glideTransformation],
+            [configuration: "implementation", dependency: libraries.androidanimations],
+            [configuration: "implementation", dependency: libraries.androidanimationseasing],
+            [configuration: "implementation", dependency: libraries.expandableLayout],
+            [configuration: "implementation", dependency: libraries.rangeSeekbar],
+            [configuration: "implementation", dependency: libraries.swipeViewActions]
+    ]
+
+    // dependencies which need to be added in yapcore module only in conjunction with commonDependencies
+    yapcoreDependencies = [
+            [configuration: "implementation", dependency: project(modules.translation)],
+            [configuration: "api", dependency: libraries.appcompat],
+            [configuration: "api", dependency: libraries.constraintLayout],
+            [configuration: "api", dependency: libraries.constraintlayoutSolver],
+            [configuration: "api", dependency: libraries.legacySupportV13],
+            [configuration: "api", dependency: libraries.legacySupportV4],
+            [configuration: "api", dependency: libraries.cardview],
+            [configuration: "api", dependency: libraries.recyclerview],
+            [configuration: "api", dependency: libraries.vectordrawable],
+            [configuration: "api", dependency: libraries.lifecycleRuntime],
+            [configuration: "api", dependency: libraries.lifecycleCommonJava],
+            [configuration: "api", dependency: libraries.lifecycleExtensions],
+            [configuration: "api", dependency: libraries.coroutineCore],
+            [configuration: "api", dependency: libraries.coroutineAndroid],
+            [configuration: "api", dependency: libraries.livedataBuilder],
+            [configuration: "api", dependency: libraries.navigationFragmentKtx],
+            [configuration: "api", dependency: libraries.navigationUItKtx],
+            [configuration: "api", dependency: libraries.discretescrollview],
+            [configuration: "implementation", dependency: project(modules.networking)],
+            [configuration: "implementation", dependency: libraries.numberFomater],
+            [configuration: "implementation", dependency: libraries.recyclerfastscroll],
+            [configuration: "implementation", dependency: libraries.gson],
+            [configuration: "implementation", dependency: libraries.glideTransformation],
+            [configuration: "implementation", dependency: libraries.androidanimations],
+            [configuration: "implementation", dependency: libraries.androidanimationseasing],
+            [configuration: "implementation", dependency: libraries.biometric],
+            [configuration: "implementation", dependency: libraries.playServicesPlaces],
+            [configuration: "implementation", dependency: libraries.playLibPlaces],
+            [configuration: "api", dependency: libraries.leanplumFcm],
+            //[configuration: "api", dependency: libraries.leanplumCore],
+            [configuration: "api", dependency: libraries.leanplumLocation],
+            [configuration: "api", dependency: libraries.messagingFcm],
+            [configuration: "api", dependency: libraries.playServicesLocation],
+            [configuration: "implementation", dependency: libraries.tagmanager],
+            [configuration: "implementation", dependency: libraries.analytics],
+            [configuration: "implementation", dependency: libraries.playLibPlaces]
+
+    ]
+    // dependencies which need to be added in translation module only in conjunction with commonDependencies
+    sendmoneyDependencies = [
+            [configuration: "implementation", dependency: project(modules.networking)],
+            [configuration: "implementation", dependency: project(modules.yapcore)],
+            [configuration: "implementation", dependency: project(modules.translation)],
+            [configuration: "implementation", dependency: project(modules.networking)],
+            [configuration: "implementation", dependency: libraries.swipeViewActions]
+
+    ]
+
+    // dependencies which need to be added in translation module only in conjunction with commonDependencies
+    translationDependencies = [
+            [configuration: "implementation", dependency: project(modules.networking)],
+    ]
+
+    // dependencies which need to be added in network module only in conjunction with commonDependencies
+    networkingDependencies = [
+            [configuration: "api", dependency: libraries.retrofit],
+            [configuration: "api", dependency: libraries.retrofitConverterGson],
+            [configuration: "api", dependency: libraries.okhttp],
+            [configuration: "api", dependency: libraries.okhttp3LoggingInterceptor],
+            [configuration: "implementation", dependency: libraries.coroutineCore],
+            [configuration: "implementation", dependency: libraries.coroutineAndroid],
+    ]
+}
+
+android {
+    compileSdkVersion project.compileSdkVersion
+    flavorDimensions "default"
+
+    defaultConfig {
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
+        versionCode project.versionCode
+        versionName project.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("${android_releasekey_storefile}")
+            keyAlias "${android_releasekey_keyAlias}"
+            keyPassword "${android_releasekey_keyPassword}"
+            storePassword "${android_releasekey_storePassword}"
+        }
+        debug {
+            storeFile file("${android_debugkey_storefile}")
+            keyAlias "${android_debugkey_keyAlias}"
+            keyPassword "${android_debugkey_keyPassword}"
+            storePassword "${android_debugkey_storePassword}"
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+}
+
+kapt {
+    generateStubs = true
+}

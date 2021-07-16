@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.yapit.topup.topupamount.viewModels.TopUpCardFundsViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="co.yap.R" />
+
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <co.yap.widgets.CoreToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:leftIcon="@{R.drawable.ic_close_dark}"
+            app:leftIconVisibility="@{true}"
+            app:onClick="@{viewModel::onToolBarClick}"
+            app:titleString="@{viewModel.state.toolbarTitle}" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include
+                    android:id="@+id/cardInfoLayout"
+                    layout="@layout/layout_top_up_card_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintHorizontal_bias="0.494"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:viewModel="@{viewModel}" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clBottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintTop_toBottomOf="@+id/cardInfoLayout">
+
+                    <TextView
+                        android:id="@+id/tvEnterAmountHeading"
+                        style="@style/ASmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_large"
+                        android:text="@{viewModel.state.enterAmountHeading}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Enter the amount" />
+
+                    <TextView
+                        android:id="@+id/tvCurrency"
+                        style="@style/AMicroGrey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:text="@{viewModel.state.currencyType}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvEnterAmountHeading"
+                        tools:text="AED" />
+
+                    <co.yap.widgets.EasyMoneyEditText
+                        android:id="@+id/etAmount"
+                        style="@style/ATitle2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:text="@={viewModel.enteredAmount}"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvEnterAmountHeading"
+                        app:layout_constraintRight_toRightOf="@+id/tvEnterAmountHeading"
+                        app:layout_constraintTop_toBottomOf="@+id/tvCurrency"
+                        tools:text="1234567891" />
+
+                    <LinearLayout
+                        android:id="@+id/llDenominations"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_marginStart="@dimen/text_content_margin"
+                        android:layout_marginTop="@dimen/margin_large"
+                        android:layout_marginEnd="@dimen/text_content_margin"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toBottomOf="@+id/etAmount">
+
+                        <TextView
+                            android:id="@+id/tvDominationFirstAmount"
+                            style="@style/Micro"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:background="@drawable/bg_round_denominations"
+                            android:gravity="center"
+                            android:onClick="@{(v)->viewModel.denominationFirstAmountClick()}"
+                            android:paddingLeft="@dimen/margin_small"
+                            android:paddingRight="@dimen/margin_small"
+                            android:text="@{viewModel.state.denominationFirstAmount}"
+                            android:textColor="?attr/colorPrimaryAttr"
+                            tools:text="+100" />
+
+                        <TextView
+                            android:id="@+id/tvDominationSecondAmount"
+                            style="@style/Micro"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/margin_large"
+                            android:layout_weight="3"
+                            android:background="@drawable/bg_round_denominations"
+                            android:gravity="center"
+                            android:onClick="@{(v)->viewModel.denominationSecondAmount()}"
+                            android:paddingLeft="@dimen/margin_small"
+                            android:paddingRight="@dimen/margin_small"
+                            android:text="@{viewModel.state.denominationSecondAmount}"
+                            android:textColor="?attr/colorPrimaryAttr"
+                            tools:text="+500" />
+
+                        <TextView
+                            android:id="@+id/tvDominationThirdAmount"
+                            style="@style/Micro"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/margin_large"
+                            android:layout_weight="3"
+                            android:background="@drawable/bg_round_denominations"
+                            android:gravity="center"
+                            android:onClick="@{(v)->viewModel.denominationThirdAmount()}"
+                            android:paddingLeft="@dimen/margin_small"
+                            android:paddingRight="@dimen/margin_small"
+                            android:text="@{viewModel.state.denominationThirdAmount}"
+                            android:textColor="?attr/colorPrimaryAttr"
+                            tools:text="+1000" />
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clAvailableAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/margin_extra_large"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/llDenominations">
+
+                        <TextView
+                            android:id="@+id/tvFeeDescription"
+                            style="@style/MicroGrey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.state.transactionFeeSpannableString}"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="Transaction fee: No Fee" />
+
+                        <TextView
+                            android:id="@+id/tvAvailableBalanceGuide"
+                            style="@style/MicroGrey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_small"
+                            android:text="@{viewModel.state.availableBalanceGuide}"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvFeeDescription"
+                            tools:text="Your available balance is AED 500.00" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <co.yap.widgets.CoreButton
+                    android:id="@+id/btnAction"
+                    style="@style/FragmentsBtnStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_xxl"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="@dimen/margin_xxl"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:onClick="@{(v)-> viewModel.buttonClickEvent(v.id)}"
+                    android:text="@{viewModel.state.buttonTitle}"
+                    app:enableCoreButton="@{viewModel.state.valid}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/clBottom"
+                    app:layout_constraintVertical_bias="0.958"
+                    tools:text="Add" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

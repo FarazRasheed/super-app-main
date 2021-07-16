@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools">
+
+<data>
+
+    <variable
+        name="recentTransferItemVM"
+        type="co.yap.sendmoney.home.adapters.RecentTransferItemVM" />
+
+    <import type="co.yap.yapcore.helpers.StringUtils" />
+</data>
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingEnd="@dimen/margin_medium"
+    android:paddingStart="0dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rlPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <co.yap.widgets.CoreCircularImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_gravity="start"
+            android:contentDescription="@string/empty_string"
+            android:src="@drawable/ic_store_b2b"
+            android:layout_marginTop="@dimen/small"
+            app:fullName="@{recentTransferItemVM.item.fullName()}"
+            app:imageUrl="@{recentTransferItemVM.item.beneficiaryPictureUrl}"
+            app:position="@{recentTransferItemVM.position}"
+            app:colorType="@{`Beneficiary`}"
+            />
+
+        <LinearLayout
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:background="@drawable/bg_round_red"
+            android:backgroundTint="@color/white"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/ivCountryFlag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginEnd="@dimen/_2sdp"
+                android:layout_marginBottom="@dimen/_2sdp"
+                app:setFlagDrawable ="@{recentTransferItemVM.item.country}" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/AppFontRegular"
+        android:layout_width="@dimen/_42sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:ellipsize="end"
+        android:lineSpacingExtra="2sp"
+        android:lines="2"
+        android:gravity="center_horizontal"
+        android:text="@{recentTransferItemVM.item.fullName()}"
+        android:textColor="@color/greyDark"
+        android:textSize="@dimen/_10sdp"
+        android:textStyle="normal"
+        tools:text="Arshad Ali hussain mirza " />
+
+</LinearLayout>
+</layout>

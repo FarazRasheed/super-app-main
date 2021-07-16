@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="co.yap.yapcore.managers.SessionManager" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.more.profile.viewmodels.ProfileSettingsViewModel" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/margin_medium"
+            android:paddingRight="@dimen/margin_medium"
+            android:paddingBottom="@dimen/margin_medium"
+            tools:ignore="ContentDescription">
+
+            <TextView
+                android:id="@+id/tvProfileCaption"
+                style="@style/ASmallGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_normal"
+                android:gravity="center"
+                android:text="@string/screen_profile_settings_display_text_profile"
+                app:text="@{Strings.screen_profile_settings_display_text_profile}" />
+
+            <LinearLayout
+                android:id="@+id/llPersonalDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_profile"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvPersonalDetailCaption"
+                    style="@style/ASmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_normal"
+                    android:text="@string/screen_profile_settings_display_text_personal_detail"
+                    app:text="@{Strings.screen_profile_settings_display_text_personal_detail}" />
+
+                <FrameLayout
+                    android:id="@+id/flLocationPin"
+                    android:layout_width="@dimen/_16sdp"
+                    android:layout_height="@dimen/_16sdp"
+                    android:layout_marginLeft="@dimen/margin_normal"
+                    android:background="@drawable/bg_round_red"
+                    android:backgroundTint="@color/error"
+                    android:visibility="@{viewModel.state.isShowErrorIcon?View.VISIBLE:View.GONE}">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/_14sdp"
+                        android:layout_height="@dimen/_14sdp"
+                        android:layout_gravity="center_vertical|center"
+                        android:src="@drawable/ic_exclamation"
+                        android:tint="@color/colorPrimaryDark"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvSpareCardTile" />
+                </FrameLayout>
+
+
+                <TextView
+                    android:id="@+id/tvPersonalDetailView"
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:gravity="end"
+                    android:onClick="@{(v) -> viewModel.handlePressOnViewClick(v.id)}"
+                    android:text="@string/screen_profile_settings_display_text_view"
+                    android:textColor="?attr/colorPrimaryAttr"
+                    app:text="@{Strings.screen_profile_settings_display_text_view}" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_medium_large"
+                android:background="@color/divider" />
+
+            <TextView
+                android:id="@+id/tvProfileSecurity"
+                style="@style/ASmallGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:layout_marginBottom="@dimen/margin_normal"
+                android:gravity="center"
+                android:text="@string/screen_profile_settings_display_text_security"
+                app:text="@{Strings.screen_profile_settings_display_text_security}" />
+
+            <LinearLayout
+                android:id="@+id/llPrivacy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_lock"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    android:layout_weight=".7"
+                    android:text="@string/screen_profile_settings_display_text_privacy"
+                    app:text="@{Strings.screen_profile_settings_display_text_privacy}" />
+
+                <TextView
+                    android:id="@+id/tvPrivacyView"
+                    style="@style/ASmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{(v) -> viewModel.handlePressOnViewClick(v.id)}"
+                    android:text="@string/screen_profile_settings_display_text_view"
+                    android:textColor="?attr/colorPrimaryAttr"
+                    app:text="@{Strings.screen_profile_settings_display_text_view}" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llPasscode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_normal"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_key"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    android:layout_weight=".7"
+                    android:text="@string/screen_profile_settings_display_text_passcode"
+                    app:text="@{Strings.screen_profile_settings_display_text_passcode}" />
+
+                <TextView
+                    android:id="@+id/tvChangePasscode"
+                    style="@style/ASmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{(v) -> viewModel.handlePressOnViewClick(v.id)}"
+                    android:text="@string/screen_profile_settings_display_text_change"
+                    android:textColor="?attr/colorPrimaryAttr"
+                    app:text="@{Strings.screen_profile_settings_display_text_change}" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/llNotification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_notification_settings"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    android:layout_weight=".7"
+                    android:text="@string/screen_profile_settings_display_text_app_notifications"
+                    app:text="@{Strings.screen_profile_settings_display_text_app_notifications}" />
+
+                <TextView
+                    android:id="@+id/tvNotificationsView"
+                    style="@style/ASmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{(v) -> viewModel.handlePressOnViewClick(v.id)}"
+                    android:text="@string/screen_profile_settings_display_text_view"
+                    android:textColor="?attr/colorPrimaryAttr"
+                    android:visibility="gone"
+                    app:text="@{Strings.screen_profile_settings_display_text_view}" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/swNotifications"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:gravity="end"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="-2dp"
+                    android:theme="@style/CustomSwitch" />
+
+                <!--                <androidx.appcompat.widget.SwitchCompat-->
+                <!--                    android:id="@+id/switchNotification"-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_weight=".3" />-->
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/llSignInWithTouch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:src="@drawable/ic_fingerprint_purple"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    android:layout_weight=".7"
+                    android:text="Sign In with fingerprint   "
+                    tools:ignore="HardcodedText" />
+
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/swTouchId"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:gravity="end"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="-2dp"
+                    android:theme="@style/CustomSwitch" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_medium_large"
+                android:background="@color/divider" />
+
+
+            <TextView
+                style="@style/ASmallGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:layout_marginBottom="@dimen/margin_normal"
+                android:gravity="center"
+                android:text="@string/screen_profile_settings_display_text_about_us"
+                app:text="@{Strings.screen_profile_settings_display_text_about_us}" />
+
+            <LinearLayout
+                android:id="@+id/llTermsAndCondition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_file"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    android:layout_weight=".7"
+                    android:text="@string/screen_profile_settings_display_terms_and_conditions"
+                    app:text="@{Strings.screen_profile_settings_display_terms_and_conditions}" />
+
+                <TextView
+                    android:id="@+id/tvTermsAndConditionView"
+                    style="@style/ASmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{(v) -> viewModel.handlePressOnViewClick(v.id)}"
+                    android:text="@string/screen_profile_settings_display_text_view"
+                    android:textColor="?attr/colorPrimaryAttr"
+                    app:text="@{Strings.screen_profile_settings_display_text_view}" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llFeesAndPricingPlans"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/margin_normal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_bill_payment"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    android:layout_weight=".7"
+                    android:text="@string/screen_profile_settings_display_fees_and_pricing_plans"
+                    app:text="@{Strings.screen_profile_settings_display_fees_and_pricing_plans}" />
+
+                <TextView
+                    android:id="@+id/tvFeesAndPricingPlansView"
+                    style="@style/ASmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{(v) -> viewModel.handlePressOnViewClick(v.id)}"
+                    android:text="@string/screen_profile_settings_display_text_view"
+                    android:textColor="?attr/colorPrimaryAttr"
+                    app:text="@{Strings.screen_profile_settings_display_text_view}" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llInstagram"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_instagram"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    android:layout_weight=".7"
+                    android:text="@string/screen_profile_settings_display_text_instagram"
+                    app:text="@{Strings.screen_profile_settings_display_text_instagram}" />
+
+                <TextView
+                    android:id="@+id/tvFollowOnInstagram"
+                    style="@style/ASmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{(v) -> viewModel.handlePressOnViewClick(v.id)}"
+                    android:text="@string/screen_profile_settings_display_text_follow_us"
+                    android:textColor="?attr/colorPrimaryAttr"
+                    app:text="@{Strings.screen_profile_settings_display_text_follow_us}" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llTwitter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_twitter"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    android:layout_weight=".7"
+                    android:text="@string/screen_profile_settings_display_text_twitter"
+                    app:text="@{Strings.screen_profile_settings_display_text_twitter}" />
+
+                <TextView
+                    android:id="@+id/tvFollowOnTwitter"
+                    style="@style/ASmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{(v) -> viewModel.handlePressOnViewClick(v.id)}"
+                    android:text="@string/screen_profile_settings_display_text_follow_us"
+                    android:textColor="?attr/colorPrimaryAttr"
+                    app:text="@{Strings.screen_profile_settings_display_text_follow_us}" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llFaceBook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_facebook"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    style="@style/ASmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_normal"
+                    android:layout_weight=".7"
+                    android:text="@string/screen_profile_settings_display_text_facebook"
+                    app:text="@{Strings.screen_profile_settings_display_text_facebook}" />
+
+                <TextView
+                    android:id="@+id/tvLikeUsOnFaceBook"
+                    style="@style/ASmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{(v) -> viewModel.handlePressOnViewClick(v.id)}"
+                    android:text="@string/screen_profile_settings_display_text_like_us"
+                    android:textColor="?attr/colorPrimaryAttr"
+                    app:text="@{Strings.screen_profile_settings_display_text_like_us}" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvLogOut"
+                style="@style/Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:gravity="center"
+                android:onClick="@{(v) -> viewModel.handlePressOnViewClick(v.id)}"
+                android:text="@string/screen_profile_settings_display_text_logout"
+                android:textColor="?attr/colorPrimaryAttr"
+                app:text="@{Strings.screen_profile_settings_display_text_logout}" />
+
+            <TextView
+                android:id="@+id/tvBuildVersion"
+                style="@style/ASmallGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:gravity="center"
+                android:text="@{viewModel.state.buildVersionDetail}"
+
+               />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

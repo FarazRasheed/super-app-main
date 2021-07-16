@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.more.yapforyou.itemviewmodels.YAPForYouItemViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <!--    app:src="@{viewModel.achievement.icon}"-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_6sdp"
+        android:background="@drawable/cornor_edges_gery"
+        android:padding="@dimen/margin_medium">
+
+        <ImageView
+            android:id="@+id/imgIcon"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:src="@{viewModel.achievement.icon}"
+            tools:src="@drawable/ic_round_badge_light_purple" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/ASmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_small"
+            android:gravity="center"
+            android:text="@{viewModel.achievement.name}"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@+id/imgIcon"
+            tools:text="android:asdasdas" />
+
+        <TextView
+            android:id="@+id/tvLocked"
+            style="@style/AMicroGrey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Locked"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+        <TextView
+            android:id="@+id/tvPercentage"
+            style="@style/AMicroGrey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@{String.format(@string/screen_yap_for_you_display_text_completed_percentage ,viewModel.achievement.percentage)}"
+            android:textSize="@dimen/_10sdp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            tools:text="75% completed" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

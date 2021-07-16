@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.R" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.others.note.viewmodels.TransactionNoteViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <co.yap.widgets.CoreToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.state.toolbarVisibility ? View.VISIBLE:View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:leftIcon="@{R.drawable.ic_back_arrow_left}"
+            app:leftIconVisibility="@{viewModel.state.leftButtonVisibility}"
+            app:onClick="@{viewModel::onToolBarClick}"
+            app:rightTitle="@{viewModel.state.rightTitle}"
+            app:rightTitleVisibility="@{viewModel.state.rightTitleVisibility}"
+            app:titleString="@{viewModel.state.toolbarTitle}"
+            app:rigthTitleDisabled ="@{viewModel.state.noteValue.empty ? false : true}"
+            />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etNote"
+            style="@style/ARegular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal_large"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_normal_large"
+            android:layout_marginBottom="@dimen/margin_normal_large"
+            android:layout_weight="1"
+            android:backgroundTint="@color/transparent"
+            android:focusable="true"
+            android:gravity="top"
+            android:hint="@string/screen_add_note_display_text_type_something"
+            android:inputType="textMultiLine"
+            android:maxLength="150"
+            android:text="@={viewModel.state.noteValue}"
+            app:hint="@{Strings.screen_add_note_display_text_type_something}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vLine"
+            tools:text="@string/screen_add_note_display_text_type_something" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

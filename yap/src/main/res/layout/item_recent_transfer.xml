@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="recentTransferItemVM"
+            type="co.yap.modules.dashboard.yapit.y2y.home.viewmodel.RecentTransferItemVM" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <co.yap.widgets.CoreCircularImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/empty_string"
+            android:src="@drawable/ic_store_b2b"
+            app:colorType="@{`Beneficiary`}"
+            app:fullName="@{recentTransferItemVM.item.title}"
+            app:imageUrl="@{recentTransferItemVM.item.beneficiaryPictureUrl!=null?recentTransferItemVM.item.beneficiaryPictureUrl:``}"
+            app:position="@{recentTransferItemVM.position}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/AppFontRegular"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="2sp"
+            android:lines="2"
+            android:text="@{recentTransferItemVM.item.title}"
+            android:textColor="@color/greyDark"
+            android:textSize="@dimen/_10sdp"
+            android:textStyle="normal"
+            tools:text="Arshad Ali hussain mirza " />
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.household.dashboard.main.viewmodels.HouseholdDashboardViewModel" />
+    </data>
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNav"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/white"
+                app:elevation="2dp"
+                app:itemIconTint="@drawable/bottom_nav_color"
+                app:itemTextColor="@drawable/bottom_nav_color"
+                app:labelVisibilityMode="labeled"
+                app:menu="@menu/bottom_navigation_main_household" />
+
+            <co.yap.yapcore.helpers.CustomViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/bottomNav" />
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/rlYapIt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="8dp"
+            android:gravity="center_horizontal|bottom"
+            android:orientation="vertical">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/ivYapIt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_3sdp"
+                android:background="?attr/colordisabledTick"
+                android:padding="@dimen/_5sdp"
+                app:backgroundTint="?attr/colordisabledTick"
+                app:elevation="@dimen/_4sdp"
+                app:srcCompat="@drawable/ic_yap_it_household" />
+
+            <TextView
+                android:id="@+id/txtYapIt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:text="YAP it"
+                android:textColor="@color/greyDark"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/flAlphaOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0"
+            android:background="@color/white"
+            android:visibility="gone" />
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/drawerNav"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:background="@color/white"
+            android:elevation="4dp"
+            android:fitsSystemWindows="false"
+            app:elevation="4dp">
+
+            <include
+                android:id="@+id/includedDrawerLayout"
+                layout="@layout/layout_drawer_household_dashboard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</layout>

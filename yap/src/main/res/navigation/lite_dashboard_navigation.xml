@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/lite_dashboard_navigation"
+            app:startDestination="@id/liteDashboardFragment">
+
+    <fragment
+        android:id="@+id/liteDashboardFragment"
+        android:name="co.yap.modules.onboarding.fragments.LiteDashboardFragment"
+        tools:layout="@layout/fragment_lite_dashboard"
+        android:label="LiteDashboardFragment">
+        <action
+            android:id="@+id/action_liteDashboardFragment_to_documentsDashboardActivity"
+            app:popUpTo="@id/lite_dashboard_navigation"
+            app:popUpToInclusive="true"
+            app:destination="@id/documentsDashboardActivity" />
+        <action
+            android:id="@+id/action_liteDashboardFragment_to_setCardPinWelcomeActivity"
+            app:destination="@id/setCardPinWelcomeActivity"/>
+    </fragment>
+    <activity
+        android:id="@+id/documentsDashboardActivity"
+        tools:layout="@layout/activity_documents_dashboard"
+        android:name="co.yap.modules.kyc.activities.DocumentsDashboardActivity"
+        android:label="DocumentsDashboardActivity">
+        <argument
+            android:name="name"
+            app:argType="string"/>
+    </activity>
+    <activity
+        android:id="@+id/setCardPinWelcomeActivity"
+        tools:layout="@layout/activity_set_card_pin_welcome"
+        android:name="co.yap.modules.setcardpin.activities.SetCardPinWelcomeActivity"
+        android:label="SetCardPinWelcomeActivity">
+    </activity>
+</navigation>

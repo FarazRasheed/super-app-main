@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/change_pascode_navigation"
+    app:startDestination="@id/currentPasscodeFragment">
+
+    <fragment
+        android:id="@+id/currentPasscodeFragment"
+        android:name="co.yap.modules.dashboard.more.changepasscode.fragments.CurrentPasscodeFragment"
+        android:label="CurrentPasscodeFragment"
+        tools:layout="@layout/fragment_pass_code">
+        <action
+            android:id="@+id/action_currentPasscodeFragment_to_updateNewPasscodeFragment"
+            app:destination="@id/updateNewPasscodeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+
+        <action
+            android:id="@+id/action_currentPasscodeFragment_to_forgot_passcode_navigation"
+            app:destination="@id/forgot_passcode_navigation"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left">
+
+            <argument
+                android:name="mobileNumber"
+                app:argType="string" />
+            <argument
+                android:name="token"
+                app:argType="string" />
+            <argument
+                android:name="navigationType"
+                android:defaultValue=" "
+                app:argType="string" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/updateNewPasscodeFragment"
+        android:name="co.yap.modules.dashboard.more.changepasscode.fragments.UpdateNewPasscodeFragment"
+        android:label="UpdateNewPasscodeFragment"
+        tools:layout="@layout/fragment_pass_code">
+        <action
+            android:id="@+id/action_updateNewPasscodeFragment_to_updateConfirmPasscodeFragment"
+            app:destination="@id/updateConfirmPasscodeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_updateNewPasscodeFragment_to_forgot_passcode_navigation"
+            app:destination="@id/forgot_passcode_navigation"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left">
+            <argument
+                android:name="mobileNumber"
+                app:argType="string" />
+            <argument
+                android:name="token"
+                app:argType="string" />
+            <argument
+                android:name="navigationType"
+                android:defaultValue=" "
+                app:argType="string" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/updateConfirmPasscodeFragment"
+        android:name="co.yap.modules.dashboard.more.changepasscode.fragments.UpdateConfirmPasscodeFragment"
+        android:label="UpdateConfirmPasscodeFragment"
+        tools:layout="@layout/fragment_pass_code">
+        <argument
+            android:name="oldPinCode"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="newPinCode"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="token"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_updateConfirmPasscodeFragment_to_successFragment"
+            app:destination="@id/successFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_updateConfirmPasscodeFragment_to_forgot_passcode_navigation"
+            app:destination="@id/forgot_passcode_navigation"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left">
+            <argument
+                android:name="mobileNumber"
+                app:argType="string" />
+            <argument
+                android:name="token"
+                app:argType="string" />
+            <argument
+                android:name="navigationType"
+                android:defaultValue=" "
+                app:argType="string" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/successFragment"
+        android:name="co.yap.modules.dashboard.more.changepasscode.fragments.ChangePasscodeSuccessFragment"
+        android:label="ChangePasscodeSuccessFragment"
+        tools:layout="@layout/fragment_change_passcodee_success" />
+    <include app:graph="@navigation/forgot_passcode_navigation" />
+</navigation>

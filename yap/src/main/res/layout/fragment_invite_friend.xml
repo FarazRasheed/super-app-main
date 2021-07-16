@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.R" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.more.home.viewmodels.InviteFriendViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <co.yap.widgets.CoreToolbar
+                android:id="@+id/toolBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:leftIcon="@{R.drawable.ic_back_arrow_left}"
+                app:leftIconVisibility="@{true}"
+                app:onClick="@{viewModel::onToolBarClick}"
+                app:rightIcon="@{R.drawable.ic_gift_vector}"
+                app:rightIconVisibility="@{false}"
+                app:titleString="@{viewModel.state.toolbarTitle}" />
+
+            <TextView
+                android:id="@+id/tvInviteTitle"
+                style="@style/Title3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:gravity="center"
+                android:text="@{viewModel.state.inviteTitle}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolBar"
+                tools:text="@string/screen_invite_friend_display_text_reward" />
+
+            <ImageView
+                android:id="@+id/ivInvite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_extra_large"
+                android:src="@drawable/ic_invite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvInviteTitle" />
+
+            <TextView
+                android:id="@+id/tvInviteDescription"
+                style="@style/ARegularGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:gravity="center"
+                android:text="@{viewModel.state.inviteDescription}"
+                app:layout_constraintBottom_toTopOf="@+id/tvReferralCode"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivInvite"
+                app:layout_constraintVertical_bias="0.262"
+                tools:text="@string/screen_invite_friend_display_text_referal_reward" />
+
+            <TextView
+                android:id="@+id/tvReferralCode"
+                style="@style/Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:gravity="center"
+                android:text="@{viewModel.state.referralLinkTextHeading}"
+                app:layout_constraintBottom_toTopOf="@+id/btnShare"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="@string/screen_invite_friend_display_text_referal_code" />
+
+            <co.yap.widgets.CoreButton
+                android:id="@+id/btnShare"
+                style="@style/FragmentsBtnStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_xxl"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:layout_marginRight="@dimen/margin_xxl"
+                android:layout_marginBottom="@dimen/margin_medium_large"
+                android:onClick="@{(v) -> viewModel.handlePressOnButton(v.id)}"
+                android:text="@{viewModel.state.buttonTitle}"
+                app:btn_drawable="@drawable/ic_share_white"
+                app:btn_drawable_padding_left="10"
+                app:btn_drawable_padding_top="4"
+                app:btn_drawable_position="right"
+                app:enableCoreButton="@{true}"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

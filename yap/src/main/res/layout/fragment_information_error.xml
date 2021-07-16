@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.kyc.viewmodels.InformationErrorViewModel"/>
+
+        <import type="co.yap.translation.Strings"/>
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ATitle3"
+            android:layout_marginEnd="@dimen/margin_extra_large"
+            android:layout_marginStart="@dimen/margin_extra_large"
+            android:layout_marginTop="@dimen/margin_large"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:gravity="center"
+            tools:text="We're so sorry"
+            android:text="@{viewModel.state.errorTitle}" />
+
+        <ImageView
+            android:id="@+id/ivUSACountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_xl"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginEnd="@dimen/margin_xl"
+            android:contentDescription="@string/empty_string"
+            android:visibility="@{viewModel.state.isUSACitizen==true ? View.VISIBLE : View.GONE}"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            app:srcCompat="@drawable/ic_country"
+            tools:src="@drawable/ic_country" />
+
+
+        <TextView
+            android:id="@+id/tvMeetingGuide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/ivUSACountry"
+            app:layout_constraintLeft_toLeftOf="parent"
+            style="@style/ASmallGrey"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:gravity="center"
+            tools:text="@string/screen_kyc_information_error_display_text_explanation_from_usa"
+            android:text="@{viewModel.state.errorGuide}"
+            android:layout_marginTop="@dimen/margin_extra_large"
+            />
+
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnGoToDashboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RectangleBtnStyle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="@string/screen_kyc_information_error_button_go_to_dashboard"
+            android:text="@{viewModel.state.buttonTitle}"
+            android:layout_marginTop="@dimen/margin_medium_large"
+            android:onClick="@{(v)->viewModel.handlePressOnGoToDashboard()}"
+            android:layout_marginBottom="@dimen/margin_medium_large"
+            android:layout_marginLeft="@dimen/margin_xxl"
+            android:layout_marginRight="@dimen/margin_xxl"
+            tools:layout_editor_absoluteX="34dp"
+            app:layout_constraintVertical_bias="0.988"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

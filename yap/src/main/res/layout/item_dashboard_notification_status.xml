@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="co.yap.yapcore.managers.SessionManager" />
+
+        <import type="co.yap.modules.dashboard.home.status.StageProgress" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.home.status.NotificationStatusItemViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/margin_medium"
+        android:paddingEnd="@dimen/margin_medium">
+
+        <co.yap.widgets.timelineview.TimelineView
+            android:id="@+id/timeline"
+            endLineColor="@{viewModel.statusDataModel.hideLine}"
+            markerDrawable="@{viewModel.statusDataModel.statusDrawable}"
+            setOpacity="@{viewModel.statusDataModel.progressStatus == StageProgress.INACTIVE ? true : false }"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/_8sdp"
+            app:linePadding="@dimen/_8sdp"
+            app:lineStyle="normal"
+            app:lineWidth="@dimen/_1sdp"
+            app:markerInCenter="false"
+            app:markerPaddingBottom="@dimen/_8sdp"
+            app:markerPaddingTop="@dimen/_8sdp"
+            app:markerSize="@dimen/_23sdp"
+            app:startLineColor="@color/transparent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_24sdp"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:paddingTop="@dimen/_8sdp">
+
+
+            <TextView
+                android:id="@+id/tvStatusTitle"
+                style="@style/Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:alpha="@{viewModel.statusDataModel.progressStatus == StageProgress.INACTIVE ? 0.4f : 1f}"
+                android:text='@{viewModel.statusDataModel.statusTitle}'
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/_13sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="set your card pin" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/labelCardType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="@{viewModel.statusDataModel.progressStatus == StageProgress.INACTIVE ? 0.4f : 1f}"
+                android:background="@drawable/transparent_round"
+                android:backgroundTint="@color/colorOpaquSecondaryOrange"
+                android:gravity="center|center_vertical"
+                android:paddingTop="@dimen/_2sdp"
+                android:paddingBottom="@dimen/_2sdp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView"
+                app:status="@{viewModel.statusDataModel.progressStatus}"
+                tools:text="in progress" />
+
+            <TextView
+                android:id="@+id/tvStatusDescription"
+                style="@style/ASmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small"
+                android:alpha="@{viewModel.statusDataModel.progressStatus == StageProgress.INACTIVE ? 0.4f : 1f}"
+                android:text='@{viewModel.statusDataModel.statusDescription}'
+                android:textColor="@color/greyDark"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/tvStatusTitle"
+                tools:text="set your card pin" />
+
+            <TextView
+                android:id="@+id/tvStatusActions"
+                style="@style/ASmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small"
+                android:alpha="@{viewModel.statusDataModel.progressStatus == StageProgress.INACTIVE ? 0.4f : 1f}"
+                android:onClick="@{(v) -> viewModel.handlePressOnView(v)}"
+                android:paddingBottom="@dimen/_4sdp"
+                android:text='@{viewModel.statusDataModel.statusAction}'
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/_11sdp"
+                android:visibility="@{viewModel.statusDataModel.progressStatus == StageProgress.COMPLETED ? View.INVISIBLE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/tvStatusDescription"
+                tools:text="set your card pin" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</layout>

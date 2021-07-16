@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.store.household.onboarding.viewmodels.HouseHoldSuccessViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/margin_medium"
+            android:paddingRight="@dimen/margin_medium">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/ALarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium_large"
+                android:layout_marginBottom="@dimen/margin_medium_large"
+                android:gravity="center"
+                android:lineSpacingExtra="@dimen/_2sdp"
+                android:paddingLeft="@dimen/margin_medium"
+                android:paddingRight="@dimen/margin_medium"
+                android:text="@string/screen_yap_house_hold_success_display_text_title"
+                android:textSize="@dimen/_18sdp"
+                app:concatVal="@{viewModel.state.houseHoldUserName}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:textVal="@{Strings.screen_yap_house_hold_success_display_text_title}" />
+
+
+            <ImageView
+                android:id="@+id/cardView"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_190sdp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:src="@drawable/image_yap_household_card"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/RegularGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium_large"
+                android:layout_marginBottom="@dimen/margin_extra_small"
+                android:gravity="center"
+                android:lineSpacingExtra="@dimen/_1sdp"
+                android:text="@string/screen_yap_house_hold_success_display_text_house_hold_card"
+                app:text="@{Strings.screen_yap_house_hold_success_display_text_house_hold_card}" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium_large"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:src="@drawable/ic_extra_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvBenefit"
+                    style="@style/RegularGrey"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:lineSpacingExtra="6sp"
+                    android:text="@{viewModel.state.houseHoldDescription}"
+                    android:textSize="@dimen/_13sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/icon"
+                    app:layout_constraintTop_toTopOf="@+id/icon"
+                    tools:text="@string/screen_yap_house_hold_success_display_text_direct_message" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium_large"
+                android:layout_marginBottom="@dimen/margin_medium_large"
+                android:gravity="center"
+                android:text="@string/screen_yap_house_hold_success_display_text_share_credentials"
+                android:textSize="@dimen/_13sdp"
+                app:noLineconcatVal="@{viewModel.state.houseHoldUserName}"
+                app:text="@{Strings.screen_yap_house_hold_success_display_text_share_credentials}"
+                app:textVal="@{Strings.screen_yap_house_hold_success_display_text_share_credentials}"
+                tools:text="@string/screen_yap_house_hold_success_display_text_share_credentials" />
+
+
+            <LinearLayout
+                android:id="@+id/llBankTransferType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_small"
+                android:background="@drawable/purple_card"
+                android:clickable="true"
+                android:paddingBottom="@dimen/margin_medium"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/_35sdp"
+                android:paddingTop="@dimen/margin_medium">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/RegularGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/screen_yap_house_hold_success_display_text_share_mobile_no"
+                    app:text="@{Strings.screen_yap_house_hold_success_display_text_share_mobile_no}"
+                    tools:text="@string/screen_yap_house_hold_success_display_text_share_mobile_no" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.state.houseHoldUserMobile}"
+                    tools:text="@string/screen_yap_house_hold_success_display_text_share_mobile_no" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/RegularGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/screen_yap_house_hold_success_display_text_share_pass_code"
+                    app:text="@{Strings.screen_yap_house_hold_success_display_text_share_pass_code}"
+                    tools:text="@string/screen_yap_house_hold_success_display_text_share_pass_code" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:text="@{viewModel.state.houseHoldUserPassCode}"
+                    tools:text="2250"
+
+                    />
+
+                <co.yap.widgets.CoreButton
+                    android:id="@+id/btnShare"
+                    style="@style/BoldBtnStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:layout_marginEnd="@dimen/margin_medium_large"
+                    android:gravity="center"
+                    android:onClick="@{(v) -> viewModel.handlePressOnShare(v.id)}"
+                    android:textStyle="bold"
+                    app:btn_drawable="@drawable/ic_share_small"
+                    app:btn_drawable_padding_right="1.68"
+                    app:btn_drawable_padding_top="9"
+                    app:btn_drawable_position="right"
+                    app:btn_text_size="@dimen/_11sdp"
+                    app:enableCoreButton="@{true}"
+                    app:text="@{Strings.screen_yap_house_hold_success_button_text_share}"
+                    tools:text="@string/screen_yap_house_hold_success_button_text_share" />
+
+            </LinearLayout>
+
+            <co.yap.widgets.CoreButton
+                android:id="@+id/btnGoToHouseHold"
+                style="@style/FragmentsBtnStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_xl"
+                android:layout_marginTop="@dimen/_35sdp"
+                android:layout_marginRight="@dimen/margin_xl"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:onClick="@{(v) -> viewModel.handlePressOnGoBackToDashBoard(v.id)}"
+                android:paddingLeft="@dimen/margin_medium"
+                android:paddingRight="@dimen/margin_medium"
+                app:enableCoreButton="@{true}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_goneMarginTop="@dimen/margin_extra_large"
+                app:text="@{Strings.screen_yap_house_hold_success_button_text_goto_house_hold}"
+                tools:text="@string/screen_yap_house_hold_success_button_text_goto_house_hold" />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

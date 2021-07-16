@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.sendmoney.addbeneficiary.viewmodels.SelectCountryViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/nextButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvSelectCountryHeading"
+                style="@style/Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:gravity="center"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSuccessHeading"
+                app:text="@{Strings.screen_add_beneficiary_display_text_country_title}"
+                tools:text="@string/screen_add_beneficiary_display_text_country_title" />
+
+            <TextView
+                android:id="@+id/tvHeadingDetail"
+                style="@style/RegularGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/_36sdp"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:gravity="start"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSuccessHeading"
+                app:text="@{Strings.screen_add_beneficiary_display_text_select_country}"
+                tools:text="@string/screen_add_beneficiary_display_text_select_country" />
+
+
+                        <RelativeLayout
+                            android:id="@+id/spinner_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"
+                            android:paddingTop="@dimen/margin_normal"
+                            android:paddingBottom="@dimen/margin_normal">
+
+                            <Spinner
+                                android:id="@+id/countriesSpinner"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginStart="@dimen/margin_medium"
+                                android:layout_marginEnd="@dimen/margin_normal"
+                                android:background="@drawable/bg_spinner"
+                                android:drawSelectorOnTop="false"
+                                android:dropDownHeight="@dimen/_50sdp"
+                                android:gravity="bottom"
+                                android:overScrollMode="never"
+                                android:overlapAnchor="false"
+                                android:spinnerMode="dropdown" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_below="@+id/countriesSpinner"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginStart="@dimen/margin_medium_large"
+                                android:layout_marginTop="@dimen/_30sdp"
+                                android:layout_marginEnd="@dimen/margin_medium_large"
+                                android:background="@color/greyLight"
+                                android:minHeight="@dimen/_15sdp" />
+
+                        </RelativeLayout>
+
+        </LinearLayout>
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/nextButton"
+            style="@style/FragmentsBtnStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_btn_side_paddings_xl"
+            android:layout_marginTop="@dimen/_60sdp"
+            android:layout_marginRight="@dimen/margin_btn_side_paddings_xl"
+            android:layout_marginBottom="@dimen/margin_medium_large"
+            android:onClick="@{(v) -> viewModel.handlePressOnSeclectCountry(v.id)}"
+            app:btn_enable="false"
+            app:enableCoreButton="@{viewModel.state.valid}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:text="@{Strings.screen_add_beneficiary_button_next}"
+            tools:ignore="MissingConstraints"
+            tools:text="@string/screen_add_beneficiary_display_text_select_country" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+        <import type="co.yap.translation.Strings" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.cards.paymentcarddetail.viewmodels.UpdateCardNameViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/ivCross"
+                    android:layout_width="@dimen/_26sdp"
+                    android:layout_height="@dimen/_26sdp"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@string/empty_string"
+                    android:onClick="@{v -> viewModel.handlePressOnView(v.getId())}"
+                    android:src="@drawable/ic_close_dark" />
+
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    style="@style/Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/screen_card_name_title_change_card_name"
+                    app:text="@{Strings.screen_card_name_title_change_card_name}"/>
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
+            android:layout_alignParentBottom="true"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/rlCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/ivCard"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:contentDescription="@string/empty_string"
+                    android:src="@drawable/card_spare" />
+
+                <TextView
+                    android:id="@+id/tvCardType"
+                    style="@style/ASmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/ivCard"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:gravity="center"
+                    android:text="Spare Card" />
+
+                <EditText
+                    android:id="@+id/etName"
+                    style="@style/ALarge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_56sdp"
+                    android:background="@null"
+                    android:gravity="start"
+                    android:hint="@string/screen_card_name_hint_enter_card_name"
+                    app:hint="@{Strings.screen_card_name_hint_enter_card_name}"
+                    android:inputType="textPersonName"
+                    android:maxLength="@integer/spareCardName"
+                    android:paddingEnd="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:text="@={viewModel.state.cardName}"
+                    android:textColor="@color/colorPrimaryDarkHouseHold"
+                    android:textColorHint="@color/greyDark"
+                    android:textSize="@dimen/text_size_h3"
+                    app:layout_constraintHorizontal_bias="0.486"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCardType" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/disabledDark"
+                    app:layout_constraintTop_toBottomOf="@+id/etName"
+                    android:layout_marginTop="@dimen/margin_extra_small"
+                    app:layout_constraintStart_toStartOf="@+id/etName"
+                    app:layout_constraintEnd_toEndOf="@+id/etName"/>
+
+                <co.yap.widgets.CoreButton
+                    android:id="@+id/btnConfirm"
+                    style="@style/FragmentsBtnStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_xxl"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:layout_marginRight="@dimen/margin_xxl"
+                    android:layout_marginBottom="@dimen/margin_medium_large"
+                    android:onClick="@{v -> viewModel.handlePressOnView(v.getId())}"
+                    android:text="Confirm"
+                    app:enableCoreButton="@{viewModel.state.valid}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etName"
+                    app:layout_constraintVertical_bias="0.988"
+                    app:layout_goneMarginTop="@dimen/margin_extra_large"
+                    tools:layout_editor_absoluteX="34dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</layout>

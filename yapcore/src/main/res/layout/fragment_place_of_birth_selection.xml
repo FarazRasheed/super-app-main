@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.location.viewmodels.POBSelectionViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/ivBackBtn"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{(v) -> viewModel.handleOnPressView(v.id)}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_back" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvHeadingTitle"
+                style="@style/ALarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:gravity="center"
+                android:text="@string/screen_place_of_birth_display_text_heading"
+                android:textSize="@dimen/_18sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:text="@{Strings.screen_place_of_birth_display_text_heading}"
+                tools:text="@string/screen_place_of_birth_display_text_heading" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDescription"
+                style="@style/ASmallGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small"
+                android:gravity="center"
+                android:text="@string/screen_place_of_birth_display_text_description"
+                app:layout_constraintEnd_toEndOf="@id/tvHeadingTitle"
+                app:layout_constraintStart_toStartOf="@+id/tvHeadingTitle"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeadingTitle"
+                app:text="@{Strings.screen_place_of_birth_display_text_description}"
+                tools:text="@string/screen_place_of_birth_display_text_description" />
+
+
+
+            <co.yap.widgets.country_spinner.CountrySpinner
+                android:id="@+id/spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <co.yap.widgets.spinneradapter.searchable.SearchableSpinner
+                android:id="@+id/bspinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:visibility="gone"
+                app:RevealEmptyText="Touch to select"
+                app:SpinnerExpandHeight="@dimen/_100sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/containerAutoText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDescription">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSelectCountry"
+                    style="@style/ASmallGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:gravity="center_vertical"
+                    android:text="@string/screen_place_of_birth_display_text_select_country"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:text="@{Strings.screen_place_of_birth_display_text_select_country}"
+                    tools:text="@string/screen_place_of_birth_display_text_select_country" />
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/bcountries"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/iv_drown_down"
+                    android:dropDownAnchor="@+id/containerAutoText"
+                    android:dropDownWidth="wrap_content"
+                    android:dropDownHeight="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="textAutoComplete|textAutoCorrect"
+                    android:lineHeight="@dimen/_1sdp"
+                    android:drawablePadding="@dimen/_6sdp"
+                    android:nextFocusDown="@id/etCityOfBirth"
+                    android:singleLine="true"
+                    app:hint="@{Strings.screen_place_of_birth_display_text_select_country}" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <TextView
+                android:id="@+id/textView"
+                style="@style/Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:text="@string/screen_place_of_birth_display_text_city_of_birth"
+                app:layout_constraintStart_toStartOf="@+id/containerAutoText"
+                app:layout_constraintTop_toBottomOf="@+id/containerAutoText"
+                app:text="@{Strings.screen_place_of_birth_display_text_city_of_birth}"
+                app:textColor="@{viewModel.state.cityOfBirth.empty ? true : false}"
+                tools:text="@string/screen_place_of_birth_display_text_city_of_birth" />
+
+            <EditText
+                android:id="@+id/etCityOfBirth"
+                style="@style/Regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:backgroundTint="@color/greyLight"
+                android:imeOptions="actionDone"
+                android:maxLength="50"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@={viewModel.state.cityOfBirth}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <co.yap.widgets.CoreButton
+                android:id="@+id/nextButton"
+                style="@style/FragmentsBtnStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/margin_btn_side_paddings_xl"
+                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_btn_side_paddings_xl"
+                android:layout_marginBottom="@dimen/margin_medium_large"
+                android:background="@color/white"
+                android:gravity="bottom"
+                android:onClick="@{(v) -> viewModel.handleOnPressView(v.id)}"
+                app:enableCoreButton="@{viewModel.state.valid}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etCityOfBirth"
+                app:layout_constraintVertical_bias="1.0"
+                app:text="@{Strings.common_button_next}"
+                tools:text="@string/common_button_next" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

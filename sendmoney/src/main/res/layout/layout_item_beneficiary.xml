@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.sendmoney.home.adapters.BeneficiaryItemViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.yapcore.helpers.Utils" />
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="co.yap.countryutils.country.utils.CurrencyUtils" />
+
+        <import type="co.yap.yapcore.R" />
+
+        <variable
+            name="dataCountry"
+            type="co.yap.countryutils.country.Country" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/swipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/btnEdit"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_56sdp"
+                android:background="?attr/colorPrimaryAttr">
+
+                <TextView
+                    style="@style/Micro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/ic_edit_swipe"
+                    android:drawablePadding="@dimen/_2sdp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    app:text="@{Strings.screen_send_money_display_text_edit}"
+                    tools:text="Edit" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/btnDelete"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_56sdp"
+                android:background="@color/colorSecondaryMagenta">
+
+                <TextView
+                    style="@style/Micro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/ic_close"
+                    android:drawablePadding="@dimen/_2sdp"
+                    android:layout_centerInParent="true"
+                    android:drawableTint="@color/white"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    app:text="@{Strings.screen_send_money_display_text_delete}"
+                    tools:text="Delete" />
+
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/foregroundContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/lyUserImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/margin_normal_large"
+                android:paddingEnd="@dimen/margin_small"
+                android:paddingTop="@dimen/margin_small"
+                android:paddingBottom="@dimen/margin_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <co.yap.widgets.CoreCircularImageView
+                    android:id="@+id/imgProfile"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:contentDescription="@string/empty_string"
+                    android:layout_marginTop="@dimen/margin_extra_small"
+                    android:src="@drawable/ic_store_b2b"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:colorType="@{`Beneficiary`}"
+                    app:fullName="@{viewModel.beneficiary.fullName()}"
+                    app:imageUrl="@{viewModel.beneficiary.beneficiaryPictureUrl}"
+                    app:position="@{viewModel.position}" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/section"
+                app:layout_constraintStart_toEndOf="@+id/lyUserImage"
+                app:layout_constraintTop_toTopOf="@+id/lyUserImage">
+
+                <TextView
+                    android:id="@+id/tvName"
+                    style="@style/Regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="bottom"
+                    android:lines="1"
+                    android:text="@{viewModel.beneficiary.title}"
+                    tools:text="Bril Lizzie Hugsadsadflksjdflkjsalk,nmbmfdjlsajfdllsjdflksjdflkjlsdfjklksdjfkljsdfalkfjaskljflkasfjlkasdjlfjfjlkasdfjklhes" />
+
+                <TextView
+                    android:id="@+id/tvFullName"
+                    style="@style/AMicroGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="bottom"
+                    android:lines="1"
+                    android:text="@{viewModel.beneficiary.fullName()}"
+                    tools:text="Bril Lizzie " />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/section"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:layout_marginEnd="@dimen/margin_small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <ImageView
+                    android:id="@+id/ivTransferType"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/margin_small"
+                    android:contentDescription="@string/empty_string"
+                    android:gravity="center"
+                    android:tint="@{viewModel.beneficiary.beneficiaryType.equals(`CASHPAYOUT`)?@color/greyDark:@color/greyDark}"
+                    app:setBeneficiaryImageSrc="@{viewModel.beneficiary.beneficiaryType}"
+                    tools:src="@drawable/ic_cash"
+                    tools:visibility="visible" />
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/flag_img"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    tools:src="@drawable/flag_ae"
+                    app:setFlagDrawable ="@{viewModel.beneficiary.country}" />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.more.profile.viewmodels.PersonalDetailsViewModel" />
+    </data>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:padding="@dimen/margin_medium">
+
+        <LinearLayout
+            android:id="@+id/llParent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="@dimen/small"
+            app:layout_constraintVertical_bias="0.054">
+
+
+            <TextView
+                android:id="@+id/tvNameCaption"
+                style="@style/ASmallGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:gravity="start"
+                android:text="@string/screen_personal_detail_display_text_full_name"
+                app:text="@{Strings.screen_personal_detail_display_text_full_name}" />
+
+            <TextView
+                android:id="@+id/tvName"
+                style="@style/ARegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                 android:gravity="center"
+                android:layout_marginTop="@dimen/margin_three_dp"
+                android:text="@={viewModel.state.fullName}" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@color/divider" />
+
+
+            <TextView
+                android:id="@+id/tvPhoneCaption"
+                style="@style/ASmallGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:gravity="start"
+                android:text="@string/screen_personal_detail_display_text_phone_number"
+                app:text="@{Strings.screen_personal_detail_display_text_phone_number}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvPhoneNumber"
+                    style="@style/ARegular"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".7"
+                    android:text="@={viewModel.state.phoneNumber}" />
+
+                <TextView
+                    android:id="@+id/tvEditPhoneNumber"
+                    style="@style/ARegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:onClick="@{(v)-> viewModel.handlePressOnEditPhone(v.id)}"
+                    android:padding="@dimen/margin_extra_small"
+                    android:text="@string/screen_personal_detail_display_text_edit"
+                    android:textColor="?attr/colorPrimaryAttr"
+                    app:text="@{Strings.screen_personal_detail_display_text_edit}" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@color/divider" />
+
+
+            <TextView
+                android:id="@+id/tvEmailCaption"
+                style="@style/ASmallGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:gravity="start"
+                android:text="@string/screen_personal_detail_display_text_email"
+                app:text="@{Strings.screen_personal_detail_display_text_email}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvEmail"
+                    style="@style/ARegular"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".7"
+                    android:text="@={viewModel.state.email}" />
+
+                <TextView
+                    android:id="@+id/tvEditEmail"
+                    style="@style/ARegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                     android:gravity="center"
+                    android:onClick="@{(v)-> viewModel.handlePressOnEditEmail(v.id)}"
+                    android:padding="@dimen/margin_extra_small"
+                    android:text="@string/screen_personal_detail_display_text_edit"
+                    android:textColor="?attr/colorPrimaryAttr"
+                    app:text="@{Strings.screen_personal_detail_display_text_edit}" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@color/divider" />
+
+
+            <LinearLayout
+                android:id="@+id/llAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvAddressCaption"
+                    style="@style/ASmallGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:gravity="start"
+                    android:text="@string/screen_personal_detail_display_text_address"
+                    app:text="@{Strings.screen_personal_detail_display_text_address}" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvAddress"
+                        style="@style/ARegular"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.7"
+                        android:paddingBottom="@dimen/small"
+                        android:ellipsize="end"
+                        android:maxLines="3"
+                        android:layout_marginEnd="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/margin_three_dp"
+                        android:text="@={viewModel.state.address}"
+                        tools:text="dasd dasdjkasdha kjhasdhh asd jlkasd kljad as, Ajman  " />
+
+                    <TextView
+                        android:id="@+id/tvEditAddress"
+                        style="@style/ARegular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_gravity="bottom"
+                        android:onClick="@{(v)-> viewModel.handlePressOnEditAddress(v.id)}"
+                        android:padding="@dimen/margin_extra_small"
+                        android:text="@string/screen_personal_detail_display_text_edit"
+                        android:textColor="?attr/colorPrimaryAttr"
+                        android:maxLength="100"
+                        app:text="@{Strings.screen_personal_detail_display_text_edit}" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:background="@color/divider" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{(v) -> viewModel.handlePressOnScanCard(v.id)}"
+            app:cardBackgroundColor="?attr/colorPrimaryWarmAttr"
+            app:cardCornerRadius="10dp"
+             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.525"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingTop="@dimen/small"
+            app:layout_constraintTop_toBottomOf="@+id/llParent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:layout_editor_absoluteX="16dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingStart="@dimen/margin_medium"
+                    android:paddingTop="@dimen/margin_large"
+                    android:paddingEnd="@dimen/margin_medium"
+                    android:paddingBottom="@dimen/margin_large">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/ivProfile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:backgroundTint="@color/white"
+                        android:elevation="@dimen/margin_zero_dp"
+                        app:elevation="@dimen/margin_zero_dp"
+                        app:fabCustomSize="@dimen/_42sdp"
+                        app:fabSize="normal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:maxImageSize="@dimen/_20sdp"
+                        app:srcCompat="@drawable/ic_profile" />
+
+                    <TextView
+                        android:id="@+id/tvEid"
+                        style="@style/ALarge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:textColor="@color/white"
+                        app:layout_constraintLeft_toRightOf="@+id/ivProfile"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:text="@{Strings.screen_b2c_eid_info_review_display_text_emirates_id_heading}"
+                        tools:text="@string/screen_b2c_eid_info_review_display_text_emirates_id_heading" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        style="@style/ASmallGrey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxWidth="@dimen/_150sdp"
+                        android:text="@={viewModel.state.verificationText}"
+                        app:layout_constraintStart_toStartOf="@+id/tvEid"
+                        app:layout_constraintTop_toBottomOf="@+id/tvEid" />
+
+
+                    <ImageView
+                        android:layout_width="@dimen/_32sdp"
+                        android:layout_height="@dimen/_32sdp"
+                        android:foregroundGravity="center_vertical"
+                        android:paddingRight="@dimen/_2sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.813"
+                        app:layout_constraintStart_toEndOf="@+id/textView5"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:src="@{viewModel.state.drawbleRight}" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

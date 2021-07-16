@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/forgot_card_pin_navigation"
+    app:startDestination="@id/verifyCurrentPasscodeFragment">
+    <fragment
+        android:id="@+id/verifyCurrentPasscodeFragment"
+        android:name="co.yap.modules.dashboard.cards.paymentcarddetail.forgotcardpin.fragments.VerifyCurrentPasscodeFragment"
+        android:label="VerifyCurrentPasscodeFragment"
+        tools:layout="@layout/fragment_pass_code">
+        <action
+            android:id="@+id/action_verifyCurrentPasscodeFragment_to_setNewCardPinFragment2"
+            app:destination="@id/setNewCardPinFragment2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/setNewCardPinFragment2"
+        android:name="co.yap.modules.dashboard.cards.paymentcarddetail.fragments.SetNewCardPinFragment"
+        android:label="SetNewCardPinFragment"
+        tools:layout="@layout/fragment_pin">
+        <argument
+            android:name="flowType"
+            android:defaultValue=" "
+            app:argType="string" />
+
+        <argument
+            android:name="oldPinCode"
+            android:defaultValue=" "
+            app:argType="string" />
+        <action
+            android:id="@+id/action_setNewCardPinFragment_to_confirmNewCardPinFragment"
+            app:destination="@id/confirmNewCardPinFragment2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmNewCardPinFragment2"
+        android:name="co.yap.modules.dashboard.cards.paymentcarddetail.fragments.ConfirmNewCardPinFragment"
+        android:label="ConfirmNewCardPinFragment"
+        tools:layout="@layout/fragment_pin">
+        <argument
+            android:name="flowType"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="oldPinCode"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="newPinCode"
+            android:defaultValue=" "
+            app:argType="string" />
+        <action
+            android:id="@+id/action_confirmNewCardPinFragment2_to_changePinSuccessFragment2"
+            app:destination="@id/changePinSuccessFragment2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePinSuccessFragment2"
+        android:name="co.yap.modules.dashboard.cards.paymentcarddetail.fragments.ChangePinSuccessFragment"
+        android:label="ChangePinSuccessFragment"
+        tools:layout="@layout/fragment_change_pin_success" />
+</navigation>

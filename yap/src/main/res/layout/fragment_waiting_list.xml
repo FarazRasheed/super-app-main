@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.onboarding.viewmodels.WaitingListViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRankingTitle"
+            style="@style/Title2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:gravity="center"
+            android:text="You’re on our waiting list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="You’re on our waiting list" />
+
+        <TextView
+            android:id="@+id/tvGuide"
+            style="@style/RegularGrey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRankingTitle"
+            app:text="@{Strings.screen_waiting_list_display_text_guide}"
+            tools:text="We’re currently in beta and only open to a limited number of users. Don’t worry, you’ll be the first to know when we’re ready!" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivCard"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_extra_large"
+            android:layout_marginBottom="@dimen/margin_normal"
+            app:layout_constraintBottom_toTopOf="@+id/btnKeepMePosted"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvGuide"
+            app:layout_constraintVertical_bias="0.3"
+            app:srcCompat="@drawable/card_spare" />
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnKeepMePosted"
+            style="@style/FragmentsBtnStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_xl"
+            android:layout_marginRight="@dimen/margin_xl"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:onClick="@{(v)-> viewModel.handlePressOnNext(v.id)}"
+            app:btn_enable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:text="@{Strings.screen_waiting_list_display_button_text}"
+            tools:text="Add" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

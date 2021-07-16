@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.sendmoney.addbeneficiary.viewmodels.AddBeneficiaryViewModel" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/lyContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/margin_medium"
+            android:paddingRight="@dimen/margin_medium">
+
+            <TextView
+                style="@style/Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large"
+                android:gravity="center"
+                android:text="@string/screen_add_beneficiary_detail_display_text_title"
+                app:text="@{Strings.screen_add_beneficiary_detail_display_text_title}"
+                tools:text="@string/screen_add_beneficiary_detail_display_text_title" />
+
+            <TextView
+                style="@style/SmallGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large"
+                android:gravity="center"
+                android:text="@string/screen_add_beneficiary_detail_display_text_country"
+                app:text="@{Strings.screen_add_beneficiary_detail_display_text_country}"
+                tools:text="@string/screen_add_beneficiary_detail_display_text_country" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/margin_medium"
+                android:paddingBottom="@dimen/margin_medium">
+
+                <co.yap.widgets.CoreCircularImageView
+                    android:id="@+id/flag_img"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="@drawable/bitmap"
+                    app:src="@{viewModel.state.flagDrawableResId}" />
+
+                <TextView
+                    style="@style/Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_medium"
+                    android:gravity="center_vertical"
+                    android:text="@{viewModel.state.country}"
+                    tools:text="United Arab Emierates" />
+
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_marginEnd="@dimen/_2sdp"
+                android:background="@color/greyLight" />
+
+            <TextView
+                style="@style/Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:text="@string/screen_add_beneficiary_detail_display_text_transfer_nick_name"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSuccessHeading"
+                app:text="@{Strings.screen_add_beneficiary_detail_display_text_transfer_nick_name}"
+                app:textColor="@{viewModel.state.nickName.empty ? true : false}"
+                tools:text="@string/screen_add_beneficiary_detail_display_text_transfer_nick_name" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etnickName"
+                style="@style/Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/greyLight"
+                android:imeOptions="actionNext"
+                android:maxLength="50"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@={viewModel.state.nickName}"
+                app:hint="@{Strings.screen_add_beneficiary_detail_input_text_nick_name_hint}"
+                tools:hint="@string/screen_add_beneficiary_detail_input_text_nick_name_hint" />
+
+
+            <TextView
+                style="@style/Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:text="@string/screen_add_beneficiary_detail_display_text_transfer_nick_name"
+                app:text="@{Strings.screen_add_beneficiary_detail_display_text_transfer_first_name}"
+                app:textColor="@{viewModel.state.firstName.empty ? true : false}"
+                tools:text="@string/screen_add_beneficiary_detail_display_text_transfer_first_name" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etFirstName"
+                style="@style/Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/greyLight"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:maxLength="@integer/beneficiary_length"
+                android:singleLine="true"
+                android:text="@={viewModel.state.firstName}"
+                app:hint="@{Strings.screen_add_beneficiary_detail_input_text_first_name_hint}"
+                tools:hint="@string/screen_add_beneficiary_detail_input_text_first_name_hint" />
+
+
+            <TextView
+                style="@style/Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:text="@string/screen_add_beneficiary_detail_display_text_transfer_nick_name"
+                app:text="@{Strings.screen_add_beneficiary_detail_display_text_transfer_last_name}"
+                app:textColor="@{viewModel.state.lastName.empty ? true : false}"
+                tools:text="@string/screen_add_beneficiary_detail_display_text_transfer_last_name" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etLastName"
+                style="@style/Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/greyLight"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:maxLength="@integer/beneficiary_length"
+                android:singleLine="true"
+                android:text="@={viewModel.state.lastName}"
+                app:hint="@{Strings.screen_add_beneficiary_detail_input_text_last_name_hint}"
+                tools:hint="@string/screen_add_beneficiary_detail_input_text_last_name_hint" />
+
+
+            <TextView
+                style="@style/Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:text="@string/screen_add_beneficiary_detail_display_text_transfer_nick_name"
+                app:text="@{Strings.screen_beneficiary_account_details_display_text_iban}"
+                app:textColor="@{viewModel.state.lastName.empty ? true : false}"
+                tools:text="@string/screen_beneficiary_account_details_display_text_iban" />
+
+
+            <co.yap.widgets.DrawableClickEditText
+                android:id="@+id/etIban"
+                style="@style/Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/greyLight"
+                android:drawableEnd="@{viewModel.parentViewModel.selectedCountry.ibanMandatory==true ? @drawable/ic_support : @drawable/drawable_transparent}"
+                android:drawableRight="@{viewModel.parentViewModel.selectedCountry.ibanMandatory==true ? @drawable/ic_support : @drawable/drawable_transparent}"
+                android:hint="xxxxxxxxx"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="textCapCharacters"
+                android:maxLength="50"
+                android:singleLine="true"
+                android:text="@={viewModel.state.iban}"
+                app:ibanMask="@{`#### #### #### #### #### #### #### #### ###`}"
+                app:isDrawableShownWhenTextIsEmpty="true"
+                app:popupContentValue="@string/screen_add_beneficiary_display_help_content"
+                tools:drawableRight="@drawable/drawable_transparent" />
+
+            <TextView
+                style="@style/Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:text="@string/screen_add_beneficiary_detail_display_text_transfer_nick_name"
+                app:text="@{Strings.screen_sdd_beneficiary_display_confirm_iban}"
+                app:textColor="@{viewModel.state.lastName.empty ? true : false}"
+                tools:text="@string/screen_sdd_beneficiary_display_confirm_iban" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etConfirmIban"
+                style="@style/Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/greyLight"
+                android:hint="xxxxxxxxx"
+                android:imeOptions="actionDone"
+                android:importantForAutofill="no"
+                android:inputType="textCapCharacters"
+                android:maxLength="50"
+                android:singleLine="true"
+                android:text="@={viewModel.state.confirmIban}"
+                app:ibanMask="@{`#### #### #### #### #### #### #### #### ###`}" />
+
+            <co.yap.widgets.CoreButton
+                android:id="@+id/confirmButton"
+                style="@style/FragmentsBtnStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_34sdp"
+                android:layout_marginBottom="@dimen/margin_medium_large"
+                android:minWidth="@dimen/_180sdp"
+                android:onClick="@{(v) -> viewModel.handlePressOnAddNow(v.id)}"
+                app:enableCoreButton="@{viewModel.state.valid}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:text="@{Strings.screen_add_beneficiary_button_next}"
+                tools:text="@string/screen_add_beneficiary_button_next" />
+        </LinearLayout>
+    </ScrollView>
+</layout>

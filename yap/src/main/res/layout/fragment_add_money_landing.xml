@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.yapit.addmoney.landing.AddMoneyLandingViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
+            style="@style/Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal_large"
+            android:layout_marginTop="@dimen/margin_medium_large"
+            android:layout_marginEnd="@dimen/margin_normal_large"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:text="@{Strings.screen_fragment_yap_it_add_money_how_do_you_want_to_add_money}"
+            tools:text="@string/screen_fragment_yap_it_add_money_how_do_you_want_to_add_money" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerOptions"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_large"
+            android:dividerHeight="2dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            app:recycleViewAdapter="@{viewModel.landingAdapter}"
+            app:spanCount="2"
+            tools:itemCount="7"
+            tools:listitem="@layout/item_yap_it_add_money_landing" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

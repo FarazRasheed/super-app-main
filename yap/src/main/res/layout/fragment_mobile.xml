@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.onboarding.viewmodels.MobileViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/margin_medium"
+        android:paddingRight="@dimen/margin_medium">
+
+        <TextView
+            android:id="@+id/tvHeadingMobile"
+            style="@style/ALarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_extra_large"
+            android:layout_marginBottom="@dimen/margin_heading_to_field"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:text="@{Strings.screen_phone_number_display_text_title}"
+            tools:layout_editor_absoluteX="54dp"
+            tools:layout_editor_absoluteY="219dp"
+            tools:text="@string/screen_phone_number_display_text_title" />
+
+        <LinearLayout
+            android:id="@+id/viewPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_heading_to_field"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/tvHeadingMobile">
+
+            <LinearLayout
+                android:id="@+id/ccpContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="52dp"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/margin_medium"
+                android:paddingRight="@dimen/margin_medium"
+                android:weightSum="1"
+                app:isCCpActivated="@{viewModel.state.activeFieldValue}"
+                app:setBackGroundRes="@{viewModel.state.background}">
+
+                <co.yap.widgets.mobile.CountryCodePicker
+                    android:id="@+id/ccpSelector"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".01"
+                    android:clickable="false"
+                    android:visibility="visible"
+                    app:ccp_clickable="false"
+                    app:ccp_countryPreference="us,ae"
+                    app:ccp_hintExampleNumber="true"
+                    app:ccp_onFlagClick="false" />
+
+                <EditText
+                    android:id="@+id/etMobileNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".99"
+                    android:background="@null"
+                    android:digits="1234567890 "
+                    android:drawableRight="@{viewModel.state.drawbleRight}"
+                    android:editable="false"
+                    android:imeOptions="actionDone"
+                    android:inputType="phone"
+                    android:maxLength="@{viewModel.state.mobileNoLength}"
+                    android:paddingEnd="@dimen/margin_normal"
+                    android:singleLine="true"
+                    android:text="@={viewModel.state.mobile}"
+                    android:textColor="?attr/colorPrimaryDarkAttr"
+                    android:textSize="@dimen/_15sdp"
+                 />
+<!--                app:drawbleRight="@{viewModel.state.drawbleRight}"-->
+<!--                app:isValid="@{viewModel.state.valid}"-->
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvMobileError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etMobileNumber"
+                android:layout_marginTop="@dimen/margin_small"
+                android:paddingLeft="@dimen/margin_medium"
+                android:text="@{viewModel.state.mobileError}"
+                android:textSize="12sp"
+                android:visibility="@{viewModel.state.errorVisibility}" />
+        </LinearLayout>
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/next_button"
+            style="@style/FragmentsBtnStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_btn_side_paddings_xl"
+            android:layout_marginRight="@dimen/margin_btn_side_paddings_xl"
+            android:layout_marginBottom="@dimen/margin_medium_large"
+            android:onClick="@{() -> viewModel.handlePressOnNext()}"
+            android:text="@string/screen_phone_number_button_send"
+            app:enableCoreButton="@{viewModel.state.valid}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="44dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

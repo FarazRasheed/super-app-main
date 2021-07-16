@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.store.household.onboarding.viewmodels.HouseHoldUserContactViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:id="@+id/clSnackbarHouseHold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_medium"
+                android:paddingRight="@dimen/margin_medium"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <TextView
+                    android:id="@+id/tvHeadingMobile"
+                    style="@style/ALarge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/margin_medium"
+                    android:paddingRight="@dimen/margin_medium"
+                    android:text="@string/screen_yap_house_hold_user_info_contact_display_text_heading"
+                    android:textSize="@dimen/_18sdp"
+                    app:concatVal="@{viewModel.parentViewModel.firstName}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:textVal="@{Strings.screen_yap_house_hold_user_info_contact_display_text_heading}" />
+
+
+                <LinearLayout
+                    android:id="@+id/llData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/margin_extra_small"
+                    android:paddingRight="@dimen/margin_extra_small"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvHeadingMobile">
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/SmallGrey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_xl"
+                        android:text="@string/screen_b2c_eid_info_review_display_text_name_heading"
+                        android:textSize="@dimen/_13sdp"
+                        app:text="@{Strings.screen_yap_house_hold_user_info_contact_display_text_mobile}"
+                        app:textColor="@{viewModel.state.mobile.empty ? true : false}"
+                        tools:text="@string/screen_yap_house_hold_user_info_contact_display_text_mobile" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/ccpContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@{viewModel.state.background}"
+                        app:layout_constraintTop_toBottomOf="@+id/tvMobileNumberHeading">
+
+                        <co.yap.widgets.mobile.CountryCodePicker
+                            android:id="@+id/ccpSelector"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:clickable="false"
+                            android:gravity="center"
+                            android:paddingRight="-5dp"
+                            app:ccp_countryPreference="us,ae"
+                            app:ccp_hideFlag="true"
+                            app:ccp_hintExampleNumber="true"
+                            app:ccp_onFlagClick="false"
+                            app:ccp_pickerTextColor="?attr/colorPrimaryDarkAttr"
+                            app:ccp_showDropDown="true"
+                            app:layout_constraintBottom_toBottomOf="@+id/etMobileNumber"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/etMobileNumber" />
+
+                        <EditText
+                            android:id="@+id/etMobileNumber"
+                            style="@style/Regular"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:digits="1234567890 "
+                            android:drawableEnd="@{viewModel.state.drawbleRight}"
+                            android:gravity="bottom"
+                            android:hint="123 4567"
+                            android:imeOptions="actionNext"
+                            android:importantForAutofill="no"
+                            android:inputType="phone"
+                            android:maxLength="@{viewModel.state.mobileNoLength}"
+                            android:singleLine="true"
+                            android:text="@={viewModel.state.mobile}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintLeft_toRightOf="@+id/ccpSelector"
+                            app:layout_constraintStart_toEndOf="@+id/ccpSelector"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="123 4567 89" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/SmallGrey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:text="@string/screen_yap_house_hold_user_info_contact_display_text_confirm_mobile"
+                        android:textSize="@dimen/_13sdp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvSuccessHeading"
+                        app:text="@{Strings.screen_yap_house_hold_user_info_contact_display_text_confirm_mobile}"
+                        app:textColor="@{viewModel.state.confirmMobileNumber.empty ? true : false}"
+                        tools:text="@string/screen_yap_house_hold_user_info_contact_display_text_confirm_mobile" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/ccpContainerConfirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@{viewModel.state.backgroundConfirmMobile}">
+
+                        <co.yap.widgets.mobile.CountryCodePicker
+                            android:id="@+id/ccpSelectorConfirm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:clickable="false"
+                            android:gravity="center"
+                            android:paddingRight="-5dp"
+                            app:ccp_countryPreference="us,ae"
+                            app:ccp_hideFlag="true"
+                            app:ccp_hintExampleNumber="true"
+                            app:ccp_onFlagClick="false"
+                            app:ccp_pickerTextColor="?attr/colorPrimaryDarkAttr"
+                            app:ccp_showDropDown="true"
+                            app:layout_constraintBottom_toBottomOf="@+id/etConfirmMobileNumber"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/etConfirmMobileNumber" />
+
+                        <EditText
+                            android:id="@+id/etConfirmMobileNumber"
+                            style="@style/Regular"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:digits="1234567890 "
+                            android:drawableEnd="@{viewModel.state.drawbleRightConfirmMobile}"
+                            android:gravity="bottom"
+                            android:hint="123 4567"
+                            android:imeOptions="actionDone"
+                            android:importantForAutofill="no"
+                            android:inputType="phone"
+                            android:maxLength="@{viewModel.state.confirmMobileNoLength}"
+                            android:singleLine="true"
+                            android:text="@={viewModel.state.confirmMobileNumber}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintLeft_toRightOf="@+id/ccpSelectorConfirm"
+                            app:layout_constraintStart_toEndOf="@+id/ccpSelectorConfirm"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="123 4567 89" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <co.yap.widgets.CoreButton
+                    android:id="@+id/btnNext"
+                    style="@style/FragmentsBtnStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_xxl"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginRight="@dimen/margin_xxl"
+                    android:onClick="@{(v) -> viewModel.handlePressOnAdd(v.id)}"
+                    app:enableCoreButton="@{viewModel.state.valid}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/llData"
+                    app:layout_constraintVertical_bias="0.963"
+                    app:text="@{Strings.screen_yap_house_hold_user_info_contact_button_next}" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

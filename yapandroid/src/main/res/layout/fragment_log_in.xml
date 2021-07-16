@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.yap.yapandroid.modules.login.viewmodels.LoginViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="co.yap.translation.Translator" />
+
+        <import type="co.yap.yapcore.managers.SessionManager" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="false"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <co.yap.widgets.LockableScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/clSignUp"
+            android:layout_alignParentTop="true"
+            android:fillViewport="true">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivBubbles"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_160sdp"
+                    android:layout_marginTop="-5dp"
+                    app:srcCompat="@drawable/bg_bubbles" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivYap"
+                    android:layout_width="84dp"
+                    android:layout_height="33dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="-45dp"
+                    app:srcCompat="@drawable/ic_yap" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSignIn"
+                    style="@style/RegularGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="@{Translator.INSTANCE.getString(context,Strings.screen_sign_in_display_text_heading_text)}" />
+
+                <co.yap.widgets.CoreInputField
+                    android:id="@+id/etEmailField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium_large"
+                    android:layout_marginTop="@dimen/margin_xl"
+                    android:layout_marginEnd="@dimen/margin_medium_large"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    app:coreInputDrawableRight="@{viewModel.state.drawbleRight}"
+                    app:coreInputError="@{viewModel.state.emailError}"
+                    app:coreInputText="@{viewModel.state.email}"
+                    app:realValue="@={viewModel.state.twoWayTextWatcher}"
+                    app:resetUI="@{viewModel.state.refreshField}"
+                    app:showKeyboard="false"
+                    app:view_hint_input_field="@string/screen_sign_in_input_text_email_hint"
+                    app:view_input_type="email" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/swRemember"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/margin_medium_large"
+                    android:checked="@={SessionManager.INSTANCE.isRemembered}"
+                    android:text="@{Translator.INSTANCE.getString(context,Strings.screen_sign_in_label_switch_text)}"
+                    android:theme="@style/CustomSwitch" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="@dimen/margin_extra_large"
+                    android:layout_weight="1" />
+
+                <co.yap.widgets.CoreButton
+                    android:id="@+id/btnLogIn"
+                    style="@style/FragmentsBtnStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_btn_side_paddings_xl"
+                    android:layout_marginRight="@dimen/margin_btn_side_paddings_xl"
+                    android:onClick="@{(v) -> viewModel.handlePressOnLogin()}"
+                    android:text="@{Translator.INSTANCE.getString(context,Strings.screen_sign_in_button_sign_in)}"
+                    app:enableCoreButton="@{viewModel.state.valid}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_normal" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </co.yap.widgets.LockableScrollView>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/clSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSignUpPrefix"
+                style="@style/SmallGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/margin_extra_small"
+                android:paddingBottom="@dimen/margin_extra_small"
+                android:text="@{Translator.INSTANCE.getString(context,Strings.screen_sign_in_display_text_sign_up_prefix)}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSignUp"
+                style="@style/SmallGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:maxLines="1"
+                android:onClick="@{(v) -> viewModel.handlePressOnSignUp()}"
+                android:paddingTop="@dimen/margin_extra_small"
+                android:paddingBottom="@dimen/margin_extra_small"
+                android:singleLine="true"
+                android:text="@{Translator.INSTANCE.getString(context,Strings.screen_sign_in_display_text_sign_up)}"
+                android:textColor="?attr/colorPrimaryAttr" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </RelativeLayout>
+</layout>

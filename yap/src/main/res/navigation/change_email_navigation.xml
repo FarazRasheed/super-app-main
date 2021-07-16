@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/change_email_navigation"
+    app:startDestination="@id/changeEmailFragment">
+    <fragment
+        android:id="@+id/changeEmailFragment"
+        android:name="co.yap.modules.dashboard.more.profile.fragments.ChangeEmailFragment"
+        tools:layout="@layout/fragment_change_email"
+        android:label="ChangeEmailFragment">
+        <action
+            android:id="@+id/action_changeEmailFragment_to_changeEmailSuccessFragment"
+            app:destination="@id/changeEmailSuccessFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/changeEmailSuccessFragment"
+        android:name="co.yap.modules.dashboard.more.profile.fragments.SuccessFragment"
+        android:label="ChangeEmailSuccessFragment"
+        tools:layout="@layout/fragment_success">
+        <argument
+            android:name="staticString"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="destinationValue"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="successType"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="placesPhotoId"
+            android:defaultValue=" "
+            app:argType="string" />
+        <action
+            android:id="@+id/action_changeEmailSuccessFragment_to_moreNavigation"
+            app:destination="@id/personalDetailsFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:popUpTo="@id/personalDetailsFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

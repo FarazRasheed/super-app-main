@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/spare_cards_navigation"
+    app:startDestination="@id/reportLostOrStolenCardFragment">
+    <fragment
+        android:id="@+id/reportLostOrStolenCardFragment"
+        android:name="co.yap.modules.dashboard.cards.reportcard.fragments.ReportLostOrStolenCardFragment"
+        tools:layout="@layout/fragment_lost_or_stolen_card">
+
+        <action
+            android:id="@+id/action_reportLostOrStolenCardFragment_to_blockCardSuccessFragment"
+            app:destination="@id/blockCardSuccessFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/blockCardSuccessFragment"
+        android:name="co.yap.modules.dashboard.cards.reportcard.fragments.BlockCardSuccessFragment"
+        tools:layout="@layout/fragment_block_card_success">
+
+        <argument
+            android:name="cardReorderFee"
+            android:defaultValue=" "
+            app:argType="string" />
+
+    </fragment>
+
+
+</navigation>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.store.viewmodels.YapStoreItemViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+
+    <androidx.cardview.widget.CardView
+        style="@style/CardViewLight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart= "@dimen/margin_normal_large"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_normal_large"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:background="@color/white"
+        android:gravity="center_vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/margin_medium">
+
+
+            <TextView
+                android:id="@+id/labelCardType"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_7sdp"
+                android:textSize="@dimen/_10sdp"
+                android:background="@drawable/round_yellow_background"
+                android:gravity="center"
+                android:text="Coming soon"
+                android:elevation="4dp"
+                android:textColor="@color/white"
+                app:btn_unpressed_color="@color/disabledLight"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <ImageView
+                android:id="@+id/imgStoreCover"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp"
+                android:contentDescription="@string/empty_string"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:src="@{viewModel.storeData.image}"
+                tools:srcCompat="@drawable/ic_store_b2b" />
+
+            <ImageView
+                android:id="@+id/imgStoreType"
+                android:layout_width="@dimen/_48sdp"
+                android:layout_height="@dimen/_48sdp"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:contentDescription="@string/empty_string"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgStoreCover"
+                app:src="@{viewModel.storeData.storeIcon}"
+                tools:srcCompat="@drawable/ic_young_smile" />
+            <!--            app:src="@{viewModel.storeData.storeIcon}"-->
+            <TextView
+                android:id="@+id/tvStoreName"
+                style="@style/Regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:singleLine="true"
+                android:text="@{viewModel.storeData.name}"
+                app:layout_constraintEnd_toEndOf="@+id/imgStoreCover"
+                app:layout_constraintStart_toEndOf="@+id/imgStoreType"
+                app:layout_constraintTop_toTopOf="@+id/imgStoreType"
+                tools:text="@string/screen_yap_store_display_text_heading" />
+
+            <TextView
+                android:id="@+id/tvStoreDesc"
+                style="@style/AMicroGrey"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_17sdp"
+                android:text="@{viewModel.storeData.desc}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvStoreName"
+                app:layout_constraintTop_toBottomOf="@+id/tvStoreName"
+                tools:text="@string/screen_yap_store_display_text_heading" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

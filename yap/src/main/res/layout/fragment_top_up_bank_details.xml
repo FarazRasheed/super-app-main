@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.R" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.yapit.topup.topupbankdetails.TopUpBankDetailsViewModel" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <co.yap.widgets.CoreToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.state.toolBarVisibility ? View.VISIBLE:View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:leftIcon="@{R.drawable.ic_back_arrow_left}"
+            app:leftIconVisibility="@{true}"
+            app:onClick="@{viewModel::onToolBarClick}"
+            app:rightTitleVisibility="@{true}"
+            app:titleString="@{viewModel.state.toolbarTitle}" />
+
+        <ScrollView
+            android:id="@+id/svDetails"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include
+                    android:id="@+id/layoutUserHeader"
+                    layout="@layout/layout_bank_details_user_top_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:viewModel="@{viewModel}" />
+
+                <include
+                    android:id="@+id/layoutUserBankDetails"
+                    layout="@layout/layout_top_up_bank_details_bottom_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal_large"
+                    android:layout_marginEnd="@dimen/margin_normal_large"
+                    android:layout_marginTop="@dimen/margin_extra_large"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutUserHeader"
+                    app:viewModel="@{viewModel}"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_xl"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutUserBankDetails">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/btnShare"
+                        style="@style/Large"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginBottom="@dimen/margin_xl"
+                        android:textColor="@color/colorPrimary"
+                        tools:text="Share"
+                        android:onClick="@{(v) -> viewModel.handlePressOnButton(v.id)}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_goneMarginTop="@dimen/margin_extra_large"
+                        app:text="@{Strings.screen_add_topup_bank_core_btn_label_text}" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</layout>

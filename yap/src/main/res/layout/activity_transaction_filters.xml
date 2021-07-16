@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.home.filters.viewmodels.TransactionFiltersViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.R" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <co.yap.widgets.CoreToolbar
+            android:id="@+id/toolbarTransFilters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bottomLineVisibility="@{true}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:leftIcon="@{R.drawable.ic_close}"
+            app:leftIconVisibility="@{true}"
+            app:onClick="@{viewModel::onToolBarClick}"
+            app:rightIconVisibility="@{false}"
+            app:titleTranslator="@{Strings.screen_transaction_filter_display_text_title}" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTransContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarTransFilters">
+
+            <TextView
+                android:id="@+id/tvInTrans"
+                style="@style/Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:text="@{Strings.screen_transaction_filter_display_text_incoming_transactions}"
+                tools:text="@string/screen_transaction_filter_display_text_incoming_transactions" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/cbInTransFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/checkbox_selector_tint"
+                android:scaleX="1.20"
+                android:scaleY="1.20"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvOutTrans"
+                style="@style/Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvInTrans"
+                app:text="@{Strings.screen_transaction_filter_display_text_outgoing_transactions}"
+                tools:text="@string/screen_transaction_filter_display_text_outgoing_transactions" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/cbOutTransFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/checkbox_selector_tint"
+                android:scaleX="1.20"
+                android:scaleY="1.20"
+                app:layout_constraintBottom_toBottomOf="@+id/tvOutTrans"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvOutTrans" />
+
+            <View
+                android:id="@+id/vLineTrans"
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:layout_marginTop="@dimen/_18sdp"
+                android:background="@color/greyLight"
+                app:layout_constraintTop_toBottomOf="@id/tvOutTrans" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rangeSections"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.state.hasInternet ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clTransContainer">
+
+            <TextView
+                android:id="@+id/tvRangeTitle"
+                style="@style/ARegularGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/_18sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:text="@{Strings.screen_transaction_filter_display_text_balance}"
+                tools:text="@string/screen_transaction_filter_display_text_balance" />
+
+            <TextView
+                android:id="@+id/tvTransStartRange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_extra_small"
+                android:text="@{viewModel.state.rangeStartValue}"
+                android:textColor="?attr/colorPrimaryAttr"
+                app:layout_constraintRight_toLeftOf="@+id/vRangeDivider"
+                app:layout_constraintTop_toTopOf="@+id/tvRangeTitle"
+                tools:ignore="RtlHardcoded" />
+
+            <View
+                android:id="@+id/vRangeDivider"
+                android:layout_width="10dp"
+                android:layout_height="3px"
+                android:layout_marginEnd="@dimen/margin_extra_small"
+                android:background="?attr/colorPrimaryAttr"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTransEndRange"
+                app:layout_constraintRight_toLeftOf="@+id/tvTransEndRange"
+                app:layout_constraintTop_toTopOf="@+id/tvTransEndRange" />
+
+            <TextView
+                android:id="@+id/tvTransEndRange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:gravity="center"
+                android:text="@{viewModel.state.rangeEndValue}"
+                android:textColor="?attr/colorPrimaryAttr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvRangeTitle"
+                tools:ignore="RtlHardcoded" />
+
+            <com.jaygoo.widget.RangeSeekBar
+                android:id="@+id/rsbAmount"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/margin_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTransEndRange"
+                app:rsb_max="20000"
+                app:rsb_min="0"
+                app:rsb_mode="single"
+                app:rsb_progress_color="@color/colorPrimary"
+                app:rsb_progress_default_color="?attr/colorSeekBar"
+                app:rsb_progress_height="@dimen/_4sdp"
+                app:rsb_progress_radius="@dimen/_2sdp"
+                app:rsb_thumb_drawable="@drawable/ic_seekbar_thumb_croped"
+                app:rsb_thumb_height="@dimen/_35sdp"
+                app:rsb_thumb_width="@dimen/_37sdp"
+
+                />
+
+            <View
+                android:id="@+id/vLineBalance"
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:background="@color/greyLight"
+                app:layout_constraintTop_toBottomOf="@id/rsbAmount" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/vButtonsLine"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:background="@color/greyLight"
+            app:layout_constraintBottom_toTopOf="@id/btnApplyFilters" />
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnApplyFilters"
+            style="@style/RectangleBtnStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:onClick="@{(v) ->viewModel.handlePressOnView(v.id)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvClearFilters"
+            app:text="@{Strings.screen_transaction_filter_button_apply_filter}"
+            tools:text="@string/screen_transaction_filter_button_apply_filter" />
+
+        <TextView
+            android:id="@+id/tvClearFilters"
+            style="@style/Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+            android:textColor="@color/colorPrimary"
+            app:btn_enable="true"
+            app:layout_constraintBottom_toBottomOf="@id/btnApplyFilters"
+            app:layout_constraintEnd_toStartOf="@+id/btnApplyFilters"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btnApplyFilters"
+            app:text="@{Strings.screen_transaction_filter_button_clear_filter}"
+            tools:text="@string/screen_transaction_filter_button_clear_filter" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

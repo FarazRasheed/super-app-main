@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.more.profile.viewmodels.SuccessViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvSuccessHeading"
+            style="@style/ATitle3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_xl"
+            android:gravity="center"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:text="@{viewModel.state.topMainHeading}"
+            tools:text="Success!" />
+
+        <TextView
+            android:id="@+id/tvSuccessSubHeading"
+            style="@style/RegularGrey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:gravity="center"
+            android:paddingLeft="@dimen/margin_large"
+            android:paddingRight="@dimen/margin_large"
+            android:text="@{viewModel.state.topSubHeading}"
+            android:textColor="@color/greyDark"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSuccessHeading"
+            tools:text="Your email address has been changed to newemail@website.com" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvLocationCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_medium"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="@dimen/_4sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSuccessSubHeading">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/margin_normal_large">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/placeParent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    app:cardCornerRadius="@dimen/_5sdp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <co.yap.widgets.RoundedImageView
+                        android:id="@+id/placeImage"
+                        android:layout_width="@dimen/_74sdp"
+                        android:layout_height="@dimen/_74sdp"
+                        android:padding="@dimen/margin_extra_small"
+                        android:src="@drawable/ic_location_placeholder"
+                        app:bitmap="@{viewModel.state.placeBitmap}" />
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:id="@+id/container"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/placeParent"
+                    app:layout_constraintTop_toTopOf="@+id/placeParent">
+
+                    <TextView
+                        android:id="@+id/tvAddressTitle"
+                        style="@style/Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:text="@{viewModel.state.address1}"
+                        tools:text="Jumeirah Beach Residence"/>
+
+                    <TextView
+                        android:id="@+id/tvAddressSubTitle"
+                        style="@style/ASmallGrey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:ellipsize="end"
+                        android:lineSpacingExtra="3sp"
+                        android:maxLines="4"
+                        android:text="@{viewModel.state.address2}"
+                        tools:text="Suite 1107. Dubai, UAE" />
+
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnAction"
+            style="@style/FragmentsBtnStyle"
+            android:layout_width="@dimen/_175sdp"
+            android:layout_height="@dimen/_47sdp"
+            android:layout_marginLeft="@dimen/margin_xxl"
+            android:layout_marginRight="@dimen/margin_xxl"
+            android:layout_marginBottom="@dimen/margin_medium_large"
+            android:onClick="@{(v)->viewModel.handlePressOnDoneButton()}"
+            android:text="@{viewModel.state.buttonTitle}"
+            app:btn_enable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="@string/screen_change_pin_success_display_text_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

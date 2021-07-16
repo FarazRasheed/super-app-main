@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.yapit.y2y.transfer.viewmodels.Y2YFundsTransferSuccessViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/lyUserImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/layout_y_to_y_transfer_initial_image"
+            android:layout_marginTop="@dimen/margin_normal"
+            app:image="@{viewModel.state.imageUrl}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:name="@{viewModel.state.title}"/>
+
+        <!--<TextView
+            android:id="@+id/tvNameInitials"
+            style="@style/ALarge"
+            android:layout_width="@dimen/_64sdp"
+            android:layout_height="@dimen/_64sdp"
+            android:layout_marginTop="@dimen/margin_extra_large"
+            android:background="@drawable/bg_round_purple"
+            android:gravity="center"
+            android:text="NM"
+            android:textColor="?attr/colorPrimaryAttr"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />-->
+
+        <TextView
+            android:id="@+id/tvFullName"
+            style="@style/Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="@{viewModel.state.title}"
+            android:gravity="center"
+            tools:text="Sufyan Shabbir Sufyan Shabbir Sufyan Shabbir Sufyan ShabbirSufyan Shabbir Sufyan Shabbir Sufyan Shabbir Sufyan Shabbir"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lyUserImage" />
+
+        <TextView
+            android:id="@+id/tvTransferHeading"
+            style="@style/MicroGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFullName"
+            app:text="@{Strings.screen_y2y_funds_transfer_success_display_text_transfer}"
+            tools:text="@string/screen_y2y_funds_transfer_success_display_text_transfer" />
+
+        <TextView
+            android:id="@+id/tvTransferAmount"
+            style="@style/ATitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTransferHeading"
+            android:text="@{viewModel.state.transferredAmount}"
+            tools:text="AED 2500.00" />
+
+        <ImageView
+            android:id="@+id/ivSuccessCheckMark"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:contentDescription="@string/empty_string"
+            android:src="@drawable/ic_checkmark"
+            app:layout_constraintBottom_toTopOf="@+id/btnGoToDashboard"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTransferAmount"/>
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnGoToDashboard"
+            style="@style/RectangleBtnStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_xxl"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="@dimen/margin_xxl"
+            android:layout_marginBottom="@dimen/margin_medium_large"
+            android:onClick="@{(v)-> viewModel.handlePressOnDashboardButton(v.id)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintVertical_bias="0.987"
+            app:text="@{Strings.screen_y2y_funds_transfer_success_button_back}" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

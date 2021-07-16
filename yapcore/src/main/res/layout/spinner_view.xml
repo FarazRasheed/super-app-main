@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/spinner_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Spinner
+        android:id="@+id/countriesSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_spinner"
+        android:drawSelectorOnTop="false"
+        android:dropDownHeight="@dimen/_300sdp"
+        android:gravity="bottom"
+        android:padding="0dp"
+        android:overScrollMode="never"
+        android:overlapAnchor="false"
+        android:spinnerMode="dropdown" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/countriesSpinner"
+        android:background="@color/greyLight" />
+
+</RelativeLayout>

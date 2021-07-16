@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.yap.yapandroid.modules.login.viewmodels.SystemPermissionViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingHorizontal="@dimen/margin_medium"
+        tools:context=".modules.login.fragments.SystemPermissionFragment">
+
+        <ImageView
+            android:id="@+id/ivFingerprint"
+            android:layout_width="@dimen/_59sdp"
+            android:layout_height="@dimen/_59sdp"
+            android:layout_marginTop="@dimen/margin_xxl"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:src="@{viewModel.state.icon}"
+            tools:background="@drawable/bg_fingerprint"
+            tools:srcCompat="@drawable/ic_fingerprint" />
+
+        <TextView
+            android:id="@+id/tvTouchIdPermissionTitle"
+            style="@style/ALarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_two_dp"
+            android:layout_marginTop="@dimen/_37sdp"
+            android:layout_marginRight="@dimen/margin_two_dp"
+            android:lineSpacingExtra="9sp"
+            android:text="@{viewModel.state.title}"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@+id/ivFingerprint"
+            tools:layout_editor_absoluteX="57dp"
+            tools:text="@string/screen_system_permission_text_title" />
+
+
+        <TextView
+            android:id="@+id/tvTouchIdPermissionSubTitle"
+            style="@style/RegularGrey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_two_dp"
+            android:layout_marginTop="@dimen/small"
+            android:layout_marginRight="@dimen/margin_two_dp"
+            android:justificationMode="inter_word"
+            android:lineSpacingExtra="3sp"
+            android:text="@{viewModel.state.subTitle}"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_size_h2"
+            app:layout_constraintTop_toBottomOf="@+id/tvTouchIdPermissionTitle"
+            tools:layout_editor_absoluteX="22dp"
+            tools:text="@string/screen_system_permission_text_sub_title" />
+
+        <TextView
+            android:id="@+id/tvTermsAndConditionsTitle"
+            style="@style/AMicroGrey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_two_dp"
+            android:layout_marginRight="@dimen/margin_two_dp"
+            android:textAlignment="center"
+            android:visibility="@{viewModel.state.termsAndConditionsVisibility ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toTopOf="@+id/tvTermsAndConditions"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:text="@{Strings.screen_system_permission_text_title_terms_and_conditions}"
+            tools:text="@string/screen_system_permission_text_title_terms_and_conditions" />
+
+        <TextView
+            android:id="@+id/tvTermsAndConditions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:onClick="@{(v)->viewModel.handlePressOnTermsAndConditions(v.id)}"
+            android:textColor="?attr/colorPrimaryAttr"
+            android:visibility="@{viewModel.state.termsAndConditionsVisibility? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toTopOf="@+id/btnTouchId"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:text="@{Strings.screen_system_permission_text_terms_and_conditions}"
+            tools:text="@string/screen_system_permission_text_terms_and_conditions" />
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnTouchId"
+            style="@style/RectangleBtnStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_37sdp"
+            android:layout_marginRight="@dimen/_37sdp"
+            android:layout_marginBottom="@dimen/_18sdp"
+            android:gravity="center"
+            android:onClick="@{(v)->viewModel.permissionGranted()}"
+            android:paddingStart="@dimen/margin_xl"
+            android:paddingTop="@dimen/margin_small"
+            android:paddingEnd="@dimen/margin_xl"
+            android:paddingBottom="@dimen/margin_small"
+            android:text="@{viewModel.state.buttonTitle}"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintBottom_toTopOf="@+id/tvNoThanks"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintVertical_bias="0.75"
+            tools:ignore="MissingConstraints"
+            tools:text="@string/screen_system_permission_button_touch_id" />
+
+        <TextView
+            android:id="@+id/tvNoThanks"
+            style="@style/Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:onClick="@{(v)->viewModel.permissionNotGranted()}"
+            android:text="@{viewModel.state.denied}"
+            android:textColor="?attr/colorPrimaryAttr"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="@string/screen_system_permission_text_denied" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

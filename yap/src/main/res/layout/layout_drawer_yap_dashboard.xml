@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.main.viewmodels.YapDashBoardViewModel" />
+
+        <import type="co.yap.yapcore.helpers.StringUtils" />
+
+        <import type="co.yap.yapcore.managers.SessionManager" />
+
+        <import type="co.yap.yapcore.enums.PartnerBankStatus" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.translation.Strings" />
+
+    </data>
+
+    <!--    <ScrollView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent">-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="4dp"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        app:elevation="4dp">
+
+        <!-- Left Section -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_52sdp"
+            android:layout_weight="78"
+            android:elevation="4dp"
+            android:orientation="vertical"
+            app:elevation="4dp">
+
+            <!-- Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/margin_medium"
+                android:paddingEnd="0dp"
+                android:paddingTop="@dimen/margin_small">
+
+                <RelativeLayout
+                    android:id="@+id/lUserInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/small"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="@{(v) -> viewModel.handlePressOnNavigationItem(v.getId())}"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivChevron"
+                        android:layout_width="@dimen/_26sdp"
+                        android:layout_height="@dimen/_26sdp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/margin_small"
+                        android:layout_marginTop="@dimen/_13sdp"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        app:srcCompat="@drawable/ic_chevron_down"
+                        app:tint="?attr/colorPrimaryDarkAttr" />
+
+                    <LinearLayout
+                        android:id="@+id/lAccountContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_toStartOf="@id/ivChevron"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/ivLogo"
+                            android:layout_width="@dimen/_37sdp"
+                            android:layout_height="@dimen/_14sdp"
+                            app:srcCompat="@drawable/logo" />
+
+                        <View
+                            android:layout_width="@dimen/_1sdp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_9sdp"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:layout_marginBottom="@dimen/_2sdp"
+                            android:background="@color/greyLight" />
+
+                        <TextView
+                            android:id="@+id/tvAccountType"
+                            style="@style/ARegular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_small"
+                            android:layout_marginEnd="@dimen/margin_small"
+                            android:text="Personal"
+                            android:textColor="@color/colorPrimaryDarkIcons" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvUserName"
+                        style="@style/ASmallGrey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/lAccountContainer"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:text="@{viewModel.state.fullName}" />
+
+                </RelativeLayout>
+
+                <net.cachapa.expandablelayout.ExpandableLayout
+                    android:id="@+id/expandableLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:el_duration="300"
+                    app:el_expanded="true"
+                    app:el_parallax="0.5">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_extra_small">
+
+                        <View
+                            android:id="@+id/view2"
+                            android:layout_width="match_parent"
+                            android:layout_height="2px"
+                            android:layout_marginTop="@dimen/margin_extra_small"
+                            android:background="@color/greyLight"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvAccountHeading"
+                            style="@style/AMicroGrey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_small"
+                            android:text="Account"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+                        <TextView
+                            android:id="@+id/tvAccountNo"
+                            style="@style/AMicro"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.state.accountNo}"
+                            app:layout_constraintStart_toStartOf="@id/tvAccountHeading"
+                            app:layout_constraintTop_toBottomOf="@id/tvAccountHeading" />
+
+                        <TextView
+                            android:id="@+id/tvIbanHeading"
+                            style="@style/AMicroGrey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_small"
+                            android:text="IBAN"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvAccountNo" />
+
+                        <TextView
+                            android:id="@+id/tvIbanNo"
+                            style="@style/AMicro"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.state.ibanNo}"
+                            app:layout_constraintStart_toStartOf="@id/tvIbanHeading"
+                            app:layout_constraintTop_toBottomOf="@id/tvIbanHeading" />
+
+                        <co.yap.widgets.CoreButton
+                            android:id="@+id/btnCopy"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_marginTop="@dimen/margin_small"
+                            android:layout_marginEnd="@dimen/margin_small"
+                            android:gravity="center"
+                            android:onClick="@{v -> viewModel.handlePressOnNavigationItem(v.getId())}"
+                            android:text="Copy"
+                            android:visibility="@{SessionManager.INSTANCE.user.partnerBankStatus.equals(PartnerBankStatus.ACTIVATED.name) ? View.VISIBLE : View.GONE}"
+                            app:btn_pressed_color="@color/disabledLight"
+                            app:btn_round_radius="@dimen/_10sdp"
+                            app:btn_shape_type="rectangle"
+                            app:btn_text_color="?attr/colorPrimaryAttr"
+                            app:btn_text_size="@dimen/text_size_c3"
+                            app:btn_unpressed_color="@color/disabledLight"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </net.cachapa.expandablelayout.ExpandableLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginTop="@dimen/margin_normal_large"
+                    android:background="@color/greyLight" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/margin_medium"
+                android:paddingEnd="0dp"
+                android:paddingBottom="@dimen/margin_extra_small">
+
+                <include
+                    android:id="@+id/lRefer"
+                    layout="@layout/layout_item_icon_text"
+                    app:icon="@{@drawable/ic_gift}"
+                    app:title='@{"Refer a friend"}' />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:background="@color/greyLight" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/margin_medium"
+                android:paddingEnd="0dp"
+                android:paddingBottom="@dimen/margin_extra_small">
+
+                <include
+                    android:id="@+id/lAnalytics"
+                    layout="@layout/layout_item_icon_text"
+                    app:icon="@{@drawable/ic_analytics}"
+                    app:title='@{"Analytics"}' />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:background="@color/greyLight" />
+
+            <!-- Management -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/margin_medium"
+                android:paddingEnd="0dp"
+                android:paddingTop="@dimen/margin_small"
+                android:paddingBottom="@dimen/margin_small"
+                android:visibility="gone">
+
+                <include
+                    layout="@layout/layout_item_icon_text"
+                    app:icon="@{@drawable/gift}"
+                    app:title='@{"Refer a friend"}' />
+
+                <include
+                    layout="@layout/layout_item_icon_text"
+                    app:icon="@{@drawable/house}"
+                    app:title='@{"Household salary"}' />
+
+                <include
+                    layout="@layout/layout_item_icon_text"
+                    app:icon="@{@drawable/mode}"
+                    app:title='@{"Yap Young"}' />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:background="@color/greyLight"
+                android:visibility="gone" />
+
+            <!-- Info -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/margin_medium"
+                android:paddingEnd="0dp"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/margin_small"
+                android:paddingBottom="@dimen/margin_small">
+
+                <include
+                    layout="@layout/layout_item_icon_text"
+                    android:visibility="gone"
+                    app:icon="@{@drawable/notification}"
+                    app:title='@{"Alerts and notifications"}' />
+
+                <include
+                    android:id="@+id/lStatements"
+                    layout="@layout/layout_item_icon_text"
+                    app:icon="@{@drawable/file}"
+                    app:title='@{"Statements"}' />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:background="@color/greyLight" />
+
+            <!-- Support -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/margin_medium"
+                android:paddingEnd="0dp"
+                android:paddingTop="@dimen/margin_small"
+                android:paddingBottom="@dimen/margin_small"
+                android:visibility="visible">
+
+                <include
+                    android:id="@+id/lyContact"
+                    layout="@layout/layout_item_icon_text"
+                    android:visibility="gone"
+                    app:icon="@{@drawable/phone}"
+                    app:title='@{"Contact us"}' />
+
+                <include
+                    android:id="@+id/lSupport"
+                    layout="@layout/layout_item_icon_text"
+                    app:icon="@{@drawable/support}"
+                    app:title='@{"Help and support"}' />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:background="@color/greyLight"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvVersionName"
+                    style="@style/ASmallGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom|center"
+                    android:paddingStart="@dimen/margin_small"
+                    android:paddingEnd="@dimen/_2sdp"
+                    android:paddingBottom="@dimen/margin_small"
+                    android:text="@{viewModel.state.appVersion}"
+                    android:visibility="gone"
+                    tools:text="Version 1.0.0 (11)" />
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tvLogOut"
+                style="@style/ARegular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:gravity="bottom|center"
+                android:onClick="@{(v) -> viewModel.handlePressOnNavigationItem(v.getId())}"
+                android:paddingBottom="@dimen/margin_medium"
+                android:text="@string/screen_profile_settings_display_text_logout"
+                android:textColor="?attr/colorPrimaryAttr"
+                app:text="@{Strings.screen_profile_settings_display_text_logout}" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="match_parent"
+            android:background="@color/greyLight" />
+
+        <!-- Right Section -->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_65sdp"
+            android:layout_weight="22"
+            android:paddingBottom="@dimen/margin_normal">
+
+            <co.yap.widgets.CoreCircularImageView
+                android:id="@+id/imgProfile"
+                android:layout_width="@dimen/_44sdp"
+                android:layout_height="@dimen/_44sdp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/circle_profile"
+                android:contentDescription="@string/empty_string"
+                android:gravity="center"
+                android:onClick="@{(v) -> viewModel.handlePressOnNavigationItem(v.getId())}"
+                android:padding="@dimen/_3sdp"
+                app:beneficiaryPicture="@{viewModel.state.userNameImage}"
+                app:fullName="@{viewModel.state.fullName}"
+                tools:src="@color/quantum_yellow" />
+
+            <ImageView
+                android:layout_width="@dimen/_42sdp"
+                android:layout_height="@dimen/_42sdp"
+                android:layout_below="@id/imgProfile"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:src="@drawable/ic_add_account"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivSettings"
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/settings"
+                app:tint="@color/greyDark" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <!--    </ScrollView>-->
+</layout>

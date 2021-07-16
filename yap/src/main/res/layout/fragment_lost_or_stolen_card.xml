@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.cards.reportcard.viewmodels.ReportLostOrStolenCardViewModels" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:paddingLeft="@dimen/margin_medium"
+            android:paddingTop="@dimen/margin_normal"
+            android:paddingRight="@dimen/margin_medium"
+            android:paddingBottom="@dimen/margin_medium">
+
+            <ImageView
+                android:id="@+id/linearLayout2"
+                android:layout_width="@dimen/_121sdp"
+                android:layout_height="@dimen/_190sdp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_small"
+                android:orientation="vertical"
+                android:src="@drawable/card_spare"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/tvSpareCardTile"
+                style="@style/ASmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:gravity="center"
+                android:text="@{viewModel.state.cardType}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                tools:text="@string/screen_spare_card_landing_display_text_spare_card" />
+
+            <TextView
+                android:id="@+id/tvCardNumber"
+                style="@style/MicroGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:gravity="center"
+                android:text="@{viewModel.state.maskedCardNumber}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSpareCardTile"
+                tools:text="4044 2345 **** 1234" />
+
+            <LinearLayout
+                android:id="@+id/llSecuredByYap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_extra_small"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCardNumber">
+
+
+                <ImageView
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_secured_by_yap" />
+
+                <TextView
+                    style="@style/MicroGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:gravity="center"
+                    app:text="@{Strings.screen_payment_card_detail_text_secure}"
+                    tools:text="@string/screen_payment_card_detail_text_secure" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvCaption"
+                style="@style/ASmallGrey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium_large"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llSecuredByYap"
+                app:text="@{Strings.screen_report_card_display_text_block_card_title}"
+                tools:text="@string/screen_report_card_display_text_block_card_title" />
+
+            <LinearLayout
+                android:id="@+id/llReason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:gravity="center|center_horizontal"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.513"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCaption">
+
+                <LinearLayout
+                    android:id="@+id/llDamagedCard"
+                    android:layout_width="@dimen/_125sdp"
+                    android:layout_height="@dimen/_90sdp"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:background="@drawable/card_selector"
+
+                    android:gravity="center"
+                    android:onClick="@{(v) -> viewModel.handlePressOnDamagedCard(v.id)}"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:src="@drawable/ic_damage" />
+
+                    <TextView
+                        android:id="@+id/tvVirtualCardTitle"
+                        style="@style/ASmall"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:clickable="false"
+                        android:gravity="center"
+                        android:textSize="@dimen/text_size_h2"
+                        app:text="@{Strings.screen_report_card_button_damage_card}"
+                        tools:text="@string/screen_report_card_button_damage_card" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llStolenCard"
+                    android:layout_width="@dimen/_125sdp"
+                    android:layout_height="@dimen/_90sdp"
+                    android:background="@drawable/card_selector"
+                    android:gravity="center"
+                    android:onClick="@{(v) -> viewModel.handlePressOnLostOrStolen(v.id)}"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:src="@drawable/ic_stolen" />
+
+                    <TextView
+                        style="@style/ASmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:clickable="false"
+                        android:textSize="@dimen/text_size_h2"
+                        app:text="@{Strings.screen_report_card_button_lost_stolen_card}"
+                        tools:text="@string/screen_report_card_button_lost_stolen_card" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvHeading"
+                style="@style/AMicro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:gravity="center"
+                android:lineSpacingExtra="@dimen/_2sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llReason"
+                app:text="@{Strings.screen_report_card_display_text_block_note}"
+                tools:text="@string/screen_report_card_display_text_block_note" />
+
+            <TextView
+                android:id="@+id/tvWarning"
+                style="@style/ASmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:background="@drawable/colored_background_selector"
+                android:gravity="center"
+                android:lineSpacingExtra="@dimen/_2sdp"
+                android:padding="@dimen/margin_medium"
+                android:text="@{viewModel.state.cautionMessage}"
+                android:textColor="@color/colorSecondaryMagenta"
+                android:textSize="@dimen/text_size_h1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeading"
+                tools:text="@string/screen_report_card_display_text_block_footnote" />
+
+
+            <co.yap.widgets.CoreButton
+                android:id="@+id/btnBlockAndReport"
+                style="@style/FragmentsBtnStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_extra_large"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_marginRight="@dimen/margin_extra_large"
+                android:onClick="@{(v) -> viewModel.handlePressOnReportAndBlockButton(v.id)}"
+                android:textAllCaps="false"
+                app:btn_enable="false"
+                app:enableCoreButton="@{viewModel.state.valid}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvWarning"
+                app:text="@{Strings.screen_report_card_button_block_report}"
+                tools:text="@string/screen_report_card_button_block_report" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

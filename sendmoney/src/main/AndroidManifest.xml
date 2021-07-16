@@ -1,0 +1,37 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="co.yap.sendmoney">
+
+    <application
+        android:allowBackup="false"
+        tools:remove="android:debuggable"
+        tools:replace="android:allowBackup">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name="co.yap.sendmoney.activities.SendMoneyHomeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize">
+            <nav-graph android:value="@navigation/send_money_main_navigation" />
+        </activity>
+
+        <!-- Send Money Edit Beneficiary -->
+        <activity
+            android:name="co.yap.sendmoney.editbeneficiary.activity.EditBeneficiaryActivity"
+            android:screenOrientation="portrait" />
+
+        <!--Update Flag to hide keyboard-->
+        <activity
+            android:name="co.yap.sendmoney.fundtransfer.activities.BeneficiaryFundTransferActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name="co.yap.sendmoney.home.activities.SendMoneyLandingActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+    </application>
+</manifest>

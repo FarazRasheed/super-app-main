@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.household.dashboard.main.viewmodels.HouseholdDashboardViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_medium_large"
+    android:paddingTop="@dimen/margin_small"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <RelativeLayout
+        android:layout_width="@dimen/_32sdp"
+        android:layout_height="@dimen/_32sdp"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:background="@drawable/circle_menu_item"
+        android:backgroundTint="#fee3e0"
+        android:gravity="center"
+        android:onClick="@{(v)->viewModel.handlePressOnView(v.id)}"
+        app:layout_constraintBottom_toBottomOf="@id/tvUserName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivLogo">
+
+        <ImageView
+            android:id="@+id/ivChevron"
+            android:layout_centerInParent="true"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:tint="#272262"
+            app:srcCompat="@drawable/ic_chevron_down"
+            tools:src="@drawable/ic_chevron_down" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="@dimen/_37sdp"
+        android:layout_height="@dimen/_14sdp"
+        android:contentDescription="@string/empty_string"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="@dimen/_1sdp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margin_small"
+        android:background="@color/greyLight"
+        app:layout_constraintBottom_toBottomOf="@id/ivLogo"
+        app:layout_constraintStart_toEndOf="@id/ivLogo"
+        app:layout_constraintTop_toTopOf="@id/ivLogo" />
+
+    <TextView
+        android:id="@+id/tvAccountType"
+        style="@style/ARegular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:text="Household"
+        android:textColor="@color/kyc_success_text_color"
+        app:layout_constraintBottom_toBottomOf="@id/ivLogo"
+        app:layout_constraintStart_toEndOf="@id/divider1"
+        app:layout_constraintTop_toTopOf="@id/ivLogo" />
+
+    <TextView
+        android:id="@+id/tvUserName"
+        style="@style/ASmallGrey"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:text="Joe Smith"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivLogo" />
+
+    <net.cachapa.expandablelayout.ExpandableLayout
+        android:id="@+id/expandableLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:el_duration="300"
+        app:el_expanded="false"
+        app:el_parallax="0.5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/margin_normal">
+
+            <TextView
+                android:id="@+id/tvAccountHeading"
+                style="@style/AMicroGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Account"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvAccountNo"
+                style="@style/AMicro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:layout_constraintStart_toStartOf="@id/tvAccountHeading"
+                app:layout_constraintTop_toBottomOf="@id/tvAccountHeading" />
+            <!--            android:text="@{viewModel.state.accountNo}"-->
+            <TextView
+                android:id="@+id/tvIbanHeading"
+                style="@style/AMicroGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="IBAN"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvAccountNo" />
+
+            <TextView
+                android:id="@+id/tvIbanNo"
+                style="@style/AMicro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:layout_constraintStart_toStartOf="@id/tvIbanHeading"
+                app:layout_constraintTop_toBottomOf="@id/tvIbanHeading" />
+            <!--            android:text="@{viewModel.state.ibanNo}"-->
+            <co.yap.widgets.CoreButton
+                android:id="@+id/btnCopy"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:gravity="center"
+                android:onClick="@{(v)->viewModel.handlePressOnView(v.id)}"
+                android:text="Copy"
+                app:btn_pressed_color="@color/disabledLight"
+                app:btn_round_radius="@dimen/_10sdp"
+                app:btn_shape_type="rectangle"
+                app:btn_text_color="@color/colorPrimary"
+                app:btn_text_size="@dimen/text_size_c3"
+                app:btn_unpressed_color="@color/disabledLight"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </net.cachapa.expandablelayout.ExpandableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/yap_to_yap_navigation"
+    app:startDestination="@id/yapToYapHome">
+    <fragment
+        android:id="@+id/yapToYapHome"
+        android:name="co.yap.modules.dashboard.yapit.y2y.home.fragments.YapToYapFragment"
+        android:label="YapToYapFragment"
+        tools:layout="@layout/fragment_yap_to_yap">
+        <action
+            android:id="@+id/action_yapToYapHome_to_y2YTransferFragment"
+            app:destination="@id/y2YTransferFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/y2YTransferFragment"
+        android:name="co.yap.modules.dashboard.yapit.y2y.transfer.fragments.Y2YTransferFragment"
+        android:label="Y2YTransferFragment"
+        tools:layout="@layout/fragment_y2y_funds_transfer">
+
+        <argument
+            android:name="imagePath"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="receiverUUID"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="beneficiaryName"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="position"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="beneficiaryCreationDate"
+            android:defaultValue=" "
+            app:argType="string" />
+        <action
+            android:id="@+id/action_y2YTransferFragment_to_y2YFundsTransferSuccessFragment"
+            app:destination="@id/y2YFundsTransferSuccessFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/y2YFundsTransferSuccessFragment"
+        android:name="co.yap.modules.dashboard.yapit.y2y.transfer.fragments.Y2YFundsTransferSuccessFragment"
+        android:label="Y2YFundsTransferSuccessFragment"
+        tools:layout="@layout/fragment_y2y_funds_transfer_success">
+        <argument
+            android:name="title"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="imagePath"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="currencyType"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="amount"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="position"
+            android:defaultValue="0"
+            app:argType="integer" />
+
+    </fragment>
+</navigation>

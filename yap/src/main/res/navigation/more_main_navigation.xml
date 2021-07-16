@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/more_main_navigation"
+    app:startDestination="@id/profileSettingsFragment">
+
+    <fragment
+        android:id="@+id/profileSettingsFragment"
+        android:name="co.yap.modules.dashboard.more.profile.fragments.ProfileSettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_profile">
+
+        <action
+            android:id="@+id/action_profileSettingsFragment_to_personalDetailsFragment"
+            app:destination="@id/personalDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_profileSettingsFragment_to_change_pascode_navigation"
+            app:destination="@id/change_pascode_navigation"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
+<!--        <action-->
+<!--            android:id="@+id/action_profileSettingsFragment_to_termAndConditionsFragment"-->
+<!--            app:destination="@id/termAndConditionsFragment"-->
+<!--            app:enterAnim="@anim/slide_in_right"-->
+<!--            app:exitAnim="@anim/slide_out_left"/>-->
+
+    </fragment>
+
+    <!--Terms and Conditions-->
+<!--    <fragment-->
+<!--        android:id="@+id/termAndConditionsFragment"-->
+<!--        android:name="co.yap.modules.termandcondition.fragment.TermAndConditionFragment"-->
+<!--        android:label="TermsAndCondition"-->
+<!--        tools:layout="@layout/fragment_term_and_condition"/>-->
+
+    <fragment
+        android:id="@+id/personalDetailsFragment"
+        android:name="co.yap.modules.dashboard.more.profile.fragments.PersonalDetailsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_personal_detail">
+
+        <argument
+            android:name="showExpired"
+            android:defaultValue="false"
+            app:argType="boolean" />
+
+        <action
+            android:id="@+id/action_personalDetailsFragment_to_addressSelectionFragment"
+            app:destination="@id/addressSelectionFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_to_bottom"
+            app:popEnterAnim="@anim/slide_in_from_bottom"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_personalDetailsFragment_to_documentsDashboardActivity"
+            app:destination="@id/documentsDashboardActivity"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_personalDetailsFragment_to_changeEmailFragment"
+            app:destination="@id/changeEmailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_personalDetailsFragment_to_changePhoneNumberFragment"
+            app:destination="@id/changePhoneNumberFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
+
+
+        <action
+            android:id="@+id/action_personalDetailsFragment_to_change_email_navigation"
+            app:destination="@id/change_email_navigation"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_personalDetailsFragment_to_change_phone_number_navigation"
+            app:destination="@id/change_phone_number_navigation"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_personalDetailsFragment_to_successFragment"
+            app:destination="@id/successFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_personalDetailsFragment_to_yapDashboardActivity"
+            app:destination="@id/yapDashboardActivity" />
+    </fragment>
+    <include app:graph="@navigation/change_email_navigation" />
+    <include app:graph="@navigation/change_phone_number_navigation" />
+    <include app:graph="@navigation/change_pascode_navigation" />
+
+    <activity
+        android:id="@+id/yapDashboardActivity"
+        android:name="co.yap.modules.dashboard.main.activities.YapDashboardActivity"
+        android:label="YapDashboardActivity"
+        tools:layout="@layout/activity_yap_dashboard" />
+    <activity
+        android:id="@+id/documentsDashboardActivity"
+        android:name="co.yap.modules.kyc.activities.DocumentsDashboardActivity"
+        android:label="DocumentsDashboardActivity"
+        tools:layout="@layout/activity_documents_dashboard">
+
+        <argument
+            android:name="name"
+            app:argType="string" />
+
+        <argument
+            android:name="isFromMoreSection"
+            app:argType="boolean" />
+    </activity>
+
+
+    <fragment
+        android:id="@+id/successFragment"
+        android:name="co.yap.modules.dashboard.more.profile.fragments.SuccessFragment"
+        android:label="SuccessFragment"
+        tools:layout="@layout/fragment_success">
+        <argument
+            android:name="staticString"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="destinationValue"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="successType"
+            android:defaultValue=" "
+            app:argType="string" />
+        <argument
+            android:name="placesPhotoId"
+            android:defaultValue=" "
+            app:argType="string" />
+    </fragment>
+</navigation>
+

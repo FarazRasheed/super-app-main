@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="icon"
+            type="android.graphics.drawable.Drawable" />
+
+        <variable
+            name="title"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:paddingTop="@dimen/margin_small"
+        android:paddingBottom="@dimen/margin_small">
+
+        <RelativeLayout
+            android:id="@+id/lyIcon"
+            android:layout_width="@dimen/_42sdp"
+            android:layout_height="@dimen/_42sdp"
+            android:background="@drawable/circle_menu_item"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivIcon"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:contentDescription="@string/empty_string"
+                android:src="@{icon}"
+                android:tint="@color/colorWhite"
+                tools:src="@drawable/ic_bank" />
+        </RelativeLayout>
+
+        <TextView
+            style="@style/ASmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/margin_small"
+            android:paddingEnd="@dimen/_2sdp"
+            android:text="@{title}"
+            android:textColor="@color/kyc_success_text_color"
+            app:layout_constraintBottom_toBottomOf="@id/lyIcon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/lyIcon"
+            app:layout_constraintTop_toTopOf="@id/lyIcon"
+            tools:text="Household salary" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

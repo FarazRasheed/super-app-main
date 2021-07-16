@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.onboarding.viewmodels.MeetingConfirmationViewModel"/>
+
+        <import type="co.yap.translation.Strings"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".modules.onboarding.fragments.MeetingConfirmationFragment">
+
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/ATitle3"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginTop="@dimen/margin_large"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="@string/screen_meeting_confirmation_display_text_title"
+            app:text="@{Strings.screen_meeting_confirmation_display_text_title}"
+
+            />
+
+        <ImageView
+            android:id="@+id/ivMeetingSuccess"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_meeting_success"
+            android:layout_marginStart="@dimen/margin_xl"
+            android:layout_marginEnd="@dimen/margin_xl"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            android:layout_marginTop="@dimen/margin_large"
+            android:contentDescription="@string/empty_string"
+            />
+
+        <TextView
+            android:id="@+id/tvMeetingGuide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/ivMeetingSuccess"
+            app:layout_constraintLeft_toLeftOf="parent"
+            style="@style/ASmallGrey"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:gravity="center"
+            tools:text="@string/screen_meeting_confirmation_display_text_guide"
+            app:text="@{Strings.screen_meeting_confirmation_display_text_guide}"
+            android:layout_marginTop="@dimen/margin_medium_large"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clEID"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/eid_layout_size"
+            android:layout_marginEnd="@dimen/margin_xxl"
+            android:layout_marginStart="@dimen/margin_xxl"
+            android:background="@drawable/bg_round_eid_layout"
+            android:layout_marginTop="@dimen/margin_large"
+            app:layout_constraintTop_toBottomOf="@+id/tvMeetingGuide">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                style="@style/ARegular"
+                android:layout_marginStart="@dimen/margin_medium_large"
+                tools:text="@string/screen_meeting_confirmation_display_text_emirates_id"
+                app:text="@{Strings.screen_meeting_confirmation_display_text_emirates_id}"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/path"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="@dimen/margin_medium_large"
+                android:contentDescription="@string/empty_string"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnGoToDashboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RectangleBtnStyle"
+            tools:text="@string/screen_meeting_confirmation_button_go_to_dashboard"
+            app:text="@{Strings.screen_meeting_confirmation_button_go_to_dashboard}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/margin_medium_large"
+            android:layout_marginLeft="@dimen/margin_xxl"
+            android:layout_marginRight="@dimen/margin_xxl"
+            android:onClick="@{(v)-> viewModel.handlePressOnGoToDashboard()}"
+            tools:layout_editor_absoluteX="34dp"
+            app:layout_constraintVertical_bias="0.988"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.yapit.topup.carddetail.TopUpCardDetailViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="co.yap.yapcore.helpers.DateUtils" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbarCardDetail"
+            layout="@layout/layout_topup_card_detail_toolbar"
+            app:viewModel="@{viewModel}" />
+
+        <co.yap.widgets.CorePaymentCard
+            android:id="@+id/paymentCard"
+            android:layout_width="@dimen/_220sdp"
+            android:layout_height="@dimen/_139sdp"
+            app:cardBackgroundColor="@{viewModel.state.cardInfo.color}"
+            app:cardExpiry="@{viewModel.state.cardInfo.expiry}"
+            app:cardNickname="@{viewModel.state.cardInfo.alias}"
+            app:cardNumber="@{viewModel.state.cardInfo.number}"
+            app:cardType="@{viewModel.state.cardInfo.logo}"
+            app:card_size_type="large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbarCardDetail" />
+
+        <TextView
+            android:id="@+id/tvSecureYap"
+            style="@style/ASmallGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_22sdp"
+            android:drawableStart="@drawable/ic_secured_by_yap"
+            android:drawablePadding="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/paymentCard"
+            app:text="@{Strings.screen_payment_card_detail_text_secure}"
+            tools:text="@string/screen_payment_card_detail_text_secure" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clMainContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            app:layout_constraintTop_toBottomOf="@id/tvSecureYap">
+            <!--   start of nickname -->
+            <TextView
+                android:id="@+id/tvHintNick"
+                style="@style/ASmallGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:text="@{Strings.screen_topup_card_detail_display_text_hint_card_nickname}"
+                tools:text="@string/screen_topup_card_detail_display_text_hint_card_nickname" />
+
+            <TextView
+                android:id="@+id/tvCardNickname"
+                style="@style/ALarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.state.cardInfo.alias}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvHintNick"
+                tools:text="Citi Bank Card" />
+
+            <View
+                android:id="@+id/vLine"
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:background="@color/divider"
+                app:layout_constraintBottom_toTopOf="@id/tvHintCard"
+                app:layout_constraintTop_toBottomOf="@id/tvCardNickname" />
+            <!--   End of nickname -->
+
+            <!--   start of card  -->
+            <TextView
+                android:id="@+id/tvHintCard"
+                style="@style/ASmallGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                app:layout_constraintStart_toStartOf="@id/vLine"
+                app:layout_constraintTop_toBottomOf="@id/vLine"
+                app:text="@{Strings.screen_topup_card_detail_display_text_hint_card_info}"
+                tools:text="@string/screen_topup_card_detail_display_text_hint_card_info" />
+
+            <TextView
+                android:id="@+id/tvCardInfo"
+                style="@style/ALarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{`*`+viewModel.state.cardInfo.number}"
+                app:layout_constraintStart_toStartOf="@id/tvHintCard"
+                app:layout_constraintTop_toBottomOf="@id/tvHintCard"
+                tools:text="Citi Bank *8765" />
+
+            <View
+                android:id="@+id/eofTvCardLine"
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:background="@color/divider"
+                app:layout_constraintTop_toBottomOf="@id/tvCardInfo" />
+            <!--   End of card -->
+
+            <!--   start of card type and expiry -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/eofTvCardLine">
+
+                <TextView
+                    android:id="@+id/tvHintType"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:text="@{Strings.screen_topup_card_detail_display_text_hint_card_type}"
+                    tools:text="@string/screen_topup_card_detail_display_text_hint_card_type" />
+
+                <TextView
+                    android:id="@+id/tvCardType"
+                    style="@style/ALarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:text="@{viewModel.state.cardInfo.logo}"
+                    app:layout_constraintStart_toStartOf="@id/tvHintType"
+                    app:layout_constraintTop_toBottomOf="@id/tvHintType"
+                    tools:text="Visa" />
+
+                <View
+                    android:id="@+id/eofTvTypeLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/tvCardType" />
+
+                <View
+                    android:id="@+id/barrier"
+                    android:layout_width="@dimen/_14sdp"
+                    android:layout_height="0dp"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/eofTvTypeLine"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvHintType" />
+
+                <TextView
+                    android:id="@+id/tvHintExpiry"
+                    style="@style/ASmallGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@+id/barrier"
+                    app:layout_constraintTop_toTopOf="@id/tvHintType"
+                    app:text="@{Strings.screen_topup_card_detail_display_text_hint_card_expiry}"
+                    tools:text="@string/screen_topup_card_detail_display_text_hint_card_expiry" />
+
+                <TextView
+                    android:id="@+id/tvCardExpiry"
+                    style="@style/ALarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.state.cardFormattedExpiry}"
+                    app:layout_constraintStart_toEndOf="@+id/barrier"
+                    app:layout_constraintTop_toBottomOf="@id/tvHintType"
+                    tools:text="12/2021" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!--   End of card type and expiry -->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tvRemoveCard"
+            style="@style/ASmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_22sdp"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v.id)}"
+            android:padding="@dimen/_10sdp"
+            android:textColor="?attr/colorPrimaryAttr"
+            app:btn_enable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clMainContainer"
+            app:layout_constraintVertical_bias="0.985"
+            app:text="@{Strings.screen_topup_card_detail_display_text_button_remove_card}"
+            tools:text="@string/screen_topup_card_detail_display_text_button_remove_card" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.cards.home.viewmodels.YapCardItemViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="co.yap.modules.others.helper.Constants" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.yapcore.enums.CardStatus" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgCard"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_300sdp"
+            android:layout_marginTop="@dimen/_24sdp"
+            android:background="@drawable/white_round_card_background"
+            android:contentDescription="@string/empty_string"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/card_spare" />
+
+        <ImageView
+            android:id="@+id/imgStatus"
+            android:layout_width="@dimen/_48sdp"
+            android:layout_height="@dimen/_48sdp"
+            android:layout_margin="@dimen/_5sdp"
+            android:contentDescription="@string/empty_string"
+            android:elevation="@dimen/_2sdp"
+            app:cardStatus="@{viewModel.paymentCard}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.71"
+            app:layout_constraintStart_toStartOf="@+id/imgCard"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_status_expired" />
+
+        <TextView
+            android:id="@+id/tvCardName"
+            style="@style/ASmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:gravity="center"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintEnd_toEndOf="@+id/imgCard"
+            app:layout_constraintStart_toStartOf="@+id/imgCard"
+            app:layout_constraintTop_toBottomOf="@+id/imgCard"
+            tools:text="Rose Gold Premium card" />
+
+        <LinearLayout
+            android:id="@+id/layoutStatusSection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:cardStatus="@{viewModel.paymentCard}"
+            app:layout_constraintEnd_toEndOf="@+id/tvCardName"
+            app:layout_constraintStart_toStartOf="@+id/tvCardName"
+            app:layout_constraintTop_toBottomOf="@+id/tvCardName"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/tvCardStatus"
+                style="@style/ASmallGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="2"
+                android:ellipsize="end"
+                app:cardStatus="@{viewModel.paymentCard}"
+                tools:text="This card has expired" />
+            <TextView
+                android:id="@+id/tvCardStatusAction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:background="@drawable/round_purple_background"
+                android:gravity="center"
+                android:onClick="@{(v) -> viewModel.handlePressOnView(v)}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_c3"
+                app:cardButtonStatus="@{viewModel.paymentCard}"
+                tools:text="Update Card" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lySeeDetail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:gravity="center"
+            android:onClick="@{(v) -> viewModel.handlePressOnView(v)}"
+            android:orientation="vertical"
+            app:cardSeeDetailVisibility="@{viewModel.paymentCard}"
+            app:layout_constraintEnd_toEndOf="@+id/tvCardName"
+            app:layout_constraintStart_toStartOf="@+id/tvCardName"
+            app:layout_constraintTop_toBottomOf="@+id/tvCardName"
+            tools:text="Update Card"
+            tools:visibility="visible">
+
+
+            <ImageView
+                android:id="@+id/imgDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/empty_string"
+                android:src="@drawable/ic_action_up" />
+
+            <TextView
+                android:id="@+id/tvDetail"
+                style="@style/ASmall"
+                android:textColor="?attr/colorPrimaryAttr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:gravity="center"
+                app:text="@{Strings.screen_cards_display_text_see_details}" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

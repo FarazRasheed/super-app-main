@@ -1,0 +1,201 @@
+{
+  "project_info": {
+    "project_number": "20948663414",
+    "firebase_url": "https://yap-android.firebaseio.com",
+    "project_id": "yap-android",
+    "storage_bucket": "yap-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:20948663414:android:116663fa56b4e27933b357",
+        "android_client_info": {
+          "package_name": "co.yap.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "20948663414-4tjkidkunkdk3au170352hgpd6eogs9p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQGlfccrkzgXNhcr52gCvNacQHZjdBPhg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "20948663414-4tjkidkunkdk3au170352hgpd6eogs9p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:20948663414:android:e50305841ee39aee33b357",
+        "android_client_info": {
+          "package_name": "co.yap.internal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "20948663414-4tjkidkunkdk3au170352hgpd6eogs9p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQGlfccrkzgXNhcr52gCvNacQHZjdBPhg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "20948663414-4tjkidkunkdk3au170352hgpd6eogs9p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:20948663414:android:04cceb8a1ba0f2b133b357",
+        "android_client_info": {
+          "package_name": "co.yap.qa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "20948663414-4tjkidkunkdk3au170352hgpd6eogs9p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQGlfccrkzgXNhcr52gCvNacQHZjdBPhg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "20948663414-4tjkidkunkdk3au170352hgpd6eogs9p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:20948663414:android:9f2735aea06a032e33b357",
+        "android_client_info": {
+          "package_name": "co.yap.stg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "20948663414-4tjkidkunkdk3au170352hgpd6eogs9p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQGlfccrkzgXNhcr52gCvNacQHZjdBPhg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "20948663414-4tjkidkunkdk3au170352hgpd6eogs9p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:20948663414:android:7ad7767497f93ec733b357",
+        "android_client_info": {
+          "package_name": "com.yap.banking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "20948663414-7qka1ttj6algsgsti7phbge7brllo12n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yap.banking",
+            "certificate_hash": "859f637c627bb77a08e48b069e3e2de50d8c2825"
+          }
+        },
+        {
+          "client_id": "20948663414-g2hfo6qmsh07kc1a3171kmgcnsgclnhk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yap.banking",
+            "certificate_hash": "be61415c0434ded8456ec009e095dfe44980a7f6"
+          }
+        },
+        {
+          "client_id": "20948663414-4tjkidkunkdk3au170352hgpd6eogs9p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQGlfccrkzgXNhcr52gCvNacQHZjdBPhg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "20948663414-4tjkidkunkdk3au170352hgpd6eogs9p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:20948663414:android:e361914f1d09527e33b357",
+        "android_client_info": {
+          "package_name": "com.yap.banking.preprod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "20948663414-4tjkidkunkdk3au170352hgpd6eogs9p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQGlfccrkzgXNhcr52gCvNacQHZjdBPhg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "20948663414-4tjkidkunkdk3au170352hgpd6eogs9p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

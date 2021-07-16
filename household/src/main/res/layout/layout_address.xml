@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.household.onboard.cardselection.HouseHoldCardsSelectionViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="@{viewModel.state.locationVisibility ? View.VISIBLE:View.GONE}">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_normal_large"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/MicroGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="Is this your address?" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llAddPhysicalLocationCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginRight="@dimen/margin_medium"
+            android:background="@drawable/card_border_container"
+            android:clickable="false"
+            android:gravity="top"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/margin_medium"
+            android:paddingTop="@dimen/margin_large"
+            android:paddingEnd="@dimen/margin_small"
+            android:paddingBottom="@dimen/margin_large"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <FrameLayout
+                    android:id="@+id/flLocationPin"
+                    android:layout_width="@dimen/_42sdp"
+                    android:layout_height="@dimen/_42sdp"
+                    android:background="@drawable/bg_round_primary">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/_26sdp"
+                        android:layout_height="@dimen/_26sdp"
+                        android:layout_gravity="center_vertical|center"
+                        android:src="@drawable/ic_pin_card_location_white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:id="@+id/llAddPhysicalCard"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:layout_weight=".9"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvPhysicalCardLocationTitle"
+                        style="@style/Regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:singleLine="true"
+                        android:text="@{viewModel.state.address.address1}"
+                        android:textSize="@dimen/text_size_h2" />
+
+                    <TextView
+                        android:id="@+id/tvPhysicalCardLocationSubTitle"
+                        style="@style/RegularGrey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:singleLine="true"
+                        android:text="@{viewModel.state.address.address2}"
+                        android:textSize="@dimen/text_size_h2" />
+
+                </LinearLayout>
+
+                <!--           <ImageView
+                               android:id="@+id/ivCheck"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:layout_gravity="center_vertical"
+                               android:src="@drawable/ic_check"
+                               android:tint="@color/colorPrimary"
+                               android:visibility="@{viewModel.state.physicalCardAddressCheckVisibility}" />
+           -->
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llLocationButtton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/margin_small"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/margin_medium"
+                android:paddingEnd="@dimen/margin_small">
+
+                <TextView
+                    android:id="@+id/tvChangeLocation"
+                    style="@style/RegularGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_extra_small"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:gravity="start"
+                    android:onClick="@{(v)->viewModel.handlePressOnButton(v.id)}"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_size_c3"
+                    app:text="@{Strings.screen_add_spare_card_button_change_location}"
+                    tools:text="@string/screen_add_spare_card_button_change_location" />
+
+                <co.yap.widgets.CoreButton
+                    android:id="@+id/btnConfirmLocation"
+                    style="@style/confirmLocationBtnStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_22sdp"
+                    android:layout_marginTop="7dp"
+                    android:onClick="@{(v) -> viewModel.handlePressOnButton(v.id)}"
+                    android:paddingLeft="0dp"
+                    android:paddingTop="0dp"
+                    android:paddingRight="0dp"
+                    android:paddingBottom="0dp"
+                    android:textColor="@color/white"
+                    app:btn_enable="true"
+                    app:btn_has_bold_text="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.366"
+                    app:text="@{Strings.screen_house_hold_card_color_selection_button_text_confirm_location}"
+                    tools:text="@string/screen_house_hold_card_color_selection_button_text_confirm_location" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

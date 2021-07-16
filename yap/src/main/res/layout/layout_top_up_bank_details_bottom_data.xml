@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.yapit.topup.topupbankdetails.TopUpBankDetailsViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+        <import type="co.yap.yapcore.managers.SessionManager" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <co.yap.widgets.CollapsedColoredHintTextInputLayout
+                android:id="@+id/tvFullNameHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/screen_add_topup_bank_account_name_label_text"
+                android:paddingTop="@dimen/margin_normal"
+                android:textColorHint="@color/greyDark"
+                app:hintTextAppearance="@style/SmallGrey">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etFullName"
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:paddingBottom="@dimen/margin_normal"
+                    android:cursorVisible="false"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:text="@{SessionManager.INSTANCE.getUser().currentCustomer.fullName}"
+                    android:theme="@style/Theme.EditText"
+                    app:hint="@{Strings.screen_add_topup_bank_account_name_label_text}"
+                    tools:text="Sufyan Shabbir" />
+            </co.yap.widgets.CollapsedColoredHintTextInputLayout>
+
+            <co.yap.widgets.CollapsedColoredHintTextInputLayout
+                android:id="@+id/tvIBanHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/screen_add_topup_bank_iban_label_text"
+                android:paddingTop="@dimen/margin_normal"
+                app:hintTextAppearance="@style/SmallGrey">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/tvIBan"
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:cursorVisible="false"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:drawableEnd="@drawable/ic_copy"
+                    android:inputType="textEmailAddress"
+                    android:paddingBottom="@dimen/margin_normal"
+                    android:singleLine="true"
+                    android:text="@{SessionManager.INSTANCE.getUser().iban}"
+                    android:theme="@style/Theme.EditText"
+                    app:hint="@{Strings.screen_add_topup_bank_iban_label_text}"
+                    tools:text="@string/screen_add_topup_bank_iban_label_text" />
+            </co.yap.widgets.CollapsedColoredHintTextInputLayout>
+
+            <co.yap.widgets.CollapsedColoredHintTextInputLayout
+                android:id="@+id/tvBankNameHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Bank name"
+                android:paddingTop="@dimen/margin_normal"
+                app:hintTextAppearance="@style/SmallGrey">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/tvBankName"
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:cursorVisible="false"
+                    android:paddingBottom="@dimen/margin_normal"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:text="@{SessionManager.INSTANCE.getUser().bank.name}"
+                    android:theme="@style/Theme.EditText"
+                    app:hint="@{Strings.screen_add_topup_bank_iban_label_text}"
+                    tools:text="National Bank of Ras Al Khaimah" />
+            </co.yap.widgets.CollapsedColoredHintTextInputLayout>
+
+            <co.yap.widgets.CollapsedColoredHintTextInputLayout
+                android:id="@+id/tvBankAddressHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Bank address"
+                android:paddingTop="@dimen/margin_normal"
+                app:hintTextAppearance="@style/SmallGrey">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/tvBankAddress"
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:imeOptions="actionNext"
+                    android:cursorVisible="false"
+                    android:paddingBottom="@dimen/margin_normal"
+                    android:importantForAutofill="no"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:text="@{SessionManager.INSTANCE.getUser().bank.address}"
+                    android:theme="@style/Theme.EditText"
+                    tools:text="Bank address" />
+            </co.yap.widgets.CollapsedColoredHintTextInputLayout>
+
+            <co.yap.widgets.CollapsedColoredHintTextInputLayout
+                android:id="@+id/tvAccountNoHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Account number"
+                android:paddingTop="@dimen/margin_normal"
+                app:hintTextAppearance="@style/SmallGrey">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/tvAccountNo"
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:paddingBottom="@dimen/margin_normal"
+                    android:cursorVisible="false"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:text="@{SessionManager.INSTANCE.getUser().accountNo}"
+                    android:theme="@style/Theme.EditText"
+                    tools:text="123456789012" />
+            </co.yap.widgets.CollapsedColoredHintTextInputLayout>
+
+            <co.yap.widgets.CollapsedColoredHintTextInputLayout
+                android:id="@+id/tvSwiftCodeHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/screen_add_topup_bank_bic_label_text"
+                android:paddingTop="@dimen/margin_normal"
+                app:hintTextAppearance="@style/SmallGrey">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/tvSwiftCode"
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:paddingBottom="@dimen/margin_normal"
+                    android:cursorVisible="false"
+                    android:inputType="textEmailAddress"
+                    android:drawableEnd="@drawable/ic_copy"
+                    android:singleLine="true"
+                    android:text="@{SessionManager.INSTANCE.getUser().bank.swiftCode}"
+                    android:theme="@style/Theme.EditText"
+                    tools:text="QR135336DA4" />
+            </co.yap.widgets.CollapsedColoredHintTextInputLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

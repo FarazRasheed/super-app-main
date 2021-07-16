@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/lvMain"
+    android:background="@color/transparent"
+    android:visibility="visible">
+
+    <View
+        android:id="@+id/layer"
+        android:layout_width="match_parent"
+        android:alpha="0"
+        android:visibility="visible"
+        android:layout_height="match_parent"
+        android:background="@color/white" />
+
+    <co.yap.widgets.loading.CircularProgressBar
+        android:id="@+id/circularProgressBar"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_90sdp"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        app:cpb_background_progressbar_color="@color/grey"
+        app:cpb_background_progressbar_width="4dp"
+        app:cpb_indeterminate_mode="true"
+        app:cpb_progress="50"
+        app:cpb_progress_direction="to_right"
+        app:cpb_progress_max="100"
+        app:cpb_progressbar_color="?attr/colorPrimaryAttr"
+        app:cpb_progressbar_width="4dp"
+        app:cpb_round_border="false"
+        app:cpb_start_angle="-90" />
+</RelativeLayout>

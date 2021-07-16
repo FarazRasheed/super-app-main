@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.more.profile.viewmodels.UnverifiedChangeEmailSuccessViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical"
+        android:paddingStart="@dimen/margin_medium"
+        android:paddingEnd="@dimen/margin_medium">
+
+        <TextView
+            android:id="@+id/tvSuccessHeading"
+            style="@style/ATitle3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_extra_large"
+            android:gravity="center"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:text="@{Strings.screen_unverified_success_display_text_heading}"
+            tools:text="@string/screen_unverified_success_display_text_heading" />
+
+        <TextView
+            android:id="@+id/tvUnverifySuccessSubHeading"
+            style="@style/SmallGrey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:gravity="center"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSuccessHeading"
+            tools:text="Your email address has been changed to newemail@website.com" />
+
+
+        <ImageView
+            android:id="@+id/ivSucces"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium_large"
+            android:contentDescription="@string/empty_string"
+            android:src="@drawable/ic_verify_email"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvUnverifySuccessSubHeading" />
+
+
+        <TextView
+            android:id="@+id/tvOpenEmailDescription"
+            style="@style/SmallGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_xxl"
+            android:gravity="center"
+            tools:text="@string/screen_unverified_success_display_text_description"
+            app:text="@{Strings.screen_unverified_success_display_text_description}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivSucces" />
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/btnOpenMailApp"
+            style="@style/RectangleBtnStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_xxl"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="@dimen/margin_xxl"
+            android:layout_marginBottom="@dimen/margin_medium_large"
+            android:onClick="@{(v)-> viewModel.handlePressOnMailAppButton(v.id)}"
+            app:text="@{Strings.screen_unverified_display_button_mail}"
+            app:layout_constraintBottom_toTopOf="@+id/tvGoToDashboard"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintVertical_bias="0.949"
+            tools:text="@string/screen_change_pin_success_display_text_button" />
+
+        <TextView
+            android:id="@+id/tvGoToDashboard"
+            style="@style/Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium_large"
+            android:layout_marginBottom="@dimen/margin_medium_large"
+            android:onClick="@{(v)-> viewModel.handlePressOnMailAppButton(v.id)}"
+            app:text="@{Strings.screen_unverified_display_button_back_to_dashboard}"
+            android:textColor="?attr/colorPrimaryAttr"
+            tools:text="@string/screen_unverified_display_button_back_to_dashboard"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

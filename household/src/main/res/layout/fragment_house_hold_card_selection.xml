@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="houseHoldViewModel"
+            type="co.yap.household.onboard.cardselection.HouseHoldCardsSelectionViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:paddingBottom="@dimen/margin_large">
+
+            <TextView
+                android:id="@+id/tvHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:gravity="center"
+                android:text="@{houseHoldViewModel.state.cardsHeading}"
+                android:textColor="?attr/colorPrimaryDarkAttr"
+                android:textSize="@dimen/text_size_h5"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/screen_house_hold_card_color_selection_display_text_heading" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vpCards"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/btnNext"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeading"
+                app:layout_constraintVertical_bias="0.052"
+                tools:layout_editor_absoluteX="0dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clColors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium_large"
+                app:layout_constraintBottom_toTopOf="@+id/location"
+                app:layout_constraintTop_toBottomOf="@+id/vpCards"
+                tools:layout_editor_absoluteX="0dp">
+
+                <TextView
+                    android:id="@+id/tvHouseHoldText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:text="@{Strings.screen_house_hold_card_color_selection_display_text}"
+                    tools:text="@string/screen_house_hold_card_color_selection_display_text" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvHouseHoldText"
+                    app:tabGravity="center"
+                    app:tabIndicator="@null"
+                    app:tabPaddingEnd="6dp"
+                    app:tabRippleColor="@color/white"
+                    app:tabPaddingStart="6dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <include
+                android:id="@+id/location"
+                layout="@layout/layout_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_medium"
+                app:layout_constraintTop_toBottomOf="@+id/clColors"
+                app:viewModel="@{houseHoldViewModel}" />
+
+            <co.yap.widgets.CoreButton
+                android:id="@+id/btnNext"
+                style="@style/FragmentsBtnStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_medium_large"
+                android:layout_marginRight="@dimen/margin_medium_large"
+                android:onClick="@{(v)->houseHoldViewModel.handlePressOnButton(v.id)}"
+                android:paddingTop="@dimen/margin_medium"
+                android:paddingBottom="@dimen/margin_medium"
+                android:text="Next"
+                android:visibility="@{houseHoldViewModel.state.buttonVisibility ? View.VISIBLE : View.GONE}"
+                app:btn_enable="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="Next" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

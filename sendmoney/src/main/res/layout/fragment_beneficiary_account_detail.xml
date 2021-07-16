@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.sendmoney.addbeneficiary.viewmodels.BeneficiaryAccountDetailsViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite">
+
+            <LinearLayout
+                android:id="@+id/llMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_medium_large"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/margin_medium"
+                android:paddingRight="@dimen/margin_medium"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:gravity="center"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSuccessHeading"
+                    app:text="@{Strings.screen_beneficiary_account_details_display_text_title}"
+                    tools:text="@string/screen_beneficiary_account_details_display_text_title" />
+
+
+                <LinearLayout
+                    android:id="@+id/llBankDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:background="@drawable/card_border_selector"
+                    android:clickable="true"
+                    android:onClick="@{(v) -> viewModel.handlePressOnAddBank(v.id)}"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/margin_medium"
+                    android:paddingBottom="@dimen/margin_medium">
+
+                    <FrameLayout
+                        android:layout_width="@dimen/_42sdp"
+                        android:layout_height="@dimen/_42sdp"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/_2sdp">
+
+                        <co.yap.widgets.CoreCircularImageView
+                            android:id="@+id/imgProfile"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_gravity="center_horizontal"
+                            android:contentDescription="@string/empty_string"
+                            app:beneficiaryPicture="@{``}"
+                            app:fullName="@{viewModel.state.bankName}" />
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tvBankName"
+                        style="@style/Micro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:gravity="center"
+                        android:text="@{viewModel.state.bankName}"
+                        android:textSize="@dimen/text_size_c3"
+                        android:visibility="@{viewModel.state.bankName.empty? View.GONE :View.VISIBLE}"
+                        tools:text="TD BANK" />
+
+                    <TextView
+                        android:id="@+id/tvIdCode"
+                        style="@style/MicroGrey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:gravity="center"
+                        android:text="@{viewModel.state.idCode}"
+                        android:textSize="@dimen/text_size_c3"
+                        android:visibility="@{viewModel.state.idCode.empty? View.GONE :View.VISIBLE}"
+                        tools:text="ID Code: 8060" />
+
+                    <TextView
+                        android:id="@+id/tvBankAddress"
+                        style="@style/MicroGrey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:gravity="center"
+                        android:text="@{viewModel.state.bankAddress}"
+                        android:textSize="@dimen/text_size_c3"
+                        android:visibility="@{viewModel.state.bankAddress.empty? View.GONE :View.VISIBLE}"
+                        tools:text="340 5TH AVE SW, CALGARY, AB, T2P0L3" />
+
+
+                    <TextView
+                        android:id="@+id/tvBankPhoneNumber"
+                        style="@style/MicroGrey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:gravity="center"
+                        android:text="@{viewModel.state.bankPhoneNumber}"
+                        android:textSize="@dimen/text_size_c3"
+                        android:visibility="@{viewModel.state.bankPhoneNumber.empty? View.GONE :View.VISIBLE}"
+                        tools:text="(403) 292-1100" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lyIban"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="@{viewModel.state.showlyIban ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSuccessHeading">
+
+                    <TextView
+                        style="@style/Small"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium_large"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvSuccessHeading"
+                        app:text="@{viewModel.parentViewModel.selectedCountry.ibanMandatory ? Strings.screen_beneficiary_account_details_display_text_iban : Strings.screen_beneficiary_account_details_display_text_account_number}"
+                        app:textColor="@{viewModel.state.accountIban.empty ? true : false}"
+                        tools:text="@string/screen_beneficiary_account_details_display_text_iban" />
+
+                    <co.yap.widgets.DrawableClickEditText
+                        android:id="@+id/etIban"
+                        style="@style/Regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/greyLight"
+                        android:drawableEnd="@{viewModel.parentViewModel.selectedCountry.ibanMandatory==true ? @drawable/ic_support : @drawable/drawable_transparent}"
+                        android:drawableRight="@{viewModel.parentViewModel.selectedCountry.ibanMandatory==true ? @drawable/ic_support : @drawable/drawable_transparent}"
+                        android:hint="xxxxxxxxx"
+                        android:inputType="textCapCharacters"
+                        app:ibanMask="@{viewModel.parentViewModel.selectedCountry.ibanMandatory ==true ? `#### #### #### #### #### #### #### #### ###` : `#### #### #### #### #### #### #### #### ##`}"
+                         android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:maxLength="50"
+                        android:singleLine="true"
+                        android:text="@={viewModel.state.accountIban}"
+                        android:textAllCaps="true"
+                        app:isDrawableShownWhenTextIsEmpty="true"
+                        app:popupContentValue="@string/screen_add_beneficiary_display_help_content" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <co.yap.widgets.CoreButton
+                android:id="@+id/confirmButton"
+                style="@style/FragmentsBtnStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_btn_side_paddings_xl"
+                android:layout_marginTop="@dimen/_60sdp"
+                android:layout_marginRight="@dimen/margin_btn_side_paddings_xl"
+                android:layout_marginBottom="@dimen/margin_medium_large"
+                android:onClick="@{(v) -> viewModel.handlePressOnAddBank(v.id)}"
+                app:enableCoreButton="@{viewModel.state.valid}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llMain"
+                app:layout_constraintVertical_bias="1.0"
+                app:text="@{Strings.common_button_next}"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="44dp"
+                tools:text="@string/common_button_next" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

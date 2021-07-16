@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_analytics_navigation"
+    app:startDestination="@id/cardAnalyticsFragment">
+    <fragment
+        android:id="@+id/cardAnalyticsFragment"
+        android:name="co.yap.modules.dashboard.cards.analytics.fragments.CardAnalyticsFragment"
+        android:label="CardAnalyticsFragment"
+        tools:layout="@layout/fragment_card_analytics">
+        <action
+            android:id="@+id/action_cardAnalyticsFragment_to_cardAnalyticsDetailsFragment"
+            app:destination="@id/cardAnalyticsDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardAnalyticsDetailsFragment"
+        android:name="co.yap.modules.dashboard.cards.analytics.fragments.CardAnalyticsDetailsFragment"
+        android:label="CardAnalyticsDetailsFragment"
+        tools:layout="@layout/fragment_card_analytics_details">
+    </fragment>
+</navigation>

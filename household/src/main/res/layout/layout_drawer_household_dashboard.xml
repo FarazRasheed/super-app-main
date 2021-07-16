@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="co.yap.household.dashboard.main.viewmodels.HouseholdDashboardViewModel" />
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Left Section Start -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clLeftContainer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_xl"
+            android:elevation="4dp"
+            app:elevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.8">
+            <!-- Header -->
+            <include
+                android:id="@+id/lyHeader_section"
+                layout="@layout/layout_drawer_header" />
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginStart="@dimen/margin_medium_large"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:background="@color/greyLight"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lyHeader_section" />
+
+            <!-- Management -->
+            <LinearLayout
+                android:id="@+id/lySection1Container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider1">
+
+                <include
+                    layout="@layout/layout_drawer_menu_item"
+                    app:icon="@{@drawable/ic_bank}"
+                    app:title='@{"ATM and cash deposit"}' />
+
+                <include
+                    layout="@layout/layout_drawer_menu_item"
+                    app:icon="@{@drawable/ic_email}"
+                    app:title='@{"Messages"}' />
+
+                <include
+                    layout="@layout/layout_drawer_menu_item"
+                    app:icon="@{@drawable/ic_statement}"
+                    app:title='@{"Statements"}' />
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginStart="@dimen/margin_medium_large"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:background="@color/greyLight" />
+            </LinearLayout>
+            <!-- Info -->
+            <LinearLayout
+                android:id="@+id/lySection2Container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lySection1Container">
+
+                <include
+                    layout="@layout/layout_drawer_menu_item"
+                    app:icon="@{@drawable/ic_phone_vector}"
+                    app:title='@{"Contact us"}' />
+
+                <include
+                    layout="@layout/layout_drawer_menu_item"
+                    app:icon="@{@drawable/ic_support}"
+                    app:title='@{"Help and support"}' />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Left Section End -->
+        <View
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="0dp"
+            android:background="@color/greyLight"
+            app:layout_constraintStart_toEndOf="@id/clLeftContainer"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Right Section Start -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_xl"
+            android:layout_marginBottom="@dimen/margin_large"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/clLeftContainer"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.2">
+
+            <co.yap.widgets.CoreCircularImageView
+                android:id="@+id/ivProfilePic"
+                android:layout_width="@dimen/_45sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:contentDescription="@string/app_name"
+                android:background="@drawable/circle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/ic_expense"
+                tools:src="@drawable/ic_statement" />
+            <!--        app:fullName="@{viewModel.state.beneficiaryName}"-->
+            <!--        app:beneficiaryPicture="@{viewModel.state.beneficiaryPicture}"-->
+
+            <ImageView
+                android:id="@+id/ivSettings"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@string/empty_string"
+                android:src="@drawable/ic_settings"
+                android:tint="@color/greyDark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Right Section End -->
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.more.notification.viewmodels.NotificationsViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="@dimen/_8sdp"
+        android:visibility="@{viewModel.state.toolbarVisibility? View.VISIBLE:View.GONE}">
+
+        <ImageView
+            android:id="@+id/tbBtnBack"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@color/transparent"
+            android:onClick="@{(v) -> viewModel.handlePressButton(v.id)}"
+            android:visibility="@{viewModel.state.leftIcon==-1? View.GONE:View.VISIBLE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:src="@{viewModel.state.leftIcon}" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="@dimen/_14sdp"
+            android:layout_toEndOf="@id/tbBtnBack"
+            android:gravity="center"
+            android:text="@{viewModel.state.toolbarTitle}"
+            android:visibility="@{viewModel.state.toolbarTitle.isEmpty()? View.GONE:View.VISIBLE}" />
+
+        <ImageView
+            android:id="@+id/tbBtnSettings"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:onClick="@{v->viewModel.handlePressButton(v.id)}"
+            android:visibility="@{viewModel.state.rightIcon==-1? View.GONE:View.VISIBLE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:src="@{viewModel.state.rightIcon}" />
+
+    </RelativeLayout>
+</layout>

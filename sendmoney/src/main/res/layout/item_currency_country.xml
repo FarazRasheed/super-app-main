@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.sendmoney.currencyPicker.viewmodel.CurrencyItemViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.sendmoney.R" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/foregroundContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:paddingTop="@dimen/_10sdp"
+        android:paddingRight="@dimen/_8sdp"
+        android:paddingBottom="@dimen/_10sdp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivFlag"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:setFlagDrawable="@{viewModel.multiCurrencyWallet.country2DigitCode}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCurrencyName"
+            style="@style/Regular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30sdp"
+            app:layout_constraintStart_toEndOf="@+id/ivFlag"
+            app:layout_constraintTop_toTopOf="@+id/ivFlag"
+            app:spanColor="@{viewModel.multiCurrencyWallet.getCurrencySymbolWithName()}"
+            tools:text="AED Dirham" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

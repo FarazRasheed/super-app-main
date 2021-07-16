@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.more.notification.viewmodels.NotificationItemViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/swipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+
+            <RelativeLayout
+                android:id="@+id/btnDelete"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_56sdp"
+                android:background="@color/colorSecondaryMagenta">
+
+                <TextView
+                    style="@style/Micro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/ic_close"
+                    android:drawablePadding="@dimen/_2sdp"
+                    android:drawableTint="@color/white"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    app:text="@{Strings.screen_send_money_display_text_delete}"
+                    tools:text="Delete" />
+
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/foregroundContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@{viewModel.notification.isRead==true ? @color/white : @color/light_grey}"
+            android:onClick="@{(v) -> viewModel.onViewClicked(v)}">
+
+            <co.yap.widgets.CoreCircularImageView
+                android:id="@+id/imgProfile"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/margin_extra_small"
+                android:background="@drawable/bg_round_white"
+                android:contentDescription="@string/empty_string"
+                android:src="@drawable/ic_bank"
+                app:beneficiaryPicture="@{viewModel.notification.imageUrl == null ? `` : viewModel.notification.imageUrl}"
+                app:fullName="@{viewModel.notification.title}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgProfile"
+                app:layout_constraintTop_toTopOf="@+id/imgProfile">
+
+                <TextView
+                    android:id="@+id/tvName"
+                    style="@style/Regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="bottom"
+                    android:lineSpacingExtra="0dp"
+                    android:lines="1"
+                    android:text="@{viewModel.notification.title}"
+                    tools:text="Bril Lizzie Hugsadsadflksjdflkjsalk,nmbmfdjlsajfdllsjdflksjdflkjlsdfjklksdjfkljsdfalkfjaskljflkasfjlkasdjlfjfjlkasdfjklhes" />
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    style="@style/SmallGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    tools:text="+971 12 345 6" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:background="@color/light_grey"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+</layout>

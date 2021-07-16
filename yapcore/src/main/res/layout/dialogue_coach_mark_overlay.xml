@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rlMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="visible">
+
+    <co.yap.widgets.guidedtour.shape.CircleOverlayView
+        android:id="@+id/circleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/skip"
+            style="@style/AddressBtnStyle"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:text="Skip tutorial"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:visibility="invisible"
+            app:btn_enable="true"
+            app:btn_pressed_color="@color/white"
+            app:btn_text_color="@color/colorPrimary"
+            app:btn_unpressed_color="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

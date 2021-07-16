@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rLSearchView"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/search_widget_height"
+    android:layout_marginStart="@dimen/margin_medium"
+    android:layout_marginEnd="@dimen/margin_medium"
+    android:gravity="center">
+
+
+    <RelativeLayout
+        android:id="@+id/rLmainSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/search_widget_height"
+        android:layout_toStartOf="@+id/tvCancel"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/etSearch"
+            style="@style/ASmall"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/bg_search_widget"
+            android:gravity="center"
+            android:imeOptions="actionSearch"
+            android:inputType="textFilter"
+            android:maxLines="1"
+            android:paddingStart="@dimen/margin_small"
+            android:paddingEnd="@dimen/margin_small" />
+
+        <ImageView
+            android:id="@+id/ivSearch"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:layout_alignTop="@+id/tvSearch"
+            android:layout_alignBottom="@+id/tvSearch"
+            android:layout_marginEnd="4dp"
+            android:layout_toStartOf="@id/tvSearch"
+            android:paddingTop="@dimen/_2sdp"
+            android:src="@drawable/ic_search_grey" />
+
+        <TextView
+            android:id="@+id/tvSearch"
+            style="@style/SmallGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Search" />
+
+        <ProgressBar
+            android:id="@+id/pb_loading_indicator"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20.3dp"
+            android:padding="@dimen/margin_small"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvCancel"
+        style="@style/ASmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/margin_small"
+        android:text="@string/common_button_cancel"
+        android:textColor="?attr/colorPrimaryAttr"
+        android:visibility="gone" />
+</RelativeLayout>

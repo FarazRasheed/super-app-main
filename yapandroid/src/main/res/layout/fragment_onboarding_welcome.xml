@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+    >
+
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.onboarding.viewmodels.WelcomeViewModel"/>
+
+        <import type="co.yap.translation.Strings"/>
+    </data>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        tools:context=".modules.onboarding.activities.WelcomeActivity"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/welcome_pager"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"/>
+
+        <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+            android:id="@+id/worm_dots_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_24sdp"
+            android:layout_gravity="center_horizontal"
+            app:dotsColor="?attr/colorPrimaryAttr"
+            app:dotsStrokeColor="@color/grey"
+            app:dotsCornerRadius="8dp"
+            app:dotsSize="12dp"
+            app:dotsSpacing="4dp"
+            app:dotsStrokeWidth="6dp"/>
+
+        <co.yap.widgets.CoreButton
+            android:id="@+id/close_btn_one"
+            android:layout_width="@dimen/_196sdp"
+            android:layout_height="@dimen/_52sdp"
+            android:enabled="true"
+            android:layout_gravity="center_horizontal"
+            style="@style/RectangleBtnStyle"
+            android:textColor="@color/colorWhite"
+            android:onClick="@{(v)->viewModel.handlePressOnGetStarted()}"
+            app:text="@{Strings.screen_welcome_button_get_started}"
+            android:layout_margin="24dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+</layout>

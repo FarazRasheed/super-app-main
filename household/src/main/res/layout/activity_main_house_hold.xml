@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModelHouseHold"
+            type="co.yap.household.onboard.onboarding.main.viewmodels.OnboardingHouseHoldViewModel" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@{viewModelHouseHold.state.currentBackground}"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/margin_medium_large">
+
+        <include
+            layout="@layout/layout_house_hold_progress_toolbar"
+            app:viewModelHouseHold="@{viewModelHouseHold}" />
+
+        <fragment
+            android:id="@+id/main_nav_host_container_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/hh_sub_account_onboarding_navigation" />
+
+    </LinearLayout>
+
+</layout>

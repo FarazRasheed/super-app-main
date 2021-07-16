@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.yap.translation.Strings" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorLightPinkBackground">
+
+                <RelativeLayout
+                    android:id="@+id/rl_house_hold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:id="@+id/rl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/white_fill_circle"
+                        android:orientation="vertical"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/ivYapIt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_6sdp"
+                            app:backgroundTint="@color/colorPrimaryHouseHold"
+                            app:srcCompat="@drawable/ic_house_hold_it" />
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tvTitleKYCSuccess"
+                    style="@style/Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/margin_large"
+                    android:gravity="center"
+                    android:lineSpacingExtra="9sp"
+                    android:text="@string/screen_house_hold_onBoarding_existing_title_display_text"
+                    android:textColor="@color/kyc_success_text_color"
+                    app:layout_constraintTop_toBottomOf="@+id/rl_house_hold"
+                    app:text="@{Strings.screen_house_hold_onBoarding_existing_title_display_text}"
+                    tools:text="@string/screen_house_hold_onBoarding_existing_title_display_text" />
+
+
+                <ImageView
+                    android:id="@+id/iv_ob_boarding_existing_yap"
+                    android:layout_width="@dimen/_240sdp"
+                    android:layout_height="@dimen/_205sdp"
+                    android:layout_marginTop="@dimen/margin_extra_large"
+                    android:scaleType="fitXY"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitleKYCSuccess"
+                    app:srcCompat="@drawable/ic_on_boarding_existing_yap_user" />
+
+
+                <TextView
+                    android:id="@+id/tvOnBoardingExistingYapAccept"
+                    style="@style/ASmallGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:gravity="center"
+                    android:text="@string/screen_house_hold_onBoarding_existing_title_accept_text"
+                    android:textColor="@color/kyc_success_text_color_light_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_ob_boarding_existing_yap"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:text="@{Strings.screen_success_house_hold_card_deliver_text}"
+                    tools:text="@string/screen_house_hold_onBoarding_existing_title_accept_text" />
+
+
+
+                <co.yap.widgets.CoreButton
+                    android:id="@+id/btnAccept"
+                    style="@style/RectangleBtnStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_medium_large"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:layout_marginRight="@dimen/margin_medium_large"
+                    android:paddingTop="@dimen/margin_medium"
+                    android:paddingBottom="@dimen/margin_medium"
+                    android:text="@string/screen_house_hold_onBoarding_existing_title_accept"
+                    app:btn_enable="true"
+                    app:btn_pressed_color="@color/colorPrimaryHouseHold"
+                    app:btn_text_color="@color/white"
+                    app:btn_unpressed_color="@color/colorPrimaryHouseHold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvOnBoardingExistingYapAccept"
+                    app:text="@{Strings.screen_house_hold_onBoarding_existing_title_accept}"
+                    tools:text="@string/screen_house_hold_onBoarding_existing_title_accept" />
+
+
+                <TextView
+                    android:id="@+id/tvOnBoardingExistingDeclineRequest"
+                    style="@style/AppFontBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/margin_small"
+                    android:lineSpacingExtra="9sp"
+                    android:text="@string/screen_house_hold_onBoarding_existing_title_decline_request"
+                    android:textColor="@color/colorPrimaryHouseHold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnTopUp"
+                    app:text="@{Strings.screen_house_hold_onBoarding_existing_title_display_text}"
+                    tools:layout_editor_absoluteX="31dp"
+                    tools:text="@string/screen_house_hold_onBoarding_existing_title_decline_request" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</layout>

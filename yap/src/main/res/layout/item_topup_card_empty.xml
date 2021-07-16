@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="viewModel"
+            type="co.yap.modules.dashboard.yapit.topup.cardslisting.list.TopUpEmptyItemViewModel" />
+
+        <import type="co.yap.translation.Strings" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/lycard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_extra_small"
+        android:background="@color/white"
+        android:elevation="@dimen/_5sdp"
+        android:onClick="@{(v) -> viewModel.handlePressOnView(v)}"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/lycard"
+            app:layout_constraintEnd_toEndOf="@+id/lycard"
+            app:layout_constraintStart_toStartOf="@+id/lycard"
+            app:layout_constraintTop_toBottomOf="@+id/imgAddCard"
+            app:layout_constraintTop_toTopOf="@+id/lycard"
+            app:layout_constraintVertical_bias="0.43">
+
+            <ImageView
+                android:id="@+id/imgAddCard"
+                android:layout_width="@dimen/_45sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_gravity="center"
+                android:background="@drawable/bd_card_icon_circle"
+                android:contentDescription="@string/empty_string"
+                android:elevation="2dp"
+                app:srcCompat="@drawable/ic_icon_card_transfer" />
+
+            <TextView
+                android:id="@+id/tvAddCard"
+                style="@style/ASmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:elevation="2dp"
+                android:gravity="center"
+                android:text="@{viewModel.topUpCard.id}"
+                android:textColor="?attr/colorPrimaryDarkAttr"
+                tools:text="+ Add a new card" />
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</layout>

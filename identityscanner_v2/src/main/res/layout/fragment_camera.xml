@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".docscanner.fragments.YapCameraFragment">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <import type="android.text.TextUtils"/>
+
+        <variable
+            name="model"
+            type="com.digitify.identityscanner.docscanner.viewmodels.CameraViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.digitify.identityscanner.camera.CameraView
+                android:id="@+id/camera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:keepScreenOn="true"
+                app:cameraExperimental="false"
+                app:cameraEngine="camera1"
+                app:cameraPreview="glSurface"
+                app:cameraPlaySounds="false"
+                app:cameraFlash="auto"
+                app:cameraAudio="off"
+                app:cameraFacing="back"
+                app:cameraHdr="off"
+                app:cameraPictureSizeBiggest="true"
+                app:cameraWhiteBalance="auto"
+                app:cameraGestureTap="autoFocus"
+                app:cameraPictureMetering="false"
+                app:cameraGestureLongTap="none"
+                app:cameraGesturePinch="none"
+
+                app:cameraGestureScrollHorizontal="none"
+                app:cameraGestureScrollVertical="none"
+                app:cameraMode="picture"
+                app:cameraAutoFocusMarker="@string/cameraview_default_autofocus_marker"/>
+
+
+            <com.digitify.identityscanner.components.Overlay
+                android:id="@+id/drawView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <com.digitify.identityscanner.components.TransparentCardView
+                android:id="@+id/cardOverlay"
+                app:cardMarginTop="130dp"
+                app:cardCorners="8dp"
+                app:cardMarginHorizontal="16dp"
+                app:cardBorderColor="?attr/colorPrimaryAttr"
+                app:cardColor="@color/kycCard"
+                app:backgroundColor="@color/transparent"
+                app:cardBorderDashed="true"
+                app:cardBorderDashSpan="7dp"
+                app:cardBorderWidth="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/cam_inst"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="58dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/white_round_background"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="@{model.state.instructions}"
+            android:textSize="12sp"
+            android:visibility="@{TextUtils.isEmpty(model.state.instructions) ? View.GONE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:background="@color/semi_white_80"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/cam_steps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                style="@style/ARegularGrey"
+                android:text="@{model.state.stepInstructions}"
+                tools:text="Step 1 of 2"/>
+
+            <TextView
+                android:id="@+id/cam_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                style="@style/ALarge"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="@{model.state.title}"
+                tools:text="Scan Front side"
+                android:textColor="@color/black"/>
+
+            <co.yap.widgets.CoreButton
+                android:id="@+id/camFab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:layout_gravity="center"
+                android:text="@{model.state.submitButtonTitle}"
+                android:layout_margin="24dp"
+                style="@style/RectangleBtnStyle"
+                tools:text="Scan"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:padding="8dp"
+                android:enabled="false"
+                android:clickable="@{!model.state.capturing}"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

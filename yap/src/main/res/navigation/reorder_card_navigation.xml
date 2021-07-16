@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reorder_card_navigation"
+    app:startDestination="@id/reorderCardFragment">
+
+    <fragment
+        android:id="@+id/reorderCardFragment"
+        android:name="co.yap.modules.dashboard.cards.reordercard.fragments.ReorderCardFragment"
+        app:exitAnim="@anim/slide_out_left"
+        app:enterAnim="@anim/slide_in_right"
+        tools:layout="@layout/fragment_reorder_card">
+        <action
+            android:id="@+id/action_reorderCardFragment_to_reorderCardSuccessFragment"
+            app:destination="@id/reorderCardSuccessFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reorderCardSuccessFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        android:name="co.yap.modules.dashboard.cards.reordercard.fragments.ReorderCardSuccessFragment"
+        tools:layout="@layout/fragment_reorder_card_success" />
+
+</navigation>
