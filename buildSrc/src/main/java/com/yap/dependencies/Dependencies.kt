@@ -134,7 +134,7 @@
     object RXDependencies {
         // RX Java
         const val RX_ANDROID = "io.reactivex.rxjava2:rxandroid:2.1.1"
-        const val RX_JAVA = "io.reactivex.rxjava2:rxjava:2.2.6"
+        const val RX_JAVA = "io.reactivex.rxjava2:rxjava:2.1.5"
         const val INLINE_ACTIVITY_RESULT =
             "com.github.florent37:inline-activity-result-kotlin:1.0.4"
     }
@@ -184,7 +184,7 @@
         const val expandableLayout = "net.cachapa.expandablelayout:expandablelayout:2.9.2"
 
         // Live chat
-        const val livechat = "net.cachapa.expandablelayout:expandablelayout:2.9.2"
+        const val livechat = "com.liveperson.android:lp_messaging_sdk:4.2.1"
 
 
         const val easyImage = "com.github.jkwiecien:EasyImage:1.3.1"
@@ -215,6 +215,9 @@
 
 
         const val tagmanager = "com.google.android.gms:play-services-tagmanager:17.0.0"
+
+        const val legacySupportV13 = "androidx.legacy:legacy-support-v13:1.0.0"
+        const val legacySupportV4 = "androidx.legacy:legacy-support-v4:1.0.0"
 
     }
 

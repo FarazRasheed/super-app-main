@@ -8,6 +8,8 @@ object BuildPluginsConfig {
     const val kotlinKapt = "kapt"
     const val kotlinAndroidExtensions = "android.extensions"
     const val kotlinParcelize = "kotlin-parcelize"
+    const val googleServices = "com.google.gms.google-services"
+    const val crashlytics = "com.google.firebase.crashlytics"
 }
 object ScriptPlugins {
     const val infrastructure = "scripts.infrastructure"
