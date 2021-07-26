@@ -1,15 +1,107 @@
+//dependencies {
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//
+//    project.testDependencies.each {
+//        add(it.configuration, it.dependency)
+//    }
+//
+//    project.commonDependencies.each {
+//        add(it.configuration, it.dependency)
+//    }
+//
+//    project.yapAndroidDependencies.each {
+//        add(it.configuration, it.dependency)
+//    }
+//}
+
+//plugins {
+//    id 'com.android.library'
+//    id 'kotlin-android'
+//}
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+//
 dependencies {
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    project.testDependencies.each {
-        add(it.configuration, it.dependency)
-    }
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    project.commonDependencies.each {
-        add(it.configuration, it.dependency)
-    }
+    implementation 'com.intuit.sdp:sdp-android:1.0.5'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$Versions.kotlinVersion"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$Versions.kotlinVersion"
+    implementation 'com.google.android.material:material:1.2.0-alpha01'
+    implementation "com.google.dagger:dagger:$Versions.daggerVersion"
+    implementation "com.google.dagger:dagger-android:$Versions.daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$Versions.daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$Versions.daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$Versions.daggerVersion"
+    implementation 'androidx.appcompat:appcompat:1.1.0-beta01'
+    implementation 'androidx.core:core-ktx:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.constraintlayout:constraintlayout-solver:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v13:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha06'
+    implementation 'androidx.vectordrawable:vectordrawable:1.1.0-beta02'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0-beta03'
+    implementation "androidx.paging:paging-runtime:$Versions.paging_version"
+    implementation 'com.liveperson.android:lp_messaging_sdk:4.2.1'
+    implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.10'
+    implementation 'com.github.jkwiecien:EasyImage:1.3.1'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'com.github.florent37:inline-activity-result-kotlin:1.0.3'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.5'
+    implementation 'id.zelory:compressor:3.0.1'
+    implementation 'com.google.android.exoplayer:exoplayer:2.10.3'
+    implementation 'com.adjust.sdk:adjust-android:4.21.0'
+    implementation 'com.android.installreferrer:installreferrer:1.1'
+    implementation 'net.cachapa.expandablelayout:expandablelayout:2.9.2'
+    implementation 'com.pdfview:pdfview-android:1.0.0'
+    implementation "com.github.skydoves:balloon:1.1.4"
+    implementation 'androidx.security:security-crypto:1.0.0-rc03'
+    implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+    implementation 'com.google.android.gms:play-services-auth-api-phone:17.4.0'
 
-    project.yapAndroidDependencies.each {
-        add(it.configuration, it.dependency)
-    }
+    implementation project(':translation')
+    implementation project(':security')
+    implementation project(':yapcore')
+    implementation project(':yap')
+    implementation project(':household')
+    implementation project(':networking')
+
+    implementation 'androidx.biometric:biometric:1.0.1'
+    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
+    implementation 'com.google.firebase:firebase-crashlytics:17.2.2'
+    implementation 'com.google.firebase:firebase-crash:16.2.1'
+    implementation 'com.google.firebase:firebase-analytics:18.0.0'
+    implementation 'com.google.firebase:firebase-messaging:20.3.0'
+    implementation 'com.daimajia.easing:library:2.0@aar'
+
+    implementation 'com.daimajia.androidanimations:library:2.3@aar'
+    implementation 'com.daimajia.easing:library:2.0@aar'
 }

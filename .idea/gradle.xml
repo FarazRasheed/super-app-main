@@ -11,8 +11,10 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/household" />
             <option value="$PROJECT_DIR$/identityscanner_v2" />
+            <option value="$PROJECT_DIR$/mylibrary" />
             <option value="$PROJECT_DIR$/networking" />
             <option value="$PROJECT_DIR$/security" />
             <option value="$PROJECT_DIR$/sendmoney" />
