@@ -28,8 +28,7 @@ project.ext {
             household  : ':household',
             yapcore    : ':yapcore',
             kyc        : ':identityscanner_v2',
-            sendmoney  : ':sendmoney',
-            security   : ':security'
+            sendmoney  : ':sendmoney'
     ]
 
     // All libraries that any module can contain
@@ -205,7 +204,6 @@ project.ext {
     appDependencies = [
             [configuration: "implementation", dependency: project(modules.yapandroid)],
             [configuration: "implementation", dependency: project(modules.translation)],
-            [configuration: "implementation", dependency: project(modules.security)],
             [configuration: "implementation", dependency: project(modules.yapcore)],
             [configuration: "implementation", dependency: project(modules.yap)],
             [configuration: "implementation", dependency: project(modules.household)],
@@ -222,7 +220,6 @@ project.ext {
     // dependencies which need to be added in app module only in conjunction with commonDependencies
     yapAndroidDependencies = [
             [configuration: "implementation", dependency: project(modules.translation)],
-            [configuration: "implementation", dependency: project(modules.security)],
             [configuration: "implementation", dependency: project(modules.yapcore)],
             [configuration: "implementation", dependency: project(modules.yap)],
             [configuration: "implementation", dependency: project(modules.household)],

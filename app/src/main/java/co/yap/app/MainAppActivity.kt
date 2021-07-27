@@ -1,10 +1,9 @@
 package co.yap.app
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.yap.yapandroid.MainYapActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.yap.yapandroid.main.MainActivity
 
 class MainAppActivity : AppCompatActivity() {
@@ -16,7 +15,7 @@ class MainAppActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun onclick(view: View){
+    fun onclick(view: View) {
         var intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }

@@ -13,9 +13,6 @@ import co.yap.modules.others.helper.Constants.START_REQUEST_CODE
 import co.yap.networking.AppData
 import co.yap.networking.RetroNetwork
 import co.yap.networking.interfaces.NetworkConstraintsListener
-import co.yap.security.AppSignature
-import co.yap.security.SecurityHelper
-import co.yap.security.SignatureValidator
 import co.yap.yapcore.config.BuildConfigManager
 import co.yap.yapcore.constants.Constants
 import co.yap.yapcore.constants.Constants.EXTRA
@@ -37,57 +34,57 @@ import java.util.*
 
 class AAPApplication : YAPApplication(), NavigatorProvider {
 
-    private external fun signatureKeysFromJNI(
-        name: String,
-        flavour: String,
-        buildVariant: String,
-        applicationId: String,
-        versionName: String,
-        versionCode: String
-    ): AppSignature
-
-    init {
-        System.loadLibrary("native-lib")
-    }
+//    private external fun signatureKeysFromJNI(
+//        name: String,
+//        flavour: String,
+//        buildVariant: String,
+//        applicationId: String,
+//        versionName: String,
+//        versionCode: String
+//    ): AppSignature
+//
+//    init {
+//        System.loadLibrary("native-lib")
+//    }
 
     override fun onCreate() {
         super.onCreate()
         initFireBase()
-        val originalSign =
-            signatureKeysFromJNI(
-                AppSignature::class.java.canonicalName?.replace(".", "/") ?: "",
-                BuildConfig.FLAVOR,
-                BuildConfig.BUILD_TYPE,
-                BuildConfig.APPLICATION_ID,
-                BuildConfig.VERSION_NAME,
-                BuildConfig.VERSION_CODE.toString()
-            )
+//        val originalSign =
+//            signatureKeysFromJNI(
+//                AppSignature::class.java.canonicalName?.replace(".", "/") ?: "",
+//                BuildConfig.FLAVOR,
+//                BuildConfig.BUILD_TYPE,
+//                BuildConfig.APPLICATION_ID,
+//                BuildConfig.VERSION_NAME,
+//                BuildConfig.VERSION_CODE.toString()
+//            )
 
-        configManager = BuildConfigManager(
-            md5 = originalSign.md5,
-            sha1 = originalSign.sha1,
-            sha256 = originalSign.sha256,
-            leanPlumSecretKey = originalSign.leanPlumSecretKey,
-            leanPlumKey = originalSign.leanPlumKey,
-            adjustToken = originalSign.adjustToken,
-            baseUrl = originalSign.baseUrl,
-            buildType = originalSign.buildType,
-            flavor = originalSign.flavor,
-            versionName = originalSign.versionName,
-            versionCode = originalSign.versionCode,
-            applicationId = originalSign.applicationId,
-            sslPin1 = originalSign.sslPin1,
-            sslPin2 = originalSign.sslPin2,
-            sslPin3 = originalSign.sslPin3,
-            sslHost = originalSign.sslHost
-        )
+//        configManager = BuildConfigManager(
+//            md5 = originalSign.md5,
+//            sha1 = originalSign.sha1,
+//            sha256 = originalSign.sha256,
+//            leanPlumSecretKey = originalSign.leanPlumSecretKey,
+//            leanPlumKey = originalSign.leanPlumKey,
+//            adjustToken = originalSign.adjustToken,
+//            baseUrl = originalSign.baseUrl,
+//            buildType = originalSign.buildType,
+//            flavor = originalSign.flavor,
+//            versionName = originalSign.versionName,
+//            versionCode = originalSign.versionCode,
+//            applicationId = originalSign.applicationId,
+//            sslPin1 = originalSign.sslPin1,
+//            sslPin2 = originalSign.sslPin2,
+//            sslPin3 = originalSign.sslPin3,
+//            sslHost = originalSign.sslHost
+//        )
         initAllModules()
-        SecurityHelper(this, originalSign, object : SignatureValidator {
-            override fun onValidate(isValid: Boolean, originalSign: AppSignature?) {
-                configManager?.hasValidSignature = true
-                //if (originalSign?.isLiveRelease() == true) isValid else true
-            }
-        })
+//        SecurityHelper(this, originalSign, object : SignatureValidator {
+//            override fun onValidate(isValid: Boolean, originalSign: AppSignature?) {
+//                configManager?.hasValidSignature = true
+//                //if (originalSign?.isLiveRelease() == true) isValid else true
+//            }
+//        })
     }
 
     private fun initAllModules() {

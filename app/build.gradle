@@ -19,12 +19,12 @@ android {
 //        versionCode 1
 //        versionName "1.0"
 
-        externalNativeBuild {
-            cmake {
-                cFlags "-fvisibility=hidden"
-                cppFlags "-fvisibility=hidden"
-            }
-        }
+//        externalNativeBuild {
+//            cmake {
+//                cFlags "-fvisibility=hidden"
+//                cppFlags "-fvisibility=hidden"
+//            }
+//        }
 
 //        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -36,12 +36,12 @@ android {
 //        }
 //    }
 
-    externalNativeBuild {
-        cmake {
-            path "CMakeLists.txt"
-            version "3.10.2"
-        }
-    }
+//    externalNativeBuild {
+//        cmake {
+//            path "CMakeLists.txt"
+//            version "3.10.2"
+//        }
+//    }
 
     productFlavors {
         live {
@@ -53,9 +53,9 @@ android {
             resValue "string", "google_maps_key", "AIzaSyD14efXe-xXjpqUPX85ZhiKaKFHZyANSrE"
             resValue "string", "facebook_app_id", "319841679191724"
             resValue "string", "fb_login_protocol_scheme", "fb319841679191724"
-            externalNativeBuild.cmake {
-                cppFlags '-DLIVE'
-            }
+//            externalNativeBuild.cmake {
+//                cppFlags '-DLIVE'
+//            }
         }
 
         Preprod {
@@ -67,9 +67,9 @@ android {
             resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
             resValue "string", "facebook_app_id", "327560185026998"
             resValue "string", "fb_login_protocol_scheme", "fb327560185026998"
-            externalNativeBuild.cmake {
-                cppFlags '-DPreprod'
-            }
+//            externalNativeBuild.cmake {
+//                cppFlags '-DPreprod'
+//            }
         }
 
         stg {
@@ -80,9 +80,9 @@ android {
             resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
             resValue "string", "facebook_app_id", "410921516527681"
             resValue "string", "fb_login_protocol_scheme", "fb410921516527681"
-            externalNativeBuild.cmake {
-                cppFlags '-DSTG'
-            }
+//            externalNativeBuild.cmake {
+//                cppFlags '-DSTG'
+//            }
         }
 
         yapinternal {
@@ -93,9 +93,9 @@ android {
             resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
             resValue "string", "facebook_app_id", "410921516527681"
             resValue "string", "fb_login_protocol_scheme", "fb410921516527681"
-            externalNativeBuild.cmake {
-                cppFlags '-DSTG'
-            }
+//            externalNativeBuild.cmake {
+//                cppFlags '-DSTG'
+//            }
         }
 
         qa {
@@ -106,9 +106,9 @@ android {
             resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
             resValue "string", "facebook_app_id", "410921516527681"
             resValue "string", "fb_login_protocol_scheme", "fb410921516527681"
-            externalNativeBuild.cmake {
-                cppFlags '-DQA'
-            }
+//            externalNativeBuild.cmake {
+//                cppFlags '-DQA'
+//            }
         }
 
         dev {
@@ -119,19 +119,19 @@ android {
             resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
             resValue "string", "facebook_app_id", "410921516527681"
             resValue "string", "fb_login_protocol_scheme", "fb410921516527681"
-            externalNativeBuild.cmake {
-                cppFlags '-DDEV'
-            }
+//            externalNativeBuild.cmake {
+//                cppFlags '-DDEV'
+//            }
         }
     }
-    ndkVersion '21.3.6528147'
-    sourceSets {
-        live {
-            res {
-                srcDirs 'src/live/res', 'src/live/res/'
-            }
-        }
-    }
+//    ndkVersion '21.3.6528147'
+//    sourceSets {
+//        live {
+//            res {
+//                srcDirs 'src/live/res', 'src/live/res/'
+//            }
+//        }
+//    }
 //    compileOptions {
 //        sourceCompatibility JavaVersion.VERSION_1_8
 //        targetCompatibility JavaVersion.VERSION_1_8
