@@ -1,3 +1,5 @@
+apply plugin: 'com.github.dcendents.android-maven'
+group =  'com.github.FarazRasheed'
 android {
     compileSdkVersion 29
     defaultConfig {

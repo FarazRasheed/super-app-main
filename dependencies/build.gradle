@@ -2,10 +2,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'maven'
 
-group =  'com.github.FarazRasheed.super-app-main'
 project.ext {
     compileSdkVersion = 29
     minSdkVersion = 23
