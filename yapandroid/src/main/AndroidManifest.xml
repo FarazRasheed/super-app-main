@@ -42,14 +42,12 @@
             android:name="co.yap.modules.forgotpasscode.activities.ForgotPasscodeActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
-            <nav-graph android:value="@navigation/forgot_passcode_navigation" />
         </activity>
 
         <activity
             android:name="co.yap.modules.dashboard.yapit.y2y.home.activities.YapToYapDashboardActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
-            <nav-graph android:value="@navigation/yap_to_yap_navigation" />
         </activity>
         <activity
             android:name=".modules.login.activities.VerifyPassCodePresenterActivity"

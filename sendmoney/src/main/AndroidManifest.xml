@@ -15,7 +15,6 @@
             android:name="co.yap.sendmoney.activities.SendMoneyHomeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
-            <nav-graph android:value="@navigation/send_money_main_navigation" />
         </activity>
 
         <!-- Send Money Edit Beneficiary -->

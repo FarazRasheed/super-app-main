@@ -15,7 +15,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeHouseHold.NoActionBar"
             android:windowSoftInputMode="adjustResize">
-            <nav-graph android:value="@navigation/hh_sub_account_onboarding_navigation" />
         </activity>
 
         <activity
