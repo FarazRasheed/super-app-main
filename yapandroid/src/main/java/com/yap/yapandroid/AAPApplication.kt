@@ -32,7 +32,7 @@ import com.yap.yapandroid.modules.login.activities.VerifyPassCodePresenterActivi
 import timber.log.Timber
 import java.util.*
 
-class AAPApplication : YAPApplication(), NavigatorProvider {
+open class AAPApplication : YAPApplication(), NavigatorProvider {
 
 //    private external fun signatureKeysFromJNI(
 //        name: String,
@@ -78,6 +78,8 @@ class AAPApplication : YAPApplication(), NavigatorProvider {
 //            sslPin3 = originalSign.sslPin3,
 //            sslHost = originalSign.sslHost
 //        )
+
+
         initAllModules()
 //        SecurityHelper(this, originalSign, object : SignatureValidator {
 //            override fun onValidate(isValid: Boolean, originalSign: AppSignature?) {
@@ -87,7 +89,7 @@ class AAPApplication : YAPApplication(), NavigatorProvider {
 //        })
     }
 
-    private fun initAllModules() {
+     fun initAllModules() {
         initNetworkLayer()
         setAppUniqueId(this)
         inItLeanPlum()
