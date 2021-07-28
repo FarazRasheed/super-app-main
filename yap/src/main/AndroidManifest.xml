@@ -32,7 +32,6 @@
         <activity
             android:name=".modules.onboarding.activities.LiteDashboardActivity"
             android:screenOrientation="portrait">
-            <nav-graph android:value="@navigation/kyc_navigation" />
         </activity>
         <activity
             android:name=".modules.dashboard.main.activities.YapDashboardActivity"
@@ -50,7 +49,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/CoreAppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize">
-            <nav-graph android:value="@navigation/onboarding_navigation" />
         </activity>
 
         <activity
@@ -59,27 +57,23 @@
         <activity
             android:name=".modules.dashboard.more.changepasscode.activities.ChangePasscodeActivity"
             android:screenOrientation="portrait">
-            <nav-graph android:value="@navigation/forgot_passcode_navigation" />
         </activity>
 
         <activity
             android:name=".modules.kyc.activities.DocumentsDashboardActivity"
             android:screenOrientation="portrait"
             android:theme="@style/CoreAppTheme.NoActionBar">
-            <nav-graph android:value="@navigation/kyc_navigation" />
         </activity>
         <activity
             android:name=".modules.dashboard.cards.addpaymentcard.activities.AddPaymentCardActivity"
             android:screenOrientation="portrait"
             android:theme="@style/CoreAppTheme.NoActionBar">
-            <nav-graph android:value="@navigation/spare_cards_navigation" />
         </activity>
         <activity
             android:name="co.yap.modules.dashboard.unverifiedemail.UnVerifiedEmailActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/CoreAppTheme.NoActionBar">
-            <nav-graph android:value="@navigation/unverified_change_email_navigation" />
         </activity>
 
         <activity
@@ -88,7 +82,6 @@
             android:launchMode="singleTop"
             android:theme="@style/CoreAppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize">
-            <nav-graph android:value="@navigation/more_main_navigation" />
         </activity>
 
         <activity
@@ -96,14 +89,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/CoreAppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize">
-            <nav-graph android:value="@navigation/more_main_navigation" />
         </activity>
 
         <activity
             android:name=".modules.dashboard.cards.reportcard.activities.ReportLostOrStolenCardActivity"
             android:screenOrientation="portrait"
             android:theme="@style/CoreAppTheme.NoActionBar">
-            <nav-graph android:value="@navigation/report_card_navigation" />
         </activity>
 
         <activity
@@ -201,7 +192,6 @@
             android:name=".modules.dashboard.store.household.onboarding.HouseHoldOnboardingActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
-            <nav-graph android:value="@navigation/house_hold_onboarding_navigation" />
         </activity>
 
         <activity
