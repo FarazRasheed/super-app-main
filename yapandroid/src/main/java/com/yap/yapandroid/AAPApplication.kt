@@ -34,59 +34,19 @@ import java.util.*
 
 open class AAPApplication : YAPApplication(), NavigatorProvider {
 
-//    private external fun signatureKeysFromJNI(
-//        name: String,
-//        flavour: String,
-//        buildVariant: String,
-//        applicationId: String,
-//        versionName: String,
-//        versionCode: String
-//    ): AppSignature
-//
-//    init {
-//        System.loadLibrary("native-lib")
-//    }
-
     override fun onCreate() {
         super.onCreate()
         initFireBase()
-//        val originalSign =
-//            signatureKeysFromJNI(
-//                AppSignature::class.java.canonicalName?.replace(".", "/") ?: "",
-//                BuildConfig.FLAVOR,
-//                BuildConfig.BUILD_TYPE,
-//                BuildConfig.APPLICATION_ID,
-//                BuildConfig.VERSION_NAME,
-//                BuildConfig.VERSION_CODE.toString()
-//            )
-
-//        configManager = BuildConfigManager(
-//            md5 = originalSign.md5,
-//            sha1 = originalSign.sha1,
-//            sha256 = originalSign.sha256,
-//            leanPlumSecretKey = originalSign.leanPlumSecretKey,
-//            leanPlumKey = originalSign.leanPlumKey,
-//            adjustToken = originalSign.adjustToken,
-//            baseUrl = originalSign.baseUrl,
-//            buildType = originalSign.buildType,
-//            flavor = originalSign.flavor,
-//            versionName = originalSign.versionName,
-//            versionCode = originalSign.versionCode,
-//            applicationId = originalSign.applicationId,
-//            sslPin1 = originalSign.sslPin1,
-//            sslPin2 = originalSign.sslPin2,
-//            sslPin3 = originalSign.sslPin3,
-//            sslHost = originalSign.sslHost
-//        )
-
-
+        ConfigurationsUAE.configure(
+            flavour = BuildConfig.FLAVOR,
+            buildType = BuildConfig.BUILD_TYPE,
+            applicationId = BuildConfig.APPLICATION_ID,
+            versionName = BuildConfig.VERSION_NAME,
+            versionCode = BuildConfig.VERSION_CODE.toString()
+        )
+        configManager = ConfigurationsUAE.configManager
         initAllModules()
-//        SecurityHelper(this, originalSign, object : SignatureValidator {
-//            override fun onValidate(isValid: Boolean, originalSign: AppSignature?) {
-//                configManager?.hasValidSignature = true
-//                //if (originalSign?.isLiveRelease() == true) isValid else true
-//            }
-//        })
+
     }
 
      fun initAllModules() {
@@ -125,7 +85,6 @@ open class AAPApplication : YAPApplication(), NavigatorProvider {
 
     private fun inItLeanPlum() {
         Leanplum.setApplicationContext(this)
-        //Parser.parseVariables(this)
         LeanplumActivityHelper.enableLifecycleCallbacks(this)
 
         if (configManager?.isReleaseBuild() == true) {
