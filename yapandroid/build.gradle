@@ -1,5 +1,6 @@
-android{
+apply plugin: 'com.android.library'
 
+android{
     flavorDimensions 'app'
     productFlavors {
         live {
@@ -7,7 +8,6 @@ android{
 
             versionCode 31
             versionName "1.0.3"
-//            applicationId "com.yap.banking"
             resValue "string", "app_name", "YAP"
             // It binds with SHA1- SHA 256 and package bundle
             resValue "string", "google_maps_key", "AIzaSyD14efXe-xXjpqUPX85ZhiKaKFHZyANSrE"
@@ -23,7 +23,6 @@ android{
 
             versionCode 8
             versionName "1.0.8"
-//            applicationId "com.yap.banking.preprod"
             resValue "string", "app_name", "YAP Preprod"
             // It binds with SHA1- SHA 256 and package bundle
             resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
@@ -39,7 +38,6 @@ android{
 
             versionCode 230
             versionName "0.5.0"
-//            applicationIdSuffix ".stg"
             resValue "string", "app_name", "YAP Stage"
             resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
             resValue "string", "facebook_app_id", "410921516527681"
@@ -54,7 +52,6 @@ android{
 
             versionCode 30
             versionName "0.3.0"
-//            applicationIdSuffix ".internal"
             resValue "string", "app_name", "YAP Internal"
             resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
             resValue "string", "facebook_app_id", "410921516527681"
@@ -69,7 +66,6 @@ android{
 
             versionCode 68
             versionName "0.6.8"
-//            applicationIdSuffix ".qa"
             resValue "string", "app_name", "YAP QA"
             resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
             resValue "string", "facebook_app_id", "410921516527681"
@@ -84,7 +80,6 @@ android{
 
             versionCode 2
             versionName "0.2"
-//            applicationIdSuffix ".dev"
             resValue "string", "app_name", "YAP Dev"
             resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
             resValue "string", "facebook_app_id", "410921516527681"
