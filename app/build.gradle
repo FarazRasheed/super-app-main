@@ -2,7 +2,7 @@
 //    id 'com.android.application'
 //    id 'kotlin-android'
 //}
-
+apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
@@ -48,8 +48,8 @@ android {
         live {
             dimension 'app'
             matchingFallbacks = ["live"]
-//            versionCode 31
-//            versionName "1.0.3"
+            versionCode 31
+            versionName "1.0.3"
             applicationId "com.yap.banking"
 //            resValue "string", "app_name", "YAP"
 //            // It binds with SHA1- SHA 256 and package bundle
@@ -62,8 +62,8 @@ android {
         }
 
         Preprod {
-//            versionCode 8
-//            versionName "1.0.8"
+            versionCode 8
+            versionName "1.0.8"
             applicationId "com.yap.banking.preprod"
 //            resValue "string", "app_name", "YAP Preprod"
 //            // It binds with SHA1- SHA 256 and package bundle
@@ -78,8 +78,8 @@ android {
         }
 
         stg {
-//            versionCode 230
-//            versionName "0.5.0"
+            versionCode 230
+            versionName "0.5.0"
             applicationIdSuffix ".stg"
 //            resValue "string", "app_name", "YAP Stage"
 //            resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
@@ -93,8 +93,8 @@ android {
         }
 
         yapinternal {
-//            versionCode 30
-//            versionName "0.3.0"
+            versionCode 30
+            versionName "0.3.0"
             applicationIdSuffix ".internal"
 //            resValue "string", "app_name", "YAP Internal"
 //            resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
@@ -108,8 +108,8 @@ android {
         }
 
         qa {
-//            versionCode 68
-//            versionName "0.6.8"
+            versionCode 68
+            versionName "0.6.8"
             applicationIdSuffix ".qa"
 //            resValue "string", "app_name", "YAP QA"
 //            resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
@@ -123,8 +123,8 @@ android {
         }
 
         dev {
-//            versionCode 2
-//            versionName "0.2"
+            versionCode 2
+            versionName "0.2"
             applicationIdSuffix ".dev"
 //            resValue "string", "app_name", "YAP Dev"
 //            resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
@@ -145,13 +145,13 @@ android {
 //            }
 //        }
 //    }
-//    compileOptions {
-//        sourceCompatibility JavaVersion.VERSION_1_8
-//        targetCompatibility JavaVersion.VERSION_1_8
-//    }
-//    kotlinOptions {
-//        jvmTarget = '1.8'
-//    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
