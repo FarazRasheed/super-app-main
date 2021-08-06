@@ -37,14 +37,14 @@ open class AAPApplication : YAPApplication(), NavigatorProvider {
     override fun onCreate() {
         super.onCreate()
         initFireBase()
-        ConfigurationsUAE.configure(
-            flavour = BuildConfig.FLAVOR,
-            buildType = BuildConfig.BUILD_TYPE,
-            applicationId = BuildConfig.APPLICATION_ID,
-            versionName = BuildConfig.VERSION_NAME,
-            versionCode = BuildConfig.VERSION_CODE.toString()
-        )
-        configManager = ConfigurationsUAE.configManager
+//        ConfigurationsUAE.configure(
+//            flavour = BuildConfig.FLAVOR,
+//            buildType = BuildConfig.BUILD_TYPE,
+//            applicationId = BuildConfig.APPLICATION_ID,
+//            versionName = BuildConfig.VERSION_NAME,
+//            versionCode = BuildConfig.VERSION_CODE.toString()
+//        )
+//        configManager = ConfigurationsUAE.configManager
         initAllModules()
 
     }

@@ -1,61 +1,61 @@
-apply plugin: 'com.android.library'
-
-android{
-    publishNonDefault true
-    flavorDimensions 'app'
-    productFlavors {
-        live {
-            dimension 'app'
-            resValue "string", "app_name", "YAP"
-            // It binds with SHA1- SHA 256 and package bundle
-            resValue "string", "google_maps_key", "AIzaSyD14efXe-xXjpqUPX85ZhiKaKFHZyANSrE"
-            resValue "string", "facebook_app_id", "319841679191724"
-            resValue "string", "fb_login_protocol_scheme", "fb319841679191724"
-        }
-
-        Preprod {
-            dimension 'app'
-            resValue "string", "app_name", "YAP Preprod"
-            // It binds with SHA1- SHA 256 and package bundle
-            resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
-            resValue "string", "facebook_app_id", "327560185026998"
-            resValue "string", "fb_login_protocol_scheme", "fb327560185026998"
-        }
-
-        stg {
-            dimension 'app'
-            resValue "string", "app_name", "YAP Stage"
-            resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
-            resValue "string", "facebook_app_id", "410921516527681"
-            resValue "string", "fb_login_protocol_scheme", "fb410921516527681"
-        }
-
-        yapinternal {
-            dimension 'app'
-            resValue "string", "app_name", "YAP Internal"
-            resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
-            resValue "string", "facebook_app_id", "410921516527681"
-            resValue "string", "fb_login_protocol_scheme", "fb410921516527681"
-        }
-
-        qa {
-            dimension 'app'
-            resValue "string", "app_name", "YAP QA"
-            resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
-            resValue "string", "facebook_app_id", "410921516527681"
-            resValue "string", "fb_login_protocol_scheme", "fb410921516527681"
-        }
-
-        dev {
-            dimension 'app'
-            resValue "string", "app_name", "YAP Dev"
-            resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
-            resValue "string", "facebook_app_id", "410921516527681"
-            resValue "string", "fb_login_protocol_scheme", "fb410921516527681"
-        }
-    }
-
-}
+//apply plugin: 'com.android.library'
+//
+//android{
+//    publishNonDefault true
+//    flavorDimensions 'app'
+//    productFlavors {
+//        live {
+//            dimension 'app'
+//            resValue "string", "app_name", "YAP"
+//            // It binds with SHA1- SHA 256 and package bundle
+//            resValue "string", "google_maps_key", "AIzaSyD14efXe-xXjpqUPX85ZhiKaKFHZyANSrE"
+//            resValue "string", "facebook_app_id", "319841679191724"
+//            resValue "string", "fb_login_protocol_scheme", "fb319841679191724"
+//        }
+//
+//        Preprod {
+//            dimension 'app'
+//            resValue "string", "app_name", "YAP Preprod"
+//            // It binds with SHA1- SHA 256 and package bundle
+//            resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
+//            resValue "string", "facebook_app_id", "327560185026998"
+//            resValue "string", "fb_login_protocol_scheme", "fb327560185026998"
+//        }
+//
+//        stg {
+//            dimension 'app'
+//            resValue "string", "app_name", "YAP Stage"
+//            resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
+//            resValue "string", "facebook_app_id", "410921516527681"
+//            resValue "string", "fb_login_protocol_scheme", "fb410921516527681"
+//        }
+//
+//        yapinternal {
+//            dimension 'app'
+//            resValue "string", "app_name", "YAP Internal"
+//            resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
+//            resValue "string", "facebook_app_id", "410921516527681"
+//            resValue "string", "fb_login_protocol_scheme", "fb410921516527681"
+//        }
+//
+//        qa {
+//            dimension 'app'
+//            resValue "string", "app_name", "YAP QA"
+//            resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
+//            resValue "string", "facebook_app_id", "410921516527681"
+//            resValue "string", "fb_login_protocol_scheme", "fb410921516527681"
+//        }
+//
+//        dev {
+//            dimension 'app'
+//            resValue "string", "app_name", "YAP Dev"
+//            resValue "string", "google_maps_key", "AIzaSyAwMbe3AAuJfPm6w1LEQpx7IME9iIUiSR4"
+//            resValue "string", "facebook_app_id", "410921516527681"
+//            resValue "string", "fb_login_protocol_scheme", "fb410921516527681"
+//        }
+//    }
+//
+//}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
